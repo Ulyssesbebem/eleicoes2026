@@ -1,0 +1,487 @@
+<title>Pesquisa contra Urna</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  color-scheme: light;
+  --plano:#f9f9f7;  --superficie:#fcfcfb;  --superficie-2:#f2f1ec;
+  --tinta:#0b0b0b;  --tinta-2:#52514e;  --tinta-3:#898781;
+  --grade:#e1e0d9;  --eixo:#c3c2b7;  --borda:rgba(11,11,11,.10);
+  /* par divergente do sistema: azul <-> vermelho, cinza no meio */
+  --sub:#d03b3b;      /* subestimou: a urna deu mais que a pesquisa */
+  --sobre:#2a78d6;    /* superestimou */
+  --neutro:#b9b7ad;
+  --realce:#f0efec;
+  --sombra:0 1px 2px rgba(11,11,11,.05);
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:where(:not([data-theme="light"])){
+    color-scheme: dark;
+    --plano:#0d0d0d;  --superficie:#1a1a19;  --superficie-2:#242422;
+    --tinta:#ffffff;  --tinta-2:#c3c2b7;  --tinta-3:#898781;
+    --grade:#2c2c2a;  --eixo:#383835;  --borda:rgba(255,255,255,.10);
+    --sub:#e66767;  --sobre:#3987e5;  --neutro:#55544f;
+    --realce:#232321;  --sombra:none;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --plano:#0d0d0d;  --superficie:#1a1a19;  --superficie-2:#242422;
+  --tinta:#ffffff;  --tinta-2:#c3c2b7;  --tinta-3:#898781;
+  --grade:#2c2c2a;  --eixo:#383835;  --borda:rgba(255,255,255,.10);
+  --sub:#e66767;  --sobre:#3987e5;  --neutro:#55544f;
+  --realce:#232321;  --sombra:none;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--plano); color:var(--tinta);
+  font-family:var(--sans); font-size:15px; line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+.envoltorio{max-width:1000px; margin:0 auto; padding-inline:20px; padding-block:0 72px}
+h1,h2,h3{text-wrap:balance; margin:0}
+:focus-visible{outline:2px solid var(--sobre); outline-offset:2px; border-radius:3px}
+@media (prefers-reduced-motion: reduce){*{animation:none!important; transition:none!important}}
+
+.masthead{padding-block:48px 28px; border-bottom:1px solid var(--eixo)}
+.selo{font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--tinta-3); margin-bottom:14px}
+.masthead h1{font-family:var(--serif); font-weight:600; font-size:clamp(34px,6vw,52px);
+  line-height:1.04; letter-spacing:-.015em}
+.subtitulo{font-family:var(--serif); font-size:clamp(16px,2.2vw,19px); font-style:italic;
+  color:var(--tinta-2); margin-top:12px; max-width:60ch}
+
+.secao{padding-block:44px 0}
+.secao h2{font-family:var(--serif); font-size:26px; font-weight:600; letter-spacing:-.01em}
+.secao .nota{color:var(--tinta-2); font-size:13.5px; max-width:70ch; margin:6px 0 22px}
+.secao .nota b{color:var(--tinta)}
+
+.cartao{background:var(--superficie); border:1px solid var(--borda); border-radius:10px;
+  padding:22px; box-shadow:var(--sombra)}
+
+/* --------------------------------------------------- números de abertura */
+.placar{display:grid; grid-template-columns:repeat(2,1fr); gap:18px}
+@media (max-width:600px){.placar{grid-template-columns:1fr}}
+.tile{
+  background:var(--superficie); border:1px solid var(--borda); border-radius:10px;
+  padding:22px 24px; box-shadow:var(--sombra);
+  border-left:3px solid var(--sub);
+}
+.tile .ano{font-family:var(--mono); font-size:11.5px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--tinta-3)}
+.tile .cifra{font-family:var(--serif); font-size:54px; line-height:1.05; font-weight:600;
+  color:var(--sub); margin-top:6px; letter-spacing:-.02em}
+.tile .quem{font-size:14px; color:var(--tinta-2); margin-top:6px}
+.tile .detalhe{font-size:12.5px; color:var(--tinta-3); margin-top:10px;
+  padding-top:10px; border-top:1px solid var(--grade)}
+
+/* --------------------------------------------------- halteres */
+.halteres{display:flex; flex-direction:column; gap:3px}
+.haltere{display:grid; grid-template-columns:92px 1fr 104px; gap:12px; align-items:center;
+  padding:6px 0}
+.haltere .nome{font-size:13.5px; text-align:right; font-weight:500}
+.pista{position:relative; height:22px}
+.pista .conector{position:absolute; top:50%; transform:translateY(-50%); height:2px}
+.pista .bolinha{position:absolute; top:50%; transform:translate(-50%,-50%);
+  width:11px; height:11px; border-radius:50%}
+.pista .prev{background:var(--superficie); border:2px solid var(--tinta-3)}
+.pista .real{background:var(--tinta)}
+.haltere .delta{font-family:var(--mono); font-size:12.5px; font-variant-numeric:tabular-nums;
+  text-align:right}
+.eixo-x{display:grid; grid-template-columns:92px 1fr 104px; gap:12px; margin-top:10px;
+  padding-top:8px; border-top:1px solid var(--grade)}
+.eixo-x .ticks{display:flex; justify-content:space-between;
+  font-family:var(--mono); font-size:10.5px; color:var(--tinta-3)}
+.legenda-halteres{display:flex; flex-wrap:wrap; gap:18px; margin-bottom:16px;
+  font-size:12.5px; color:var(--tinta-2)}
+.legenda-halteres span{display:inline-flex; align-items:center; gap:7px}
+.pnt{width:11px; height:11px; border-radius:50%; flex:none}
+
+/* --------------------------------------------------- barras divergentes */
+.vies{display:flex; flex-direction:column}
+.vies-linha{display:grid; grid-template-columns:190px 1fr 62px; gap:12px; align-items:center;
+  padding:5px 0; border-bottom:1px solid var(--grade)}
+.vies-linha:last-child{border-bottom:0}
+.vies-linha.destaque{background:var(--realce)}
+.vies-nome{font-size:13px; display:flex; align-items:center; gap:7px; min-width:0}
+.vies-nome span.txt{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.vies-trilho{position:relative; height:20px}
+.vies-zero{position:absolute; left:50%; top:0; bottom:0; width:1px; background:var(--eixo)}
+.vies-barra{position:absolute; top:50%; transform:translateY(-50%); height:12px; border-radius:2px}
+.vies-val{font-family:var(--mono); font-size:12px; text-align:right;
+  font-variant-numeric:tabular-nums}
+.chip{display:inline-block; font-family:var(--mono); font-size:10.5px; font-weight:600;
+  padding:1.5px 6px; border-radius:4px; background:var(--superficie-2); color:var(--tinta-2);
+  border:1px solid var(--borda); flex:none}
+.chip.a{color:var(--tinta); border-color:var(--tinta-3)}
+.chip.vazio{opacity:.45}
+@media (max-width:600px){
+  .vies-linha{grid-template-columns:130px 1fr 54px}
+  .haltere,.eixo-x{grid-template-columns:70px 1fr 86px}
+}
+
+/* --------------------------------------------------- comparação nota A */
+.duelo{display:grid; grid-template-columns:repeat(2,1fr); gap:18px}
+@media (max-width:600px){.duelo{grid-template-columns:1fr}}
+.duelo .lado{padding:18px 20px; border:1px solid var(--borda); border-radius:9px;
+  background:var(--superficie)}
+.duelo .rot{font-family:var(--mono); font-size:11px; letter-spacing:.09em;
+  text-transform:uppercase; color:var(--tinta-3); margin-bottom:10px}
+.duelo .par{display:flex; justify-content:space-between; align-items:baseline;
+  padding:7px 0; border-bottom:1px solid var(--grade); font-size:13.5px}
+.duelo .par:last-child{border-bottom:0}
+.duelo .par b{font-family:var(--mono); font-size:15px; color:var(--sub)}
+
+/* --------------------------------------------------- projeção */
+.proj{display:flex; flex-direction:column; gap:2px}
+.proj-linha{display:grid; grid-template-columns:88px 1fr 1fr 62px; gap:10px;
+  align-items:center; padding:6px 0; font-size:13.5px}
+.proj-cab{font-family:var(--mono); font-size:10.5px; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--tinta-3); border-bottom:1px solid var(--eixo);
+  padding-bottom:7px; margin-bottom:4px}
+.proj-barra{position:relative; height:20px}
+.proj-barra i{position:absolute; left:0; top:50%; transform:translateY(-50%);
+  height:14px; border-radius:0 3px 3px 0}
+.proj-barra span{position:absolute; top:50%; transform:translateY(-50%);
+  font-family:var(--mono); font-size:11.5px; padding-left:6px; color:var(--tinta)}
+.proj-delta{font-family:var(--mono); font-size:12px; text-align:right;
+  font-variant-numeric:tabular-nums}
+@media (max-width:600px){.proj-linha{grid-template-columns:64px 1fr 1fr 50px; font-size:12.5px}}
+
+.aviso{
+  margin-top:18px; padding:15px 18px; border-radius:9px;
+  background:var(--realce); border:1px solid var(--borda);
+  font-size:13px; color:var(--tinta-2); line-height:1.6;
+}
+.aviso b{color:var(--tinta)}
+
+.rodape{margin-top:56px; padding-top:24px; border-top:1px solid var(--eixo);
+  font-size:12.5px; color:var(--tinta-3); line-height:1.65}
+.rodape b{color:var(--tinta-2); font-weight:500}
+.rodape p{margin:0 0 10px}
+</style>
+
+<div class="envoltorio">
+
+  <header class="masthead">
+    <div class="selo">Aferição · eleições presidenciais brasileiras</div>
+    <h1>Pesquisa contra Urna</h1>
+    <p class="subtitulo">
+      O que as pesquisas finais de 2018 e 2022 diziam, o que as urnas devolveram,
+      e por que o 1º turno errou feio enquanto o 2º acertou.
+    </p>
+  </header>
+
+  <section class="secao">
+    <h2>O erro que se repetiu</h2>
+    <p class="nota" id="nota-abertura"></p>
+    <div class="placar" id="placar"></div>
+  </section>
+
+  <section class="secao" id="secao-eleicoes"></section>
+
+  <section class="secao">
+    <h2>No 2º turno, o erro sumiu</h2>
+    <p class="nota" id="nota-2t"></p>
+    <div class="placar" id="placar-2t"></div>
+    <div id="halteres-2t"></div>
+    <div class="aviso" id="aviso-2t"></div>
+  </section>
+
+  <section class="secao">
+    <h2>Instituto por instituto</h2>
+    <p class="nota">
+      O erro da última pesquisa de cada instituto sobre o candidato da direita.
+      Destacados, os seis que entram no agregador de 2026.
+    </p>
+    <div id="institutos"></div>
+  </section>
+
+  <section class="secao">
+    <h2>O filtro de nota resolveu?</h2>
+    <p class="nota" id="nota-filtro"></p>
+    <div class="duelo" id="duelo"></div>
+    <div class="aviso" id="aviso-filtro"></div>
+  </section>
+
+  <section class="secao">
+    <h2>E se o mesmo viés se repetisse em 2026</h2>
+    <p class="nota" id="nota-proj"></p>
+    <div class="cartao">
+      <div class="proj" id="proj"></div>
+    </div>
+    <div class="aviso" id="aviso-proj"></div>
+  </section>
+
+  <footer class="rodape" id="rodape"></footer>
+</div>
+
+<script type="application/json" id="dados">/*__DADOS__*/</script>
+<script>
+(function(){
+"use strict";
+const D = JSON.parse(document.getElementById("dados").textContent);
+
+const nf1 = new Intl.NumberFormat("pt-BR",{minimumFractionDigits:1,maximumFractionDigits:1});
+const sinal = v => (v > 0 ? "+" : v < 0 ? "−" : "") + nf1.format(Math.abs(v));
+const cor = v => v < 0 ? "var(--sub)" : v > 0 ? "var(--sobre)" : "var(--neutro)";
+const esc = s => String(s).replace(/[&<>"]/g, c =>
+  ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
+
+/* ------------------------------------------------------------ abertura */
+const anos = D.eleicoes.map(e => e.ano);
+document.getElementById("nota-abertura").innerHTML =
+  `Em cada eleição pegamos as pesquisas encerradas nos <b>${D.dias_finais} dias</b> antes do
+   1º turno, aplicamos a mesma ponderação do agregador e convertemos para votos válidos.
+   Depois comparamos com o resultado oficial do TSE. Nos dois ciclos, o candidato da
+   direita apareceu <b>abaixo</b> do que a urna devolveu.`;
+
+document.getElementById("placar").innerHTML = D.eleicoes.map(e => `
+  <div class="tile">
+    <div class="ano">${e.ano} · 1º turno</div>
+    <div class="cifra">${sinal(e.erro_direita)}</div>
+    <div class="quem">pontos a menos para <b>${esc(e.campo.direita)}</b> no agregado</div>
+    <div class="detalhe">
+      ${e.n_pesquisas} pesquisas finais · erro médio de ${nf1.format(e.mae)} pp entre
+      todos os candidatos · ${esc(e.campo.esquerda)} ficou ${sinal(e.erro_esquerda)}
+    </div>
+  </div>`).join("");
+
+/* ------------------------------------------------------------ halteres */
+function halteres(e){
+  const cands = Object.keys(e.erros).sort((a,b) => e.oficial[b] - e.oficial[a]);
+  const bruto = Math.max(...cands.map(c => Math.max(e.previsto[c], e.oficial[c])));
+  const teto = Math.ceil(bruto * 1.08 / 10) * 10;   // escala em múltiplos de 10
+  const px = v => (v / teto * 100);
+
+  return `
+  <div class="cartao">
+    <div class="legenda-halteres">
+      <span><i class="pnt" style="background:var(--superficie);border:2px solid var(--tinta-3)"></i>agregado das pesquisas</span>
+      <span><i class="pnt" style="background:var(--tinta)"></i>resultado na urna</span>
+    </div>
+    <div class="halteres">
+      ${cands.map(c => {
+        const a = e.previsto[c], b = e.oficial[c], d = e.erros[c];
+        const x1 = Math.min(px(a), px(b)), x2 = Math.max(px(a), px(b));
+        return `<div class="haltere">
+          <div class="nome">${esc(c)}</div>
+          <div class="pista">
+            <div class="conector" style="left:${x1}%;width:${Math.max(0.4,x2-x1)}%;background:${cor(d)}"></div>
+            <div class="bolinha prev" style="left:${px(a)}%"></div>
+            <div class="bolinha real" style="left:${px(b)}%"></div>
+          </div>
+          <div class="delta" style="color:${cor(d)}">${sinal(d)} pp</div>
+        </div>`;
+      }).join("")}
+    </div>
+    <div class="eixo-x">
+      <div></div>
+      <div class="ticks"><span>0%</span><span>${Math.round(teto/2)}%</span><span>${Math.round(teto)}%</span></div>
+      <div></div>
+    </div>
+  </div>`;
+}
+
+document.getElementById("secao-eleicoes").innerHTML = D.eleicoes.map(e => `
+  <h2 style="margin-top:26px">${e.ano}: candidato a candidato</h2>
+  <p class="nota">
+    Eleição de ${new Date(e.dia_eleicao + "T00:00:00Z").toLocaleDateString("pt-BR",{timeZone:"UTC"})}.
+    As porcentagens dos dois lados foram renormalizadas sobre os candidatos que
+    aparecem tanto nas pesquisas quanto no resultado, para que tenham o mesmo denominador.
+  </p>
+  ${halteres(e)}`).join("");
+
+/* ------------------------------------------------------------ 2º turno */
+const E2 = D.eleicoes_2t || [];
+if (E2.length){
+  document.getElementById("nota-2t").innerHTML =
+    `Mesmo método, agora com as pesquisas do 2º turno — só as feitas <b>depois</b> do
+     1º turno, porque as anteriores eram cenários hipotéticos. Com apenas dois nomes
+     na disputa, o erro que dominava o 1º turno praticamente desaparece.`;
+
+  document.getElementById("placar-2t").innerHTML = E2.map(e => {
+    const v = e.erro_direita;
+    const c = Math.abs(v) < 0.05 ? "var(--tinta-3)" : cor(v);
+    return `<div class="tile" style="border-left-color:${c}">
+      <div class="ano">${e.ano} · 2º turno</div>
+      <div class="cifra" style="color:${c}">${sinal(v)}</div>
+      <div class="quem">pontos de erro sobre <b>${esc(e.campo.direita)}</b></div>
+      <div class="detalhe">
+        ${e.n_pesquisas} pesquisas finais · no 1º turno deste mesmo ano o erro
+        tinha sido ${sinal((D.eleicoes.find(x => x.ano === e.ano) || {}).erro_direita ?? 0)}
+      </div>
+    </div>`;
+  }).join("");
+
+  document.getElementById("halteres-2t").innerHTML = E2.map(e => `
+    <h3 style="font-family:var(--serif);font-size:19px;font-weight:600;margin:26px 0 12px">
+      ${e.ano} — ${esc(e.campo.esquerda)} × ${esc(e.campo.direita)}</h3>
+    ${halteres(e)}`).join("");
+
+  /* quanto os candidatos que NÃO foram ao 2º turno foram superestimados */
+  const inflada = {};
+  D.eleicoes.forEach(e => {
+    const finalistas = [e.campo.direita, e.campo.esquerda];
+    inflada[e.ano] = Object.entries(e.erros)
+      .filter(([c, v]) => !finalistas.includes(c) && v > 0)
+      .reduce((s, [, v]) => s + v, 0);
+  });
+  const m2 = D.vies_medio_direita_2t;
+  document.getElementById("aviso-2t").innerHTML =
+    `<b>Por que a diferença.</b> O erro do 1º turno não era "eleitor envergonhado":
+     era a terceira via inflada. Somando todos os candidatos que não chegaram ao
+     2º turno e que apareceram acima do que a urna deu, as pesquisas tinham
+     ${D.eleicoes.map(e => `<b>+${nf1.format(inflada[e.ano])} pp</b> a mais em ${e.ano}`)
+        .join(" e ")}. Quando esses votos se materializaram nos finalistas, a leitura
+     virou "candidato subestimado". No 2º turno não há terceira via para inflar —
+     sobram dois nomes e a soma fecha em 100 — e o viés médio cai para
+     <b>${sinal(m2)} pp</b>. É uma razão concreta para confiar mais no número de
+     2º turno do que no de 1º turno.`;
+}
+
+/* ------------------------------------------------------------ institutos */
+const ESCALA = 14;
+document.getElementById("institutos").innerHTML = D.eleicoes.map(e => {
+  const lista = Object.entries(e.por_instituto)
+    .map(([nome,d]) => ({nome, ...d, err: d.erros[e.campo.direita]}))
+    .filter(x => x.err != null)
+    .sort((a,b) => a.err - b.err);
+  return `
+  <h3 style="font-family:var(--serif);font-size:19px;font-weight:600;margin:22px 0 12px">
+    ${e.ano} — erro sobre ${esc(e.campo.direita)}</h3>
+  <div class="cartao"><div class="vies">
+    ${lista.map(x => {
+      const largura = Math.min(50, Math.abs(x.err)/ESCALA*50);
+      const neg = x.err < 0;
+      return `<div class="vies-linha${x.nota ? " destaque" : ""}">
+        <div class="vies-nome">
+          <span class="chip ${x.nota ? "a" : "vazio"}">${x.nota || "—"}</span>
+          <span class="txt">${esc(x.nome)}</span>
+        </div>
+        <div class="vies-trilho">
+          <div class="vies-zero"></div>
+          <div class="vies-barra" style="${neg ? `right:50%` : `left:50%`};width:${largura}%;background:${cor(x.err)}"></div>
+        </div>
+        <div class="vies-val" style="color:${cor(x.err)}">${sinal(x.err)}</div>
+      </div>`;
+    }).join("")}
+  </div>
+  <div class="eixo-x" style="grid-template-columns:190px 1fr 62px">
+    <div></div>
+    <div class="ticks"><span>−${ESCALA} pp</span><span>0</span><span>+${ESCALA} pp</span></div>
+    <div></div>
+  </div></div>`;
+}).join("");
+
+/* ------------------------------------------------------------ filtro nota A */
+const comp = D.comparativo_nota_a || [];
+document.getElementById("nota-filtro").innerHTML =
+  `A premissa do agregador é que institutos com nota alta erram menos. Para o ranking
+   de acurácia isso vale. Mas para o viés <b>pesquisa → urna</b>, refazer a conta usando
+   só os seis institutos nota A dá praticamente o mesmo número.`;
+
+document.getElementById("duelo").innerHTML = comp.map(c => `
+  <div class="lado">
+    <div class="rot">${c.ano} · erro sobre o candidato da direita</div>
+    <div class="par"><span>Todos os institutos <span style="color:var(--tinta-3)">(${c.todos.n} pesquisas)</span></span>
+      <b>${sinal(c.todos.direita)}</b></div>
+    <div class="par"><span>Só nota A&#8209;/A/A+ <span style="color:var(--tinta-3)">(${c.so_nota_a.n} pesquisas)</span></span>
+      <b>${sinal(c.so_nota_a.direita)}</b></div>
+    <div class="par"><span style="color:var(--tinta-3)">diferença</span>
+      <span style="font-family:var(--mono);font-size:13px;color:var(--tinta-2)">${
+        sinal(c.so_nota_a.direita - c.todos.direita)} pp</span></div>
+  </div>`).join("");
+
+document.getElementById("aviso-filtro").innerHTML =
+  `<b>Por que isso acontece.</b> O viés não é de um instituto ou de outro: é do conjunto.
+   Se quem não declara voto no telefone ou na internet tende a votar num mesmo lado,
+   todo o mercado erra junto, e nenhuma média entre eles corrige isso. O filtro de nota
+   reduz o ruído de cada pesquisa — não o erro sistemático de todas.`;
+
+/* ------------------------------------------------------------ projeção */
+const P = D.projecao_2026;
+if (P){
+  const cands = Object.keys(P.sem_correcao)
+    .sort((a,b) => P.sem_correcao[b] - P.sem_correcao[a]).slice(0,6);
+  const teto = Math.max(...cands.map(c =>
+    Math.max(P.sem_correcao[c], P.com_correcao[c] || 0))) * 1.12;
+
+  document.getElementById("nota-proj").innerHTML =
+    `Aplicando ao agregado de hoje o viés médio das duas eleições
+     (${sinal(D.vies_medio_direita)} pp na direita, ${sinal(D.vies_medio_esquerda)} pp
+     na esquerda) e renormalizando para 100%.`;
+
+  document.getElementById("proj").innerHTML =
+    `<div class="proj-linha proj-cab">
+       <div>Candidato</div><div>Agregado hoje</div><div>Com a correção</div><div style="text-align:right">Δ</div>
+     </div>` +
+    cands.map(c => {
+      const a = P.sem_correcao[c], b = P.com_correcao[c] ?? 0, d = b - a;
+      return `<div class="proj-linha">
+        <div style="font-weight:500">${esc(c)}</div>
+        <div class="proj-barra"><i style="width:${a/teto*100}%;background:var(--neutro)"></i>
+          <span style="left:${a/teto*100}%">${nf1.format(a)}%</span></div>
+        <div class="proj-barra"><i style="width:${b/teto*100}%;background:${d>0?"var(--sub)":"var(--neutro)"};opacity:${d>0?1:.55}"></i>
+          <span style="left:${b/teto*100}%">${nf1.format(b)}%</span></div>
+        <div class="proj-delta" style="color:${d>0?"var(--sub)":"var(--tinta-3)"}">${sinal(d)}</div>
+      </div>`;
+    }).join("");
+
+  const P2 = D.projecao_2026_2t;
+  const bloco2t = P2 ? (() => {
+    const nomes = Object.keys(P2.sem_correcao)
+      .sort((a,b) => P2.sem_correcao[b] - P2.sem_correcao[a]);
+    return `<h3 style="font-family:var(--serif);font-size:19px;font-weight:600;margin:30px 0 8px">
+        E no 2º turno</h3>
+      <p class="nota">Aqui entra o viés de 2º turno (${sinal(P2.vies_aplicado)} pp), não o
+        de 1º turno — são fenômenos diferentes.</p>
+      <div class="cartao"><div class="proj">
+        <div class="proj-linha proj-cab">
+          <div>Candidato</div><div>Agregado hoje</div><div>Com a correção</div><div style="text-align:right">Δ</div>
+        </div>
+        ${nomes.map(c => {
+          const a = P2.sem_correcao[c], b = P2.com_correcao[c], d = b - a;
+          return `<div class="proj-linha">
+            <div style="font-weight:500">${esc(c)}</div>
+            <div class="proj-barra"><i style="width:${a}%;background:var(--neutro)"></i>
+              <span style="left:${a}%">${nf1.format(a)}%</span></div>
+            <div class="proj-barra"><i style="width:${b}%;background:var(--neutro)"></i>
+              <span style="left:${b}%">${nf1.format(b)}%</span></div>
+            <div class="proj-delta" style="color:var(--tinta-3)">${sinal(d)}</div>
+          </div>`;
+        }).join("")}
+      </div></div>`;
+  })() : "";
+
+  document.getElementById("aviso-proj").insertAdjacentHTML("beforebegin", bloco2t);
+
+  document.getElementById("aviso-proj").innerHTML =
+    `<b>Isto não é uma previsão.</b> São duas eleições — não é amostra suficiente para
+     afirmar que o viés é uma constante. E há uma diferença concreta: o candidato da
+     direita em 2018 e 2022 era Jair Bolsonaro, e em 2026 é Flávio Bolsonaro. O que a
+     correção mostra é a <b>ordem de grandeza da dúvida</b> que se deve ter sobre a
+     vantagem que o agregado aponta, não um número melhor que ele. Note que a dúvida
+     é bem maior no 1º turno do que no 2º.`;
+}
+
+/* ------------------------------------------------------------ rodapé */
+document.getElementById("rodape").innerHTML = `
+  <p><b>Método.</b> Pesquisas dos ${D.dias_finais} dias finais de cada 1º turno, ponderadas por
+  nota do instituto, recência (meia-vida de ${D.meia_vida} dias) e tamanho da amostra, com a
+  mesma fórmula do agregador de 2026. Pesquisa e resultado são convertidos para votos válidos
+  sobre a interseção de candidatos — só assim as duas porcentagens têm o mesmo denominador.</p>
+  <p><b>Fontes.</b> Pesquisas: tabelas da Wikipédia para as eleições de 2018 e 2022.
+  Resultados: TSE, pelas páginas de resultado da Wikipédia. Coleta em
+  <span style="font-family:var(--mono)">coletar_historico.py</span>, cálculo em
+  <span style="font-family:var(--mono)">aferir.py</span>.</p>
+  <p><b>Limite.</b> Duas eleições, um país, um mesmo sobrenome dos dois lados da série.
+  Trate os números como uma margem de dúvida, não como um fator de correção confiável.</p>`;
+})();
+</script>

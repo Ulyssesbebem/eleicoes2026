@@ -1,0 +1,4 @@
+# o workflow roda no Ubuntu: guarda tudo com LF no repositório
+* text=auto eol=lf
+*.png binary
+*.jpg binary

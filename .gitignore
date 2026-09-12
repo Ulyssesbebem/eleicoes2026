@@ -1,0 +1,12 @@
+# gerados a cada execução - o site é montado pelo workflow, não versionado
+site/
+painel.html
+painel_publico.html
+aferidor.html
+aferidor_publico.html
+
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+Thumbs.db

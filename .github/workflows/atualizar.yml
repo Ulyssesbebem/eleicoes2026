@@ -1,0 +1,82 @@
+name: Atualizar agregador
+
+on:
+  schedule:
+    # 08h e 20h de Brasília (o cron do GitHub roda em UTC; BRT = UTC-3)
+    - cron: "0 11 * * *"
+    - cron: "0 23 * * *"
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      atualizar_historico:
+        description: "Rebaixar também as pesquisas de 2018 e 2022"
+        type: boolean
+        default: false
+
+# só uma execução por vez: duas rodando juntas brigariam pelo commit
+concurrency:
+  group: atualizar-agregador
+  cancel-in-progress: false
+
+permissions:
+  contents: write      # para commitar os CSVs atualizados
+  pages: write         # para publicar no GitHub Pages
+  id-token: write
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # os scripts só usam a biblioteca padrão - não há dependências a instalar
+
+      - name: Coletar pesquisas de 2026
+        run: python coletar.py
+
+      - name: Coletar histórico de 2018 e 2022
+        if: inputs.atualizar_historico
+        run: python coletar_historico.py
+
+      - name: Agregar
+        run: python agregar.py
+
+      - name: Aferir contra as urnas
+        run: python aferir.py
+
+      - name: Conferir se os dados fazem sentido
+        run: python verificar.py
+
+      - name: Montar o site
+        run: python montar_site.py
+
+      - name: Guardar os dados atualizados no repositório
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A pesquisas_*.csv agregado.json afericao.json
+          if git diff --staged --quiet; then
+            echo "Nenhuma pesquisa nova."
+          else
+            git commit -m "Dados: atualização automática de $(date -u +'%d/%m/%Y %H:%M') UTC"
+            git push
+          fi
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  publicar:
+    needs: atualizar
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4
