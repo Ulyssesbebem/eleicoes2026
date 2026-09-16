@@ -1196,36 +1196,34 @@
  "vies_medio_esquerda": -1.65,
  "projecao_2026": {
   "sem_correcao": {
-   "Lula": 42.0,
-   "Flávio": 32.9,
-   "Caiado": 4.2,
-   "Zema": 2.1,
-   "Renan": 6.0,
-   "Cury": 5.8,
-   "Samara": 1.1,
-   "Pimenta": 0.6,
-   "Dias": 0.5,
-   "Costa": 0.8,
-   "Grassi": 0.6,
-   "Marçal": 2.3,
-   "Clariana": 0.6,
-   "Daciolo": 0.5
+   "Lula": 41.9,
+   "Flávio": 34.8,
+   "Cury": 6.9,
+   "Renan": 4.6,
+   "Caiado": 3.3,
+   "Zema": 1.8,
+   "Samara": 0.9,
+   "Pimenta": 0.7,
+   "Grassi": 0.4,
+   "Dias": 0.7,
+   "Clariana": 0.7,
+   "Costa": 0.9,
+   "Marçal": 2.5
   },
   "com_correcao": {
-   "Lula": 41.0,
-   "Flávio": 35.5,
-   "Caiado": 3.9,
-   "Zema": 2.0,
-   "Renan": 5.7,
-   "Cury": 5.5,
-   "Samara": 1.0,
-   "Pimenta": 0.5,
-   "Dias": 0.4,
-   "Costa": 0.8,
-   "Grassi": 0.5,
-   "Marçal": 2.2,
-   "Clariana": 0.5,
-   "Daciolo": 0.4
+   "Lula": 40.9,
+   "Flávio": 37.2,
+   "Cury": 6.4,
+   "Renan": 4.3,
+   "Caiado": 3.1,
+   "Zema": 1.7,
+   "Samara": 0.9,
+   "Pimenta": 0.6,
+   "Grassi": 0.3,
+   "Dias": 0.6,
+   "Clariana": 0.7,
+   "Costa": 0.9,
+   "Marçal": 2.3
   },
   "ajuste_aplicado": {
    "Flávio": 4.9,
@@ -1234,12 +1232,12 @@
  },
  "projecao_2026_2t": {
   "sem_correcao": {
-   "Flávio": 47.8,
-   "Lula": 52.2
+   "Flávio": 48.6,
+   "Lula": 51.4
   },
   "com_correcao": {
-   "Flávio": 47.8,
-   "Lula": 52.2
+   "Flávio": 48.6,
+   "Lula": 51.4
   },
   "vies_aplicado": 0.04
  }
