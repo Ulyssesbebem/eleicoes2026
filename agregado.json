@@ -1,6 +1,6 @@
 {
  "atualizado": "2026-09-17",
- "data_ultima_pesquisa": "2026-09-13",
+ "data_ultima_pesquisa": "2026-09-16",
  "parametros": {
   "janela_dias": 45,
   "meia_vida_dias": 14,
@@ -66,66 +66,66 @@
  ],
  "agregado": {
   "Lula": {
-   "media": 40.45,
-   "valido": 41.91,
-   "desvio": 2.0,
-   "n": 11,
+   "media": 40.99,
+   "valido": 41.98,
+   "desvio": 2.41,
+   "n": 13,
    "min": 36.3,
-   "max": 43.4
+   "max": 44.1
   },
   "Flávio": {
-   "media": 33.56,
-   "valido": 34.77,
-   "desvio": 2.72,
-   "n": 11,
+   "media": 35.62,
+   "valido": 36.48,
+   "desvio": 4.19,
+   "n": 13,
    "min": 28.7,
-   "max": 37.4
+   "max": 41.7
   },
   "Cury": {
-   "media": 6.63,
-   "valido": 6.86,
-   "desvio": 1.81,
-   "n": 11,
+   "media": 5.87,
+   "valido": 6.01,
+   "desvio": 2.02,
+   "n": 13,
    "min": 1.2,
    "max": 10.0
   },
   "Renan": {
-   "media": 4.46,
-   "valido": 4.63,
-   "desvio": 1.8,
-   "n": 11,
+   "media": 4.39,
+   "valido": 4.5,
+   "desvio": 1.53,
+   "n": 13,
    "min": 2.7,
    "max": 7.6
   },
   "Caiado": {
-   "media": 3.21,
-   "valido": 3.33,
-   "desvio": 1.26,
-   "n": 11,
+   "media": 3.04,
+   "valido": 3.12,
+   "desvio": 1.27,
+   "n": 13,
    "min": 1.1,
    "max": 7.7
   },
   "Zema": {
-   "media": 1.7,
-   "valido": 1.76,
-   "desvio": 0.69,
-   "n": 11,
+   "media": 1.51,
+   "valido": 1.54,
+   "desvio": 0.64,
+   "n": 13,
    "min": 0.7,
    "max": 4.4
   },
   "Samara": {
-   "media": 0.91,
-   "valido": 0.94,
+   "media": 0.82,
+   "valido": 0.84,
    "desvio": 0.33,
-   "n": 10,
+   "n": 12,
    "min": 0.0,
    "max": 1.6
   },
   "Pimenta": {
-   "media": 0.63,
-   "valido": 0.65,
-   "desvio": 0.47,
-   "n": 10,
+   "media": 0.61,
+   "valido": 0.63,
+   "desvio": 0.48,
+   "n": 11,
    "min": 0.0,
    "max": 1.1
   },
@@ -133,83 +133,44 @@
    "media": 0.36,
    "valido": 0.37,
    "desvio": 0.47,
-   "n": 9,
+   "n": 10,
    "min": 0.0,
    "max": 1.1
   },
   "Dias": {
-   "media": 0.66,
-   "valido": 0.69,
-   "desvio": 0.68,
-   "n": 7,
+   "media": 0.6,
+   "valido": 0.62,
+   "desvio": 0.67,
+   "n": 8,
    "min": 0.0,
    "max": 2.0
   },
   "Clariana": {
-   "media": 0.68,
-   "valido": 0.7,
-   "desvio": 0.43,
-   "n": 6,
+   "media": 0.63,
+   "valido": 0.64,
+   "desvio": 0.46,
+   "n": 7,
    "min": 0.0,
    "max": 1.1
   },
   "Costa": {
-   "media": 0.9,
-   "valido": 0.93,
-   "desvio": 0.33,
-   "n": 6,
-   "min": 0.1,
+   "media": 0.79,
+   "valido": 0.81,
+   "desvio": 0.43,
+   "n": 7,
+   "min": 0.0,
    "max": 1.1
   },
   "Marçal": {
-   "media": 2.37,
-   "valido": 2.45,
-   "desvio": 0.54,
+   "media": 2.42,
+   "valido": 2.48,
+   "desvio": 0.55,
    "n": 2,
    "min": 1.9,
    "max": 3.0
   }
  },
  "serie": [
-  {
-   "data": "2026-03-17",
-   "Lula": 39.91,
-   "Lula__dp": 0.98,
-   "Flávio": 35.05,
-   "Flávio__dp": 2.21,
-   "Renan": 2.88,
-   "Renan__dp": 0.98,
-   "Caiado": 4.33,
-   "Caiado__dp": 0.74,
-   "Zema": 4.2,
-   "Zema__dp": 0.66
-  },
-  {
-   "data": "2026-03-18",
-   "Lula": 39.91,
-   "Lula__dp": 0.98,
-   "Flávio": 35.05,
-   "Flávio__dp": 2.21,
-   "Renan": 2.88,
-   "Renan__dp": 0.98,
-   "Caiado": 4.33,
-   "Caiado__dp": 0.74,
-   "Zema": 4.2,
-   "Zema__dp": 0.66
-  },
-  {
-   "data": "2026-03-19",
-   "Lula": 39.91,
-   "Lula__dp": 0.98,
-   "Flávio": 35.05,
-   "Flávio__dp": 2.21,
-   "Renan": 2.88,
-   "Renan__dp": 0.98,
-   "Caiado": 4.33,
-   "Caiado__dp": 0.74,
-   "Zema": 4.2,
-   "Zema__dp": 0.66
-  },
   {
    "data": "2026-03-20",
    "Lula": 39.91,
@@ -4029,9 +3990,124 @@
    "Costa__dp": 0.33,
    "Marçal": 2.37,
    "Marçal__dp": 0.54
+  },
+  {
+   "data": "2026-09-14",
+   "Lula": 40.45,
+   "Lula__dp": 2.0,
+   "Flávio": 33.56,
+   "Flávio__dp": 2.72,
+   "Cury": 6.63,
+   "Cury__dp": 1.81,
+   "Renan": 4.46,
+   "Renan__dp": 1.8,
+   "Caiado": 3.21,
+   "Caiado__dp": 1.26,
+   "Zema": 1.7,
+   "Zema__dp": 0.69,
+   "Samara": 0.91,
+   "Samara__dp": 0.33,
+   "Pimenta": 0.63,
+   "Pimenta__dp": 0.47,
+   "Grassi": 0.36,
+   "Grassi__dp": 0.47,
+   "Dias": 0.66,
+   "Dias__dp": 0.68,
+   "Clariana": 0.68,
+   "Clariana__dp": 0.43,
+   "Costa": 0.9,
+   "Costa__dp": 0.33,
+   "Marçal": 2.37,
+   "Marçal__dp": 0.54
+  },
+  {
+   "data": "2026-09-15",
+   "Lula": 40.28,
+   "Lula__dp": 2.02,
+   "Flávio": 33.99,
+   "Flávio__dp": 2.91,
+   "Cury": 6.6,
+   "Cury__dp": 1.71,
+   "Renan": 4.37,
+   "Renan__dp": 1.76,
+   "Caiado": 3.31,
+   "Caiado__dp": 1.26,
+   "Zema": 1.65,
+   "Zema__dp": 0.67,
+   "Samara": 0.86,
+   "Samara__dp": 0.36,
+   "Pimenta": 0.57,
+   "Pimenta__dp": 0.49,
+   "Grassi": 0.33,
+   "Grassi__dp": 0.46,
+   "Dias": 0.6,
+   "Dias__dp": 0.67,
+   "Clariana": 0.6,
+   "Clariana__dp": 0.45,
+   "Costa": 0.79,
+   "Costa__dp": 0.43,
+   "Marçal": 2.37,
+   "Marçal__dp": 0.54
+  },
+  {
+   "data": "2026-09-16",
+   "Lula": 40.99,
+   "Lula__dp": 2.41,
+   "Flávio": 35.62,
+   "Flávio__dp": 4.19,
+   "Cury": 5.87,
+   "Cury__dp": 2.02,
+   "Renan": 4.39,
+   "Renan__dp": 1.53,
+   "Caiado": 3.04,
+   "Caiado__dp": 1.27,
+   "Zema": 1.51,
+   "Zema__dp": 0.64,
+   "Samara": 0.82,
+   "Samara__dp": 0.33,
+   "Pimenta": 0.61,
+   "Pimenta__dp": 0.48,
+   "Grassi": 0.36,
+   "Grassi__dp": 0.47,
+   "Dias": 0.6,
+   "Dias__dp": 0.67,
+   "Clariana": 0.63,
+   "Clariana__dp": 0.46,
+   "Costa": 0.79,
+   "Costa__dp": 0.43,
+   "Marçal": 2.42,
+   "Marçal__dp": 0.55
   }
  ],
  "house_effects": {
+  "AtlasIntel": {
+   "Lula": -1.55,
+   "Flávio": 1.67,
+   "Cury": -0.55,
+   "Renan": 3.57,
+   "Caiado": -2.03,
+   "Zema": 0.27,
+   "Samara": -0.24,
+   "Pimenta": -0.98,
+   "Grassi": -0.77,
+   "Clariana": -0.04,
+   "Dias": 0.05,
+   "Costa": 0.0
+  },
+  "Futura": {
+   "Lula": -1.67,
+   "Flávio": 2.49,
+   "Cury": 1.08,
+   "Renan": -2.71,
+   "Caiado": 1.56,
+   "Zema": 0.5,
+   "Samara": -0.89,
+   "Pimenta": -0.37,
+   "Grassi": -0.18,
+   "Dias": -0.76,
+   "Clariana": -0.61,
+   "Costa": -0.98
+  },
   "MDA": {
    "Lula": 4.52,
    "Flávio": -2.51,
@@ -4060,33 +4136,6 @@
    "Clariana": -0.23,
    "Costa": 0.39
   },
-  "Futura": {
-   "Lula": -1.74,
-   "Flávio": 1.97,
-   "Cury": 1.21,
-   "Renan": -2.94,
-   "Caiado": 1.54,
-   "Zema": 0.69,
-   "Samara": -0.9,
-   "Pimenta": -0.2,
-   "Grassi": -0.13,
-   "Dias": -0.77,
-   "Costa": -0.86
-  },
-  "AtlasIntel": {
-   "Lula": -2.02,
-   "Flávio": 0.8,
-   "Cury": 0.09,
-   "Renan": 4.01,
-   "Caiado": -1.9,
-   "Zema": 0.46,
-   "Samara": -0.25,
-   "Pimenta": -0.98,
-   "Grassi": -0.77,
-   "Clariana": -0.04,
-   "Dias": 0.05,
-   "Costa": 0.0
-  },
   "Real Time Big Data": {
    "Lula": -2.63,
    "Flávio": -1.96,
@@ -4105,13 +4154,54 @@
  },
  "pesquisas_janela": [
   {
+   "instituto": "AtlasIntel",
+   "nota": "A+",
+   "data": "2026-09-16",
+   "amostra": 5018,
+   "margem": 1.0,
+   "peso": 1.4,
+   "peso_pct": 23.2,
+   "valores": {
+    "Lula": 44.1,
+    "Flávio": 41.7,
+    "Cury": 3.5,
+    "Renan": 5.1,
+    "Caiado": 1.7,
+    "Zema": 1.1,
+    "Samara": 0.7
+   }
+  },
+  {
+   "instituto": "Futura",
+   "nota": "A-",
+   "data": "2026-09-15",
+   "amostra": 2000,
+   "margem": 2.2,
+   "peso": 0.5234,
+   "peso_pct": 8.7,
+   "valores": {
+    "Lula": 38.3,
+    "Flávio": 37.7,
+    "Cury": 6.5,
+    "Renan": 3.4,
+    "Caiado": 4.5,
+    "Zema": 1.0,
+    "Samara": 0.2,
+    "Pimenta": 0.0,
+    "Grassi": 0.1,
+    "Dias": 0.1,
+    "Clariana": 0.1,
+    "Costa": 0.0
+   }
+  },
+  {
    "instituto": "MDA",
    "nota": "A+",
    "data": "2026-09-13",
    "amostra": 2002,
    "margem": 2.2,
-   "peso": 1.0005,
-   "peso_pct": 18.6,
+   "peso": 0.8624,
+   "peso_pct": 14.3,
    "valores": {
     "Lula": 40.5,
     "Flávio": 30.4,
@@ -4133,8 +4223,8 @@
    "data": "2026-09-11",
    "amostra": 2002,
    "margem": 2.0,
-   "peso": 0.9062,
-   "peso_pct": 16.9,
+   "peso": 0.7811,
+   "peso_pct": 13.0,
    "valores": {
     "Lula": 39.0,
     "Flávio": 35.0,
@@ -4156,8 +4246,8 @@
    "data": "2026-09-10",
    "amostra": 2000,
    "margem": 2.2,
-   "peso": 0.4741,
-   "peso_pct": 8.8,
+   "peso": 0.289,
+   "peso_pct": 4.8,
    "valores": {
     "Lula": 39.2,
     "Flávio": 33.6,
@@ -4178,8 +4268,8 @@
    "data": "2026-09-09",
    "amostra": 5000,
    "margem": 1.0,
-   "peso": 1.1485,
-   "peso_pct": 21.4,
+   "peso": 0.7,
+   "peso_pct": 11.6,
    "valores": {
     "Lula": 43.0,
     "Flávio": 37.4,
@@ -4199,8 +4289,8 @@
    "data": "2026-09-02",
    "amostra": 2002,
    "margem": 2.0,
-   "peso": 0.4104,
-   "peso_pct": 7.6,
+   "peso": 0.3537,
+   "peso_pct": 5.9,
    "valores": {
     "Lula": 38.0,
     "Flávio": 33.0,
@@ -4222,8 +4312,8 @@
    "data": "2026-09-01",
    "amostra": 2000,
    "margem": 2.2,
-   "peso": 0.2147,
-   "peso_pct": 4.0,
+   "peso": 0.1511,
+   "peso_pct": 2.5,
    "valores": {
     "Lula": 38.7,
     "Flávio": 33.6,
@@ -4243,8 +4333,8 @@
    "data": "2026-08-31",
    "amostra": 2000,
    "margem": 2.0,
-   "peso": 0.3678,
-   "peso_pct": 6.8,
+   "peso": 0.317,
+   "peso_pct": 5.3,
    "valores": {
     "Lula": 38.0,
     "Flávio": 29.0,
@@ -4267,8 +4357,8 @@
    "data": "2026-08-30",
    "amostra": 5014,
    "margem": 2.0,
-   "peso": 0.495,
-   "peso_pct": 9.2,
+   "peso": 0.3484,
+   "peso_pct": 5.8,
    "valores": {
     "Lula": 43.4,
     "Flávio": 33.7,
@@ -4288,8 +4378,8 @@
    "data": "2026-08-20",
    "amostra": 2058,
    "margem": 2.0,
-   "peso": 0.1785,
-   "peso_pct": 3.3,
+   "peso": 0.1538,
+   "peso_pct": 2.6,
    "valores": {
     "Lula": 39.0,
     "Flávio": 33.0,
@@ -4311,8 +4401,8 @@
    "data": "2026-08-09",
    "amostra": 2002,
    "margem": 2.2,
-   "peso": 0.1251,
-   "peso_pct": 2.3,
+   "peso": 0.1078,
+   "peso_pct": 1.8,
    "valores": {
     "Lula": 42.4,
     "Flávio": 28.7,
@@ -4330,8 +4420,8 @@
    "data": "2026-08-07",
    "amostra": 2000,
    "margem": 2.2,
-   "peso": 0.0508,
-   "peso_pct": 0.9,
+   "peso": 0.038,
+   "peso_pct": 0.6,
    "valores": {
     "Lula": 36.3,
     "Flávio": 32.7,
@@ -4343,6 +4433,44 @@
   }
  ],
  "historico": [
+  {
+   "instituto": "AtlasIntel",
+   "nota": "A+",
+   "data": "2026-09-16",
+   "amostra": 5018,
+   "valores": {
+    "Lula": 44.1,
+    "Flávio": 41.7,
+    "Cury": 3.5,
+    "Renan": 5.1,
+    "Caiado": 1.7,
+    "Zema": 1.1,
+    "Samara": 0.7,
+    "Indefinidos": 2.1
+   }
+  },
+  {
+   "instituto": "Futura",
+   "nota": "A-",
+   "data": "2026-09-15",
+   "amostra": 2000,
+   "valores": {
+    "Lula": 38.3,
+    "Flávio": 37.7,
+    "Cury": 6.5,
+    "Renan": 3.4,
+    "Caiado": 4.5,
+    "Zema": 1.0,
+    "Samara": 0.2,
+    "Grassi": 0.1,
+    "Clariana": 0.1,
+    "Dias": 0.1,
+    "Costa": 0.0,
+    "Pimenta": 0.0,
+    "Outros": 1.9,
+    "Indefinidos": 6.1
+   }
+  },
   {
    "instituto": "MDA",
    "nota": "A+",
@@ -5098,59 +5226,179 @@
    "cenario": "Lula e Renan Santos",
    "a": "Lula",
    "b": "Renan",
-   "va": 46.8,
-   "vb": 34.7,
-   "va_valido": 57.4,
-   "vb_valido": 42.6,
-   "n": 11,
-   "ultima": "2026-09-13"
+   "va": 46.5,
+   "vb": 34.0,
+   "va_valido": 57.7,
+   "vb_valido": 42.3,
+   "n": 13,
+   "ultima": "2026-09-16"
   },
   {
    "cenario": "Lula e Zema",
    "a": "Lula",
    "b": "Zema",
-   "va": 46.9,
-   "vb": 39.9,
-   "va_valido": 54.0,
-   "vb_valido": 46.0,
-   "n": 11,
-   "ultima": "2026-09-13"
+   "va": 46.6,
+   "vb": 40.5,
+   "va_valido": 53.5,
+   "vb_valido": 46.5,
+   "n": 13,
+   "ultima": "2026-09-16"
   },
   {
    "cenario": "Lula e Augusto Cury",
    "a": "Lula",
    "b": "Cury",
-   "va": 44.8,
-   "vb": 40.4,
-   "va_valido": 52.6,
-   "vb_valido": 47.4,
-   "n": 4,
-   "ultima": "2026-09-13"
+   "va": 44.7,
+   "vb": 40.1,
+   "va_valido": 52.7,
+   "vb_valido": 47.3,
+   "n": 6,
+   "ultima": "2026-09-16"
   },
   {
    "cenario": "Lula e Caiado",
    "a": "Lula",
    "b": "Caiado",
-   "va": 45.7,
-   "vb": 41.6,
-   "va_valido": 52.3,
-   "vb_valido": 47.7,
-   "n": 11,
-   "ultima": "2026-09-13"
+   "va": 45.4,
+   "vb": 41.7,
+   "va_valido": 52.1,
+   "vb_valido": 47.9,
+   "n": 13,
+   "ultima": "2026-09-16"
   },
   {
    "cenario": "Lula e Flávio Bolsonaro",
    "a": "Lula",
    "b": "Flávio",
    "va": 46.2,
-   "vb": 43.7,
-   "va_valido": 51.4,
-   "vb_valido": 48.6,
-   "n": 11,
-   "ultima": "2026-09-13"
+   "vb": 44.7,
+   "va_valido": 50.8,
+   "vb_valido": 49.2,
+   "n": 13,
+   "ultima": "2026-09-16"
   }
  ],
  "historico_2t": [
+  {
+   "cenario": "Lula e Flávio Bolsonaro",
+   "instituto": "AtlasIntel",
+   "nota": "A+",
+   "data": "2026-09-16",
+   "amostra": 5018,
+   "valores": {
+    "Lula": 46.8,
+    "Flávio": 47.2,
+    "Indefinidos": 6.0
+   }
+  },
+  {
+   "cenario": "Lula e Augusto Cury",
+   "instituto": "AtlasIntel",
+   "nota": "A+",
+   "data": "2026-09-16",
+   "amostra": 5018,
+   "valores": {
+    "Lula": 45.6,
+    "Indefinidos": 16.6,
+    "Cury": 37.8
+   }
+  },
+  {
+   "cenario": "Lula e Renan Santos",
+   "instituto": "AtlasIntel",
+   "nota": "A+",
+   "data": "2026-09-16",
+   "amostra": 5018,
+   "valores": {
+    "Lula": 46.1,
+    "Indefinidos": 24.2,
+    "Renan": 29.7
+   }
+  },
+  {
+   "cenario": "Lula e Caiado",
+   "instituto": "AtlasIntel",
+   "nota": "A+",
+   "data": "2026-09-16",
+   "amostra": 5018,
+   "valores": {
+    "Lula": 46.0,
+    "Indefinidos": 12.3,
+    "Caiado": 41.7
+   }
+  },
+  {
+   "cenario": "Lula e Zema",
+   "instituto": "AtlasIntel",
+   "nota": "A+",
+   "data": "2026-09-16",
+   "amostra": 5018,
+   "valores": {
+    "Lula": 46.3,
+    "Indefinidos": 10.1,
+    "Zema": 43.7
+   }
+  },
+  {
+   "cenario": "Lula e Flávio Bolsonaro",
+   "instituto": "Futura",
+   "nota": "A-",
+   "data": "2026-09-15",
+   "amostra": 2000,
+   "valores": {
+    "Lula": 43.7,
+    "Flávio": 48.1,
+    "Indefinidos": 8.2
+   }
+  },
+  {
+   "cenario": "Lula e Augusto Cury",
+   "instituto": "Futura",
+   "nota": "A-",
+   "data": "2026-09-15",
+   "amostra": 2000,
+   "valores": {
+    "Lula": 41.5,
+    "Indefinidos": 13.8,
+    "Cury": 44.8
+   }
+  },
+  {
+   "cenario": "Lula e Renan Santos",
+   "instituto": "Futura",
+   "nota": "A-",
+   "data": "2026-09-15",
+   "amostra": 2000,
+   "valores": {
+    "Lula": 44.5,
+    "Indefinidos": 16.2,
+    "Renan": 39.3
+   }
+  },
+  {
+   "cenario": "Lula e Caiado",
+   "instituto": "Futura",
+   "nota": "A-",
+   "data": "2026-09-15",
+   "amostra": 2000,
+   "valores": {
+    "Lula": 41.9,
+    "Indefinidos": 13.0,
+    "Caiado": 45.1
+   }
+  },
+  {
+   "cenario": "Lula e Zema",
+   "instituto": "Futura",
+   "nota": "A-",
+   "data": "2026-09-15",
+   "amostra": 2000,
+   "valores": {
+    "Lula": 44.7,
+    "Indefinidos": 14.7,
+    "Zema": 40.6
+   }
+  },
   {
    "cenario": "Lula e Flávio Bolsonaro",
    "instituto": "MDA",
