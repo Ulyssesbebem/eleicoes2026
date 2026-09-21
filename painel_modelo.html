@@ -161,6 +161,24 @@ a{color:inherit}
 #grafico .pt{fill:var(--cor); opacity:.34; stroke:var(--superficie); stroke-width:1.5}
 #grafico .fim{fill:var(--cor); stroke:var(--superficie); stroke-width:2}
 #grafico .cruz{stroke:var(--eixo); stroke-width:1}
+/* o segundo gráfico usa as mesmas regras */
+#grafico2t .s1{--cor:var(--s1)}
+#grafico2t .s2{--cor:var(--s2)}
+#grafico2t .grade{stroke:var(--grade); stroke-width:1}
+#grafico2t .base{stroke:var(--eixo); stroke-width:1}
+#grafico2t text{font-family:var(--mono); font-size:11px; fill:var(--tinta-3)}
+#grafico2t .rot{font-family:var(--sans); font-size:12px; font-weight:600; fill:var(--cor)}
+#grafico2t .ln{fill:none; stroke:var(--cor); stroke-width:2; stroke-linejoin:round; stroke-linecap:round}
+#grafico2t .pt{fill:var(--cor); opacity:.34; stroke:var(--superficie); stroke-width:1.5}
+#grafico2t .fim{fill:var(--cor); stroke:var(--superficie); stroke-width:2}
+#grafico2t .cruz{stroke:var(--eixo); stroke-width:1}
+/* a linha dos 50% é o que decide a eleição: ganha destaque sobre a grade */
+#grafico2t .meio{stroke:var(--tinta-3); stroke-width:1; stroke-dasharray:4 3}
+#grafico2t .rotmeio{fill:var(--tinta-2); font-weight:600}
+.dica-vantagem{
+  margin-top:6px; padding-top:6px; border-top:1px solid var(--grade);
+  font-size:11.5px; color:var(--tinta-2); justify-content:flex-end;
+}
 .legenda{display:flex; flex-wrap:wrap; gap:18px; margin-bottom:14px}
 .legenda span{display:inline-flex; align-items:center; gap:7px; font-size:13px; color:var(--tinta-2)}
 .marca{width:13px; height:3px; border-radius:2px; flex:none}
@@ -301,6 +319,22 @@ td.num{font-family:var(--mono)}
         <svg id="grafico" viewBox="0 0 900 330" role="img"
              aria-label="Evolução da média ponderada das pesquisas"></svg>
         <div class="dica" id="dica"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================== tendência 2º turno -->
+  <section class="secao">
+    <div class="secao-cab">
+      <h2 id="titulo-2t">Tendência do 2º turno</h2>
+    </div>
+    <p class="nota" id="nota-2t"></p>
+    <div class="cartao">
+      <div class="legenda" id="legenda2t"></div>
+      <div class="moldura-grafico" id="moldura2t">
+        <svg id="grafico2t" viewBox="0 0 900 330" role="img"
+             aria-label="Evolução do confronto de 2º turno em votos válidos"></svg>
+        <div class="dica" id="dica2t"></div>
       </div>
     </div>
   </section>
@@ -560,36 +594,54 @@ function pintarConfrontos(){
   }).join("") || `<p style="font-size:13px;color:var(--tinta-3)">Nenhum cenário de 2º turno dentro da janela.</p>`;
 }
 
-/* ------------------------------------------------------------ linha do tempo */
+/* ------------------------------------------------------------ linha do tempo
+   Uma função só desenha os dois gráficos (1º e 2º turno). O que muda entre
+   eles vem em `cfg`: a base de pesquisas, como agregar, e se o eixo começa
+   no zero ou se aperta em volta dos 50%.                                    */
 const L = {e: 44, d: 46, t: 16, b: 30}, W = 900, H = 330;
 
-function pintarGrafico(){
+function desenharGrafico(cfg){
+  const svg = document.getElementById(cfg.svg);
+  if (!svg) return;
   const fim = HOJE, ini = fim - estado.dias * DIA;
-  const svg = document.getElementById("grafico");
 
   const pontos = [];
   for (let t = ini; t <= fim; t += DIA){
-    const m = baseAtual(D.historico, SERIES, t);
+    const m = cfg.calcular(t);
     if (Object.keys(m).length) pontos.push({t, m});
   }
-  if (!pontos.length){ svg.innerHTML = ""; return; }
+  const vistos = cfg.pesquisas.filter(p => dt(p.data) >= ini && dt(p.data) <= fim);
 
-  const vistos = D.historico.filter(p => dt(p.data) >= ini && dt(p.data) <= fim);
-  let vmax = 0;
-  pontos.forEach(p => SERIES.forEach(c => { if (p.m[c]) vmax = Math.max(vmax, p.m[c].media); }));
-  vistos.forEach(p => SERIES.forEach(c => { if (p.valores[c] != null) vmax = Math.max(vmax, p.valores[c]); }));
+  if (!pontos.length){
+    svg.innerHTML = "";
+    document.getElementById(cfg.legenda).innerHTML =
+      `<span style="color:var(--tinta-3)">Sem pesquisas suficientes nesse período.</span>`;
+    return;
+  }
+
+  /* ---- escala vertical */
+  let vmax = 0, vmin = 100;
+  const considera = v => { if (v == null) return; vmax = Math.max(vmax, v); vmin = Math.min(vmin, v); };
+  pontos.forEach(p => cfg.series.forEach(c => p.m[c] && considera(p.m[c].media)));
+  vistos.forEach(p => cfg.series.forEach(c => considera(cfg.valorPesquisa(p, c))));
+
   const teto = Math.ceil((vmax + 3) / 5) * 5;
+  const piso = cfg.zero ? 0 : Math.max(0, Math.floor((vmin - 3) / 5) * 5);
+  const passoY = cfg.zero ? 10 : 5;
 
   const x = t => L.e + (t - ini) / (fim - ini) * (W - L.e - L.d);
-  const y = v => H - L.b - v / teto * (H - L.t - L.b);
+  const y = v => H - L.b - (v - piso) / (teto - piso) * (H - L.t - L.b);
 
   let g = "";
-  /* grade + eixo y */
-  for (let v = 0; v <= teto; v += 10){
-    g += `<line class="${v === 0 ? "base" : "grade"}" x1="${L.e}" y1="${y(v)}" x2="${W - L.d}" y2="${y(v)}"/>`;
-    g += `<text x="${L.e - 9}" y="${y(v) + 4}" text-anchor="end">${v}%</text>`;
+  for (let v = piso; v <= teto; v += passoY){
+    const ehBase = v === piso;
+    const ehMeio = cfg.marcar50 && v === 50;
+    g += `<line class="${ehMeio ? "meio" : ehBase ? "base" : "grade"}" `
+       + `x1="${L.e}" y1="${y(v)}" x2="${W - L.d}" y2="${y(v)}"/>`;
+    g += `<text class="${ehMeio ? "rotmeio" : ""}" x="${L.e - 9}" y="${y(v) + 4}" `
+       + `text-anchor="end">${v}%</text>`;
   }
-  /* eixo x */
+
   const passo = Math.max(1, Math.round(estado.dias / 6));
   for (let k = 0; k <= estado.dias; k += passo){
     const t = ini + k * DIA;
@@ -597,18 +649,19 @@ function pintarGrafico(){
     g += `<text x="${x(t)}" y="${H - L.b + 17}" text-anchor="middle">${dataCurta(t)}</text>`;
   }
 
-  /* pesquisas individuais */
-  SERIES.forEach((c, i) => {
+  /* ---- pesquisas individuais */
+  cfg.series.forEach((c, i) => {
     vistos.forEach(p => {
-      const v = p.valores[c];
-      if (v == null) return;
-      g += `<circle class="pt s${i + 1}" cx="${x(dt(p.data)).toFixed(1)}" cy="${y(v).toFixed(1)}" r="3.1"/>`;
+      const v = cfg.valorPesquisa(p, c);
+      if (v == null || v < piso) return;
+      g += `<circle class="pt s${i + 1}" cx="${x(dt(p.data)).toFixed(1)}" `
+         + `cy="${y(v).toFixed(1)}" r="3.1"/>`;
     });
   });
 
-  /* linhas do agregado */
+  /* ---- linhas do agregado */
   const ult = pontos[pontos.length - 1];
-  SERIES.forEach((c, i) => {
+  cfg.series.forEach((c, i) => {
     const d = pontos.filter(p => p.m[c])
                     .map((p, j) => `${j ? "L" : "M"}${x(p.t).toFixed(1)},${y(p.m[c].media).toFixed(1)}`)
                     .join(" ");
@@ -616,31 +669,32 @@ function pintarGrafico(){
     g += `<path class="ln s${i + 1}" d="${d}"/>`;
     if (ult.m[c]){
       g += `<circle class="fim s${i + 1}" cx="${x(ult.t).toFixed(1)}" cy="${y(ult.m[c].media).toFixed(1)}" r="4"/>`;
-      g += `<text class="rot s${i + 1}" x="${(x(ult.t) + 9).toFixed(1)}" y="${(y(ult.m[c].media) + 4).toFixed(1)}">${nf1.format(ult.m[c].media)}</text>`;
+      g += `<text class="rot s${i + 1}" x="${(x(ult.t) + 9).toFixed(1)}" `
+         + `y="${(y(ult.m[c].media) + 4).toFixed(1)}">${nf1.format(ult.m[c].media)}</text>`;
     }
   });
 
-  g += `<line class="cruz" id="cruz" x1="0" y1="${L.t}" x2="0" y2="${H - L.b}" opacity="0"/>`;
+  g += `<line class="cruz" x1="0" y1="${L.t}" x2="0" y2="${H - L.b}" opacity="0"/>`;
   svg.innerHTML = g;
 
-  document.getElementById("legenda").innerHTML = SERIES.map((c, i) =>
-    `<span><i class="marca" style="background:var(--s${i + 1})"></i>${c}</span>`).join("")
-    + `<span style="color:var(--tinta-3)"><i class="marca" style="background:var(--tinta-3);opacity:.4;border-radius:50%;width:8px;height:8px"></i>pesquisa individual</span>`;
+  document.getElementById(cfg.legenda).innerHTML =
+    cfg.series.map((c, i) => `<span><i class="marca" style="background:var(--s${i + 1})"></i>${c}</span>`).join("")
+    + `<span style="color:var(--tinta-3)"><i class="marca" style="background:var(--tinta-3);opacity:.4;`
+    + `border-radius:50%;width:8px;height:8px"></i>pesquisa individual</span>`;
 
-  ligarDica(pontos, x, ini, fim);
+  ligarDica(cfg, pontos, x, ini, fim);
 }
 
-function ligarDica(pontos, x, ini, fim){
-  const moldura = document.getElementById("moldura");
-  const dica = document.getElementById("dica");
-  const svg = document.getElementById("grafico");
-  const cruz = document.getElementById("cruz");
+function ligarDica(cfg, pontos, x, ini, fim){
+  const moldura = document.getElementById(cfg.moldura);
+  const dica = document.getElementById(cfg.dica);
+  const svg = document.getElementById(cfg.svg);
+  const cruz = svg.querySelector(".cruz");
 
   function mover(ev){
     const r = svg.getBoundingClientRect();
     const px = (ev.clientX ?? ev.touches?.[0]?.clientX) - r.left;
-    const frac = px / r.width;
-    const t = ini + frac * (fim - ini);
+    const t = ini + (px / r.width) * (fim - ini);
     let melhor = pontos[0];
     pontos.forEach(p => { if (Math.abs(p.t - t) < Math.abs(melhor.t - t)) melhor = p; });
 
@@ -648,14 +702,22 @@ function ligarDica(pontos, x, ini, fim){
     cruz.setAttribute("x1", xs); cruz.setAttribute("x2", xs);
     cruz.setAttribute("opacity", "1");
 
-    dica.innerHTML = `<div class="dica-data">${dataLonga(melhor.t)}</div>` +
-      SERIES.filter(c => melhor.m[c]).map((c, i) =>
-        `<div class="dica-linha"><i class="marca" style="background:var(--s${SERIES.indexOf(c) + 1})"></i>${c}
+    const presentes = cfg.series.filter(c => melhor.m[c]);
+    let html = `<div class="dica-data">${dataLonga(melhor.t)}</div>` +
+      presentes.map(c =>
+        `<div class="dica-linha"><i class="marca" style="background:var(--s${cfg.series.indexOf(c) + 1})"></i>${c}
           <span class="v">${pct(melhor.m[c].media)}</span></div>`).join("");
+    if (cfg.mostrarVantagem && presentes.length === 2){
+      const [a, b] = presentes.map(c => melhor.m[c].media);
+      const dif = Math.abs(a - b);
+      const lider = a >= b ? presentes[0] : presentes[1];
+      html += `<div class="dica-linha dica-vantagem">${
+        dif < 1 ? "empate técnico" : lider + " +" + nf1.format(dif)}</div>`;
+    }
+    dica.innerHTML = html;
     dica.classList.add("vis");
     const largura = dica.offsetWidth;
-    const esq = Math.min(Math.max(xs / W * r.width - largura / 2, 0), r.width - largura);
-    dica.style.left = esq + "px";
+    dica.style.left = Math.min(Math.max(xs / W * r.width - largura / 2, 0), r.width - largura) + "px";
     dica.style.top = "6px";
   }
   function sair(){ dica.classList.remove("vis"); cruz.setAttribute("opacity", "0"); }
@@ -664,6 +726,66 @@ function ligarDica(pontos, x, ini, fim){
   moldura.onmouseleave = sair;
   moldura.ontouchmove = e => { mover(e); e.preventDefault(); };
   moldura.ontouchend = sair;
+}
+
+/* ---- 1º turno: valores como publicados, eixo desde o zero */
+function pintarGrafico(){
+  desenharGrafico({
+    svg: "grafico", moldura: "moldura", dica: "dica", legenda: "legenda",
+    pesquisas: D.historico, series: SERIES, zero: true,
+    valorPesquisa: (p, c) => p.valores[c],
+    calcular: t => baseAtual(D.historico, SERIES, t),
+  });
+}
+
+/* ---- 2º turno: só dois nomes, então votos válidos e eixo em volta dos 50% */
+const DUELO = [D.candidatos[0], D.candidatos[1]];
+const POLLS_2T = (D.historico_2t || []).filter(p =>
+  !/hipótese/i.test(p.cenario || "") &&
+  p.valores[DUELO[0]] != null && p.valores[DUELO[1]] != null);
+
+function validosDupla(vals){
+  const soma = DUELO.reduce((s, c) => s + (vals[c] ?? 0), 0);
+  if (!soma) return {};
+  const out = {};
+  DUELO.forEach(c => { if (vals[c] != null) out[c] = vals[c] * 100 / soma; });
+  return out;
+}
+
+function pintarGrafico2T(){
+  desenharGrafico({
+    svg: "grafico2t", moldura: "moldura2t", dica: "dica2t", legenda: "legenda2t",
+    pesquisas: POLLS_2T, series: DUELO, zero: false,
+    marcar50: true, mostrarVantagem: true,
+    valorPesquisa: (p, c) => validosDupla(p.valores)[c],
+    calcular: t => paraValidos(agregar(POLLS_2T, DUELO, t, estado.janela, estado.meiavida)),
+  });
+}
+
+function pintarNota2T(){
+  const titulo = document.getElementById("titulo-2t");
+  const nota = document.getElementById("nota-2t");
+  if (!titulo || !nota) return;
+  titulo.textContent = `Tendência do 2º turno: ${DUELO[0]} × ${DUELO[1]}`;
+
+  if (!POLLS_2T.length){
+    nota.innerHTML = `Ainda não há pesquisas de 2º turno para este confronto.`;
+    return;
+  }
+  const datas = POLLS_2T.map(p => dt(p.data));
+  const m = paraValidos(agregar(POLLS_2T, DUELO, HOJE, estado.janela, estado.meiavida));
+  const dif = m[DUELO[0]] && m[DUELO[1]]
+    ? Math.abs(m[DUELO[0]].media - m[DUELO[1]].media) : null;
+
+  nota.innerHTML =
+    `Em <b>votos válidos</b>: os indecisos foram retirados e os dois candidatos
+     reescalonados para somar 100%, que é como se decide um 2º turno. Por isso o eixo
+     aperta em volta dos 50% — a linha tracejada é o que separa ganhar de perder.
+     <b>${POLLS_2T.length}</b> pesquisas desde
+     ${new Date(Math.min(...datas)).toLocaleDateString("pt-BR", {month: "long", year: "numeric", timeZone: "UTC"})}` +
+    (dif != null
+      ? `, e hoje a diferença é de <b>${dif < 0.1 ? "menos de 0,1" : nf1.format(dif)} ponto${dif >= 2 ? "s" : ""}</b>.`
+      : `.`);
 }
 
 /* ------------------------------------------------------------ tabela de pesos */
@@ -778,7 +900,8 @@ function pintarRodape(){
 
 /* ------------------------------------------------------------ orquestração */
 function tudo(){
-  pintarMeta(); pintarBarras(); pintarConfrontos(); pintarGrafico();
+  pintarMeta(); pintarBarras(); pintarConfrontos();
+  pintarGrafico(); pintarGrafico2T(); pintarNota2T();
   pintarPesos(); pintarVies(); pintarTabela();
 }
 
@@ -808,6 +931,7 @@ function ligarControles(){
     bBruto.setAttribute("aria-pressed", qual === "bruto");
     bVal.setAttribute("aria-pressed", qual === "validos");
     pintarBarras(); pintarGrafico();
+    /* o gráfico de 2º turno é sempre em votos válidos: não muda com o alternador */
   }
   bBruto.addEventListener("click", () => base("bruto"));
   bVal.addEventListener("click", () => base("validos"));
@@ -817,7 +941,7 @@ function ligarControles(){
       estado.dias = +b.dataset.dias;
       document.querySelectorAll("[data-dias]").forEach(o =>
         o.setAttribute("aria-pressed", o === b));
-      pintarGrafico();
+      pintarGrafico(); pintarGrafico2T();
     });
   });
 }

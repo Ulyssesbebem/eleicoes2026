@@ -34,11 +34,23 @@ MESES = {
 }
 
 
-def baixar(titulo):
+def baixar(titulo, obrigatorio=True):
+    """
+    Devolve o wikitexto da pagina. Com obrigatorio=False, uma pagina que nao
+    existe devolve "" em vez de erro: a Wikipedia reorganiza a serie de tempos
+    em tempos, juntando as subpaginas de meses na principal ou separando de
+    novo, e o coletor tem de sobreviver as duas formas.
+    """
     url = BASE.format(urllib.parse.quote(titulo.replace(" ", "_")))
     req = urllib.request.Request(url, headers={"User-Agent": "agregador-eleicoes/1.0"})
-    with urllib.request.urlopen(req, timeout=60) as r:
-        return r.read().decode("utf-8")
+    try:
+        with urllib.request.urlopen(req, timeout=60) as r:
+            return r.read().decode("utf-8")
+    except urllib.error.HTTPError as e:
+        if e.code == 404 and not obrigatorio:
+            print(f"  (subpagina '{titulo.split('/')[-1]}' nao existe mais - ignorando)")
+            return ""
+        raise
 
 
 # ---------------------------------------------------------------- limpeza
@@ -354,6 +366,18 @@ def parse_tabela(tabela, ano=2026):
 
 CAB_SECAO = re.compile(r"^(={2,6})\s*(.+?)\s*\1\s*$", re.M)
 ANO_RE = re.compile(r"\b(20\d{2})\b")
+
+MES_NOME = {
+    "janeiro": 1, "fevereiro": 2, "março": 3, "marco": 3, "abril": 4,
+    "maio": 5, "junho": 6, "julho": 7, "agosto": 8, "setembro": 9,
+    "outubro": 10, "novembro": 11, "dezembro": 12,
+}
+
+
+def meses_no_titulo(titulo):
+    """Meses citados no titulo de uma secao ('Novembro - Dezembro' -> [11, 12])."""
+    t = titulo.lower()
+    return sorted({n for nome, n in MES_NOME.items() if nome in t})
 PULAR_SECAO = re.compile(r"agrega|resumo|refer|ligaç|ver também", re.I)
 # titulos que nomeiam um confronto de 2o turno: 'Lula e Flávio Bolsonaro', 'Hipóteses com Lula'
 CENARIO_RE = re.compile(r"^(.+\s+e\s+.+|Hipóteses\s+com\s+.+)$", re.I)
@@ -387,12 +411,25 @@ def pesquisas_do_wikitexto(wiki, ano_padrao=2026, marcar_cenario=False):
     pesquisas, colunas = [], []
     ano = ano_padrao
     cenario = ""
+    mes_min_anterior = None      # menor mes da secao anterior, para achar a virada
     for titulo, conteudo in secoes(wiki):
         anos = ANO_RE.findall(titulo)
         if anos:
             ano = int(anos[-1])
-        elif marcar_cenario and CENARIO_RE.match(titulo.strip()):
-            cenario = titulo.strip()
+            mes_min_anterior = None
+        else:
+            # As secoes de mes vem em ordem decrescente e a Wikipedia nem sempre
+            # marca a troca de ano com um cabecalho proprio. Se o mes mais novo
+            # desta secao e POSTERIOR ao mais antigo da secao anterior, viramos
+            # para o ano de tras ('Janeiro - Fevereiro' seguido de
+            # 'Novembro - Dezembro' significa dezembro do ano anterior).
+            meses = meses_no_titulo(titulo)
+            if meses:
+                if mes_min_anterior is not None and max(meses) > mes_min_anterior:
+                    ano -= 1
+                mes_min_anterior = min(meses)
+            elif marcar_cenario and CENARIO_RE.match(titulo.strip()):
+                cenario = titulo.strip()
         if PULAR_SECAO.search(titulo):
             continue
         for tabela in dividir_tabelas(conteudo):
@@ -423,6 +460,22 @@ def cortar_em_segundo_turno(wiki):
 
 # ---------------------------------------------------------------- saida
 
+def dedup(registros, chaves=("instituto", "data_fim")):
+    """
+    Remove pesquisas repetidas. Necessario porque a mesma pesquisa pode
+    aparecer na pagina principal e numa subpagina de meses ao mesmo tempo,
+    durante as reorganizacoes da Wikipedia. Fica a versao com mais campos
+    preenchidos.
+    """
+    melhor = {}
+    for r in registros:
+        k = tuple(r.get(c) for c in chaves) + (r.get("cenario", ""),)
+        preenchidos = sum(1 for v in r.values() if v not in (None, ""))
+        if k not in melhor or preenchidos > melhor[k][0]:
+            melhor[k] = (preenchidos, r)
+    return [r for _n, r in melhor.values()]
+
+
 def gravar(caminho, registros, colunas, chaves_base):
     cols = chaves_base + [c for c in colunas if c not in chaves_base]
     with open(caminho, "w", newline="", encoding="utf-8-sig") as f:
@@ -440,7 +493,7 @@ def main():
     bloco_1t, bloco_2t = cortar_em_segundo_turno(principal)
 
     print("Baixando historico de janeiro a agosto...")
-    jan_ago = baixar(PAGINA_JAN_AGO)
+    jan_ago = baixar(PAGINA_JAN_AGO, obrigatorio=False)
 
     p1, cols1 = pesquisas_do_wikitexto(bloco_1t)
     p1b, cols1b = pesquisas_do_wikitexto(jan_ago)
@@ -450,6 +503,8 @@ def main():
             cols1.append(c)
 
     p2, cols2 = pesquisas_do_wikitexto(bloco_2t, marcar_cenario=True)
+
+    p1, p2 = dedup(p1), dedup(p2)
 
     print(f"  1o turno: {len(p1)} pesquisas lidas")
     print(f"  2o turno: {len(p2)} pesquisas lidas")

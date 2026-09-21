@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-09-20",
+ "atualizado": "2026-09-21",
  "data_ultima_pesquisa": "2026-09-16",
  "parametros": {
   "janela_dias": 45,
@@ -5263,6 +5263,525 @@
     "Indefinidos": 10.4,
     "Leite": 4.2
    }
+  },
+  {
+   "instituto": "Paraná Pesquisas",
+   "nota": "A",
+   "data": "2025-12-22",
+   "amostra": null,
+   "valores": {
+    "Lula": 37.2,
+    "Renan": 0.9,
+    "Caiado": 4.9,
+    "Zema": 3.2,
+    "Indefinidos": 10.9,
+    "Ratinho": 8.2,
+    "Gomes": 8.3,
+    "Michelle": 24.4,
+    "Tereza": 2.0
+   }
+  },
+  {
+   "instituto": "Real Time Big Data",
+   "nota": "A",
+   "data": "2025-12-16",
+   "amostra": null,
+   "valores": {
+    "Lula": 35.0,
+    "Renan": 1.0,
+    "Caiado": 6.0,
+    "Zema": 5.0,
+    "Indefinidos": 25.0,
+    "Rebelo": 2.0,
+    "Tarcísio": 26.0
+   }
+  },
+  {
+   "instituto": "AtlasIntel",
+   "nota": "A+",
+   "data": "2025-12-15",
+   "amostra": null,
+   "valores": {
+    "Renan": 3.2,
+    "Caiado": 6.1,
+    "Zema": 4.1,
+    "Indefinidos": 10.1,
+    "Haddad": 43.9,
+    "Tarcísio": 28.5,
+    "Ratinho": 4.1
+   }
+  },
+  {
+   "instituto": "Futura",
+   "nota": "A-",
+   "data": "2025-12-09",
+   "amostra": null,
+   "valores": {
+    "Lula": 38.4,
+    "Caiado": 13.1,
+    "Indefinidos": 12.3,
+    "Michelle": 36.2
+   }
+  },
+  {
+   "instituto": "Datafolha",
+   "nota": "A+",
+   "data": "2025-12-04",
+   "amostra": null,
+   "valores": {
+    "Lula": 41.0,
+    "Caiado": 6.0,
+    "Zema": 5.0,
+    "Indefinidos": 13.0,
+    "Ratinho": 10.0,
+    "Michelle": 24.0
+   }
+  },
+  {
+   "instituto": "AtlasIntel",
+   "nota": "A+",
+   "data": "2025-11-27",
+   "amostra": null,
+   "valores": {
+    "Renan": 2.0,
+    "Caiado": 5.6,
+    "Zema": 2.9,
+    "Indefinidos": 8.5,
+    "Haddad": 44.4,
+    "Tarcísio": 32.3,
+    "Ratinho": 4.2
+   }
+  },
+  {
+   "instituto": "MDA",
+   "nota": "A+",
+   "data": "2025-11-23",
+   "amostra": null,
+   "valores": {
+    "Lula": 42.7,
+    "Zema": 9.6,
+    "Indefinidos": 16.3,
+    "Ratinho": 14.0,
+    "Eduardo": 17.4
+   }
+  },
+  {
+   "instituto": "Paraná Pesquisas",
+   "nota": "A",
+   "data": "2025-11-10",
+   "amostra": null,
+   "valores": {
+    "Flávio": 20.5,
+    "Caiado": 5.8,
+    "Zema": 5.2,
+    "Indefinidos": 21.1,
+    "Haddad": 20.6,
+    "Ratinho": 11.8,
+    "Gomes": 14.9
+   }
+  },
+  {
+   "instituto": "Futura",
+   "nota": "A-",
+   "data": "2025-11-08",
+   "amostra": null,
+   "valores": {
+    "Lula": 35.9,
+    "Caiado": 14.4,
+    "Indefinidos": 12.6,
+    "Michelle": 37.1
+   }
+  },
+  {
+   "instituto": "Paraná Pesquisas",
+   "nota": "A",
+   "data": "2025-10-24",
+   "amostra": null,
+   "valores": {
+    "Lula": 37.0,
+    "Caiado": 3.2,
+    "Zema": 4.7,
+    "Indefinidos": 10.6,
+    "Ratinho": 6.0,
+    "Gomes": 7.5,
+    "Bolsonaro": 31.0
+   }
+  },
+  {
+   "instituto": "Futura",
+   "nota": "A-",
+   "data": "2025-10-21",
+   "amostra": null,
+   "valores": {
+    "Lula": 35.8,
+    "Caiado": 4.4,
+    "Zema": 3.0,
+    "Indefinidos": 10.1,
+    "Ratinho": 8.8,
+    "Bolsonaro": 37.9
+   }
+  },
+  {
+   "instituto": "AtlasIntel",
+   "nota": "A+",
+   "data": "2025-10-19",
+   "amostra": null,
+   "valores": {
+    "Caiado": 7.0,
+    "Zema": 2.6,
+    "Indefinidos": 13.7,
+    "Haddad": 43.1,
+    "Tarcísio": 30.1,
+    "Ratinho": 3.5
+   }
+  },
+  {
+   "instituto": "Futura",
+   "nota": "A-",
+   "data": "2025-09-15",
+   "amostra": null,
+   "valores": {
+    "Caiado": 6.8,
+    "Zema": 3.3,
+    "Indefinidos": 20.6,
+    "Haddad": 20.9,
+    "Tarcísio": 20.8,
+    "Ratinho": 8.5,
+    "Eduardo": 19.0
+   }
+  },
+  {
+   "instituto": "AtlasIntel",
+   "nota": "A+",
+   "data": "2025-09-10",
+   "amostra": null,
+   "valores": {
+    "Lula": 48.1,
+    "Outros": 1.9,
+    "Indefinidos": 2.5,
+    "Gomes": 2.7,
+    "Bolsonaro": 42.1,
+    "Tebet": 2.7
+   }
+  },
+  {
+   "instituto": "MDA",
+   "nota": "A+",
+   "data": "2025-09-06",
+   "amostra": null,
+   "valores": {
+    "Lula": 37.1,
+    "Caiado": 4.5,
+    "Zema": 4.2,
+    "Indefinidos": 16.4,
+    "Ratinho": 10.9,
+    "Gomes": 12.3,
+    "Eduardo": 14.6
+   }
+  },
+  {
+   "instituto": "Real Time Big Data",
+   "nota": "A",
+   "data": "2025-08-30",
+   "amostra": null,
+   "valores": {
+    "Renan": 3.0,
+    "Caiado": 7.0,
+    "Zema": 14.0,
+    "Indefinidos": 32.0,
+    "Haddad": 22.0,
+    "Temer": 22.0
+   }
+  },
+  {
+   "instituto": "AtlasIntel",
+   "nota": "A+",
+   "data": "2025-04-24",
+   "amostra": null,
+   "valores": {
+    "Lula": 44.2,
+    "Outros": 1.3,
+    "Indefinidos": 4.4,
+    "Gomes": 2.9,
+    "Bolsonaro": 45.1,
+    "Tebet": 2.1
+   }
+  },
+  {
+   "instituto": "Paraná Pesquisas",
+   "nota": "A",
+   "data": "2025-04-19",
+   "amostra": null,
+   "valores": {
+    "Lula": 33.3,
+    "Caiado": 3.6,
+    "Indefinidos": 11.2,
+    "Leite": 2.9,
+    "Gomes": 9.7,
+    "Bolsonaro": 38.5,
+    "Barbalho": 1.0
+   }
+  },
+  {
+   "instituto": "Datafolha",
+   "nota": "A+",
+   "data": "2025-04-03",
+   "amostra": null,
+   "valores": {
+    "Lula": 35.0,
+    "Caiado": 2.0,
+    "Zema": 3.0,
+    "Indefinidos": 14.0,
+    "Marçal": 11.0,
+    "Tarcísio": 15.0,
+    "Ratinho": 5.0,
+    "Leite": 3.0,
+    "Gomes": 11.0
+   }
+  },
+  {
+   "instituto": "AtlasIntel",
+   "nota": "A+",
+   "data": "2025-03-24",
+   "amostra": null,
+   "valores": {
+    "Lula": 41.7,
+    "Caiado": 3.8,
+    "Zema": 1.6,
+    "Indefinidos": 6.2,
+    "Marçal": 5.4,
+    "Tarcísio": 33.9,
+    "Leite": 3.6,
+    "Tebet": 3.3,
+    "Silva": 0.5
+   }
+  },
+  {
+   "instituto": "Futura",
+   "nota": "A-",
+   "data": "2025-03-22",
+   "amostra": null,
+   "valores": {
+    "Lula": 31.7,
+    "Caiado": 6.0,
+    "Indefinidos": 13.6,
+    "Ratinho": 6.7,
+    "Bolsonaro": 41.9
+   }
+  },
+  {
+   "instituto": "AtlasIntel",
+   "nota": "A+",
+   "data": "2025-02-27",
+   "amostra": null,
+   "valores": {
+    "Lula": 41.5,
+    "Caiado": 6.4,
+    "Zema": 10.0,
+    "Indefinidos": 4.3,
+    "Marçal": 3.2,
+    "Leite": 1.9,
+    "Eduardo": 23.8,
+    "Tebet": 3.4,
+    "Silva": 1.3,
+    "Lima": 4.1
+   }
+  },
+  {
+   "instituto": "MDA",
+   "nota": "A+",
+   "data": "2025-02-23",
+   "amostra": null,
+   "valores": {
+    "Lula": 30.3,
+    "Caiado": 3.5,
+    "Zema": 2.7,
+    "Indefinidos": 16.9,
+    "Marçal": 6.7,
+    "Gomes": 9.8,
+    "Bolsonaro": 30.1
+   }
+  },
+  {
+   "instituto": "Paraná Pesquisas",
+   "nota": "A",
+   "data": "2025-02-16",
+   "amostra": null,
+   "valores": {
+    "Lula": 33.8,
+    "Caiado": 2.7,
+    "Indefinidos": 10.9,
+    "Leite": 2.7,
+    "Gomes": 7.7,
+    "Bolsonaro": 36.0,
+    "Barbalho": 1.1,
+    "Lima": 5.1
+   }
+  },
+  {
+   "instituto": "AtlasIntel",
+   "nota": "A+",
+   "data": "2025-01-31",
+   "amostra": null,
+   "valores": {
+    "Lula": 44.0,
+    "Outros": 2.4,
+    "Indefinidos": 3.5,
+    "Gomes": 4.5,
+    "Bolsonaro": 40.6,
+    "Tebet": 4.9
+   }
+  },
+  {
+   "instituto": "Paraná Pesquisas",
+   "nota": "A",
+   "data": "2025-01-10",
+   "amostra": null,
+   "valores": {
+    "Caiado": 8.7,
+    "Indefinidos": 24.4,
+    "Gomes": 26.1,
+    "Bolsonaro": 30.0,
+    "Barbalho": 2.8,
+    "Hoffmann": 8.0
+   }
+  },
+  {
+   "instituto": "AtlasIntel",
+   "nota": "A+",
+   "data": "2024-12-31",
+   "amostra": null,
+   "valores": {
+    "Lula": 42.5,
+    "Caiado": 2.9,
+    "Indefinidos": 8.8,
+    "Marçal": 6.9,
+    "Tarcísio": 33.2,
+    "Tebet": 2.1,
+    "Silva": 0.9,
+    "Lima": 1.3,
+    "Moro": 1.4
+   }
+  },
+  {
+   "instituto": "Paraná Pesquisas",
+   "nota": "A",
+   "data": "2024-11-25",
+   "amostra": null,
+   "valores": {
+    "Lula": 33.6,
+    "Caiado": 3.5,
+    "Indefinidos": 9.6,
+    "Gomes": 7.9,
+    "Bolsonaro": 37.6,
+    "Tebet": 7.7
+   }
+  },
+  {
+   "instituto": "MDA",
+   "nota": "A+",
+   "data": "2024-11-10",
+   "amostra": null,
+   "valores": {
+    "Lula": 35.2,
+    "Indefinidos": 10.0,
+    "Marçal": 8.4,
+    "Gomes": 6.2,
+    "Bolsonaro": 32.2,
+    "Tebet": 8.0
+   }
+  },
+  {
+   "instituto": "Paraná Pesquisas",
+   "nota": "A",
+   "data": "2024-10-03",
+   "amostra": null,
+   "valores": {
+    "Lula": 36.6,
+    "Caiado": 1.2,
+    "Zema": 4.6,
+    "Indefinidos": 14.9,
+    "Tarcísio": 12.7,
+    "Ratinho": 5.7,
+    "Leite": 2.1,
+    "Tereza": 1.9,
+    "Tebet": 7.4,
+    "Moro": 6.7,
+    "Ciro": 6.3
+   }
+  },
+  {
+   "instituto": "Paraná Pesquisas",
+   "nota": "A",
+   "data": "2024-08-18",
+   "amostra": null,
+   "valores": {
+    "Lula": 36.3,
+    "Indefinidos": 11.5,
+    "Leite": 1.8,
+    "Gomes": 6.8,
+    "Bolsonaro": 37.4,
+    "Tebet": 6.2
+   }
+  },
+  {
+   "instituto": "Paraná Pesquisas",
+   "nota": "A",
+   "data": "2024-07-22",
+   "amostra": null,
+   "valores": {
+    "Lula": 38.3,
+    "Caiado": 3.0,
+    "Indefinidos": 11.6,
+    "Leite": 1.9,
+    "Gomes": 7.9,
+    "Bolsonaro": 36.9,
+    "Barbalho": 0.5
+   }
+  },
+  {
+   "instituto": "Paraná Pesquisas",
+   "nota": "A",
+   "data": "2024-05-01",
+   "amostra": null,
+   "valores": {
+    "Lula": 36.0,
+    "Indefinidos": 11.3,
+    "Leite": 3.4,
+    "Gomes": 8.4,
+    "Bolsonaro": 38.8,
+    "Barbalho": 1.0
+   }
+  },
+  {
+   "instituto": "Paraná Pesquisas",
+   "nota": "A",
+   "data": "2024-03-22",
+   "amostra": null,
+   "valores": {
+    "Lula": 35.3,
+    "Indefinidos": 12.2,
+    "Leite": 1.8,
+    "Gomes": 7.5,
+    "Bolsonaro": 37.1,
+    "Tebet": 6.1
+   }
+  },
+  {
+   "instituto": "Paraná Pesquisas",
+   "nota": "A",
+   "data": "2024-01-28",
+   "amostra": null,
+   "valores": {
+    "Lula": 36.9,
+    "Caiado": 1.2,
+    "Zema": 3.9,
+    "Indefinidos": 11.7,
+    "Ratinho": 3.9,
+    "Gomes": 7.8,
+    "Bolsonaro": 33.8,
+    "Barbalho": 0.8
+   }
   }
  ],
  "segundo_turno": [
@@ -6164,30 +6683,6 @@
    }
   },
   {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2026-07-27",
-   "amostra": 5021,
-   "valores": {
-    "Lula": 48.8,
-    "Indefinidos": 8.8,
-    "Michelle": 42.5
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2026-07-27",
-   "amostra": 5021,
-   "valores": {
-    "Flávio": 42.7,
-    "Indefinidos": 11.5,
-    "Alckmin": 45.8
-   }
-  },
-  {
    "cenario": "Hipóteses com Haddad",
    "instituto": "AtlasIntel",
    "nota": "A+",
@@ -6404,30 +6899,6 @@
    }
   },
   {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2026-06-30",
-   "amostra": 4999,
-   "valores": {
-    "Lula": 48.7,
-    "Indefinidos": 12.4,
-    "Michelle": 38.9
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2026-06-30",
-   "amostra": 4999,
-   "valores": {
-    "Flávio": 41.7,
-    "Indefinidos": 10.9,
-    "Alckmin": 47.4
-   }
-  },
-  {
    "cenario": "Hipóteses com Haddad",
    "instituto": "AtlasIntel",
    "nota": "A+",
@@ -6545,18 +7016,6 @@
     "Lula": 48.0,
     "Indefinidos": 9.6,
     "Michelle": 42.4
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2026-06-12",
-   "amostra": 2000,
-   "valores": {
-    "Lula": 48.5,
-    "Indefinidos": 22.2,
-    "Tereza C.": 29.2
    }
   },
   {
@@ -6980,18 +7439,6 @@
    }
   },
   {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2026-04-27",
-   "amostra": null,
-   "valores": {
-    "Flávio": 47.5,
-    "Indefinidos": 6.6,
-    "Alckmin": 45.9
-   }
-  },
-  {
    "cenario": "Hipóteses com Haddad",
    "instituto": "AtlasIntel",
    "nota": "A+",
@@ -7208,54 +7655,6 @@
    }
   },
   {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2026-03-23",
-   "amostra": null,
-   "valores": {
-    "Lula": 46.8,
-    "Indefinidos": 6.2,
-    "Michelle": 47.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2026-03-23",
-   "amostra": null,
-   "valores": {
-    "Lula": 46.3,
-    "Indefinidos": 6.5,
-    "Tarcísio": 47.2
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2026-03-23",
-   "amostra": null,
-   "valores": {
-    "Lula": 46.1,
-    "Indefinidos": 15.2,
-    "Ratinho": 38.7
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2026-03-23",
-   "amostra": null,
-   "valores": {
-    "Lula": 45.5,
-    "Indefinidos": 31.8,
-    "Leite": 22.7
-   }
-  },
-  {
    "cenario": "Lula e Flávio Bolsonaro",
    "instituto": "Futura",
    "nota": "A-",
@@ -7304,30 +7703,6 @@
    }
   },
   {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2026-03-06",
-   "amostra": null,
-   "valores": {
-    "Lula": 41.0,
-    "Indefinidos": 13.1,
-    "Ratinho": 45.5
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2026-03-06",
-   "amostra": null,
-   "valores": {
-    "Lula": 41.1,
-    "Indefinidos": 21.8,
-    "Leite": 37.1
-   }
-  },
-  {
    "cenario": "Lula e Flávio Bolsonaro",
    "instituto": "Datafolha",
    "nota": "A+",
@@ -7364,30 +7739,6 @@
    }
   },
   {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Datafolha",
-   "nota": "A+",
-   "data": "2026-03-05",
-   "amostra": null,
-   "valores": {
-    "Lula": 45.0,
-    "Indefinidos": 15.0,
-    "Ratinho": 41.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Datafolha",
-   "nota": "A+",
-   "data": "2026-03-05",
-   "amostra": null,
-   "valores": {
-    "Lula": 46.0,
-    "Indefinidos": 20.0,
-    "Leite": 34.0
-   }
-  },
-  {
    "cenario": "Hipóteses com Haddad",
    "instituto": "Datafolha",
    "nota": "A+",
@@ -7397,18 +7748,6 @@
     "Flávio": 43.0,
     "Indefinidos": 15.0,
     "Haddad": 41.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Haddad",
-   "instituto": "Datafolha",
-   "nota": "A+",
-   "data": "2026-03-05",
-   "amostra": null,
-   "valores": {
-    "Indefinidos": 20.0,
-    "Ratinho": 40.0,
-    "Haddad": 40.0
    }
   },
   {
@@ -7469,30 +7808,6 @@
     "Lula": 43.0,
     "Indefinidos": 18.0,
     "Ratinho": 39.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Real Time Big Data",
-   "nota": "A",
-   "data": "2026-03-02",
-   "amostra": null,
-   "valores": {
-    "Lula": 46.0,
-    "Indefinidos": 19.0,
-    "Leite": 35.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Real Time Big Data",
-   "nota": "A",
-   "data": "2026-03-02",
-   "amostra": null,
-   "valores": {
-    "Lula": 51.0,
-    "Indefinidos": 30.0,
-    "Rebelo": 19.0
    }
   },
   {
@@ -7580,54 +7895,6 @@
    }
   },
   {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2026-02-24",
-   "amostra": null,
-   "valores": {
-    "Lula": 47.5,
-    "Indefinidos": 7.8,
-    "Michelle": 44.7
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2026-02-24",
-   "amostra": null,
-   "valores": {
-    "Lula": 45.9,
-    "Indefinidos": 7.0,
-    "Tarcísio": 47.1
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2026-02-24",
-   "amostra": null,
-   "valores": {
-    "Lula": 45.5,
-    "Indefinidos": 15.5,
-    "Ratinho": 39.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2026-02-24",
-   "amostra": null,
-   "valores": {
-    "Lula": 45.2,
-    "Indefinidos": 30.3,
-    "Leite": 24.5
-   }
-  },
-  {
    "cenario": "Lula e Flávio Bolsonaro",
    "instituto": "Futura",
    "nota": "A-",
@@ -7676,42 +7943,6 @@
    }
   },
   {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2026-02-07",
-   "amostra": null,
-   "valores": {
-    "Lula": 42.1,
-    "Indefinidos": 12.6,
-    "Ratinho": 45.2
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2026-02-07",
-   "amostra": null,
-   "valores": {
-    "Lula": 42.7,
-    "Indefinidos": 18.8,
-    "Leite": 38.5
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2026-02-07",
-   "amostra": null,
-   "valores": {
-    "Flávio": 40.1,
-    "Indefinidos": 24.9,
-    "Tarcísio": 35.0
-   }
-  },
-  {
    "cenario": "Lula e Flávio Bolsonaro",
    "instituto": "Paraná Pesquisas",
    "nota": "A",
@@ -7733,18 +7964,6 @@
     "Lula": 43.9,
     "Indefinidos": 13.7,
     "Tarcísio": 42.5
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2026-01-28",
-   "amostra": null,
-   "valores": {
-    "Lula": 44.7,
-    "Indefinidos": 16.4,
-    "Ratinho": 38.9
    }
   },
   {
@@ -7796,54 +8015,6 @@
    }
   },
   {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2026-01-20",
-   "amostra": null,
-   "valores": {
-    "Lula": 49.0,
-    "Indefinidos": 6.0,
-    "Michelle": 45.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2026-01-20",
-   "amostra": null,
-   "valores": {
-    "Lula": 49.0,
-    "Indefinidos": 6.0,
-    "Tarcísio": 45.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2026-01-20",
-   "amostra": null,
-   "valores": {
-    "Lula": 49.0,
-    "Indefinidos": 12.0,
-    "Ratinho": 39.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2026-01-20",
-   "amostra": null,
-   "valores": {
-    "Lula": 48.0,
-    "Indefinidos": 29.0,
-    "Leite": 23.0
-   }
-  },
-  {
    "cenario": "Lula e Flávio Bolsonaro",
    "instituto": "Futura",
    "nota": "A-",
@@ -7892,42 +8063,6 @@
    }
   },
   {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2026-01-19",
-   "amostra": null,
-   "valores": {
-    "Lula": 41.2,
-    "Indefinidos": 14.0,
-    "Ratinho": 44.8
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2026-01-19",
-   "amostra": null,
-   "valores": {
-    "Lula": 41.9,
-    "Indefinidos": 20.9,
-    "Leite": 37.3
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2026-01-19",
-   "amostra": null,
-   "valores": {
-    "Flávio": 37.5,
-    "Indefinidos": 27.8,
-    "Tarcísio": 34.7
-   }
-  },
-  {
    "cenario": "Lula e Flávio Bolsonaro",
    "instituto": "Paraná Pesquisas",
    "nota": "A",
@@ -7949,54 +8084,6 @@
     "Lula": 43.6,
     "Indefinidos": 13.0,
     "Bolsonaro": 43.4
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2025-12-22",
-   "amostra": null,
-   "valores": {
-    "Lula": 44.8,
-    "Indefinidos": 13.8,
-    "Michelle": 41.4
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2025-12-22",
-   "amostra": null,
-   "valores": {
-    "Lula": 44.0,
-    "Indefinidos": 13.5,
-    "Tarcísio": 42.5
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2025-12-22",
-   "amostra": null,
-   "valores": {
-    "Lula": 43.8,
-    "Indefinidos": 16.0,
-    "Ratinho": 40.2
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2025-12-22",
-   "amostra": null,
-   "valores": {
-    "Lula": 44.6,
-    "Indefinidos": 16.0,
-    "Tereza C.": 30.3
    }
   },
   {
@@ -8048,54 +8135,6 @@
    }
   },
   {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-12-15",
-   "amostra": null,
-   "valores": {
-    "Lula": 50.0,
-    "Indefinidos": 5.0,
-    "Michelle": 45.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-12-15",
-   "amostra": null,
-   "valores": {
-    "Lula": 49.0,
-    "Indefinidos": 5.0,
-    "Tarcísio": 45.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-12-15",
-   "amostra": null,
-   "valores": {
-    "Lula": 49.0,
-    "Indefinidos": 12.0,
-    "Ratinho": 39.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-12-15",
-   "amostra": null,
-   "valores": {
-    "Lula": 49.0,
-    "Indefinidos": 27.0,
-    "Leite": 24.0
-   }
-  },
-  {
    "cenario": "Lula e Flávio Bolsonaro",
    "instituto": "Futura",
    "nota": "A-",
@@ -8144,30 +8183,6 @@
    }
   },
   {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2025-12-09",
-   "amostra": null,
-   "valores": {
-    "Lula": 39.3,
-    "Indefinidos": 13.4,
-    "Tarcísio": 47.3
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2025-12-09",
-   "amostra": null,
-   "valores": {
-    "Lula": 39.5,
-    "Indefinidos": 14.0,
-    "Ratinho": 43.6
-   }
-  },
-  {
    "cenario": "Lula e Flávio Bolsonaro",
    "instituto": "Datafolha",
    "nota": "A+",
@@ -8189,54 +8204,6 @@
     "Lula": 49.0,
     "Indefinidos": 11.0,
     "Bolsonaro": 40.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Datafolha",
-   "nota": "A+",
-   "data": "2025-12-04",
-   "amostra": null,
-   "valores": {
-    "Lula": 50.0,
-    "Indefinidos": 13.0,
-    "Michelle": 39.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Datafolha",
-   "nota": "A+",
-   "data": "2025-12-04",
-   "amostra": null,
-   "valores": {
-    "Lula": 47.0,
-    "Indefinidos": 12.0,
-    "Tarcísio": 42.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Datafolha",
-   "nota": "A+",
-   "data": "2025-12-04",
-   "amostra": null,
-   "valores": {
-    "Lula": 52.0,
-    "Indefinidos": 13.0,
-    "Eduardo": 35.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Datafolha",
-   "nota": "A+",
-   "data": "2025-12-04",
-   "amostra": null,
-   "valores": {
-    "Lula": 47.0,
-    "Indefinidos": 12.0,
-    "Ratinho": 41.0
    }
   },
   {
@@ -8276,54 +8243,6 @@
    }
   },
   {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-11-27",
-   "amostra": null,
-   "valores": {
-    "Lula": 49.0,
-    "Indefinidos": 4.0,
-    "Michelle": 47.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-11-27",
-   "amostra": null,
-   "valores": {
-    "Lula": 49.0,
-    "Indefinidos": 4.0,
-    "Tarcísio": 47.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-11-27",
-   "amostra": null,
-   "valores": {
-    "Lula": 49.0,
-    "Indefinidos": 11.0,
-    "Ratinho": 40.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-11-27",
-   "amostra": null,
-   "valores": {
-    "Lula": 47.0,
-    "Indefinidos": 25.0,
-    "Leite": 28.0
-   }
-  },
-  {
    "cenario": "Lula e Caiado",
    "instituto": "MDA",
    "nota": "A+",
@@ -8360,66 +8279,6 @@
    }
   },
   {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "MDA",
-   "nota": "A+",
-   "data": "2025-11-23",
-   "amostra": null,
-   "valores": {
-    "Lula": 49.1,
-    "Indefinidos": 15.3,
-    "Michelle": 35.6
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "MDA",
-   "nota": "A+",
-   "data": "2025-11-23",
-   "amostra": null,
-   "valores": {
-    "Lula": 45.7,
-    "Indefinidos": 15.1,
-    "Tarcísio": 39.1
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "MDA",
-   "nota": "A+",
-   "data": "2025-11-23",
-   "amostra": null,
-   "valores": {
-    "Lula": 49.9,
-    "Indefinidos": 16.8,
-    "Eduardo": 33.3
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "MDA",
-   "nota": "A+",
-   "data": "2025-11-23",
-   "amostra": null,
-   "valores": {
-    "Lula": 45.8,
-    "Indefinidos": 15.5,
-    "Ratinho": 38.7
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "MDA",
-   "nota": "A+",
-   "data": "2025-11-23",
-   "amostra": null,
-   "valores": {
-    "Lula": 44.1,
-    "Indefinidos": 20.8,
-    "Gomes": 35.1
-   }
-  },
-  {
    "cenario": "Lula e Flávio Bolsonaro",
    "instituto": "Paraná Pesquisas",
    "nota": "A",
@@ -8441,30 +8300,6 @@
     "Lula": 43.7,
     "Indefinidos": 13.2,
     "Bolsonaro": 43.1
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2025-11-10",
-   "amostra": null,
-   "valores": {
-    "Lula": 44.1,
-    "Indefinidos": 13.1,
-    "Michelle": 42.7
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2025-11-10",
-   "amostra": null,
-   "valores": {
-    "Lula": 43.0,
-    "Indefinidos": 15.2,
-    "Tarcísio": 41.8
    }
   },
   {
@@ -8504,42 +8339,6 @@
    }
   },
   {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2025-11-08",
-   "amostra": null,
-   "valores": {
-    "Lula": 40.4,
-    "Indefinidos": 13.2,
-    "Michelle": 46.5
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2025-11-08",
-   "amostra": null,
-   "valores": {
-    "Lula": 39.5,
-    "Indefinidos": 13.9,
-    "Tarcísio": 46.5
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2025-11-08",
-   "amostra": null,
-   "valores": {
-    "Lula": 39.9,
-    "Indefinidos": 18.6,
-    "Ratinho": 41.5
-   }
-  },
-  {
    "cenario": "Lula e Flávio Bolsonaro",
    "instituto": "Paraná Pesquisas",
    "nota": "A",
@@ -8561,30 +8360,6 @@
     "Lula": 44.9,
     "Indefinidos": 13.4,
     "Bolsonaro": 41.6
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2025-10-24",
-   "amostra": null,
-   "valores": {
-    "Lula": 44.7,
-    "Indefinidos": 13.7,
-    "Michelle": 41.6
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2025-10-24",
-   "amostra": null,
-   "valores": {
-    "Lula": 44.9,
-    "Indefinidos": 14.2,
-    "Tarcísio": 40.9
    }
   },
   {
@@ -8621,42 +8396,6 @@
     "Lula": 41.3,
     "Indefinidos": 11.8,
     "Bolsonaro": 46.9
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2025-10-21",
-   "amostra": null,
-   "valores": {
-    "Lula": 41.2,
-    "Indefinidos": 11.2,
-    "Michelle": 47.6
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2025-10-21",
-   "amostra": null,
-   "valores": {
-    "Lula": 39.5,
-    "Indefinidos": 15.2,
-    "Tarcísio": 45.3
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2025-10-21",
-   "amostra": null,
-   "valores": {
-    "Lula": 38.9,
-    "Indefinidos": 17.7,
-    "Ratinho": 43.4
    }
   },
   {
@@ -8697,42 +8436,6 @@
   },
   {
    "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-10-19",
-   "amostra": null,
-   "valores": {
-    "Lula": 52.0,
-    "Indefinidos": 5.0,
-    "Michelle": 43.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-10-19",
-   "amostra": null,
-   "valores": {
-    "Lula": 52.0,
-    "Indefinidos": 4.0,
-    "Tarcísio": 44.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-10-19",
-   "amostra": null,
-   "valores": {
-    "Lula": 51.0,
-    "Indefinidos": 12.0,
-    "Ratinho": 37.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
    "instituto": "Futura",
    "nota": "A-",
    "data": "2025-09-15",
@@ -8741,66 +8444,6 @@
     "Lula": 42.0,
     "Indefinidos": 11.9,
     "Bolsonaro": 46.1
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2025-09-15",
-   "amostra": null,
-   "valores": {
-    "Lula": 41.7,
-    "Indefinidos": 12.7,
-    "Michelle": 45.6
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2025-09-15",
-   "amostra": null,
-   "valores": {
-    "Lula": 40.7,
-    "Indefinidos": 14.9,
-    "Tarcísio": 44.4
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2025-09-15",
-   "amostra": null,
-   "valores": {
-    "Lula": 42.5,
-    "Indefinidos": 14.4,
-    "Eduardo": 43.1
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2025-09-15",
-   "amostra": null,
-   "valores": {
-    "Lula": 40.5,
-    "Indefinidos": 17.1,
-    "Ratinho": 42.4
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2025-09-15",
-   "amostra": null,
-   "valores": {
-    "Indefinidos": 24.3,
-    "Tarcísio": 42.9,
-    "Alckmin": 32.8
    }
   },
   {
@@ -8840,18 +8483,6 @@
    }
   },
   {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-09-14",
-   "amostra": null,
-   "valores": {
-    "Lula": 51.6,
-    "Indefinidos": 13.5,
-    "Ratinho": 34.9
-   }
-  },
-  {
    "cenario": "Lula e Caiado",
    "instituto": "AtlasIntel",
    "nota": "A+",
@@ -8873,30 +8504,6 @@
     "Lula": 51.8,
     "Indefinidos": 3.4,
     "Bolsonaro": 44.8
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-09-10",
-   "amostra": null,
-   "valores": {
-    "Lula": 51.9,
-    "Indefinidos": 3.5,
-    "Michelle": 44.6
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-09-10",
-   "amostra": null,
-   "valores": {
-    "Lula": 49.9,
-    "Indefinidos": 27.6,
-    "Leite": 22.5
    }
   },
   {
@@ -8933,42 +8540,6 @@
     "Lula": 45.7,
     "Indefinidos": 16.6,
     "Bolsonaro": 37.7
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "MDA",
-   "nota": "A+",
-   "data": "2025-09-06",
-   "amostra": null,
-   "valores": {
-    "Lula": 43.9,
-    "Indefinidos": 18.5,
-    "Tarcísio": 37.6
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "MDA",
-   "nota": "A+",
-   "data": "2025-09-06",
-   "amostra": null,
-   "valores": {
-    "Lula": 43.4,
-    "Indefinidos": 19.9,
-    "Ratinho": 36.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "MDA",
-   "nota": "A+",
-   "data": "2025-09-06",
-   "amostra": null,
-   "valores": {
-    "Lula": 39.4,
-    "Indefinidos": 24.6,
-    "Gomes": 36.0
    }
   },
   {
@@ -9009,54 +8580,6 @@
   },
   {
    "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-08-25",
-   "amostra": null,
-   "valores": {
-    "Lula": 48.8,
-    "Indefinidos": 3.3,
-    "Michelle": 47.9
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-08-25",
-   "amostra": null,
-   "valores": {
-    "Lula": 46.6,
-    "Indefinidos": 5.0,
-    "Tarcísio": 48.4
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-08-25",
-   "amostra": null,
-   "valores": {
-    "Lula": 46.9,
-    "Indefinidos": 12.0,
-    "Ratinho": 41.1
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-08-25",
-   "amostra": null,
-   "valores": {
-    "Lula": 47.2,
-    "Indefinidos": 27.9,
-    "Leite": 24.9
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
    "instituto": "Paraná Pesquisas",
    "nota": "A",
    "data": "2025-08-21",
@@ -9065,30 +8588,6 @@
     "Lula": 41.5,
     "Indefinidos": 14.2,
     "Bolsonaro": 44.4
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2025-08-21",
-   "amostra": null,
-   "valores": {
-    "Lula": 43.4,
-    "Indefinidos": 14.3,
-    "Michelle": 42.3
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2025-08-21",
-   "amostra": null,
-   "valores": {
-    "Lula": 41.9,
-    "Indefinidos": 16.1,
-    "Tarcísio": 41.9
    }
   },
   {
@@ -9140,66 +8639,6 @@
    }
   },
   {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Datafolha",
-   "nota": "A+",
-   "data": "2025-07-30",
-   "amostra": null,
-   "valores": {
-    "Lula": 48.0,
-    "Indefinidos": 12.0,
-    "Michelle": 40.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Datafolha",
-   "nota": "A+",
-   "data": "2025-07-30",
-   "amostra": null,
-   "valores": {
-    "Lula": 45.0,
-    "Indefinidos": 14.0,
-    "Tarcísio": 41.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Datafolha",
-   "nota": "A+",
-   "data": "2025-07-30",
-   "amostra": null,
-   "valores": {
-    "Lula": 49.0,
-    "Indefinidos": 14.0,
-    "Eduardo": 37.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Datafolha",
-   "nota": "A+",
-   "data": "2025-07-30",
-   "amostra": null,
-   "valores": {
-    "Lula": 45.0,
-    "Indefinidos": 15.0,
-    "Ratinho": 40.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Datafolha",
-   "nota": "A+",
-   "data": "2025-07-30",
-   "amostra": null,
-   "valores": {
-    "Indefinidos": 21.0,
-    "Tarcísio": 40.0,
-    "Alckmin": 38.0
-   }
-  },
-  {
    "cenario": "Hipóteses com Haddad",
    "instituto": "Datafolha",
    "nota": "A+",
@@ -9248,54 +8687,6 @@
    }
   },
   {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-07-28",
-   "amostra": null,
-   "valores": {
-    "Lula": 50.6,
-    "Indefinidos": 3.4,
-    "Michelle": 45.9
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-07-28",
-   "amostra": null,
-   "valores": {
-    "Lula": 50.4,
-    "Indefinidos": 3.0,
-    "Tarcísio": 46.6
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-07-28",
-   "amostra": null,
-   "valores": {
-    "Lula": 50.5,
-    "Indefinidos": 9.8,
-    "Ratinho": 39.7
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-07-28",
-   "amostra": null,
-   "valores": {
-    "Lula": 49.6,
-    "Indefinidos": 24.7,
-    "Leite": 25.7
-   }
-  },
-  {
    "cenario": "Lula e Caiado",
    "instituto": "AtlasIntel",
    "nota": "A+",
@@ -9332,54 +8723,6 @@
    }
   },
   {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-06-30",
-   "amostra": null,
-   "valores": {
-    "Lula": 48.0,
-    "Indefinidos": 4.5,
-    "Michelle": 47.5
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-06-30",
-   "amostra": null,
-   "valores": {
-    "Lula": 47.6,
-    "Indefinidos": 5.5,
-    "Tarcísio": 46.9
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-06-30",
-   "amostra": null,
-   "valores": {
-    "Lula": 47.3,
-    "Indefinidos": 13.7,
-    "Ratinho": 39.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-06-30",
-   "amostra": null,
-   "valores": {
-    "Lula": 47.0,
-    "Indefinidos": 29.0,
-    "Leite": 23.9
-   }
-  },
-  {
    "cenario": "Lula e Caiado",
    "instituto": "Futura",
    "nota": "A-",
@@ -9413,66 +8756,6 @@
     "Lula": 37.4,
     "Indefinidos": 12.6,
     "Bolsonaro": 50.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2025-06-23",
-   "amostra": null,
-   "valores": {
-    "Lula": 38.0,
-    "Indefinidos": 13.6,
-    "Michelle": 48.4
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2025-06-23",
-   "amostra": null,
-   "valores": {
-    "Lula": 34.9,
-    "Indefinidos": 18.6,
-    "Tarcísio": 46.5
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2025-06-23",
-   "amostra": null,
-   "valores": {
-    "Lula": 38.1,
-    "Indefinidos": 17.2,
-    "Eduardo": 44.8
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2025-06-23",
-   "amostra": null,
-   "valores": {
-    "Lula": 36.7,
-    "Indefinidos": 21.5,
-    "Ratinho": 41.7
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2025-06-23",
-   "amostra": null,
-   "valores": {
-    "Lula": 32.1,
-    "Indefinidos": 26.7,
-    "Gomes": 41.2
    }
   },
   {
@@ -9513,66 +8796,6 @@
   },
   {
    "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2025-06-22",
-   "amostra": null,
-   "valores": {
-    "Lula": 40.6,
-    "Indefinidos": 15.0,
-    "Michelle": 44.4
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2025-06-22",
-   "amostra": null,
-   "valores": {
-    "Lula": 40.1,
-    "Indefinidos": 16.2,
-    "Tarcísio": 43.6
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2025-06-22",
-   "amostra": null,
-   "valores": {
-    "Lula": 41.6,
-    "Indefinidos": 19.3,
-    "Eduardo": 39.1
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2025-06-22",
-   "amostra": null,
-   "valores": {
-    "Lula": 41.2,
-    "Indefinidos": 21.8,
-    "Ratinho": 37.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2025-06-22",
-   "amostra": null,
-   "valores": {
-    "Lula": 41.8,
-    "Indefinidos": 27.0,
-    "Marinho": 31.2
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
    "instituto": "MDA",
    "nota": "A+",
    "data": "2025-06-15",
@@ -9581,18 +8804,6 @@
     "Lula": 41.4,
     "Indefinidos": 14.7,
     "Bolsonaro": 43.9
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "MDA",
-   "nota": "A+",
-   "data": "2025-06-15",
-   "amostra": null,
-   "valores": {
-    "Lula": 41.1,
-    "Indefinidos": 18.5,
-    "Tarcísio": 40.4
    }
   },
   {
@@ -9605,18 +8816,6 @@
     "Indefinidos": 17.7,
     "Bolsonaro": 43.9,
     "Haddad": 38.4
-   }
-  },
-  {
-   "cenario": "Hipóteses com Haddad",
-   "instituto": "MDA",
-   "nota": "A+",
-   "data": "2025-06-15",
-   "amostra": null,
-   "valores": {
-    "Indefinidos": 24.0,
-    "Tarcísio": 39.0,
-    "Haddad": 37.0
    }
   },
   {
@@ -9641,42 +8840,6 @@
     "Lula": 44.0,
     "Indefinidos": 11.0,
     "Bolsonaro": 45.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Datafolha",
-   "nota": "A+",
-   "data": "2025-06-11",
-   "amostra": null,
-   "valores": {
-    "Lula": 46.0,
-    "Indefinidos": 12.0,
-    "Michelle": 42.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Datafolha",
-   "nota": "A+",
-   "data": "2025-06-11",
-   "amostra": null,
-   "valores": {
-    "Lula": 43.0,
-    "Indefinidos": 15.0,
-    "Tarcísio": 42.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Datafolha",
-   "nota": "A+",
-   "data": "2025-06-11",
-   "amostra": null,
-   "valores": {
-    "Lula": 46.0,
-    "Indefinidos": 15.0,
-    "Eduardo": 38.0
    }
   },
   {
@@ -9716,42 +8879,6 @@
    }
   },
   {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2025-06-04",
-   "amostra": null,
-   "valores": {
-    "Lula": 40.9,
-    "Indefinidos": 13.0,
-    "Michelle": 46.2
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2025-06-04",
-   "amostra": null,
-   "valores": {
-    "Lula": 41.0,
-    "Indefinidos": 17.9,
-    "Tarcísio": 41.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2025-06-04",
-   "amostra": null,
-   "valores": {
-    "Lula": 39.9,
-    "Indefinidos": 21.2,
-    "Ratinho": 38.8
-   }
-  },
-  {
    "cenario": "Lula e Caiado",
    "instituto": "AtlasIntel",
    "nota": "A+",
@@ -9785,54 +8912,6 @@
     "Lula": 45.5,
     "Indefinidos": 7.0,
     "Bolsonaro": 47.5
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-05-23",
-   "amostra": null,
-   "valores": {
-    "Lula": 45.3,
-    "Indefinidos": 4.9,
-    "Michelle": 49.8
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-05-23",
-   "amostra": null,
-   "valores": {
-    "Lula": 45.1,
-    "Indefinidos": 6.0,
-    "Tarcísio": 48.9
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-05-23",
-   "amostra": null,
-   "valores": {
-    "Lula": 45.2,
-    "Indefinidos": 18.8,
-    "Ratinho": 36.1
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-05-23",
-   "amostra": null,
-   "valores": {
-    "Lula": 44.0,
-    "Indefinidos": 33.4,
-    "Leite": 22.6
    }
   },
   {
@@ -9873,54 +8952,6 @@
   },
   {
    "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-04-24",
-   "amostra": null,
-   "valores": {
-    "Lula": 46.6,
-    "Indefinidos": 7.3,
-    "Michelle": 46.1
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-04-24",
-   "amostra": null,
-   "valores": {
-    "Lula": 46.7,
-    "Indefinidos": 6.6,
-    "Tarcísio": 46.7
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-04-24",
-   "amostra": null,
-   "valores": {
-    "Lula": 47.2,
-    "Indefinidos": 17.9,
-    "Ratinho": 34.9
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-04-24",
-   "amostra": null,
-   "valores": {
-    "Lula": 45.3,
-    "Indefinidos": 30.5,
-    "Leite": 24.2
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
    "instituto": "Paraná Pesquisas",
    "nota": "A",
    "data": "2025-04-19",
@@ -9929,30 +8960,6 @@
     "Lula": 40.4,
     "Indefinidos": 13.6,
     "Bolsonaro": 46.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2025-04-19",
-   "amostra": null,
-   "valores": {
-    "Lula": 41.0,
-    "Indefinidos": 15.0,
-    "Michelle": 45.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2025-04-19",
-   "amostra": null,
-   "valores": {
-    "Lula": 40.6,
-    "Indefinidos": 16.0,
-    "Tarcísio": 43.4
    }
   },
   {
@@ -9968,42 +8975,6 @@
    }
   },
   {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Datafolha",
-   "nota": "A+",
-   "data": "2025-04-03",
-   "amostra": null,
-   "valores": {
-    "Lula": 50.0,
-    "Indefinidos": 12.0,
-    "Michelle": 38.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Datafolha",
-   "nota": "A+",
-   "data": "2025-04-03",
-   "amostra": null,
-   "valores": {
-    "Lula": 48.0,
-    "Indefinidos": 14.0,
-    "Tarcísio": 39.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Datafolha",
-   "nota": "A+",
-   "data": "2025-04-03",
-   "amostra": null,
-   "valores": {
-    "Lula": 51.0,
-    "Indefinidos": 15.0,
-    "Eduardo": 34.0
-   }
-  },
-  {
    "cenario": "Hipóteses com Haddad",
    "instituto": "Datafolha",
    "nota": "A+",
@@ -10013,18 +8984,6 @@
     "Indefinidos": 14.0,
     "Bolsonaro": 41.0,
     "Haddad": 45.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Haddad",
-   "instituto": "Datafolha",
-   "nota": "A+",
-   "data": "2025-04-03",
-   "amostra": null,
-   "valores": {
-    "Indefinidos": 20.0,
-    "Tarcísio": 37.0,
-    "Haddad": 43.0
    }
   },
   {
@@ -10064,42 +9023,6 @@
    }
   },
   {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-03-24",
-   "amostra": null,
-   "valores": {
-    "Lula": 46.0,
-    "Indefinidos": 7.0,
-    "Tarcísio": 47.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-03-24",
-   "amostra": null,
-   "valores": {
-    "Lula": 46.0,
-    "Indefinidos": 18.0,
-    "Leite": 36.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-03-24",
-   "amostra": null,
-   "valores": {
-    "Lula": 46.0,
-    "Indefinidos": 3.0,
-    "Marçal": 51.0
-   }
-  },
-  {
    "cenario": "Lula e Caiado",
    "instituto": "Futura",
    "nota": "A-",
@@ -10121,66 +9044,6 @@
     "Lula": 37.3,
     "Indefinidos": 11.6,
     "Bolsonaro": 51.1
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2025-03-22",
-   "amostra": null,
-   "valores": {
-    "Lula": 37.3,
-    "Indefinidos": 14.1,
-    "Michelle": 48.5
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2025-03-22",
-   "amostra": null,
-   "valores": {
-    "Lula": 37.6,
-    "Indefinidos": 20.1,
-    "Tarcísio": 42.3
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2025-03-22",
-   "amostra": null,
-   "valores": {
-    "Lula": 37.2,
-    "Indefinidos": 22.1,
-    "Ratinho": 40.6
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2025-03-22",
-   "amostra": null,
-   "valores": {
-    "Indefinidos": 13.1,
-    "Bolsonaro": 50.3,
-    "Alckmin": 36.5
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2025-03-22",
-   "amostra": null,
-   "valores": {
-    "Indefinidos": 22.3,
-    "Tarcísio": 39.1,
-    "Alckmin": 37.5
    }
   },
   {
@@ -10221,66 +9084,6 @@
   },
   {
    "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-02-27",
-   "amostra": null,
-   "valores": {
-    "Lula": 47.0,
-    "Indefinidos": 4.0,
-    "Tarcísio": 49.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-02-27",
-   "amostra": null,
-   "valores": {
-    "Lula": 48.0,
-    "Indefinidos": 9.0,
-    "Eduardo": 44.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-02-27",
-   "amostra": null,
-   "valores": {
-    "Lula": 45.0,
-    "Indefinidos": 28.0,
-    "Leite": 27.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-02-27",
-   "amostra": null,
-   "valores": {
-    "Lula": 48.0,
-    "Indefinidos": 14.0,
-    "Marçal": 38.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-02-27",
-   "amostra": null,
-   "valores": {
-    "Lula": 48.0,
-    "Indefinidos": 14.0,
-    "Lima": 38.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
    "instituto": "MDA",
    "nota": "A+",
    "data": "2025-02-23",
@@ -10289,18 +9092,6 @@
     "Lula": 41.6,
     "Indefinidos": 15.0,
     "Bolsonaro": 43.4
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "MDA",
-   "nota": "A+",
-   "data": "2025-02-23",
-   "amostra": null,
-   "valores": {
-    "Lula": 41.2,
-    "Indefinidos": 18.1,
-    "Tarcísio": 40.7
    }
   },
   {
@@ -10316,18 +9107,6 @@
    }
   },
   {
-   "cenario": "Hipóteses com Haddad",
-   "instituto": "MDA",
-   "nota": "A+",
-   "data": "2025-02-23",
-   "amostra": null,
-   "valores": {
-    "Indefinidos": 24.4,
-    "Tarcísio": 38.3,
-    "Haddad": 37.3
-   }
-  },
-  {
    "cenario": "Hipóteses com Lula",
    "instituto": "Paraná Pesquisas",
    "nota": "A",
@@ -10337,30 +9116,6 @@
     "Lula": 40.2,
     "Indefinidos": 14.7,
     "Bolsonaro": 45.1
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2025-02-16",
-   "amostra": null,
-   "valores": {
-    "Lula": 40.5,
-    "Indefinidos": 16.6,
-    "Michelle": 42.9
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2025-02-16",
-   "amostra": null,
-   "valores": {
-    "Lula": 41.1,
-    "Indefinidos": 18.1,
-    "Tarcísio": 40.8
    }
   },
   {
@@ -10389,42 +9144,6 @@
   },
   {
    "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-01-31",
-   "amostra": null,
-   "valores": {
-    "Lula": 45.7,
-    "Indefinidos": 9.6,
-    "Tarcísio": 44.7
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-01-31",
-   "amostra": null,
-   "valores": {
-    "Lula": 49.6,
-    "Indefinidos": 14.0,
-    "Eduardo": 36.4
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2025-01-31",
-   "amostra": null,
-   "valores": {
-    "Lula": 49.8,
-    "Indefinidos": 20.5,
-    "Marçal": 29.7
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
    "instituto": "Paraná Pesquisas",
    "nota": "A",
    "data": "2025-01-10",
@@ -10433,30 +9152,6 @@
     "Lula": 42.2,
     "Indefinidos": 12.1,
     "Bolsonaro": 45.7
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2025-01-10",
-   "amostra": null,
-   "valores": {
-    "Lula": 43.1,
-    "Indefinidos": 14.8,
-    "Michelle": 42.2
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2025-01-10",
-   "amostra": null,
-   "valores": {
-    "Lula": 43.4,
-    "Indefinidos": 16.0,
-    "Tarcísio": 40.6
    }
   },
   {
@@ -10485,42 +9180,6 @@
   },
   {
    "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2024-12-31",
-   "amostra": null,
-   "valores": {
-    "Lula": 49.0,
-    "Indefinidos": 12.0,
-    "Tarcísio": 39.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2024-12-31",
-   "amostra": null,
-   "valores": {
-    "Lula": 50.0,
-    "Indefinidos": 11.0,
-    "Eduardo": 39.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "AtlasIntel",
-   "nota": "A+",
-   "data": "2024-12-31",
-   "amostra": null,
-   "valores": {
-    "Lula": 52.0,
-    "Indefinidos": 13.0,
-    "Marçal": 35.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
    "instituto": "Paraná Pesquisas",
    "nota": "A",
    "data": "2024-11-25",
@@ -10529,30 +9188,6 @@
     "Lula": 41.9,
     "Indefinidos": 16.4,
     "Bolsonaro": 43.7
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2024-11-25",
-   "amostra": null,
-   "valores": {
-    "Lula": 42.7,
-    "Indefinidos": 16.6,
-    "Michelle": 40.8
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2024-11-25",
-   "amostra": null,
-   "valores": {
-    "Lula": 43.0,
-    "Indefinidos": 17.8,
-    "Tarcísio": 39.2
    }
   },
   {
@@ -10571,54 +9206,6 @@
    "cenario": "Hipóteses com Lula",
    "instituto": "Paraná Pesquisas",
    "nota": "A",
-   "data": "2024-08-18",
-   "amostra": null,
-   "valores": {
-    "Lula": 45.0,
-    "Indefinidos": 13.2,
-    "Michelle": 41.8
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2024-08-18",
-   "amostra": null,
-   "valores": {
-    "Lula": 44.9,
-    "Indefinidos": 15.3,
-    "Tarcísio": 39.8
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2024-08-18",
-   "amostra": null,
-   "valores": {
-    "Lula": 45.2,
-    "Indefinidos": 18.4,
-    "Ratinho": 36.4
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2024-08-18",
-   "amostra": null,
-   "valores": {
-    "Lula": 45.6,
-    "Indefinidos": 22.7,
-    "Tereza C.": 31.7
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
    "data": "2024-07-22",
    "amostra": null,
    "valores": {
@@ -10631,60 +9218,12 @@
    "cenario": "Hipóteses com Lula",
    "instituto": "Paraná Pesquisas",
    "nota": "A",
-   "data": "2024-07-22",
-   "amostra": null,
-   "valores": {
-    "Lula": 43.8,
-    "Indefinidos": 16.0,
-    "Michelle": 40.3
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2024-07-22",
-   "amostra": null,
-   "valores": {
-    "Lula": 44.2,
-    "Indefinidos": 17.3,
-    "Tarcísio": 38.5
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
    "data": "2024-05-01",
    "amostra": null,
    "valores": {
     "Lula": 41.7,
     "Indefinidos": 16.3,
     "Bolsonaro": 42.0
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2024-05-01",
-   "amostra": null,
-   "valores": {
-    "Lula": 42.0,
-    "Indefinidos": 17.9,
-    "Michelle": 40.1
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2024-05-01",
-   "amostra": null,
-   "valores": {
-    "Lula": 41.7,
-    "Indefinidos": 21.6,
-    "Tarcísio": 36.6
    }
   },
   {
@@ -10727,96 +9266,12 @@
    "cenario": "Hipóteses com Lula",
    "instituto": "Paraná Pesquisas",
    "nota": "A",
-   "data": "2024-03-22",
-   "amostra": null,
-   "valores": {
-    "Lula": 44.5,
-    "Indefinidos": 12.2,
-    "Michelle": 43.4
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2024-03-22",
-   "amostra": null,
-   "valores": {
-    "Lula": 43.9,
-    "Indefinidos": 15.3,
-    "Tarcísio": 40.8
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2024-03-22",
-   "amostra": null,
-   "valores": {
-    "Lula": 44.6,
-    "Indefinidos": 20.1,
-    "Ratinho": 35.3
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2024-03-22",
-   "amostra": null,
-   "valores": {
-    "Lula": 44.5,
-    "Indefinidos": 23.3,
-    "Tereza C.": 32.2
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2024-03-22",
-   "amostra": null,
-   "valores": {
-    "Lula": 44.9,
-    "Indefinidos": 26.0,
-    "Nogueira": 29.1
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
    "data": "2024-01-28",
    "amostra": null,
    "valores": {
     "Lula": 43.9,
     "Indefinidos": 14.3,
     "Bolsonaro": 41.9
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2024-01-28",
-   "amostra": null,
-   "valores": {
-    "Lula": 45.4,
-    "Indefinidos": 15.8,
-    "Michelle": 38.7
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Paraná Pesquisas",
-   "nota": "A",
-   "data": "2024-01-28",
-   "amostra": null,
-   "valores": {
-    "Lula": 45.8,
-    "Indefinidos": 19.6,
-    "Tarcísio": 34.6
    }
   },
   {
@@ -10841,18 +9296,6 @@
     "Lula": 56.3,
     "Indefinidos": 7.3,
     "Bolsonaro": 43.7
-   }
-  },
-  {
-   "cenario": "Hipóteses com Lula",
-   "instituto": "Futura",
-   "nota": "A-",
-   "data": "2023-07-17",
-   "amostra": null,
-   "valores": {
-    "Lula": 57.2,
-    "Indefinidos": 7.7,
-    "Tarcísio": 42.8
    }
   }
  ]
