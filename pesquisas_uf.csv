@@ -2,3 +2,8 @@ uf,instituto,data_inicio,data_fim,amostra,margem,turno,lula,adversario,fonte
 BA,AtlasIntel,2026-08-28,2026-09-02,1804,2.0,2,58.1,29.0,https://vermelho.org.br/2026/09/03/lula-abre-30-pontos-sobre-flavio-bolsonaro-na-bahia-aponta-atlasintel/
 MG,AtlasIntel,2026-08-30,2026-09-04,1804,2.0,2,48.7,42.1,https://exame.com/brasil/atlasintel-lula-tem-89-pontos-de-vantagem-sobre-flavio-bolsonaro-no-2o-maior-colegio-eleitoral/
 PR,AtlasIntel,2026-09-11,2026-09-16,1794,2.0,2,38.8,57.5,https://www.brasildefato.com.br/2026/09/17/lula-cresce-6-pontos-no-parana-mostra-pesquisa-atlas/
+SP,Datafolha,2026-08-18,2026-08-19,1610,2.0,2,42,47,https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-agosto-26-sp-mg-rj-pe-df/
+MG,Datafolha,2026-08-18,2026-08-20,1204,3.0,2,46,42,https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-agosto-26-sp-mg-rj-pe-df/
+RJ,Datafolha,2026-08-18,2026-08-20,1204,3.0,2,40,49,https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-agosto-26-sp-mg-rj-pe-df/
+PE,Datafolha,2026-08-18,2026-08-20,1204,3.0,2,62,29,https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-agosto-26-sp-mg-rj-pe-df/
+DF,Datafolha,2026-08-18,2026-08-21,910,3.0,2,39,51,https://www.gazetadopovo.com.br/eleicoes/2026/pesquisa-eleitoral-2026/datafolha-presidente-agosto-26-sp-mg-rj-pe-df/

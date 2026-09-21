@@ -92,10 +92,11 @@ def comparar_com_2022(pesquisas, ufs, turno=2):
     Para cada UF, pega a pesquisa mais recente do turno pedido, converte para
     votos validos e compara com o mesmo turno de 2022.
     """
-    por_uf = {}
+    por_uf, quantas = {}, {}
     for p in pesquisas:
         if p["turno"] != turno:
             continue
+        quantas[p["uf"]] = quantas.get(p["uf"], 0) + 1
         if p["uf"] not in por_uf or p["data_fim"] > por_uf[p["uf"]]["data_fim"]:
             por_uf[p["uf"]] = p
 
@@ -127,6 +128,7 @@ def comparar_com_2022(pesquisas, ufs, turno=2):
             "adv_2022": b["adv_2022"],
             "delta_lula": round(lula_val - b["lula_2022"], 1),
             "delta_adv": round(adv_val - b["adv_2022"], 1),
+            "n_pesquisas": quantas[uf],
             "fonte": p["fonte"],
         })
     saida.sort(key=lambda x: -x["delta_adv"])

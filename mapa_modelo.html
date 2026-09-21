@@ -350,7 +350,8 @@ function pintarReais(){
       <div class="comp-topo">
         <div class="comp-uf"><b>${c.uf}</b> <span>${esc(c.estado)}</span></div>
         <div class="comp-meta">${esc(c.instituto)} · ${c.data.slice(8,10)}/${c.data.slice(5,7)}
-          · ${nf0.format(c.amostra)} entrevistas</div>
+          · ${nf0.format(c.amostra)} entrevistas${
+            c.n_pesquisas > 1 ? ` · mais recente de ${c.n_pesquisas}` : ""}</div>
       </div>
       <div class="comp-par">
         <div class="comp-lado">
@@ -387,22 +388,32 @@ document.getElementById("nota-reais").innerHTML =
 
 if (C.length){
   const sobem = C.filter(c => c.delta_adv > 0), caem = C.filter(c => c.delta_adv < 0);
-  const forte22 = C.filter(c => c.adv_2022 > 50), fraco22 = C.filter(c => c.adv_2022 <= 50);
-  const mediaForte = forte22.length
-    ? forte22.reduce((a, c) => a + c.delta_adv, 0) / forte22.length : null;
-  const mediaFraco = fraco22.length
-    ? fraco22.reduce((a, c) => a + c.delta_adv, 0) / fraco22.length : null;
+  const deltas = C.map(c => c.delta_adv).sort((a, b) => a - b);
+  const mediana = deltas.length % 2
+    ? deltas[(deltas.length - 1) / 2]
+    : (deltas[deltas.length / 2 - 1] + deltas[deltas.length / 2]) / 2;
+  const maioria = caem.length >= sobem.length ? caem : sobem;
+  const excecoes = caem.length >= sobem.length ? sobem : caem;
+  const nomes = l => l.map(c => c.uf).join(", ");
 
-  document.getElementById("padrao").innerHTML =
-    (mediaForte != null && mediaFraco != null && mediaForte < 0 && mediaFraco > 0)
-      ? `<b>O padrão que aparece.</b> Flávio vai <b>melhor que o pai onde o pai era
-         fraco</b> e pior onde ele era forte: nos estados que Bolsonaro venceu em 2022
-         a média é ${sinal(mediaForte)} pp, e nos que ele perdeu é ${sinal(mediaFraco)} pp.
-         Com ${C.length} estados isso é indício, não conclusão — mas é o contrário do que
-         o swing uniforme supõe, e vale acompanhar conforme saírem mais pesquisas.`
-      : `<b>Leitura.</b> ${sobem.length} estado${sobem.length === 1 ? "" : "s"} com Flávio
-         acima do que Bolsonaro fez em 2022, ${caem.length} abaixo. Poucos estados ainda
-         para afirmar um padrão.`;
+  /* o texto sai dos números: se a base mudar, a afirmação muda junto */
+  document.getElementById("padrao").innerHTML = (maioria.length >= C.length - 2)
+    ? `<b>O que aparece.</b> Flávio está <b>${mediana < 0 ? "atrás" : "à frente"} do pai
+       em ${maioria.length} dos ${C.length} estados</b> medidos, com mediana de
+       ${sinal(mediana)} pp — e num intervalo estreito, de
+       ${sinal(Math.min(...maioria.map(c => c.delta_adv)))} a
+       ${sinal(Math.max(...maioria.map(c => c.delta_adv)))}.
+       ${excecoes.length
+         ? `A exceção ${excecoes.length === 1 ? "é" : "são"} <b>${nomes(excecoes)}</b>,
+            onde ele aparece ${sinal(excecoes[0].delta_adv)} pp.`
+         : ""}
+       Um recuo pequeno e parecido em estados muito diferentes entre si é o cenário em
+       que o swing uniforme mais ou menos funciona — o oposto do que os três primeiros
+       estados sugeriam.`
+    : `<b>O que aparece.</b> ${sobem.length} estado${sobem.length === 1 ? "" : "s"} com
+       Flávio acima do que Bolsonaro fez em 2022 (${nomes(sobem)}) e
+       ${caem.length} abaixo (${nomes(caem)}), mediana de ${sinal(mediana)} pp.
+       Sem direção única entre os estados medidos.`;
 
   const cobertos = C.reduce((a, c) => a + c.eleitorado, 0);
   const semPesquisa = E.filter(u => !C.some(c => c.uf === u.uf))
@@ -415,12 +426,33 @@ if (C.length){
      ${semPesquisa.join(", ")}.`;
 }
 
-document.getElementById("nota-modelo").innerHTML =
-  `Para os ${27 - C.length} estados sem pesquisa, sobra estimar. O simulador abaixo aplica
-   um mesmo deslocamento nacional a todos os estados sobre o resultado de 2022 — é
-   <b>modelo, não medição</b>, e os três estados acima já mostram por que ele falha:
-   o movimento real não é igual em todo lugar. A parte que sobrevive é quanto cada
-   estado aguenta antes de virar, que vem direto da margem de 2022.`;
+/* o texto sobre o modelo depende do que os estados medidos mostraram */
+(function(){
+  const alvo = document.getElementById("nota-modelo");
+  const faltam = 27 - C.length;
+  const base = `Para os ${faltam} estados sem pesquisa, sobra estimar. O simulador abaixo
+    aplica um mesmo deslocamento nacional a todos eles sobre o resultado de 2022 — é
+    <b>modelo, não medição</b>.`;
+  if (!C.length){ alvo.innerHTML = base; return; }
+
+  const deltas = C.map(c => c.delta_adv);
+  const amplitude = Math.max(...deltas) - Math.min(...deltas);
+  const semOutlier = deltas.filter(d =>
+    Math.abs(d - deltas.reduce((a, b) => a + b, 0) / deltas.length) < 4);
+  const amplitudeCentral = semOutlier.length > 1
+    ? Math.max(...semOutlier) - Math.min(...semOutlier) : 0;
+
+  alvo.innerHTML = base + " " + (amplitudeCentral <= 3
+    ? `Os estados medidos dão algum conforto a ele: tirando ${
+        C.filter(c => !semOutlier.includes(c.delta_adv)).map(c => c.uf).join(", ") || "os extremos"},
+       todos se moveram dentro de ${nf1.format(amplitudeCentral)} ponto um do outro. Ainda
+       assim, é ${C.length} de 27 — e os estados que faltam são justamente os que ninguém mediu.`
+    : `Os estados medidos recomendam cautela: o movimento real foi de
+       ${sinal(Math.min(...deltas))} a ${sinal(Math.max(...deltas))} pp, uma amplitude de
+       ${nf1.format(amplitude)} pontos. Um deslocamento único para todos não dá conta disso.`)
+    + ` A parte que sobrevive em qualquer caso é quanto cada estado aguenta antes de
+       virar, que vem direto da margem de 2022.`;
+})();
 
 document.getElementById("nota-controle").innerHTML =
   `Em 2022 o 2º turno terminou <b>${nf1.format(n22.esquerda)}% × ${nf1.format(n22.direita)}%</b>.
