@@ -1,0 +1,380 @@
+<title>Estado por Estado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  color-scheme: light;
+  --plano:#f9f9f7;  --superficie:#fcfcfb;  --superficie-2:#f2f1ec;
+  --tinta:#0b0b0b;  --tinta-2:#52514e;  --tinta-3:#898781;
+  --grade:#e1e0d9;  --eixo:#c3c2b7;  --borda:rgba(11,11,11,.10);
+  --esq:#e34948;   /* Lula  */
+  --dir:#2a78d6;   /* Flávio */
+  --realce:#f0efec;
+  --sombra:0 1px 2px rgba(11,11,11,.05);
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:where(:not([data-theme="light"])){
+    color-scheme: dark;
+    --plano:#0d0d0d;  --superficie:#1a1a19;  --superficie-2:#242422;
+    --tinta:#ffffff;  --tinta-2:#c3c2b7;  --tinta-3:#898781;
+    --grade:#2c2c2a;  --eixo:#383835;  --borda:rgba(255,255,255,.10);
+    --esq:#e66767;  --dir:#3987e5;
+    --realce:#232321;  --sombra:none;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --plano:#0d0d0d;  --superficie:#1a1a19;  --superficie-2:#242422;
+  --tinta:#ffffff;  --tinta-2:#c3c2b7;  --tinta-3:#898781;
+  --grade:#2c2c2a;  --eixo:#383835;  --borda:rgba(255,255,255,.10);
+  --esq:#e66767;  --dir:#3987e5;
+  --realce:#232321;  --sombra:none;
+}
+
+*{box-sizing:border-box}
+body{margin:0; background:var(--plano); color:var(--tinta);
+  font-family:var(--sans); font-size:15px; line-height:1.55; -webkit-font-smoothing:antialiased}
+.envoltorio{max-width:1000px; margin:0 auto; padding-inline:20px; padding-block:0 72px}
+h1,h2,h3{text-wrap:balance; margin:0}
+:focus-visible{outline:2px solid var(--dir); outline-offset:2px; border-radius:3px}
+@media (prefers-reduced-motion: reduce){*{animation:none!important; transition:none!important}}
+
+.masthead{padding-block:48px 28px; border-bottom:1px solid var(--eixo)}
+.selo{font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--tinta-3); margin-bottom:14px}
+.masthead h1{font-family:var(--serif); font-weight:600; font-size:clamp(34px,6vw,52px);
+  line-height:1.04; letter-spacing:-.015em}
+.subtitulo{font-family:var(--serif); font-size:clamp(16px,2.2vw,19px); font-style:italic;
+  color:var(--tinta-2); margin-top:12px; max-width:62ch}
+
+.secao{padding-block:40px 0}
+.secao h2{font-family:var(--serif); font-size:25px; font-weight:600; letter-spacing:-.01em}
+.secao .nota{color:var(--tinta-2); font-size:13.5px; max-width:70ch; margin:6px 0 20px}
+.secao .nota b{color:var(--tinta)}
+
+.cartao{background:var(--superficie); border:1px solid var(--borda); border-radius:10px;
+  padding:22px; box-shadow:var(--sombra)}
+
+/* ------------------------------------------------- controle de swing */
+.controle{display:grid; grid-template-columns:1fr 250px; gap:26px; align-items:center}
+@media (max-width:760px){.controle{grid-template-columns:1fr}}
+.medidor{display:flex; height:34px; border-radius:5px; overflow:hidden; gap:2px}
+.medidor span{display:flex; align-items:center; font-family:var(--mono); font-size:13px;
+  font-weight:600; color:#fff; padding-inline:10px; transition:width .2s}
+.medidor .d{justify-content:flex-end}
+.rotulos{display:flex; justify-content:space-between; margin-top:8px;
+  font-size:12.5px; color:var(--tinta-2)}
+.rotulos b{font-family:var(--mono)}
+input[type=range]{width:100%; accent-color:var(--tinta-3); cursor:pointer}
+.campo label{display:flex; justify-content:space-between; align-items:baseline;
+  font-size:13px; margin-bottom:7px; gap:10px}
+.campo label b{font-family:var(--mono); font-size:13px; color:var(--tinta)}
+.botao{appearance:none; background:var(--superficie); border:1px solid var(--borda);
+  border-radius:7px; font-family:var(--sans); font-size:12.5px; color:var(--tinta-2);
+  padding:6px 12px; cursor:pointer; margin-top:10px}
+.botao:hover{background:var(--realce)}
+.marcas{display:flex; gap:6px; flex-wrap:wrap; margin-top:10px}
+.marcas button{appearance:none; background:transparent; border:1px solid var(--borda);
+  border-radius:20px; font-family:var(--mono); font-size:11px; color:var(--tinta-2);
+  padding:3px 10px; cursor:pointer}
+.marcas button:hover{background:var(--realce)}
+
+/* ------------------------------------------------- placar */
+.placar{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:20px}
+@media (max-width:640px){.placar{grid-template-columns:1fr}}
+.tile{border:1px solid var(--borda); border-radius:9px; padding:15px 17px; background:var(--superficie)}
+.tile .rot{font-family:var(--mono); font-size:10.5px; letter-spacing:.09em;
+  text-transform:uppercase; color:var(--tinta-3)}
+.tile .val{font-family:var(--serif); font-size:31px; font-weight:600; margin-top:4px; line-height:1.1}
+.tile .sub{font-size:12.5px; color:var(--tinta-2); margin-top:3px}
+
+/* ------------------------------------------------- estados */
+.estados{display:flex; flex-direction:column}
+.linha{display:grid; grid-template-columns:150px 1fr 96px; gap:12px; align-items:center;
+  padding:5px 0; border-bottom:1px solid var(--grade)}
+.linha:last-child{border-bottom:0}
+.linha.virou{background:var(--realce)}
+.nome{display:flex; align-items:center; gap:8px; font-size:13px; min-width:0}
+.nome .uf{font-family:var(--mono); font-weight:600; font-size:12px; width:24px; flex:none}
+.nome .txt{overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--tinta-2)}
+.nome .flag{font-size:10px; font-family:var(--mono); color:var(--tinta-3); flex:none}
+.trilho{position:relative; height:22px}
+.zero{position:absolute; left:50%; top:0; bottom:0; width:1px; background:var(--eixo)}
+.barra{position:absolute; top:50%; transform:translateY(-50%); height:13px; border-radius:2px;
+  transition:width .2s, left .2s, right .2s}
+.fantasma{position:absolute; top:50%; transform:translateY(-50%); height:13px;
+  border:1px dashed var(--tinta-3); opacity:.45; border-radius:2px; background:none}
+.valor{font-family:var(--mono); font-size:12px; text-align:right;
+  font-variant-numeric:tabular-nums}
+.escala{display:grid; grid-template-columns:150px 1fr 96px; gap:12px; margin-top:10px;
+  padding-top:8px; border-top:1px solid var(--grade)}
+.escala .t{display:flex; justify-content:space-between; font-family:var(--mono);
+  font-size:10.5px; color:var(--tinta-3)}
+.legenda{display:flex; flex-wrap:wrap; gap:18px; margin-bottom:16px; font-size:12.5px;
+  color:var(--tinta-2); align-items:center}
+.legenda span{display:inline-flex; align-items:center; gap:7px}
+.chip{width:13px; height:11px; border-radius:2px; flex:none}
+.chip.fant{background:none; border:1px dashed var(--tinta-3)}
+@media (max-width:640px){
+  .linha,.escala{grid-template-columns:96px 1fr 74px}
+  .nome .txt{display:none}
+  .cartao{padding:16px}
+}
+
+.aviso{margin-top:18px; padding:16px 18px; border-radius:9px; background:var(--realce);
+  border:1px solid var(--borda); font-size:13px; color:var(--tinta-2); line-height:1.6}
+.aviso b{color:var(--tinta)}
+.aviso+.aviso{margin-top:10px}
+
+.rodape{margin-top:52px; padding-top:24px; border-top:1px solid var(--eixo);
+  font-size:12.5px; color:var(--tinta-3); line-height:1.65}
+.rodape b{color:var(--tinta-2); font-weight:500}
+.rodape p{margin:0 0 10px}
+</style>
+
+<div class="envoltorio">
+
+  <header class="masthead">
+    <div class="selo">2º turno · projeção por swing uniforme</div>
+    <h1>Estado por Estado</h1>
+    <p class="subtitulo" id="subtitulo"></p>
+  </header>
+
+  <section class="secao">
+    <h2>Mova o país e veja os estados</h2>
+    <p class="nota" id="nota-controle"></p>
+
+    <div class="cartao">
+      <div class="controle">
+        <div>
+          <div class="medidor" id="medidor"></div>
+          <div class="rotulos" id="rotulos"></div>
+        </div>
+        <div>
+          <div class="campo">
+            <label for="swing">Swing nacional <b id="v-swing"></b></label>
+            <input type="range" id="swing" min="-12" max="12" step="0.1">
+          </div>
+          <div class="marcas" id="marcas"></div>
+          <button class="botao" id="reset" type="button">Voltar ao agregado de hoje</button>
+        </div>
+      </div>
+
+      <div class="placar" id="placar"></div>
+    </div>
+  </section>
+
+  <section class="secao">
+    <h2>Os 27 estados</h2>
+    <p class="nota" id="nota-estados"></p>
+    <div class="cartao">
+      <div class="legenda" id="legenda"></div>
+      <div class="estados" id="estados"></div>
+      <div class="escala">
+        <div></div>
+        <div class="t" id="escala-t"></div>
+        <div></div>
+      </div>
+    </div>
+    <div class="aviso" id="aviso-metodo"></div>
+    <div class="aviso" id="aviso-limite"></div>
+  </section>
+
+  <footer class="rodape" id="rodape"></footer>
+</div>
+
+<script type="application/json" id="dados">/*__DADOS__*/</script>
+<script>
+(function(){
+"use strict";
+const D = JSON.parse(document.getElementById("dados").textContent);
+const N = D.nomes, E = D.estados;
+
+const nf1 = new Intl.NumberFormat("pt-BR", {minimumFractionDigits: 1, maximumFractionDigits: 1});
+const nf0 = new Intl.NumberFormat("pt-BR");
+const sinal = v => (v > 0 ? "+" : v < 0 ? "−" : "") + nf1.format(Math.abs(v));
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
+
+let swing = D.swing;
+
+/* a escala se ajusta à maior margem em tela, para nenhuma barra saturar */
+function escalaAtual(p){
+  const maior = Math.max(...p.map(u => Math.abs(u.margem)));
+  return Math.max(20, Math.ceil(maior / 10) * 10);
+}
+
+/* --------------------------------------------------------- cálculo */
+function projetar(s){
+  return E.map(u => {
+    const margem = u.margem_2022 + 2 * s;   // 1 pp de swing move a margem em 2
+    return {...u, margem, virou: (u.margem_2022 > 0) !== (margem > 0)};
+  });
+}
+
+function nacional(s){
+  return {esq: D.nacional_2022.esquerda + s, dir: D.nacional_2022.direita - s};
+}
+
+/* --------------------------------------------------------- topo */
+function pintarTopo(){
+  const p = projetar(swing), n = nacional(swing);
+  const venceEsq = p.filter(u => u.margem > 0);
+  const eleitEsq = venceEsq.reduce((a, u) => a + u.eleitorado, 0);
+
+  document.getElementById("medidor").innerHTML =
+    `<span style="width:${n.esq}%;background:var(--esq)">${nf1.format(n.esq)}%</span>` +
+    `<span class="d" style="width:${n.dir}%;background:var(--dir)">${nf1.format(n.dir)}%</span>`;
+  document.getElementById("rotulos").innerHTML =
+    `<span><b>${esc(N.esquerda)}</b></span>` +
+    `<span style="color:var(--tinta-3)">${n.esq > n.dir ? esc(N.esquerda) : esc(N.direita)} +${
+      nf1.format(Math.abs(n.esq - n.dir))}</span>` +
+    `<span><b>${esc(N.direita)}</b></span>`;
+
+  const viraram = p.filter(u => u.virou);
+  document.getElementById("placar").innerHTML = `
+    <div class="tile">
+      <div class="rot">Estados</div>
+      <div class="val"><span style="color:var(--esq)">${venceEsq.length}</span>
+        <span style="color:var(--tinta-3);font-size:20px"> · </span>
+        <span style="color:var(--dir)">${27 - venceEsq.length}</span></div>
+      <div class="sub">${esc(N.esquerda)} · ${esc(N.direita)}</div>
+    </div>
+    <div class="tile">
+      <div class="rot">Eleitorado onde ${esc(N.esquerda)} vence</div>
+      <div class="val">${nf1.format(100 * eleitEsq / D.eleitorado_total)}%</div>
+      <div class="sub">${nf0.format(Math.round(eleitEsq / 1e6))} milhões de eleitores</div>
+    </div>
+    <div class="tile">
+      <div class="rot">Mudam de lado vs. 2022</div>
+      <div class="val">${viraram.length}</div>
+      <div class="sub">${viraram.length ? viraram.map(u => u.uf).join(", ")
+        : "nenhum estado troca"}</div>
+    </div>`;
+}
+
+/* --------------------------------------------------------- estados */
+function pintarEstados(){
+  const p = projetar(swing);
+  const lado = m => m > 0 ? "var(--esq)" : "var(--dir)";
+  const ESCALA = escalaAtual(p);
+  const larg = m => Math.min(50, Math.abs(m) / 2 / ESCALA * 100);
+
+  document.getElementById("estados").innerHTML = p.map(u => {
+    const l22 = larg(u.margem_2022), l26 = larg(u.margem);
+    const posFantasma = u.margem_2022 > 0 ? `right:50%` : `left:50%`;
+    const posBarra = u.margem > 0 ? `right:50%` : `left:50%`;
+    return `<div class="linha${u.virou ? " virou" : ""}">
+      <div class="nome">
+        <span class="uf">${u.uf}</span>
+        <span class="txt">${esc(u.estado)}</span>
+        ${u.virou ? '<span class="flag">virou</span>' : ''}
+      </div>
+      <div class="trilho">
+        <div class="zero"></div>
+        <div class="fantasma" style="${posFantasma};width:${l22}%"></div>
+        <div class="barra" style="${posBarra};width:${l26}%;background:${lado(u.margem)}"></div>
+      </div>
+      <div class="valor" style="color:${lado(u.margem)}">${
+        Math.abs(u.margem) < 0.1 ? "empate" : sinal(u.margem)}</div>
+    </div>`;
+  }).join("");
+
+  document.getElementById("escala-t").innerHTML =
+    `<span>${esc(N.esquerda)} +${ESCALA}</span><span>empate</span>` +
+    `<span>${esc(N.direita)} +${ESCALA}</span>`;
+
+  document.getElementById("legenda").innerHTML =
+    `<span><i class="chip" style="background:var(--esq)"></i>${esc(N.esquerda)} à frente</span>` +
+    `<span><i class="chip" style="background:var(--dir)"></i>${esc(N.direita)} à frente</span>` +
+    `<span><i class="chip fant"></i>margem de 2022</span>`;
+}
+
+/* --------------------------------------------------------- textos fixos */
+const n22 = D.nacional_2022, n26 = D.nacional_2026;
+
+document.getElementById("subtitulo").innerHTML =
+  `Como cada estado votou no 2º turno de 2022 e onde estaria hoje, se o movimento
+   nacional das pesquisas se repetisse igual em todo lugar.`;
+
+document.getElementById("nota-controle").innerHTML =
+  `Em 2022 o 2º turno terminou <b>${nf1.format(n22.esquerda)}% × ${nf1.format(n22.direita)}%</b>.
+   O agregado de hoje está em <b>${nf1.format(n26.esquerda)}% × ${nf1.format(n26.direita)}%</b>
+   (${n26.n_pesquisas} pesquisas), um swing de <b>${sinal(D.swing)} ponto</b> para
+   ${esc(N.esquerda)} — praticamente nada. Arraste para testar outros cenários.`;
+
+document.getElementById("nota-estados").innerHTML =
+  `Ordenados pela margem de 2022. A barra cheia é a projeção; o contorno tracejado é
+   onde o estado estava em 2022 — quando os dois coincidem, é porque o swing é zero.
+   Estados que trocam de lado ficam destacados.`;
+
+document.getElementById("aviso-metodo").innerHTML =
+  `<b>O que este número é.</b> Swing uniforme: pega o deslocamento nacional em votos
+   válidos e soma a cada estado o mesmo valor. Não há pesquisa estadual por trás de
+   nenhuma linha desta página — os institutos nota A medem presidente no âmbito
+   nacional e, no estadual, medem governador. Pesquisas presidenciais por estado em
+   2026 existem para 5 das 27 unidades, e de um instituto fora da lista.`;
+
+document.getElementById("aviso-limite").innerHTML =
+  `<b>Onde ele falha.</b> O pressuposto de que todo estado anda igual é sabidamente
+   falso no Brasil: desde 2014 o Nordeste e o Centro-Sul vêm se afastando, e um swing
+   nacional de 1 ponto costuma ser 2 pontos num lugar e zero em outro. Por isso a
+   leitura útil aqui não é o número projetado de cada estado, e sim <b>quanto cada um
+   aguenta antes de virar</b> — essa parte não depende do pressuposto, porque vem
+   direto da margem de 2022.`;
+
+document.getElementById("rodape").innerHTML = `
+  <p><b>Fontes.</b> Resultado de 2022 por unidade federativa: TSE, pela página de
+  resultados da Wikipédia — as 27 unidades fecham em 100% de votos válidos, e o
+  nacional recomposto a partir delas dá exatamente ${nf1.format(n22.esquerda)}% ×
+  ${nf1.format(n22.direita)}%. Agregado de 2026: as mesmas pesquisas do painel
+  principal, em votos válidos.</p>
+  <p><b>Por que não há mapa.</b> Um mapa colorido esconde justamente o que importa
+  aqui: o tamanho da margem e do eleitorado. Roraima e São Paulo ocupam áreas
+  parecidas num mapa e pesam 0,3% e 22% do eleitorado. A lista ordenada mostra a
+  margem de cada um sem essa distorção.</p>
+  <p><b>Lembre que no Brasil vence o voto popular nacional</b>, não a contagem de
+  estados. Ganhar em mais estados não elege ninguém — o placar de estados aqui é
+  descritivo, e o número que decide é o do medidor lá em cima.</p>
+  <p style="margin-top:14px;color:var(--tinta-3)">Gerado em ${
+    new Date(D.atualizado + "T00:00:00Z").toLocaleDateString("pt-BR", {timeZone: "UTC"})}.</p>`;
+
+/* --------------------------------------------------------- controles */
+const slider = document.getElementById("swing");
+
+function atualizar(){
+  /* sempre o beneficiário com valor positivo: '−0,1 para Flávio' confunde */
+  document.getElementById("v-swing").textContent = Math.abs(swing) < 0.05
+    ? "sem movimento"
+    : `+${nf1.format(Math.abs(swing))} pp para ${swing > 0 ? N.esquerda : N.direita}`;
+  pintarTopo(); pintarEstados();
+}
+
+slider.value = swing;
+slider.addEventListener("input", () => { swing = +slider.value; atualizar(); });
+document.getElementById("reset").addEventListener("click", () => {
+  swing = D.swing; slider.value = swing; atualizar();
+});
+
+/* atalhos: o swing que empata o país e os que viram os estados no fio */
+const empate = (D.nacional_2022.direita - D.nacional_2022.esquerda) / 2;
+const atalhos = [
+  {r: "hoje", v: D.swing},
+  {r: "empate nacional", v: empate},
+  {r: `${N.direita} +2`, v: empate - 1},
+  {r: `${N.esquerda} +5`, v: empate + 2.5},
+];
+document.getElementById("marcas").innerHTML =
+  atalhos.map((a, i) => `<button type="button" data-v="${a.v.toFixed(2)}">${esc(a.r)}</button>`).join("");
+document.querySelectorAll(".marcas button").forEach(b =>
+  b.addEventListener("click", () => {
+    swing = +b.dataset.v; slider.value = swing; atualizar();
+  }));
+
+atualizar();
+})();
+</script>

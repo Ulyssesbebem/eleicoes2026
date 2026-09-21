@@ -1,0 +1,320 @@
+{
+ "atualizado": "2026-09-21",
+ "metodo": "swing uniforme",
+ "nomes": {
+  "esquerda": "Lula",
+  "direita": "Flávio",
+  "direita_2022": "Bolsonaro"
+ },
+ "nacional_2022": {
+  "esquerda": 50.9,
+  "direita": 49.1
+ },
+ "nacional_2026": {
+  "esquerda": 50.8,
+  "direita": 49.2,
+  "n_pesquisas": 14,
+  "ultima": "2026-09-16"
+ },
+ "swing": -0.1,
+ "eleitorado_total": 155758349,
+ "estados": [
+  {
+   "uf": "PI",
+   "estado": "Piauí",
+   "regiao": "Nordeste",
+   "eleitorado": 2570253,
+   "lula_2022": 76.86,
+   "adv_2022": 23.14,
+   "peso": 1.65,
+   "margem_2022": 53.72,
+   "swing_para_virar": -26.86
+  },
+  {
+   "uf": "BA",
+   "estado": "Bahia",
+   "regiao": "Nordeste",
+   "eleitorado": 11282999,
+   "lula_2022": 72.12,
+   "adv_2022": 27.88,
+   "peso": 7.24,
+   "margem_2022": 44.24,
+   "swing_para_virar": -22.12
+  },
+  {
+   "uf": "MA",
+   "estado": "Maranhão",
+   "regiao": "Nordeste",
+   "eleitorado": 5039307,
+   "lula_2022": 71.14,
+   "adv_2022": 28.86,
+   "peso": 3.24,
+   "margem_2022": 42.28,
+   "swing_para_virar": -21.14
+  },
+  {
+   "uf": "CE",
+   "estado": "Ceará",
+   "regiao": "Nordeste",
+   "eleitorado": 6818192,
+   "lula_2022": 69.97,
+   "adv_2022": 30.03,
+   "peso": 4.38,
+   "margem_2022": 39.94,
+   "swing_para_virar": -19.97
+  },
+  {
+   "uf": "SE",
+   "estado": "Sergipe",
+   "regiao": "Nordeste",
+   "eleitorado": 1671241,
+   "lula_2022": 67.21,
+   "adv_2022": 32.79,
+   "peso": 1.07,
+   "margem_2022": 34.42,
+   "swing_para_virar": -17.21
+  },
+  {
+   "uf": "PE",
+   "estado": "Pernambuco",
+   "regiao": "Nordeste",
+   "eleitorado": 7015086,
+   "lula_2022": 66.93,
+   "adv_2022": 33.07,
+   "peso": 4.5,
+   "margem_2022": 33.86,
+   "swing_para_virar": -16.93
+  },
+  {
+   "uf": "PB",
+   "estado": "Paraíba",
+   "regiao": "Nordeste",
+   "eleitorado": 3091719,
+   "lula_2022": 66.62,
+   "adv_2022": 33.38,
+   "peso": 1.98,
+   "margem_2022": 33.24,
+   "swing_para_virar": -16.62
+  },
+  {
+   "uf": "RN",
+   "estado": "Rio Grande do Norte",
+   "regiao": "Nordeste",
+   "eleitorado": 2554326,
+   "lula_2022": 65.1,
+   "adv_2022": 34.9,
+   "peso": 1.64,
+   "margem_2022": 30.2,
+   "swing_para_virar": -15.1
+  },
+  {
+   "uf": "AL",
+   "estado": "Alagoas",
+   "regiao": "Nordeste",
+   "eleitorado": 2325814,
+   "lula_2022": 58.68,
+   "adv_2022": 41.32,
+   "peso": 1.49,
+   "margem_2022": 17.36,
+   "swing_para_virar": -8.68
+  },
+  {
+   "uf": "PA",
+   "estado": "Pará",
+   "regiao": "Norte",
+   "eleitorado": 6078857,
+   "lula_2022": 54.75,
+   "adv_2022": 45.25,
+   "peso": 3.9,
+   "margem_2022": 9.5,
+   "swing_para_virar": -4.75
+  },
+  {
+   "uf": "TO",
+   "estado": "Tocantins",
+   "regiao": "Norte",
+   "eleitorado": 1094302,
+   "lula_2022": 51.36,
+   "adv_2022": 48.64,
+   "peso": 0.7,
+   "margem_2022": 2.72,
+   "swing_para_virar": -1.36
+  },
+  {
+   "uf": "AM",
+   "estado": "Amazonas",
+   "regiao": "Norte",
+   "eleitorado": 2647039,
+   "lula_2022": 51.1,
+   "adv_2022": 48.9,
+   "peso": 1.7,
+   "margem_2022": 2.2,
+   "swing_para_virar": -1.1
+  },
+  {
+   "uf": "MG",
+   "estado": "Minas Gerais",
+   "regiao": "Sudeste",
+   "eleitorado": 16284615,
+   "lula_2022": 50.2,
+   "adv_2022": 49.8,
+   "peso": 10.46,
+   "margem_2022": 0.4,
+   "swing_para_virar": -0.2
+  },
+  {
+   "uf": "AP",
+   "estado": "Amapá",
+   "regiao": "Norte",
+   "eleitorado": 550131,
+   "lula_2022": 48.64,
+   "adv_2022": 51.36,
+   "peso": 0.35,
+   "margem_2022": -2.72,
+   "swing_para_virar": 1.36
+  },
+  {
+   "uf": "SP",
+   "estado": "São Paulo",
+   "regiao": "Sudeste",
+   "eleitorado": 34684876,
+   "lula_2022": 44.76,
+   "adv_2022": 55.24,
+   "peso": 22.27,
+   "margem_2022": -10.48,
+   "swing_para_virar": 5.24
+  },
+  {
+   "uf": "RS",
+   "estado": "Rio Grande do Sul",
+   "regiao": "Sul",
+   "eleitorado": 8589684,
+   "lula_2022": 43.65,
+   "adv_2022": 56.35,
+   "peso": 5.51,
+   "margem_2022": -12.7,
+   "swing_para_virar": 6.35
+  },
+  {
+   "uf": "RJ",
+   "estado": "Rio de Janeiro",
+   "regiao": "Sudeste",
+   "eleitorado": 12827044,
+   "lula_2022": 43.47,
+   "adv_2022": 56.53,
+   "peso": 8.24,
+   "margem_2022": -13.06,
+   "swing_para_virar": 6.53
+  },
+  {
+   "uf": "ES",
+   "estado": "Espírito Santo",
+   "regiao": "Sudeste",
+   "eleitorado": 2922264,
+   "lula_2022": 41.96,
+   "adv_2022": 58.04,
+   "peso": 1.88,
+   "margem_2022": -16.08,
+   "swing_para_virar": 8.04
+  },
+  {
+   "uf": "GO",
+   "estado": "Goiás",
+   "regiao": "Centro-Oeste",
+   "eleitorado": 4870621,
+   "lula_2022": 41.29,
+   "adv_2022": 58.71,
+   "peso": 3.13,
+   "margem_2022": -17.42,
+   "swing_para_virar": 8.71
+  },
+  {
+   "uf": "DF",
+   "estado": "Distrito Federal",
+   "regiao": "Centro-Oeste",
+   "eleitorado": 2207628,
+   "lula_2022": 41.19,
+   "adv_2022": 58.81,
+   "peso": 1.42,
+   "margem_2022": -17.62,
+   "swing_para_virar": 8.81
+  },
+  {
+   "uf": "MS",
+   "estado": "Mato Grosso do Sul",
+   "regiao": "Centro-Oeste",
+   "eleitorado": 1996066,
+   "lula_2022": 40.51,
+   "adv_2022": 59.49,
+   "peso": 1.28,
+   "margem_2022": -18.98,
+   "swing_para_virar": 9.49
+  },
+  {
+   "uf": "PR",
+   "estado": "Paraná",
+   "regiao": "Sul",
+   "eleitorado": 8480626,
+   "lula_2022": 37.6,
+   "adv_2022": 62.4,
+   "peso": 5.44,
+   "margem_2022": -24.8,
+   "swing_para_virar": 12.4
+  },
+  {
+   "uf": "MT",
+   "estado": "Mato Grosso",
+   "regiao": "Centro-Oeste",
+   "eleitorado": 2469797,
+   "lula_2022": 34.92,
+   "adv_2022": 65.08,
+   "peso": 1.59,
+   "margem_2022": -30.16,
+   "swing_para_virar": 15.08
+  },
+  {
+   "uf": "SC",
+   "estado": "Santa Catarina",
+   "regiao": "Sul",
+   "eleitorado": 5501284,
+   "lula_2022": 30.73,
+   "adv_2022": 69.27,
+   "peso": 3.53,
+   "margem_2022": -38.54,
+   "swing_para_virar": 19.27
+  },
+  {
+   "uf": "AC",
+   "estado": "Acre",
+   "regiao": "Norte",
+   "eleitorado": 587765,
+   "lula_2022": 29.7,
+   "adv_2022": 70.3,
+   "peso": 0.38,
+   "margem_2022": -40.6,
+   "swing_para_virar": 20.3
+  },
+  {
+   "uf": "RO",
+   "estado": "Rondônia",
+   "regiao": "Norte",
+   "eleitorado": 1230172,
+   "lula_2022": 29.34,
+   "adv_2022": 70.66,
+   "peso": 0.79,
+   "margem_2022": -41.32,
+   "swing_para_virar": 20.66
+  },
+  {
+   "uf": "RR",
+   "estado": "Roraima",
+   "regiao": "Norte",
+   "eleitorado": 366641,
+   "lula_2022": 23.92,
+   "adv_2022": 76.08,
+   "peso": 0.24,
+   "margem_2022": -52.16,
+   "swing_para_virar": 26.08
+  }
+ ]
+}

@@ -22,12 +22,14 @@ PAGINAS = [
     # (arquivo gerado, nome no site, rotulo da aba, titulo curto)
     ("painel_publico.html", "index.html", "Agregador 2026", "index.html"),
     ("aferidor_publico.html", "urnas.html", "Pesquisa × Urna", "urnas.html"),
+    ("estados_publico.html", "estados.html", "Estado por Estado", "estados.html"),
 ]
 
 DADOS = [
     "pesquisas_1t.csv", "pesquisas_2t.csv", "agregado.json",
     "pesquisas_2018.csv", "pesquisas_2022.csv",
     "pesquisas_2018_2t.csv", "pesquisas_2022_2t.csv", "afericao.json",
+    "resultados_2022_uf.csv", "projecao_uf.json",
 ]
 
 NAV_CSS = """

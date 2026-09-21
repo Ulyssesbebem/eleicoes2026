@@ -114,7 +114,8 @@ if ag:
 # ------------------------------------------------------------------ paginas
 
 for arquivo, minimo in (("painel_publico.html", 100_000),
-                        ("aferidor_publico.html", 20_000)):
+                        ("aferidor_publico.html", 20_000),
+                        ("estados_publico.html", 15_000)):
     try:
         with io.open(arquivo, encoding="utf-8") as f:
             html = f.read()

@@ -49,6 +49,13 @@ jobs:
       - name: Aferir contra as urnas
         run: python aferir.py
 
+      - name: Coletar resultado de 2022 por estado
+        if: inputs.atualizar_historico
+        run: python coletar_uf.py
+
+      - name: Projetar por estado
+        run: python projetar_uf.py
+
       - name: Conferir se os dados fazem sentido
         run: python verificar.py
 
@@ -59,7 +66,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A pesquisas_*.csv agregado.json afericao.json
+          git add -A pesquisas_*.csv resultados_2022_uf.csv agregado.json afericao.json projecao_uf.json
           if git diff --staged --quiet; then
             echo "Nenhuma pesquisa nova."
           else
