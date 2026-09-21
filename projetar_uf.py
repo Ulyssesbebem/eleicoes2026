@@ -25,6 +25,7 @@ import json
 import sys
 from datetime import date
 
+from institutos import NOTAS, normalizar_instituto
 # resultado nacional oficial do 2o turno de 2022, em votos validos
 from resultados import RESULTADOS
 
@@ -42,6 +43,94 @@ def ler_uf():
         "lula_2022": float(r["lula"]),
         "adv_2022": float(r["bolsonaro"]),
     } for r in linhas]
+
+
+def ler_pesquisas_uf():
+    """
+    Pesquisas presidenciais ESTADUAIS, preenchidas a mao em pesquisas_uf.csv.
+
+    Nao ha fonte estruturada para elas: cada uma sai como materia ou PDF
+    avulso, e as paginas estaduais da Wikipedia cobrem governador, nao
+    presidente. Por isso este CSV e alimentado a mao, uma linha por pesquisa.
+    So institutos com nota A-, A ou A+ entram, como no resto do projeto.
+    """
+    try:
+        with io.open("pesquisas_uf.csv", encoding="utf-8-sig", newline="") as f:
+            linhas = list(csv.DictReader(f))
+    except FileNotFoundError:
+        return []
+
+    saida, ignorados = [], []
+    for r in linhas:
+        inst = normalizar_instituto(r["instituto"])
+        if inst not in NOTAS:
+            ignorados.append(r["instituto"])
+            continue
+        try:
+            saida.append({
+                "uf": r["uf"].strip().upper(),
+                "instituto": inst,
+                "nota": NOTAS[inst]["nota"],
+                "data_fim": r["data_fim"],
+                "amostra": int(r["amostra"]) if r.get("amostra") else None,
+                "margem": float(r["margem"]) if r.get("margem") else None,
+                "turno": int(r["turno"]),
+                "lula": float(r["lula"]),
+                "adversario": float(r["adversario"]),
+                "fonte": r.get("fonte", ""),
+            })
+        except (ValueError, KeyError) as e:
+            print(f"  (linha ignorada em pesquisas_uf.csv: {e})")
+    if ignorados:
+        print(f"  ({len(ignorados)} pesquisa(s) fora da lista nota A ignorada(s): "
+              f"{', '.join(sorted(set(ignorados)))})")
+    return saida
+
+
+def comparar_com_2022(pesquisas, ufs, turno=2):
+    """
+    Para cada UF, pega a pesquisa mais recente do turno pedido, converte para
+    votos validos e compara com o mesmo turno de 2022.
+    """
+    por_uf = {}
+    for p in pesquisas:
+        if p["turno"] != turno:
+            continue
+        if p["uf"] not in por_uf or p["data_fim"] > por_uf[p["uf"]]["data_fim"]:
+            por_uf[p["uf"]] = p
+
+    base = {u["uf"]: u for u in ufs}
+    saida = []
+    for uf, p in por_uf.items():
+        if uf not in base:
+            print(f"  (UF desconhecida em pesquisas_uf.csv: {uf})")
+            continue
+        total = p["lula"] + p["adversario"]
+        if total <= 0:
+            continue
+        # a conversao para validos e feita aqui, e nao confiando no rotulo da
+        # materia: varias publicam '% de votos validos' em numeros que nao
+        # somam 100, porque ainda carregam indecisos
+        lula_val = 100 * p["lula"] / total
+        adv_val = 100 - lula_val
+        b = base[uf]
+        saida.append({
+            "uf": uf, "estado": b["estado"], "regiao": b["regiao"],
+            "eleitorado": b["eleitorado"],
+            "instituto": p["instituto"], "nota": p["nota"],
+            "data": p["data_fim"], "amostra": p["amostra"],
+            "bruto_lula": p["lula"], "bruto_adv": p["adversario"],
+            "indefinidos": round(max(0.0, 100 - total), 1),
+            "lula_2026": round(lula_val, 1),
+            "adv_2026": round(adv_val, 1),
+            "lula_2022": b["lula_2022"],
+            "adv_2022": b["adv_2022"],
+            "delta_lula": round(lula_val - b["lula_2022"], 1),
+            "delta_adv": round(adv_val - b["adv_2022"], 1),
+            "fonte": p["fonte"],
+        })
+    saida.sort(key=lambda x: -x["delta_adv"])
+    return saida
 
 
 def cenario_2t(agregado, esquerda="Lula", direita="Flávio"):
@@ -85,6 +174,9 @@ def main():
 
     ufs.sort(key=lambda u: -u["margem_2022"])
 
+    pesquisas_uf = ler_pesquisas_uf()
+    comparacoes = comparar_com_2022(pesquisas_uf, ufs, turno=2)
+
     dados = {
         "atualizado": date.today().isoformat(),
         "metodo": "swing uniforme",
@@ -99,6 +191,8 @@ def main():
         "swing": round(swing, 2),
         "eleitorado_total": eleitorado_total,
         "estados": ufs,
+        "comparacoes": comparacoes,
+        "n_pesquisas_uf": len(pesquisas_uf),
     }
 
     with io.open("projecao_uf.json", "w", encoding="utf-8") as f:
@@ -123,7 +217,20 @@ def main():
         print(f"  {u['uf']:<4}{u['lula_2022']:>7.1f}x{u['adv_2022']:<7.1f}"
               f"{l26:>9.1f}x{d26:<8.1f}{u['swing_para_virar']:>+8.1f} pp")
 
-    print(f"\nprojecao_uf.json gravado.")
+    if comparacoes:
+        print("\nPesquisas estaduais (institutos nota A), 2o turno em votos validos:")
+        print(f"  {'uf':<4}{'2022':>10}{'agora':>10}{'Flavio vs Bolsonaro':>22}   fonte")
+        for c in comparacoes:
+            print(f"  {c['uf']:<4}{c['adv_2022']:>9.1f}%{c['adv_2026']:>9.1f}%"
+                  f"{c['delta_adv']:>+21.1f} pp   {c['instituto']} "
+                  f"{c['data'][8:10]}/{c['data'][5:7]}")
+        cobertos = sum(c["eleitorado"] for c in comparacoes)
+        print(f"\n  {len(comparacoes)} de 27 unidades, "
+              f"{100 * cobertos / eleitorado_total:.1f}% do eleitorado")
+    else:
+        print("\nNenhuma pesquisa estadual na base (pesquisas_uf.csv).")
+
+    print("\nprojecao_uf.json gravado.")
     gerar_pagina(dados)
 
 

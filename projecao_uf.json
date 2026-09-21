@@ -316,5 +316,68 @@
    "margem_2022": -52.16,
    "swing_para_virar": 26.08
   }
- ]
+ ],
+ "comparacoes": [
+  {
+   "uf": "BA",
+   "estado": "Bahia",
+   "regiao": "Nordeste",
+   "eleitorado": 11282999,
+   "instituto": "AtlasIntel",
+   "nota": "A+",
+   "data": "2026-09-02",
+   "amostra": 1804,
+   "bruto_lula": 58.1,
+   "bruto_adv": 29.0,
+   "indefinidos": 12.9,
+   "lula_2026": 66.7,
+   "adv_2026": 33.3,
+   "lula_2022": 72.12,
+   "adv_2022": 27.88,
+   "delta_lula": -5.4,
+   "delta_adv": 5.4,
+   "fonte": "https://vermelho.org.br/2026/09/03/lula-abre-30-pontos-sobre-flavio-bolsonaro-na-bahia-aponta-atlasintel/"
+  },
+  {
+   "uf": "PR",
+   "estado": "Paraná",
+   "regiao": "Sul",
+   "eleitorado": 8480626,
+   "instituto": "AtlasIntel",
+   "nota": "A+",
+   "data": "2026-09-16",
+   "amostra": 1794,
+   "bruto_lula": 38.8,
+   "bruto_adv": 57.5,
+   "indefinidos": 3.7,
+   "lula_2026": 40.3,
+   "adv_2026": 59.7,
+   "lula_2022": 37.6,
+   "adv_2022": 62.4,
+   "delta_lula": 2.7,
+   "delta_adv": -2.7,
+   "fonte": "https://www.brasildefato.com.br/2026/09/17/lula-cresce-6-pontos-no-parana-mostra-pesquisa-atlas/"
+  },
+  {
+   "uf": "MG",
+   "estado": "Minas Gerais",
+   "regiao": "Sudeste",
+   "eleitorado": 16284615,
+   "instituto": "AtlasIntel",
+   "nota": "A+",
+   "data": "2026-09-04",
+   "amostra": 1804,
+   "bruto_lula": 48.7,
+   "bruto_adv": 42.1,
+   "indefinidos": 9.2,
+   "lula_2026": 53.6,
+   "adv_2026": 46.4,
+   "lula_2022": 50.2,
+   "adv_2022": 49.8,
+   "delta_lula": 3.4,
+   "delta_adv": -3.4,
+   "fonte": "https://exame.com/brasil/atlasintel-lula-tem-89-pontos-de-vantagem-sobre-flavio-bolsonaro-no-2o-maior-colegio-eleitoral/"
+  }
+ ],
+ "n_pesquisas_uf": 3
 }

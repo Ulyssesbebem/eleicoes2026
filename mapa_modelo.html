@@ -126,6 +126,32 @@ input[type=range]{width:100%; accent-color:var(--tinta-3); cursor:pointer}
   .cartao{padding:16px}
 }
 
+/* ------------------------------------------------- comparações reais */
+.comparacoes{display:flex; flex-direction:column; gap:2px}
+.comp{padding:14px 0; border-bottom:1px solid var(--grade)}
+.comp:first-child{padding-top:0}
+.comp:last-child{border-bottom:0; padding-bottom:0}
+.comp-topo{display:flex; justify-content:space-between; align-items:baseline;
+  gap:12px; flex-wrap:wrap; margin-bottom:10px}
+.comp-uf{font-size:14px}
+.comp-uf b{font-family:var(--mono); font-size:13px; margin-right:6px}
+.comp-uf span{color:var(--tinta-2)}
+.comp-meta{font-family:var(--mono); font-size:11px; color:var(--tinta-3)}
+.comp-par{display:grid; grid-template-columns:1fr 1fr 78px; gap:16px; align-items:center}
+.comp-rot{font-size:11.5px; color:var(--tinta-3); margin-bottom:5px}
+.comp-bar{position:relative; height:20px; display:flex; align-items:center}
+.comp-bar i{position:absolute; left:0; height:16px; border-radius:0 3px 3px 0}
+.comp-bar span{position:relative; font-family:var(--mono); font-size:12px; font-weight:600;
+  margin-left:auto; padding-left:8px}
+.comp-delta{font-family:var(--serif); font-size:26px; font-weight:600; text-align:right;
+  line-height:1; white-space:nowrap}
+.comp-delta small{font-family:var(--mono); font-size:11px; font-weight:400;
+  margin-left:3px; opacity:.7}
+@media (max-width:640px){
+  .comp-par{grid-template-columns:1fr 1fr 58px; gap:10px}
+  .comp-delta{font-size:20px}
+}
+
 .aviso{margin-top:18px; padding:16px 18px; border-radius:9px; background:var(--realce);
   border:1px solid var(--borda); font-size:13px; color:var(--tinta-2); line-height:1.6}
 .aviso b{color:var(--tinta)}
@@ -140,13 +166,26 @@ input[type=range]{width:100%; accent-color:var(--tinta-3); cursor:pointer}
 <div class="envoltorio">
 
   <header class="masthead">
-    <div class="selo">2º turno · projeção por swing uniforme</div>
+    <div class="selo">2º turno · votos válidos · Lula × Flávio</div>
     <h1>Estado por Estado</h1>
     <p class="subtitulo" id="subtitulo"></p>
   </header>
 
   <section class="secao">
-    <h2>Mova o país e veja os estados</h2>
+    <h2>O que as pesquisas estaduais dizem</h2>
+    <p class="nota" id="nota-reais"></p>
+    <div id="reais"></div>
+    <div class="aviso" id="padrao"></div>
+    <div class="aviso" id="cobertura"></div>
+  </section>
+
+  <section class="secao">
+    <h2>E nos outros estados?</h2>
+    <p class="nota" id="nota-modelo"></p>
+  </section>
+
+  <section class="secao" style="padding-top:8px">
+    <h2 style="font-size:20px">Simulador de swing nacional</h2>
     <p class="nota" id="nota-controle"></p>
 
     <div class="cartao">
@@ -294,12 +333,94 @@ function pintarEstados(){
     `<span><i class="chip fant"></i>margem de 2022</span>`;
 }
 
+/* --------------------------------------------------------- pesquisas reais */
+const C = D.comparacoes || [];
+
+function pintarReais(){
+  const alvo = document.getElementById("reais");
+  if (!C.length){
+    alvo.innerHTML = `<div class="cartao" style="color:var(--tinta-2);font-size:13.5px">
+      Ainda não há pesquisa estadual de 2º turno de nenhum instituto nota A na base.</div>`;
+    return;
+  }
+  const teto = 80;   // escala fixa: as barras dos estados são comparáveis entre si
+  alvo.innerHTML = `<div class="cartao"><div class="comparacoes">` + C.map(c => {
+    const sobe = c.delta_adv > 0;
+    return `<div class="comp">
+      <div class="comp-topo">
+        <div class="comp-uf"><b>${c.uf}</b> <span>${esc(c.estado)}</span></div>
+        <div class="comp-meta">${esc(c.instituto)} · ${c.data.slice(8,10)}/${c.data.slice(5,7)}
+          · ${nf0.format(c.amostra)} entrevistas</div>
+      </div>
+      <div class="comp-par">
+        <div class="comp-lado">
+          <div class="comp-rot">Bolsonaro em 2022</div>
+          <div class="comp-bar"><i style="width:${c.adv_2022/teto*100}%;background:var(--tinta-3)"></i>
+            <span>${nf1.format(c.adv_2022)}%</span></div>
+        </div>
+        <div class="comp-lado">
+          <div class="comp-rot">Flávio agora</div>
+          <div class="comp-bar"><i style="width:${c.adv_2026/teto*100}%;background:var(--dir)"></i>
+            <span>${nf1.format(c.adv_2026)}%</span></div>
+        </div>
+        <div class="comp-delta" style="color:${sobe ? "var(--dir)" : "var(--esq)"}">
+          ${sinal(c.delta_adv)}<small>pp</small>
+        </div>
+      </div>
+    </div>`;
+  }).join("") + `</div></div>`;
+}
+
 /* --------------------------------------------------------- textos fixos */
 const n22 = D.nacional_2022, n26 = D.nacional_2026;
 
 document.getElementById("subtitulo").innerHTML =
-  `Como cada estado votou no 2º turno de 2022 e onde estaria hoje, se o movimento
-   nacional das pesquisas se repetisse igual em todo lugar.`;
+  `O que Bolsonaro fez em cada estado no 2º turno de 2022 contra o que as pesquisas
+   estaduais dão a Flávio agora — e, onde não há pesquisa, quanto o estado aguenta
+   antes de virar.`;
+
+document.getElementById("nota-reais").innerHTML =
+  `Pesquisas presidenciais de 2º turno feitas <b>dentro de cada estado</b>, só de
+   institutos nota A. Convertemos para votos válidos aqui, sem confiar no rótulo da
+   matéria: várias publicam "votos válidos" em números que ainda carregam indecisos e
+   não somam 100.`;
+
+if (C.length){
+  const sobem = C.filter(c => c.delta_adv > 0), caem = C.filter(c => c.delta_adv < 0);
+  const forte22 = C.filter(c => c.adv_2022 > 50), fraco22 = C.filter(c => c.adv_2022 <= 50);
+  const mediaForte = forte22.length
+    ? forte22.reduce((a, c) => a + c.delta_adv, 0) / forte22.length : null;
+  const mediaFraco = fraco22.length
+    ? fraco22.reduce((a, c) => a + c.delta_adv, 0) / fraco22.length : null;
+
+  document.getElementById("padrao").innerHTML =
+    (mediaForte != null && mediaFraco != null && mediaForte < 0 && mediaFraco > 0)
+      ? `<b>O padrão que aparece.</b> Flávio vai <b>melhor que o pai onde o pai era
+         fraco</b> e pior onde ele era forte: nos estados que Bolsonaro venceu em 2022
+         a média é ${sinal(mediaForte)} pp, e nos que ele perdeu é ${sinal(mediaFraco)} pp.
+         Com ${C.length} estados isso é indício, não conclusão — mas é o contrário do que
+         o swing uniforme supõe, e vale acompanhar conforme saírem mais pesquisas.`
+      : `<b>Leitura.</b> ${sobem.length} estado${sobem.length === 1 ? "" : "s"} com Flávio
+         acima do que Bolsonaro fez em 2022, ${caem.length} abaixo. Poucos estados ainda
+         para afirmar um padrão.`;
+
+  const cobertos = C.reduce((a, c) => a + c.eleitorado, 0);
+  const semPesquisa = E.filter(u => !C.some(c => c.uf === u.uf))
+    .sort((a, b) => b.eleitorado - a.eleitorado).slice(0, 6).map(u => u.uf);
+  document.getElementById("cobertura").innerHTML =
+    `<b>Cobertura: ${C.length} de 27 unidades</b>, ${nf1.format(100 * cobertos / D.eleitorado_total)}%
+     do eleitorado. Não existe fonte organizada de pesquisa presidencial por estado — cada
+     uma sai como matéria avulsa, e as páginas estaduais da Wikipédia cobrem governador,
+     não presidente. Os maiores colégios ainda sem pesquisa de 2º turno na base:
+     ${semPesquisa.join(", ")}.`;
+}
+
+document.getElementById("nota-modelo").innerHTML =
+  `Para os ${27 - C.length} estados sem pesquisa, sobra estimar. O simulador abaixo aplica
+   um mesmo deslocamento nacional a todos os estados sobre o resultado de 2022 — é
+   <b>modelo, não medição</b>, e os três estados acima já mostram por que ele falha:
+   o movimento real não é igual em todo lugar. A parte que sobrevive é quanto cada
+   estado aguenta antes de virar, que vem direto da margem de 2022.`;
 
 document.getElementById("nota-controle").innerHTML =
   `Em 2022 o 2º turno terminou <b>${nf1.format(n22.esquerda)}% × ${nf1.format(n22.direita)}%</b>.
@@ -347,6 +468,7 @@ document.getElementById("rodape").innerHTML = `
 const slider = document.getElementById("swing");
 
 function atualizar(){
+  pintarReais();
   /* sempre o beneficiário com valor positivo: '−0,1 para Flávio' confunde */
   document.getElementById("v-swing").textContent = Math.abs(swing) < 0.05
     ? "sem movimento"

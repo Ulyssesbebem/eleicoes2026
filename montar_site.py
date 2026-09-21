@@ -29,7 +29,7 @@ DADOS = [
     "pesquisas_1t.csv", "pesquisas_2t.csv", "agregado.json",
     "pesquisas_2018.csv", "pesquisas_2022.csv",
     "pesquisas_2018_2t.csv", "pesquisas_2022_2t.csv", "afericao.json",
-    "resultados_2022_uf.csv", "projecao_uf.json",
+    "resultados_2022_uf.csv", "projecao_uf.json", "pesquisas_uf.csv",
 ]
 
 NAV_CSS = """

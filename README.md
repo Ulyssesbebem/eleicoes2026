@@ -10,8 +10,8 @@ Três páginas:
 - **Agregador 2026** — onde a corrida está, com o peso de cada pesquisa à mostra
 - **Pesquisa × Urna** — o que as pesquisas finais de 2018 e 2022 diziam contra o
   que as urnas devolveram
-- **Estado por Estado** — o 2º turno de 2022 por UF e um simulador de swing
-  nacional, para ver quanto cada estado aguenta antes de virar
+- **Estado por Estado** — o que Bolsonaro fez em cada UF no 2º turno de 2022
+  contra o que as pesquisas estaduais dão a Flávio agora
 
 ## Como a média é calculada
 
@@ -50,6 +50,7 @@ a ponto de o ruído amostral superar o ganho.
 | `aferir.py` | Compara pesquisas finais com as urnas → `afericao.json`, `aferidor.html` |
 | `verificar.py` | Confere se os dados fazem sentido antes de publicar |
 | `coletar_uf.py` | Resultado do 2º turno de 2022 por UF → `resultados_2022_uf.csv` |
+| `pesquisas_uf.csv` | **Preenchido à mão**: pesquisas presidenciais estaduais |
 | `projetar_uf.py` | Swing uniforme por estado → `projecao_uf.json`, `estados.html` |
 | `montar_site.py` | Monta `site/` para o GitHub Pages |
 
@@ -90,13 +91,24 @@ troca fica isolada em `coletar.py`.
 **Paraná Pesquisas não publica 1º turno presidencial desde março de 2026** e, na
 prática, sai da média pela recência, embora continue na lista.
 
-**A página por estado é modelo, não medição.** Não existem pesquisas
-presidenciais estaduais dos institutos nota A — eles medem presidente no âmbito
-nacional e, no estadual, medem governador. Em 2026 saíram pesquisas
-presidenciais estaduais para 5 das 27 unidades, de um instituto fora da lista.
-A projeção por swing uniforme supõe que todo estado se move igual, o que é
-sabidamente falso no Brasil. A leitura que sobrevive a esse pressuposto é
-"quanto cada estado aguenta antes de virar", que vem direto da margem de 2022.
+**A página por estado não se atualiza sozinha.** Pesquisas presidenciais
+estaduais existem — a AtlasIntel publica várias —, mas não há fonte estruturada
+para elas: cada uma sai como matéria ou PDF avulso, e as páginas estaduais da
+Wikipédia cobrem governador, não presidente. Por isso `pesquisas_uf.csv` é
+alimentado à mão, uma linha por pesquisa:
+
+```
+uf,instituto,data_inicio,data_fim,amostra,margem,turno,lula,adversario,fonte
+PR,AtlasIntel,2026-09-11,2026-09-16,1794,2.0,2,38.8,57.5,https://...
+```
+
+Percentuais como publicados; a conversão para votos válidos é feita no código,
+porque várias matérias rotulam "votos válidos" números que ainda carregam
+indecisos. Institutos fora da lista nota A são ignorados na leitura.
+
+O simulador de swing uniforme na mesma página cobre os estados sem pesquisa, e é
+**modelo, não medição** — os estados com pesquisa real já mostram que o
+movimento não é uniforme.
 
 **Uma média ponderada não é previsão.** E o próprio `aferir.py` mostra o
 tamanho do problema: em 2018 e 2022 o agregado subestimou o candidato da direita
