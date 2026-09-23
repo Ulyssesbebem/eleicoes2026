@@ -24,6 +24,21 @@ NOTAS = {
     "Futura":             {"nota": "A-", "rank": 14, "n_pesquisas": 29, "erro_medio": 3.9},
 }
 
+# Candidatos que sairam da disputa. Ficam de fora do agregado, das barras e da
+# conta de votos validos, mesmo nas pesquisas antigas em que apareciam: quem nao
+# esta na urna nao e mais uma opcao, e manter o nome so inflaria um percentual
+# que nao existe mais.
+#
+# As pesquisas seguem intactas em pesquisas_1t.csv, que e o arquivo historico -
+# aqui se muda o que entra na conta, nao o que foi medido.
+FORA_DA_DISPUTA = {
+    "Marçal": {
+        "desde": "2026-09-11",
+        "motivo": "registro indeferido pelo TSE",
+    },
+}
+
+
 # como os nomes aparecem na Wikipedia -> nome canonico
 APELIDOS = {
     "datafolha": "Datafolha",

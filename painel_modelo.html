@@ -885,9 +885,24 @@ function pintarTabela(){
 function pintarRodape(){
   const insts = Object.keys(D.institutos).map(i =>
     `${i} <span style="font-family:var(--mono)">${D.institutos[i].nota}</span>`).join(" · ");
+  const fora = D.fora_da_disputa || {};
+  const nomesFora = Object.keys(fora);
+  const blocoFora = nomesFora.length ? `
+    <p><b>Fora da conta.</b> ${nomesFora.map(n =>
+      `${n} (${fora[n].motivo}${fora[n].desde
+        ? ", " + new Date(fora[n].desde + "T00:00:00Z").toLocaleDateString("pt-BR", {timeZone: "UTC"})
+        : ""})`).join("; ")}.
+    Quem saiu da disputa fica de fora da média e dos votos válidos <em>também nas
+    pesquisas antigas em que aparecia</em> — não está mais na urna, então manter o nome
+    inflaria um percentual que não existe. As pesquisas seguem intactas no CSV: o que
+    muda é o que entra na conta, não o que foi medido. Na prática os votos dele são
+    redistribuídos proporcionalmente entre os demais, o que é uma suposição, não uma
+    medida.</p>` : "";
+
   document.getElementById("rodape").innerHTML = `
     <p><b>Institutos incluídos.</b> ${insts}. Todos com nota A&#8209;, A ou A+ no ranking de
     acurácia; nenhum outro instituto entra na média, por melhor que seja a pesquisa.</p>
+    ${blocoFora}
     <p><b>Fonte dos números.</b> Tabelas de pesquisas da Wikipédia para a eleição presidencial
     de 2026, que por sua vez citam o registro de cada pesquisa. Coleta e cálculo em
     <span style="font-family:var(--mono)">coletar.py</span> e

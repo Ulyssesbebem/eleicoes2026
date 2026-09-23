@@ -16,7 +16,7 @@ import sys
 from collections import defaultdict
 from datetime import date, timedelta
 
-from institutos import NOTAS, PESO_NOTA
+from institutos import FORA_DA_DISPUTA, NOTAS, PESO_NOTA
 
 # ------------------------------------------------------------------ parametros
 
@@ -151,8 +151,11 @@ def candidatos_relevantes(pesquisas, referencia, janela, minimo=MIN_PESQUISAS_CA
     for p in pesquisas:
         if (referencia - p["data_fim"]).days <= janela and p["data_fim"] <= referencia:
             for c, v in p["valores"].items():
-                if c not in ("Indefinidos", "Outros") and v is not None:
-                    cont[c] += 1
+                if c in ("Indefinidos", "Outros") or v is None:
+                    continue
+                if c in FORA_DA_DISPUTA:     # saiu da disputa: nao entra na conta
+                    continue
+                cont[c] += 1
     return [c for c, n in sorted(cont.items(), key=lambda x: -x[1]) if n >= minimo]
 
 
@@ -349,6 +352,7 @@ def main():
             "peso_nota": PESO_NOTA,
         },
         "institutos": NOTAS,
+        "fora_da_disputa": FORA_DA_DISPUTA,
         "candidatos": cands,
         "agregado": {c: {
             "media": round(detalhe[c]["media"], 2),

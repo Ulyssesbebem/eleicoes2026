@@ -49,6 +49,12 @@
    "erro_medio": 3.9
   }
  },
+ "fora_da_disputa": {
+  "Marçal": {
+   "desde": "2026-09-11",
+   "motivo": "registro indeferido pelo TSE"
+  }
+ },
  "candidatos": [
   "Lula",
   "Flávio",
@@ -61,13 +67,12 @@
   "Grassi",
   "Dias",
   "Clariana",
-  "Costa",
-  "Marçal"
+  "Costa"
  ],
  "agregado": {
   "Lula": {
    "media": 41.78,
-   "valido": 42.8,
+   "valido": 43.91,
    "desvio": 2.97,
    "n": 14,
    "min": 38.0,
@@ -75,7 +80,7 @@
   },
   "Flávio": {
    "media": 37.24,
-   "valido": 38.15,
+   "valido": 39.13,
    "desvio": 4.79,
    "n": 14,
    "min": 28.7,
@@ -83,7 +88,7 @@
   },
   "Cury": {
    "media": 5.1,
-   "valido": 5.22,
+   "valido": 5.36,
    "desvio": 2.32,
    "n": 14,
    "min": 1.2,
@@ -91,7 +96,7 @@
   },
   "Renan": {
    "media": 4.21,
-   "valido": 4.31,
+   "valido": 4.42,
    "desvio": 1.32,
    "n": 14,
    "min": 2.7,
@@ -99,7 +104,7 @@
   },
   "Caiado": {
    "media": 2.79,
-   "valido": 2.86,
+   "valido": 2.93,
    "desvio": 1.3,
    "n": 14,
    "min": 1.1,
@@ -107,7 +112,7 @@
   },
   "Zema": {
    "media": 1.4,
-   "valido": 1.44,
+   "valido": 1.47,
    "desvio": 0.59,
    "n": 14,
    "min": 0.7,
@@ -115,7 +120,7 @@
   },
   "Samara": {
    "media": 0.74,
-   "valido": 0.75,
+   "valido": 0.77,
    "desvio": 0.34,
    "n": 14,
    "min": 0.0,
@@ -123,7 +128,7 @@
   },
   "Pimenta": {
    "media": 0.5,
-   "valido": 0.51,
+   "valido": 0.53,
    "desvio": 0.5,
    "n": 13,
    "min": 0.0,
@@ -139,7 +144,7 @@
   },
   "Dias": {
    "media": 0.32,
-   "valido": 0.33,
+   "valido": 0.34,
    "desvio": 0.56,
    "n": 10,
    "min": 0.0,
@@ -147,7 +152,7 @@
   },
   "Clariana": {
    "media": 0.46,
-   "valido": 0.47,
+   "valido": 0.48,
    "desvio": 0.4,
    "n": 9,
    "min": 0.0,
@@ -155,19 +160,11 @@
   },
   "Costa": {
    "media": 0.39,
-   "valido": 0.4,
+   "valido": 0.41,
    "desvio": 0.5,
    "n": 9,
    "min": 0.0,
    "max": 1.1
-  },
-  "Marçal": {
-   "media": 2.46,
-   "valido": 2.52,
-   "desvio": 0.55,
-   "n": 2,
-   "min": 1.9,
-   "max": 3.0
   }
  },
  "serie": [
@@ -3503,9 +3500,7 @@
    "Clariana": 0.0,
    "Clariana__dp": 0.0,
    "Costa": 0.68,
-   "Costa__dp": 0.47,
-   "Marçal": 1.9,
-   "Marçal__dp": 0.0
+   "Costa__dp": 0.47
   },
   {
    "data": "2026-08-31",
@@ -3532,9 +3527,7 @@
    "Clariana": 0.54,
    "Clariana__dp": 0.5,
    "Costa": 0.82,
-   "Costa__dp": 0.38,
-   "Marçal": 2.28,
-   "Marçal__dp": 0.52
+   "Costa__dp": 0.38
   },
   {
    "data": "2026-09-01",
@@ -3561,9 +3554,7 @@
    "Clariana": 0.54,
    "Clariana__dp": 0.5,
    "Costa": 0.82,
-   "Costa__dp": 0.38,
-   "Marçal": 2.28,
-   "Marçal__dp": 0.52
+   "Costa__dp": 0.38
   },
   {
    "data": "2026-09-02",
@@ -3590,9 +3581,7 @@
    "Clariana": 0.32,
    "Clariana__dp": 0.46,
    "Costa": 0.89,
-   "Costa__dp": 0.31,
-   "Marçal": 2.28,
-   "Marçal__dp": 0.52
+   "Costa__dp": 0.31
   },
   {
    "data": "2026-09-03",
@@ -3619,9 +3608,7 @@
    "Clariana": 0.32,
    "Clariana__dp": 0.46,
    "Costa": 0.89,
-   "Costa__dp": 0.31,
-   "Marçal": 2.28,
-   "Marçal__dp": 0.52
+   "Costa__dp": 0.31
   },
   {
    "data": "2026-09-04",
@@ -3648,9 +3635,7 @@
    "Clariana": 0.32,
    "Clariana__dp": 0.46,
    "Costa": 0.89,
-   "Costa__dp": 0.31,
-   "Marçal": 2.28,
-   "Marçal__dp": 0.52
+   "Costa__dp": 0.31
   },
   {
    "data": "2026-09-05",
@@ -3677,9 +3662,7 @@
    "Clariana": 0.32,
    "Clariana__dp": 0.46,
    "Costa": 0.89,
-   "Costa__dp": 0.31,
-   "Marçal": 2.28,
-   "Marçal__dp": 0.52
+   "Costa__dp": 0.31
   },
   {
    "data": "2026-09-06",
@@ -3706,9 +3689,7 @@
    "Clariana": 0.32,
    "Clariana__dp": 0.46,
    "Costa": 0.89,
-   "Costa__dp": 0.31,
-   "Marçal": 2.28,
-   "Marçal__dp": 0.52
+   "Costa__dp": 0.31
   },
   {
    "data": "2026-09-07",
@@ -3735,9 +3716,7 @@
    "Clariana": 0.32,
    "Clariana__dp": 0.46,
    "Costa": 0.89,
-   "Costa__dp": 0.31,
-   "Marçal": 2.28,
-   "Marçal__dp": 0.52
+   "Costa__dp": 0.31
   },
   {
    "data": "2026-09-08",
@@ -3764,9 +3743,7 @@
    "Clariana": 0.32,
    "Clariana__dp": 0.46,
    "Costa": 0.93,
-   "Costa__dp": 0.26,
-   "Marçal": 2.28,
-   "Marçal__dp": 0.52
+   "Costa__dp": 0.26
   },
   {
    "data": "2026-09-09",
@@ -3793,9 +3770,7 @@
    "Clariana": 0.31,
    "Clariana__dp": 0.33,
    "Costa": 0.94,
-   "Costa__dp": 0.24,
-   "Marçal": 2.37,
-   "Marçal__dp": 0.54
+   "Costa__dp": 0.24
   },
   {
    "data": "2026-09-10",
@@ -3822,9 +3797,7 @@
    "Clariana": 0.31,
    "Clariana__dp": 0.33,
    "Costa": 0.71,
-   "Costa__dp": 0.43,
-   "Marçal": 2.37,
-   "Marçal__dp": 0.54
+   "Costa__dp": 0.43
   },
   {
    "data": "2026-09-11",
@@ -3851,9 +3824,7 @@
    "Clariana": 0.54,
    "Clariana__dp": 0.41,
    "Costa": 0.82,
-   "Costa__dp": 0.36,
-   "Marçal": 2.37,
-   "Marçal__dp": 0.54
+   "Costa__dp": 0.36
   },
   {
    "data": "2026-09-12",
@@ -3880,9 +3851,7 @@
    "Clariana": 0.54,
    "Clariana__dp": 0.41,
    "Costa": 0.82,
-   "Costa__dp": 0.36,
-   "Marçal": 2.37,
-   "Marçal__dp": 0.54
+   "Costa__dp": 0.36
   },
   {
    "data": "2026-09-13",
@@ -3909,9 +3878,7 @@
    "Clariana": 0.68,
    "Clariana__dp": 0.43,
    "Costa": 0.9,
-   "Costa__dp": 0.33,
-   "Marçal": 2.37,
-   "Marçal__dp": 0.54
+   "Costa__dp": 0.33
   },
   {
    "data": "2026-09-14",
@@ -3938,9 +3905,7 @@
    "Clariana": 0.68,
    "Clariana__dp": 0.43,
    "Costa": 0.9,
-   "Costa__dp": 0.33,
-   "Marçal": 2.37,
-   "Marçal__dp": 0.54
+   "Costa__dp": 0.33
   },
   {
    "data": "2026-09-15",
@@ -3967,9 +3932,7 @@
    "Clariana": 0.6,
    "Clariana__dp": 0.45,
    "Costa": 0.79,
-   "Costa__dp": 0.43,
-   "Marçal": 2.37,
-   "Marçal__dp": 0.54
+   "Costa__dp": 0.43
   },
   {
    "data": "2026-09-16",
@@ -3996,9 +3959,7 @@
    "Clariana": 0.48,
    "Clariana__dp": 0.48,
    "Costa": 0.57,
-   "Costa__dp": 0.51,
-   "Marçal": 2.42,
-   "Marçal__dp": 0.55
+   "Costa__dp": 0.51
   },
   {
    "data": "2026-09-17",
@@ -4025,9 +3986,7 @@
    "Clariana": 0.48,
    "Clariana__dp": 0.48,
    "Costa": 0.57,
-   "Costa__dp": 0.51,
-   "Marçal": 2.42,
-   "Marçal__dp": 0.55
+   "Costa__dp": 0.51
   },
   {
    "data": "2026-09-18",
@@ -4054,9 +4013,7 @@
    "Clariana": 0.48,
    "Clariana__dp": 0.48,
    "Costa": 0.57,
-   "Costa__dp": 0.51,
-   "Marçal": 2.42,
-   "Marçal__dp": 0.55
+   "Costa__dp": 0.51
   },
   {
    "data": "2026-09-19",
@@ -4083,9 +4040,7 @@
    "Clariana": 0.48,
    "Clariana__dp": 0.48,
    "Costa": 0.57,
-   "Costa__dp": 0.51,
-   "Marçal": 2.42,
-   "Marçal__dp": 0.55
+   "Costa__dp": 0.51
   },
   {
    "data": "2026-09-20",
@@ -4112,9 +4067,7 @@
    "Clariana": 0.48,
    "Clariana__dp": 0.48,
    "Costa": 0.57,
-   "Costa__dp": 0.51,
-   "Marçal": 2.42,
-   "Marçal__dp": 0.55
+   "Costa__dp": 0.51
   },
   {
    "data": "2026-09-21",
@@ -4141,9 +4094,7 @@
    "Clariana": 0.48,
    "Clariana__dp": 0.48,
    "Costa": 0.57,
-   "Costa__dp": 0.51,
-   "Marçal": 2.42,
-   "Marçal__dp": 0.55
+   "Costa__dp": 0.51
   },
   {
    "data": "2026-09-22",
@@ -4170,9 +4121,7 @@
    "Clariana": 0.46,
    "Clariana__dp": 0.4,
    "Costa": 0.39,
-   "Costa__dp": 0.5,
-   "Marçal": 2.46,
-   "Marçal__dp": 0.55
+   "Costa__dp": 0.5
   }
  ],
  "house_effects": {
@@ -4233,19 +4182,18 @@
    "Costa": 0.36
   },
   "Real Time Big Data": {
-   "Lula": -3.28,
-   "Flávio": -2.33,
-   "Cury": 1.56,
-   "Renan": 2.45,
-   "Caiado": 1.76,
-   "Zema": -0.37,
+   "Lula": -3.17,
+   "Flávio": -2.25,
+   "Cury": 1.64,
+   "Renan": 2.47,
+   "Caiado": 1.78,
+   "Zema": -0.36,
    "Samara": -1.46,
-   "Pimenta": -0.25,
-   "Grassi": 0.63,
-   "Dias": 0.5,
-   "Clariana": 1.02,
-   "Costa": 0.32,
-   "Marçal": 1.08
+   "Pimenta": -0.24,
+   "Grassi": 0.65,
+   "Dias": 0.52,
+   "Clariana": 1.05,
+   "Costa": 0.33
   }
  },
  "pesquisas_janela": [
@@ -4489,8 +4437,7 @@
     "Grassi": 1.0,
     "Dias": 1.0,
     "Clariana": 1.0,
-    "Costa": 1.0,
-    "Marçal": 3.0
+    "Costa": 1.0
    }
   },
   {
@@ -4510,8 +4457,7 @@
     "Zema": 1.0,
     "Samara": 0.9,
     "Pimenta": 0.1,
-    "Grassi": 0.1,
-    "Marçal": 1.9
+    "Grassi": 0.1
    }
   },
   {
