@@ -459,7 +459,14 @@ let estado = {janela: PADRAO.janela, meiavida: PADRAO.meiavida, base: "bruto", d
 
 /* ------------------------------------------------------------ ponderação
    Mesmo cálculo de agregar.py: peso = nota × recência × amostra × repetição.  */
-function fatorAmostra(n){
+/* Institutos com fator fixado em institutos.py ignoram a regra de amostra.
+   Vem do JSON, e não repetido aqui, para o número não divergir do Python:
+   esta página recalcula os pesos no navegador para os controles funcionarem
+   ao vivo, então as duas implementações têm de casar. */
+const FATOR_FIXO = D.parametros.fator_amostra_fixo || {};
+
+function fatorAmostra(n, instituto){
+  if (FATOR_FIXO[instituto] != null) return FATOR_FIXO[instituto];
   if (!n) return 1;
   return Math.min(AMOSTRA_MAX, Math.max(AMOSTRA_MIN, Math.sqrt(n / AMOSTRA_REF)));
 }
@@ -480,7 +487,8 @@ function elegiveis(pesquisas, ref, janela){
 function peso(p, ref, meiavida){
   const wNota = PESO_NOTA[p.nota] != null ? PESO_NOTA[p.nota] : 0.5;
   const dias = (ref - dt(p.data)) / DIA;
-  return wNota * Math.pow(0.5, dias / meiavida) * fatorAmostra(p.amostra) / Math.sqrt(p._k);
+  return wNota * Math.pow(0.5, dias / meiavida) * fatorAmostra(p.amostra, p.instituto)
+         / Math.sqrt(p._k);
 }
 
 function agregar(pesquisas, cands, ref, janela, meiavida){

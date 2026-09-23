@@ -2,10 +2,6 @@
 site/
 painel.html
 painel_publico.html
-aferidor.html
-aferidor_publico.html
-estados.html
-estados_publico.html
 
 __pycache__/
 *.pyc

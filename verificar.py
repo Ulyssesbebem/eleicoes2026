@@ -122,9 +122,7 @@ if ag:
 
 # ------------------------------------------------------------------ paginas
 
-for arquivo, minimo in (("painel_publico.html", 100_000),
-                        ("aferidor_publico.html", 20_000),
-                        ("estados_publico.html", 15_000)):
+for arquivo, minimo in (("painel_publico.html", 100_000),):
     try:
         with io.open(arquivo, encoding="utf-8") as f:
             html = f.read()
@@ -135,6 +133,17 @@ for arquivo, minimo in (("painel_publico.html", 100_000),
         erro(f"{arquivo} tem so {len(html)} bytes - parece truncado")
     if "/*__DADOS__*/" in html:
         erro(f"{arquivo} ficou com o marcador de dados sem preencher")
+
+    # A pagina recalcula os pesos no navegador, para os controles de janela e
+    # meia-vida funcionarem ao vivo. Isso significa DUAS implementacoes da
+    # mesma formula, e ja aconteceu de uma mudar sem a outra: o Python passou
+    # a usar fator fixo para a AtlasIntel e o JS seguiu com a regra antiga,
+    # publicando numero diferente do calculado. Aqui se confere que cada
+    # parametro de ponderacao e de fato lido pelo script da pagina.
+    from institutos import FATOR_AMOSTRA_FIXO
+    if FATOR_AMOSTRA_FIXO and "D.parametros.fator_amostra_fixo" not in html:
+        erro(f"{arquivo} nao usa fator_amostra_fixo no JS - "
+             f"o peso da pagina vai divergir do calculado em agregar.py")
 
 # ------------------------------------------------------------------ saida
 
