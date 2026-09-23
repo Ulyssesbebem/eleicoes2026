@@ -15,6 +15,22 @@ PESO_NOTA = {
     "A-": 0.55,
 }
 
+# Fator de amostra fixado por instituto, quando a regra geral nao serve.
+#
+# A regra geral e sqrt(n/2000), limitada a 1,40. Pela amostra de ~5.000 a
+# AtlasIntel bateria no teto e pesaria 40% mais que as demais A+, que
+# entrevistam ~2.000. Como ela coleta por painel online - que recruta quem ja
+# esta na internet e se dispoe a responder, um recorte diferente do eleitorado
+# -, a vantagem por tamanho de amostra fica limitada a 1,10.
+#
+# RESSALVA, para quem for defender o criterio: a aferição em aferir.py nao
+# sustenta a penalizacao. Em 2022 a AtlasIntel foi a MAIS precisa entre os nota
+# A - errou 2,0 pontos no 1o turno, contra 7,4 do Datafolha. A restricao e
+# metodologica (desconfianca do painel online), nao empirica.
+FATOR_AMOSTRA_FIXO = {
+    "AtlasIntel": 1.10,
+}
+
 NOTAS = {
     "Datafolha":          {"nota": "A+", "rank": 1,  "n_pesquisas": 29, "erro_medio": 3.2},
     "AtlasIntel":         {"nota": "A+", "rank": 2,  "n_pesquisas": 8,  "erro_medio": 3.4},

@@ -1196,25 +1196,25 @@
  "vies_medio_esquerda": -1.65,
  "projecao_2026": {
   "sem_correcao": {
-   "Lula": 43.9,
-   "Flávio": 39.1,
-   "Cury": 5.4,
-   "Renan": 4.4,
-   "Caiado": 2.9,
+   "Lula": 43.7,
+   "Flávio": 38.8,
+   "Cury": 5.6,
+   "Renan": 4.3,
+   "Caiado": 3.1,
    "Zema": 1.5,
    "Samara": 0.8,
-   "Pimenta": 0.5,
-   "Grassi": 0.2,
-   "Dias": 0.3,
+   "Pimenta": 0.6,
+   "Grassi": 0.3,
+   "Dias": 0.4,
    "Clariana": 0.5,
    "Costa": 0.4
   },
   "com_correcao": {
-   "Lula": 42.7,
-   "Flávio": 41.3,
-   "Cury": 5.0,
-   "Renan": 4.2,
-   "Caiado": 2.8,
+   "Lula": 42.6,
+   "Flávio": 41.1,
+   "Cury": 5.2,
+   "Renan": 4.1,
+   "Caiado": 2.9,
    "Zema": 1.4,
    "Samara": 0.7,
    "Pimenta": 0.5,
@@ -1230,12 +1230,12 @@
  },
  "projecao_2026_2t": {
   "sem_correcao": {
-   "Flávio": 49.3,
-   "Lula": 50.7
+   "Flávio": 49.2,
+   "Lula": 50.8
   },
   "com_correcao": {
-   "Flávio": 49.3,
-   "Lula": 50.7
+   "Flávio": 49.2,
+   "Lula": 50.8
   },
   "vies_aplicado": 0.04
  }

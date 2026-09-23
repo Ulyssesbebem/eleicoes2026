@@ -25,11 +25,19 @@ peso = nota × recência × amostra × repetição
 |---|---|
 | `nota` | A+ vale 1,00; A vale 0,70; A- vale 0,55 |
 | `recência` | `0,5 ^ (dias / meia-vida)` — meia-vida padrão de 14 dias |
-| `amostra` | `√(n / 2000)`, limitado entre 0,75 e 1,40 |
+| `amostra` | `√(n / 2000)`, limitado entre 0,75 e 1,40 — **AtlasIntel fixada em 1,10** |
 | `repetição` | `1/√k` na k-ésima pesquisa mais recente do mesmo instituto |
 
 O fator de repetição existe para que um instituto que publica toda semana não
 domine a média pela frequência em vez da qualidade.
+
+A AtlasIntel tem o fator de amostra fixado em 1,10 em vez do 1,40 que a regra
+geral lhe daria: ela entrevista ~5.000 contra ~2.000 das demais A+, e coleta por
+painel online, que recruta quem já está na internet e se dispõe a responder.
+É um critério metodológico, não empírico — a aferição em `aferir.py` mostra que
+em 2022 a AtlasIntel foi a **mais precisa** entre os nota A (erro de 2,0 pontos
+no 1º turno contra 7,4 do Datafolha). Quem discordar muda uma linha em
+`institutos.py`.
 
 A meia-vida de 14 dias foi calibrada por validação cruzada fora da amostra
 (`calibrar.py`): para cada pesquisa, prevê-se o resultado dela usando só as

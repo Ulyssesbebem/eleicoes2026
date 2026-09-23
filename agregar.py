@@ -16,7 +16,7 @@ import sys
 from collections import defaultdict
 from datetime import date, timedelta
 
-from institutos import FORA_DA_DISPUTA, NOTAS, PESO_NOTA
+from institutos import FATOR_AMOSTRA_FIXO, FORA_DA_DISPUTA, NOTAS, PESO_NOTA
 
 # ------------------------------------------------------------------ parametros
 
@@ -62,7 +62,15 @@ def ler_csv(caminho):
 
 # ------------------------------------------------------------------ pesos
 
-def fator_amostra(n):
+def fator_amostra(n, instituto=None):
+    """
+    Peso por tamanho de amostra: sqrt(n/2000), limitado a [0,75 - 1,40].
+
+    Institutos em FATOR_AMOSTRA_FIXO ignoram a regra e usam o valor de la -
+    ver o comentario em institutos.py sobre a AtlasIntel e o painel online.
+    """
+    if instituto in FATOR_AMOSTRA_FIXO:
+        return FATOR_AMOSTRA_FIXO[instituto]
     if not n:
         return 1.0
     f = math.sqrt(n / AMOSTRA_REF)
@@ -80,7 +88,7 @@ def peso_pesquisa(p, referencia, ordem_no_instituto, meia_vida=MEIA_VIDA):
     w_nota = PESO_NOTA.get(nota, 0.5)
     dias = (referencia - p["data_fim"]).days
     w_rec = 0.5 ** (dias / meia_vida)
-    w_amo = fator_amostra(p["amostra"])
+    w_amo = fator_amostra(p["amostra"], p["instituto"])
     w_rep = 1 / math.sqrt(ordem_no_instituto)
     return w_nota * w_rec * w_amo * w_rep
 
@@ -350,6 +358,7 @@ def main():
             "meia_vida_dias": meia_vida,
             "amostra_ref": AMOSTRA_REF,
             "peso_nota": PESO_NOTA,
+            "fator_amostra_fixo": FATOR_AMOSTRA_FIXO,
         },
         "institutos": NOTAS,
         "fora_da_disputa": FORA_DA_DISPUTA,
