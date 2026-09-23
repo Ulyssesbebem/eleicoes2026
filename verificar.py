@@ -17,6 +17,7 @@ from datetime import date, timedelta
 MIN_PESQUISAS_1T = 20        # a base historica ja tem 41; menos que isso e suspeito
 MIN_INSTITUTOS = 3
 MAX_DIAS_SEM_PESQUISA = 60   # se a mais recente for antiga demais, algo quebrou
+DIAS_PARA_ESTRANHAR = 5      # na reta final sai pesquisa quase todo dia
 FAIXA_LIDER = (20.0, 70.0)   # o primeiro colocado tem de cair numa faixa sensata
 
 problemas = []
@@ -63,9 +64,17 @@ if p1:
         recente = max(datas)
         if recente > hoje + timedelta(days=1):
             erro(f"pesquisa com data no futuro: {recente.isoformat()}")
-        if (hoje - recente).days > MAX_DIAS_SEM_PESQUISA:
+        atraso = (hoje - recente).days
+        if atraso > MAX_DIAS_SEM_PESQUISA:
             erro(f"pesquisa mais recente e de {recente.isoformat()}, "
-                 f"ha {(hoje - recente).days} dias")
+                 f"ha {atraso} dias")
+        elif atraso > DIAS_PARA_ESTRANHAR:
+            # nao e erro: pode nao ter saido pesquisa mesmo. Mas perto da
+            # eleicao costuma significar que a coleta parou de enxergar a
+            # fonte, e vale aparecer no log antes de virar uma semana parada.
+            aviso(f"nenhuma pesquisa nova ha {atraso} dias "
+                  f"(a mais recente e de {recente.isoformat()}) - "
+                  f"confira se a coleta ainda enxerga a fonte")
 
     # percentuais dentro de 0-100 e soma plausivel
     for r in p1:

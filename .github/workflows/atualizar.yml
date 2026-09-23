@@ -62,21 +62,41 @@ jobs:
       - name: Montar o site
         run: python montar_site.py
 
+      # O site sobe ANTES de guardar os dados. Publicar é o objetivo; versionar
+      # os CSVs é arquivamento. Em 23/09 a ordem inversa derrubou o deploy
+      # inteiro porque o push falhou, e o site ficou uma semana parado com o
+      # pipeline "verde" até o passo 12.
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
       - name: Guardar os dados atualizados no repositório
+        continue-on-error: true      # nunca pode bloquear a publicação
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A pesquisas_*.csv resultados_2022_uf.csv agregado.json afericao.json projecao_uf.json
+
           if git diff --staged --quiet; then
             echo "Nenhuma pesquisa nova."
-          else
-            git commit -m "Dados: atualização automática de $(date -u +'%d/%m/%Y %H:%M') UTC"
-            git push
+            exit 0
           fi
 
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: site
+          git commit -m "Dados: atualização automática de $(date -u +'%d/%m/%Y %H:%M') UTC"
+
+          # o push pode ser recusado se o remoto andou desde o checkout
+          for tentativa in 1 2 3; do
+            if git push; then
+              echo "Enviado na tentativa $tentativa."
+              exit 0
+            fi
+            echo "Push recusado; trazendo o remoto e tentando de novo..."
+            git pull --rebase --autostash origin main || true
+            sleep 5
+          done
+
+          echo "::warning::Não consegui versionar os dados desta execução."
+          echo "O site foi publicado assim mesmo."
 
   publicar:
     needs: atualizar
