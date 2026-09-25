@@ -128,6 +128,20 @@ a{color:inherit}
   .vies-linha,.vies-escala{grid-template-columns:110px 1fr}
   .cartao{padding:16px}
 }
+.banda{
+  position:absolute; inset-block:1px; border:1px solid var(--tinta);
+  border-radius:2px; opacity:.32; pointer-events:none;
+}
+.linha-barra .valor .mg{color:var(--tinta-3); font-size:12px}
+.confronto-margem{
+  margin-top:7px; font-size:11.5px; color:var(--tinta-3);
+  font-variant-numeric:tabular-nums;
+}
+.confronto-margem b{color:var(--tinta-2); font-weight:500}
+.cruza50{
+  display:inline-block; margin-left:6px; padding:1px 6px; border-radius:4px;
+  background:var(--superficie-2); border:1px solid var(--borda); color:var(--tinta-2);
+}
 .legenda-faixa{
   display:flex; align-items:center; gap:8px; margin-top:16px; padding-top:14px;
   border-top:1px solid var(--grade); font-size:12px; color:var(--tinta-3);
@@ -283,7 +297,9 @@ td.num{font-family:var(--mono)}
         <div class="barras" id="barras"></div>
         <div class="legenda-faixa">
           <i class="amostra-faixa"></i>
-          intervalo entre a menor e a maior pesquisa da janela
+          intervalo entre a menor e a maior pesquisa
+          <i class="banda" style="position:static;display:inline-block;width:26px;height:11px;margin-left:14px"></i>
+          margem do agregado (95%)
         </div>
       </div>
 
@@ -552,6 +568,17 @@ function pintarMeta(){
     <span>Janela de <b>${estado.janela} dias</b></span>`;
 }
 
+/* A margem vem do JSON, calculada sobre os números brutos. Na visão de votos
+   válidos ela é reescalada pelo mesmo fator que o percentual, porque dividir
+   tudo pela soma dos válidos multiplica média e margem juntas. */
+function margemDe(c){
+  const d = D.agregado[c];
+  if (!d || d.margem == null) return null;
+  if (estado.base !== "validos") return d.margem;
+  const f = d.media > 0 ? d.valido / d.media : 1;
+  return d.margem * f;
+}
+
 /* ------------------------------------------------------------ barras */
 function pintarBarras(){
   const cands = D.candidatos;
@@ -564,13 +591,20 @@ function pintarBarras(){
     const d = m[c];
     const cor = CORES[c] || "var(--neutro-barra)";
     const faixaL = 100 * d.min / teto, faixaW = Math.max(0.6, 100 * (d.max - d.min) / teto);
+    /* banda de margem: o intervalo em que o agregado pode estar */
+    const mg = margemDe(c);
+    const bandaL = mg != null ? 100 * Math.max(0, d.media - mg) / teto : 0;
+    const bandaW = mg != null ? 100 * (Math.min(teto, d.media + mg) - Math.max(0, d.media - mg)) / teto : 0;
     return `<div class="linha-barra">
       <div class="nome">${c}</div>
       <div class="trilho">
         <div class="faixa" style="left:${faixaL}%;width:${faixaW}%"></div>
         <div class="preenchimento" style="width:${100 * d.media / teto}%;background:${cor}"></div>
+        ${mg != null ? `<div class="banda" style="left:${bandaL}%;width:${bandaW}%"></div>` : ""}
       </div>
-      <div class="valor"><b>${pct(d.media)}</b> <span style="color:var(--tinta-3)">${nf1.format(d.min)}–${nf1.format(d.max)}</span></div>
+      <div class="valor"><b>${pct(d.media)}</b> ${mg != null
+        ? `<span class="mg">±${nf1.format(mg)}</span>`
+        : `<span style="color:var(--tinta-3)">${nf1.format(d.min)}–${nf1.format(d.max)}</span>`}</div>
     </div>`;
   }).join("");
 
@@ -578,6 +612,32 @@ function pintarBarras(){
   document.getElementById("nota-base").innerHTML = estado.base === "bruto"
     ? `Percentual sobre todos os entrevistados. Os indecisos e quem votaria branco ou nulo somam <b>${ind ? pct(ind.media) : "—"}</b> e ficam fora das barras.`
     : `Percentual sobre os votos válidos: indecisos, brancos e nulos foram retirados e o restante foi reescalonado para 100%. É esta a base que decide se há 2º turno.`;
+}
+
+/* Margem do confronto, espelhando margem_duelo() em agregar.py: cada pesquisa
+   vai para votos válidos ANTES de entrar na média, porque num duelo a soma tem
+   de fechar em 100 e taxas de indecisos diferentes deslocariam a base. */
+function margemDuelo(lista, dois){
+  const a = dois[0], b = dois[1];
+  const els = elegiveis(lista, HOJE, estado.janela)
+    .filter(p => p.valores[a] != null && p.valores[b] != null);
+  if (els.length < 2) return null;
+
+  const vals = [], pesos = [];
+  els.forEach(p => {
+    const t = p.valores[a] + p.valores[b];
+    if (t <= 0) return;
+    vals.push(100 * p.valores[a] / t);
+    pesos.push(peso(p, HOJE, estado.meiavida));
+  });
+  const den = pesos.reduce((x, y) => x + y, 0);
+  if (den <= 0 || vals.length < 2) return null;
+  const m = vals.reduce((acc, v, i) => acc + v * pesos[i], 0) / den;
+  const varia = vals.reduce((acc, v, i) => acc + pesos[i] * Math.pow(v - m, 2), 0) / den;
+  const s2 = pesos.reduce((acc, w) => acc + w * w, 0);
+  const nEf = s2 ? den * den / s2 : 0;
+  if (nEf <= 1) return null;
+  return 1.96 * Math.sqrt(varia) / Math.sqrt(nEf);
 }
 
 /* ------------------------------------------------------------ 2º turno */
@@ -602,7 +662,9 @@ function pintarConfrontos(){
     const m = paraValidos(agregar(lista, dois, HOJE, estado.janela, estado.meiavida));
     if (!m[dois[0]] || !m[dois[1]]) continue;
     const ordenado = m[dois[0]].media >= m[dois[1]].media ? dois : [dois[1], dois[0]];
-    linhas.push({a: ordenado[0], b: ordenado[1], va: m[ordenado[0]].media, vb: m[ordenado[1]].media, n: m[ordenado[0]].n});
+    linhas.push({a: ordenado[0], b: ordenado[1], va: m[ordenado[0]].media,
+                 vb: m[ordenado[1]].media, n: m[ordenado[0]].n,
+                 margem: margemDuelo(lista, ordenado)});
   }
   linhas.sort((x, y) => (x.va - x.vb) - (y.va - y.vb));
 
@@ -613,12 +675,19 @@ function pintarConfrontos(){
     return `<div class="confronto">
       <div class="confronto-topo">
         <span class="confronto-nome">${l.a} <span style="color:var(--tinta-3)">vs</span> ${l.b}</span>
-        <span class="confronto-dif">${dif < 1 ? "empate técnico" : "+" + nf1.format(dif)}</span>
+        <span class="confronto-dif">${l.margem != null && dif <= 2 * l.margem
+          ? "empate estatístico" : (dif < 1 ? "empate técnico" : "+" + nf1.format(dif))}</span>
       </div>
       <div class="gangorra">
         <span style="width:${l.va}%;background:${corA}">${nf1.format(l.va)}</span>
         <span class="dir" style="width:${l.vb}%;background:${corB}">${nf1.format(l.vb)}</span>
       </div>
+      ${l.margem != null ? `<div class="confronto-margem">
+        margem ±${nf1.format(l.margem)} · ${l.a} entre
+        <b>${nf1.format(l.va - l.margem)}%</b> e <b>${nf1.format(l.va + l.margem)}%</b>
+        ${l.va - l.margem <= 50 && l.va + l.margem >= 50
+          ? '<span class="cruza50">o intervalo cruza os 50%</span>' : ''}
+      </div>` : ""}
     </div>`;
   }).join("") || `<p style="font-size:13px;color:var(--tinta-3)">Nenhum cenário de 2º turno dentro da janela.</p>`;
 }
@@ -936,6 +1005,16 @@ function pintarRodape(){
     de 2026, que por sua vez citam o registro de cada pesquisa. Coleta e cálculo em
     <span style="font-family:var(--mono)">coletar.py</span> e
     <span style="font-family:var(--mono)">agregar.py</span>.</p>
+    <p><b>A margem, e o que ela não cobre.</b> A margem de ±X é o erro padrão da média
+    ponderada a 95%, calculado a partir da <em>discordância entre os institutos</em>
+    dividida pela raiz do número efetivo de pesquisas. Usamos a dispersão observada em
+    vez da fórmula de amostra porque somar entrevistados suporia pesquisas como amostras
+    aleatórias independentes da mesma população — e cada instituto carrega viés próprio de
+    método, que não desaparece somando gente. Pela fórmula teórica a margem daria ±0,6
+    ponto, o que seria falso: as pesquisas individuais variam de 38% a 46% para Lula.
+    <b>Ela mede a precisão da média, não a distância até a urna</b> — viés que todos os
+    institutos compartilhem passa inteiro, e em 2018 e 2022 esse viés compartilhado foi de
+    6,0 e 3,8 pontos no 1º turno.</p>
     <p><b>O que isto não é.</b> Uma média ponderada não é uma previsão: ela descreve o que as
     pesquisas dizem hoje, com a incerteza de cada uma embutida. Paraná Pesquisas não publica
     1º turno presidencial desde março e, na prática, sai da média pela recência.</p>

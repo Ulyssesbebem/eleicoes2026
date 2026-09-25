@@ -77,6 +77,8 @@
    "valido": 43.61,
    "desvio": 2.56,
    "n": 12,
+   "n_efetivo": 8.26,
+   "margem": 1.75,
    "min": 38.0,
    "max": 45.8
   },
@@ -85,6 +87,8 @@
    "valido": 38.82,
    "desvio": 4.21,
    "n": 12,
+   "n_efetivo": 8.26,
+   "margem": 2.87,
    "min": 29.0,
    "max": 43.4
   },
@@ -93,6 +97,8 @@
    "valido": 5.3,
    "desvio": 1.9,
    "n": 12,
+   "n_efetivo": 8.26,
+   "margem": 1.3,
    "min": 2.0,
    "max": 10.0
   },
@@ -101,6 +107,8 @@
    "valido": 4.45,
    "desvio": 1.41,
    "n": 12,
+   "n_efetivo": 8.26,
+   "margem": 0.96,
    "min": 2.7,
    "max": 7.6
   },
@@ -109,6 +117,8 @@
    "valido": 2.89,
    "desvio": 1.19,
    "n": 12,
+   "n_efetivo": 8.26,
+   "margem": 0.81,
    "min": 1.1,
    "max": 5.0
   },
@@ -117,6 +127,8 @@
    "valido": 1.35,
    "desvio": 0.5,
    "n": 12,
+   "n_efetivo": 8.26,
+   "margem": 0.34,
    "min": 0.9,
    "max": 3.0
   },
@@ -125,6 +137,8 @@
    "valido": 0.91,
    "desvio": 0.24,
    "n": 12,
+   "n_efetivo": 8.26,
+   "margem": 0.17,
    "min": 0.4,
    "max": 1.1
   },
@@ -133,6 +147,8 @@
    "valido": 0.33,
    "desvio": 0.48,
    "n": 11,
+   "n_efetivo": 7.3,
+   "margem": 0.35,
    "min": 0.0,
    "max": 1.1
   },
@@ -141,6 +157,8 @@
    "valido": 0.54,
    "desvio": 0.51,
    "n": 11,
+   "n_efetivo": 7.3,
+   "margem": 0.37,
    "min": 0.0,
    "max": 1.1
   },
@@ -149,6 +167,8 @@
    "valido": 0.5,
    "desvio": 0.45,
    "n": 10,
+   "n_efetivo": 6.89,
+   "margem": 0.33,
    "min": 0.0,
    "max": 1.1
   },
@@ -157,6 +177,8 @@
    "valido": 0.42,
    "desvio": 0.58,
    "n": 9,
+   "n_efetivo": 6.21,
+   "margem": 0.45,
    "min": 0.0,
    "max": 2.0
   },
@@ -165,6 +187,8 @@
    "valido": 0.48,
    "desvio": 0.51,
    "n": 9,
+   "n_efetivo": 6.21,
+   "margem": 0.4,
    "min": 0.0,
    "max": 1.1
   },
@@ -173,6 +197,8 @@
    "valido": 0.42,
    "desvio": 0.49,
    "n": 2,
+   "n_efetivo": 1.92,
+   "margem": 0.69,
    "min": 0.0,
    "max": 1.0
   }
@@ -5593,6 +5619,7 @@
    "va_valido": 57.4,
    "vb_valido": 42.6,
    "n": 11,
+   "margem": 1.93,
    "ultima": "2026-09-23"
   },
   {
@@ -5604,6 +5631,7 @@
    "va_valido": 54.0,
    "vb_valido": 46.0,
    "n": 11,
+   "margem": 1.54,
    "ultima": "2026-09-23"
   },
   {
@@ -5615,6 +5643,7 @@
    "va_valido": 52.4,
    "vb_valido": 47.6,
    "n": 7,
+   "margem": 1.44,
    "ultima": "2026-09-23"
   },
   {
@@ -5626,6 +5655,7 @@
    "va_valido": 51.8,
    "vb_valido": 48.2,
    "n": 12,
+   "margem": 1.11,
    "ultima": "2026-09-24"
   },
   {
@@ -5637,6 +5667,7 @@
    "va_valido": 50.9,
    "vb_valido": 49.1,
    "n": 12,
+   "margem": 0.92,
    "ultima": "2026-09-24"
   }
  ],

@@ -130,13 +130,33 @@ def media_ponderada(pesquisas, candidatos, referencia, janela, meia_vida):
         if den == 0 or len(vals) < 1:
             continue
         m = num / den
-        # desvio padrao ponderado -> banda de incerteza do agregado
+        # desvio padrao ponderado das pesquisas: mede o quanto os institutos
+        # discordam entre si sobre este candidato
         var = sum(w * (v - m) ** 2 for v, w in zip(vals, pesos)) / den if len(vals) > 1 else 0.0
+        dp = math.sqrt(var)
+
+        # Numero EFETIVO de pesquisas: (soma dos pesos)^2 / soma dos quadrados.
+        # Doze pesquisas muito desiguais em peso valem menos que doze iguais.
+        s2 = sum(w * w for w in pesos)
+        n_ef = (den * den / s2) if s2 else 0.0
+
+        # Margem do agregado: erro padrao da media ponderada, a 95%.
+        #
+        # E deliberadamente a dispersao observada, e nao sqrt(p(1-p)/n) sobre a
+        # amostra somada. A formula teorica daria +/-0,6 pp aqui, o que seria
+        # falso: ela supoe pesquisas como amostras aleatorias independentes da
+        # mesma populacao, e cada instituto carrega vies proprio de metodo que
+        # nao desaparece somando entrevistados. A discordancia entre eles ja
+        # embute erro amostral E vies de metodo.
+        margem = 1.96 * dp / math.sqrt(n_ef) if n_ef > 1 else None
+
         medias[c] = m
         detalhe[c] = {
             "media": m,
-            "desvio": math.sqrt(var),
+            "desvio": dp,
             "n": len(vals),
+            "n_efetivo": n_ef,
+            "margem": margem,
             "min": min(vals),
             "max": max(vals),
             "peso_total": den,
@@ -222,6 +242,52 @@ def serie_temporal(pesquisas, candidatos, fim, dias, janela, meia_vida):
             serie.append(ponto)
         d += timedelta(days=1)
     return serie
+
+
+def margem_duelo(pesquisas, dois, referencia, janela, meia_vida):
+    """
+    Margem do confronto de 2o turno, a 95%.
+
+    Aqui cada pesquisa e convertida para votos validos ANTES de entrar na
+    media: num duelo a soma tem de fechar em 100, e institutos com taxas de
+    indecisos muito diferentes (1% na AtlasIntel, 13% no MDA) nao podem
+    deslocar a base de comparacao.
+    """
+    a, b = dois
+    els = [p for p in pesquisas
+           if p["data_fim"] <= referencia
+           and (referencia - p["data_fim"]).days <= janela
+           and p["valores"].get(a) is not None
+           and p["valores"].get(b) is not None]
+    if len(els) < 2:
+        return None
+
+    por_inst = defaultdict(list)
+    for p in sorted(els, key=lambda x: x["data_fim"], reverse=True):
+        por_inst[p["instituto"]].append(p)
+    ordem = {}
+    for lista in por_inst.values():
+        for i, p in enumerate(lista, start=1):
+            ordem[id(p)] = i
+
+    vals, pesos = [], []
+    for p in els:
+        total = p["valores"][a] + p["valores"][b]
+        if total <= 0:
+            continue
+        vals.append(100 * p["valores"][a] / total)
+        pesos.append(peso_pesquisa(p, referencia, ordem[id(p)], meia_vida))
+
+    den = sum(pesos)
+    if den <= 0 or len(vals) < 2:
+        return None
+    m = sum(v * w for v, w in zip(vals, pesos)) / den
+    var = sum(w * (v - m) ** 2 for v, w in zip(vals, pesos)) / den
+    s2 = sum(w * w for w in pesos)
+    n_ef = den * den / s2 if s2 else 0.0
+    if n_ef <= 1:
+        return None
+    return round(1.96 * math.sqrt(var) / math.sqrt(n_ef), 2)
 
 
 # ------------------------------------------------------------------ painel
@@ -347,6 +413,7 @@ def main():
             "va_valido": round(v.get(cands_c[0], 0), 1),
             "vb_valido": round(v.get(cands_c[1], 0), 1),
             "n": max(det[c]["n"] for c in cands_c if c in det),
+            "margem": margem_duelo(lista, cands_c, hoje, janela, meia_vida),
             "ultima": fim_c.isoformat(),
         })
     cenarios.sort(key=lambda x: -(x["va_valido"] - x["vb_valido"]))
@@ -370,6 +437,9 @@ def main():
             "valido": round(validos.get(c, 0), 2),
             "desvio": round(detalhe[c]["desvio"], 2),
             "n": detalhe[c]["n"],
+            "n_efetivo": round(detalhe[c]["n_efetivo"], 2),
+            "margem": (round(detalhe[c]["margem"], 2)
+                       if detalhe[c]["margem"] is not None else None),
             "min": detalhe[c]["min"],
             "max": detalhe[c]["max"],
         } for c in cands if c in detalhe},
