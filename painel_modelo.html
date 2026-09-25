@@ -536,9 +536,10 @@ function textoNotas(){
        : bonito.slice(0, -1).join(", ") + " ou " + bonito[bonito.length - 1];
 }
 
+/* vírgula, e não travessão: "nota A+ ou A —" se lê como se a nota fosse "A-" */
 document.getElementById("subtitulo-notas").innerHTML =
-  `A média das pesquisas usando só os institutos com nota ${textoNotas()} —
-   e mostrando o peso que cada pesquisa recebeu para chegar nela.`;
+  `A média das pesquisas usando só os institutos com nota ${textoNotas()},
+   mostrando o peso que cada pesquisa recebeu para chegar nela.`;
 
 /* ------------------------------------------------------------ cabeçalho */
 function pintarMeta(){
