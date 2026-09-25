@@ -260,8 +260,7 @@ td.num{font-family:var(--mono)}
     <div class="selo">Eleição presidencial · Brasil 2026</div>
     <h1>Agregador Nota A</h1>
     <p class="subtitulo">
-      A média das pesquisas usando só os institutos com nota A&#8209;, A ou A+ —
-      e mostrando o peso que cada pesquisa recebeu para chegar nela.
+      <span id="subtitulo-notas"></span>
     </p>
     <div class="metalinha" id="metalinha"></div>
   </header>
@@ -526,6 +525,20 @@ function baseAtual(pesquisas, cands, ref){
   const m = agregar(pesquisas, cands, ref, estado.janela, estado.meiavida);
   return estado.base === "validos" ? paraValidos(m) : m;
 }
+
+/* As notas aceitas vêm do JSON: o texto acompanha institutos.py em vez de
+   envelhecer quando o critério muda. */
+function textoNotas(){
+  const n = (D.notas_aceitas || []).slice().sort((a, b) => b.length - a.length);
+  if (!n.length) return "A";
+  const bonito = n.map(x => x.replace("-", "‑"));
+  return bonito.length === 1 ? bonito[0]
+       : bonito.slice(0, -1).join(", ") + " ou " + bonito[bonito.length - 1];
+}
+
+document.getElementById("subtitulo-notas").innerHTML =
+  `A média das pesquisas usando só os institutos com nota ${textoNotas()} —
+   e mostrando o peso que cada pesquisa recebeu para chegar nela.`;
 
 /* ------------------------------------------------------------ cabeçalho */
 function pintarMeta(){
@@ -915,7 +928,7 @@ function pintarRodape(){
     medida.</p>` : "";
 
   document.getElementById("rodape").innerHTML = `
-    <p><b>Institutos incluídos.</b> ${insts}. Todos com nota A&#8209;, A ou A+ no ranking de
+    <p><b>Institutos incluídos.</b> ${insts}. Todos com nota ${textoNotas()} no ranking de
     acurácia; nenhum outro instituto entra na média, por melhor que seja a pesquisa.</p>
     ${blocoFora}
     <p><b>Fonte dos números.</b> Tabelas de pesquisas da Wikipédia para a eleição presidencial

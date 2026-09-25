@@ -31,7 +31,12 @@ FATOR_AMOSTRA_FIXO = {
     "AtlasIntel": 1.10,
 }
 
-NOTAS = {
+# Quais notas entram no agregador. Para voltar a aceitar A-, basta acrescentar
+# "A-" aqui - o instituto continua cadastrado abaixo, so deixa de ser lido.
+NOTAS_ACEITAS = {"A+", "A"}
+
+# Todos os institutos do ranking com nota na faixa A, aceitos ou nao.
+_RANKING = {
     "Datafolha":          {"nota": "A+", "rank": 1,  "n_pesquisas": 29, "erro_medio": 3.2},
     "AtlasIntel":         {"nota": "A+", "rank": 2,  "n_pesquisas": 8,  "erro_medio": 3.4},
     "MDA":                {"nota": "A+", "rank": 6,  "n_pesquisas": 6,  "erro_medio": 3.6},
@@ -39,6 +44,9 @@ NOTAS = {
     "Real Time Big Data": {"nota": "A",  "rank": 12, "n_pesquisas": 67, "erro_medio": 4.6},
     "Futura":             {"nota": "A-", "rank": 14, "n_pesquisas": 29, "erro_medio": 3.9},
 }
+
+# O resto do projeto le NOTAS, que ja vem filtrado pelo criterio acima.
+NOTAS = {i: d for i, d in _RANKING.items() if d["nota"] in NOTAS_ACEITAS}
 
 # Candidatos que sairam da disputa. Ficam de fora do agregado, das barras e da
 # conta de votos validos, mesmo nas pesquisas antigas em que apareciam: quem nao

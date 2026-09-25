@@ -16,7 +16,8 @@ import sys
 from collections import defaultdict
 from datetime import date, timedelta
 
-from institutos import FATOR_AMOSTRA_FIXO, FORA_DA_DISPUTA, NOTAS, PESO_NOTA
+from institutos import (FATOR_AMOSTRA_FIXO, FORA_DA_DISPUTA, NOTAS,
+                        NOTAS_ACEITAS, PESO_NOTA)
 
 # ------------------------------------------------------------------ parametros
 
@@ -361,6 +362,7 @@ def main():
             "fator_amostra_fixo": FATOR_AMOSTRA_FIXO,
         },
         "institutos": NOTAS,
+        "notas_aceitas": sorted(NOTAS_ACEITAS),
         "fora_da_disputa": FORA_DA_DISPUTA,
         "candidatos": cands,
         "agregado": {c: {

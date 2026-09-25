@@ -1,9 +1,13 @@
 # Agregador Nota A
 
 Média ponderada das pesquisas para a eleição presidencial de 2026, usando
-**apenas os institutos com nota A-, A ou A+** no ranking de acurácia:
-Datafolha (A+), AtlasIntel (A+), MDA (A+), Paraná Pesquisas (A),
-Real Time Big Data (A) e Futura (A-).
+**apenas os institutos com nota A+ ou A** no ranking de acurácia:
+Datafolha (A+), AtlasIntel (A+), MDA (A+), Paraná Pesquisas (A) e
+Real Time Big Data (A).
+
+O critério fica em `NOTAS_ACEITAS`, em `institutos.py`. A Futura (A-) segue
+cadastrada, mas fora da conta — para voltar a aceitar A-, acrescente `"A-"` ao
+conjunto.
 
 Uma página: onde a corrida está, com o peso de cada pesquisa à mostra.
 
