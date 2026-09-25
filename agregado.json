@@ -5614,37 +5614,37 @@
    "cenario": "Lula e Renan Santos",
    "a": "Lula",
    "b": "Renan",
-   "va": 46.3,
-   "vb": 34.3,
-   "va_valido": 57.4,
-   "vb_valido": 42.6,
-   "n": 11,
-   "margem": 1.93,
-   "ultima": "2026-09-23"
+   "va": 46.6,
+   "vb": 35.0,
+   "va_valido": 57.1,
+   "vb_valido": 42.9,
+   "n": 12,
+   "margem": 1.85,
+   "ultima": "2026-09-24"
   },
   {
    "cenario": "Lula e Zema",
    "a": "Lula",
    "b": "Zema",
-   "va": 47.1,
-   "vb": 40.2,
-   "va_valido": 54.0,
-   "vb_valido": 46.0,
-   "n": 11,
-   "margem": 1.54,
-   "ultima": "2026-09-23"
+   "va": 47.2,
+   "vb": 40.0,
+   "va_valido": 54.1,
+   "vb_valido": 45.9,
+   "n": 12,
+   "margem": 1.42,
+   "ultima": "2026-09-24"
   },
   {
    "cenario": "Lula e Augusto Cury",
    "a": "Lula",
    "b": "Cury",
-   "va": 45.0,
-   "vb": 40.8,
+   "va": 45.2,
+   "vb": 41.1,
    "va_valido": 52.4,
    "vb_valido": 47.6,
-   "n": 7,
-   "margem": 1.44,
-   "ultima": "2026-09-23"
+   "n": 8,
+   "margem": 1.23,
+   "ultima": "2026-09-24"
   },
   {
    "cenario": "Lula e Caiado",
@@ -5685,6 +5685,30 @@
    }
   },
   {
+   "cenario": "Lula e Augusto Cury",
+   "instituto": "Datafolha",
+   "nota": "A+",
+   "data": "2026-09-24",
+   "amostra": 2002,
+   "valores": {
+    "Lula": 46.0,
+    "Indefinidos": 10.0,
+    "Cury": 43.0
+   }
+  },
+  {
+   "cenario": "Lula e Renan Santos",
+   "instituto": "Datafolha",
+   "nota": "A+",
+   "data": "2026-09-24",
+   "amostra": 2002,
+   "valores": {
+    "Lula": 48.0,
+    "Indefinidos": 14.0,
+    "Renan": 39.0
+   }
+  },
+  {
    "cenario": "Lula e Caiado",
    "instituto": "Datafolha",
    "nota": "A+",
@@ -5694,6 +5718,18 @@
     "Lula": 46.0,
     "Indefinidos": 10.0,
     "Caiado": 44.0
+   }
+  },
+  {
+   "cenario": "Lula e Zema",
+   "instituto": "Datafolha",
+   "nota": "A+",
+   "data": "2026-09-24",
+   "amostra": 2002,
+   "valores": {
+    "Lula": 48.0,
+    "Indefinidos": 12.0,
+    "Zema": 39.0
    }
   },
   {
