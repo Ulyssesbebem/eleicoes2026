@@ -1,4 +1,9 @@
 ﻿cenario,instituto,data_inicio,data_fim,amostra,margem,Lula,Flávio,Indefinidos,Cury,Renan,Caiado,Zema,Bolsonaro,Michelle,Tarcísio,Eduardo,Ratinho,Gomes,Leite,Marçal,Lima,Tereza C.,Barbosa,Neves,Rebelo,Marinho,Nogueira,Alckmin,Haddad
+Lula e Flávio Bolsonaro,AtlasIntel,2026-09-23,2026-09-28,5005,1.0,47.6,47.7,4.8,,,,,,,,,,,,,,,,,,,,,
+Lula e Augusto Cury,AtlasIntel,2026-09-23,2026-09-28,5005,1.0,46.2,,17.7,36.1,,,,,,,,,,,,,,,,,,,,
+Lula e Renan Santos,AtlasIntel,2026-09-23,2026-09-28,5005,1.0,46.4,,24.7,,28.9,,,,,,,,,,,,,,,,,,,
+Lula e Caiado,AtlasIntel,2026-09-23,2026-09-28,5005,1.0,45.9,,10.8,,,43.4,,,,,,,,,,,,,,,,,,
+Lula e Zema,AtlasIntel,2026-09-23,2026-09-28,5005,1.0,47.4,,11.4,,,,41.2,,,,,,,,,,,,,,,,,
 Lula e Flávio Bolsonaro,Datafolha,2026-09-22,2026-09-24,2002,2.0,47.0,45.0,8.0,,,,,,,,,,,,,,,,,,,,,
 Lula e Augusto Cury,Datafolha,2026-09-22,2026-09-24,2002,2.0,46.0,,10.0,43.0,,,,,,,,,,,,,,,,,,,,
 Lula e Renan Santos,Datafolha,2026-09-22,2026-09-24,2002,2.0,48.0,,14.0,,39.0,,,,,,,,,,,,,,,,,,,
