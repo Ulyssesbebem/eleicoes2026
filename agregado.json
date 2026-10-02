@@ -74,7 +74,7 @@
  "agregado": {
   "Lula": {
    "media": 42.41,
-   "valido": 43.84,
+   "valido": 43.94,
    "desvio": 2.28,
    "n": 15,
    "n_efetivo": 9.14,
@@ -84,7 +84,7 @@
   },
   "Flávio": {
    "media": 38.13,
-   "valido": 39.42,
+   "valido": 39.5,
    "desvio": 3.67,
    "n": 15,
    "n_efetivo": 9.14,
@@ -94,7 +94,7 @@
   },
   "Cury": {
    "media": 4.17,
-   "valido": 4.31,
+   "valido": 4.32,
    "desvio": 1.83,
    "n": 15,
    "n_efetivo": 9.14,
@@ -104,7 +104,7 @@
   },
   "Caiado": {
    "media": 2.69,
-   "valido": 2.78,
+   "valido": 2.79,
    "desvio": 0.94,
    "n": 15,
    "n_efetivo": 9.14,
@@ -114,7 +114,7 @@
   },
   "Renan": {
    "media": 4.12,
-   "valido": 4.25,
+   "valido": 4.26,
    "desvio": 1.24,
    "n": 15,
    "n_efetivo": 9.14,
@@ -134,7 +134,7 @@
   },
   "Samara": {
    "media": 0.86,
-   "valido": 0.88,
+   "valido": 0.89,
    "desvio": 0.24,
    "n": 15,
    "n_efetivo": 9.14,
@@ -163,12 +163,12 @@
    "max": 1.1
   },
   "Clariana": {
-   "media": 0.67,
-   "valido": 0.69,
-   "desvio": 0.4,
+   "media": 0.46,
+   "valido": 0.47,
+   "desvio": 0.43,
    "n": 13,
    "n_efetivo": 8.14,
-   "margem": 0.27,
+   "margem": 0.29,
    "min": 0.0,
    "max": 1.1
   },
@@ -4262,8 +4262,8 @@
    "Grassi__dp": 0.45,
    "Pimenta": 0.48,
    "Pimenta__dp": 0.46,
-   "Clariana": 0.67,
-   "Clariana__dp": 0.4,
+   "Clariana": 0.46,
+   "Clariana__dp": 0.43,
    "Dias": 0.43,
    "Dias__dp": 0.5,
    "Costa": 0.45,
@@ -4274,16 +4274,16 @@
  ],
  "house_effects": {
   "Datafolha": {
-   "Lula": -0.62,
-   "Flávio": 1.84,
-   "Cury": 0.78,
-   "Caiado": 0.53,
+   "Lula": -0.56,
+   "Flávio": 1.89,
+   "Cury": 0.79,
+   "Caiado": 0.54,
    "Renan": -2.39,
-   "Zema": -0.49,
+   "Zema": -0.48,
    "Samara": 0.68,
-   "Grassi": -0.3,
+   "Grassi": -0.29,
    "Pimenta": 0.49,
-   "Clariana": -0.34,
+   "Clariana": -0.56,
    "Dias": -0.25,
    "Costa": -0.13,
    "Avalanche": -1.01
@@ -4339,7 +4339,7 @@
    "nota": "A+",
    "data": "2026-10-01",
    "amostra": 2506,
-   "margem": 3.0,
+   "margem": 2.0,
    "peso": 1.1194,
    "peso_pct": 19.4,
    "valores": {
@@ -4352,7 +4352,7 @@
     "Samara": 1.0,
     "Grassi": 1.0,
     "Pimenta": 0.0,
-    "Clariana": 1.0,
+    "Clariana": 0.0,
     "Dias": 0.0,
     "Costa": 0.0
    }
@@ -4689,12 +4689,12 @@
     "Zema": 1.0,
     "Samara": 1.0,
     "Grassi": 1.0,
-    "Clariana": 1.0,
+    "Clariana": 0.0,
     "Dias": 0.0,
     "Costa": 0.0,
     "Pimenta": 0.0,
     "Outros": 0.0,
-    "Indefinidos": 0.0
+    "Indefinidos": 7.0
    }
   },
   {
@@ -5916,10 +5916,10 @@
    "b": "Flávio",
    "va": 46.8,
    "vb": 45.4,
-   "va_valido": 50.8,
-   "vb_valido": 49.2,
+   "va_valido": 50.7,
+   "vb_valido": 49.3,
    "n": 15,
-   "margem": 0.82,
+   "margem": 0.81,
    "ultima": "2026-10-01"
   }
  ],
@@ -5929,7 +5929,7 @@
    "instituto": "Datafolha",
    "nota": "A+",
    "data": "2026-10-01",
-   "amostra": 2506,
+   "amostra": 2002,
    "valores": {
     "Lula": 48.0,
     "Flávio": 45.0,
