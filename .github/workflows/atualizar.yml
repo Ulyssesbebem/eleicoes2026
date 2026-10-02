@@ -2,9 +2,21 @@ name: Atualizar agregador
 
 on:
   schedule:
-    # 08h e 20h de Brasília (o cron do GitHub roda em UTC; BRT = UTC-3)
-    - cron: "0 11 * * *"
-    - cron: "0 23 * * *"
+    # Reta final: seis execuções por dia, a cada 4h (BRT = UTC-3).
+    #
+    # O cron do GitHub é melhor esforço e atrasa de 2h a 5h quando a fila está
+    # cheia, então o espaçamento real é maior que o nominal. Com duas execuções
+    # por dia, uma pesquisa publicada às 22h de sábado só apareceria no domingo
+    # ao meio-dia - no dia da eleição. Pesquisa de véspera costuma sair entre
+    # 20h e 22h, que é exatamente a faixa mal coberta.
+    #
+    # Depois do 2º turno dá para voltar a "0 11" e "0 23" e poupar execuções.
+    - cron: "0 1 * * *"     # 22h BRT
+    - cron: "0 3 * * *"     # 00h BRT
+    - cron: "0 11 * * *"    # 08h BRT
+    - cron: "0 15 * * *"    # 12h BRT
+    - cron: "0 19 * * *"    # 16h BRT
+    - cron: "0 23 * * *"    # 20h BRT
   push:
     branches: [main]
   workflow_dispatch:
