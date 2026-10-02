@@ -34,6 +34,40 @@ MESES = {
 }
 
 
+def _distancia(a, b):
+    """Distancia de edicao, para palavras curtas."""
+    if a == b:
+        return 0
+    anterior = list(range(len(b) + 1))
+    for i, ca in enumerate(a, 1):
+        atual = [i]
+        for j, cb in enumerate(b, 1):
+            atual.append(min(anterior[j] + 1, atual[j - 1] + 1,
+                             anterior[j - 1] + (ca != cb)))
+        anterior = atual
+    return anterior[-1]
+
+
+def mes_de(palavra):
+    """
+    Numero do mes a partir da palavra escrita, tolerando um erro de digitacao.
+
+    A fonte e editada a mao por voluntarios, e no dia 1/10/2026 saiu
+    '1 Oubt' no lugar de '1 Out'. Sem tolerancia a data da pesquisa cai
+    silenciosamente para a outra ponta do periodo, e ela perde peso de
+    recencia sem ninguem notar.
+
+    So aceita o palpite quando UM unico mes fica a distancia 1 - 'mar' e
+    'mai' sao vizinhos, entao um erro ambiguo e descartado em vez de
+    chutado.
+    """
+    p = palavra[:3]
+    if p in MESES:
+        return MESES[p]
+    candidatos = [m for m in MESES if _distancia(p, m) <= 1]
+    return MESES[candidatos[0]] if len(candidatos) == 1 else None
+
+
 def baixar(titulo, obrigatorio=True):
     """
     Devolve o wikitexto da pagina. Com obrigatorio=False, uma pagina que nao
@@ -126,7 +160,7 @@ def parse_data(txt, ano=2026):
     # pares (dia, mes) explicitos
     pares = []
     for m in re.finditer(r"(\d{1,2})\s*(?:de\s+)?([a-zç]{3,})", t):
-        mes = MESES.get(m.group(2)[:3])
+        mes = mes_de(m.group(2))
         if mes:
             pares.append((int(m.group(1)), mes))
 
@@ -135,7 +169,7 @@ def parse_data(txt, ano=2026):
 
     # dias sem mes proprio num intervalo "27-31 ago": herdam o mes do par seguinte
     for m in re.finditer(r"(\d{1,2})\s*-\s*(\d{1,2})\s*(?:de\s+)?([a-zç]{3,})", t):
-        mes = MESES.get(m.group(3)[:3])
+        mes = mes_de(m.group(3))
         if mes:
             pares.append((int(m.group(1)), mes))
 

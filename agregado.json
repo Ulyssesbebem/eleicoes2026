@@ -5866,13 +5866,13 @@
    "cenario": "Lula e Renan Santos",
    "a": "Lula",
    "b": "Renan",
-   "va": 46.6,
-   "vb": 35.0,
-   "va_valido": 57.2,
-   "vb_valido": 42.8,
+   "va": 46.7,
+   "vb": 35.1,
+   "va_valido": 57.1,
+   "vb_valido": 42.9,
    "n": 15,
-   "margem": 1.9,
-   "ultima": "2026-09-30"
+   "margem": 1.93,
+   "ultima": "2026-10-01"
   },
   {
    "cenario": "Lula e Zema",
@@ -5883,8 +5883,8 @@
    "va_valido": 54.1,
    "vb_valido": 45.9,
    "n": 15,
-   "margem": 1.1,
-   "ultima": "2026-09-30"
+   "margem": 1.11,
+   "ultima": "2026-10-01"
   },
   {
    "cenario": "Lula e Augusto Cury",
@@ -5895,20 +5895,20 @@
    "va_valido": 52.9,
    "vb_valido": 47.1,
    "n": 11,
-   "margem": 1.36,
-   "ultima": "2026-09-30"
+   "margem": 1.37,
+   "ultima": "2026-10-01"
   },
   {
    "cenario": "Lula e Caiado",
    "a": "Lula",
    "b": "Caiado",
-   "va": 46.1,
+   "va": 46.2,
    "vb": 42.5,
-   "va_valido": 52.0,
-   "vb_valido": 48.0,
+   "va_valido": 52.1,
+   "vb_valido": 47.9,
    "n": 15,
-   "margem": 0.91,
-   "ultima": "2026-09-30"
+   "margem": 0.93,
+   "ultima": "2026-10-01"
   },
   {
    "cenario": "Lula e Flávio Bolsonaro",
@@ -5916,14 +5916,74 @@
    "b": "Flávio",
    "va": 46.8,
    "vb": 45.4,
-   "va_valido": 50.7,
-   "vb_valido": 49.3,
+   "va_valido": 50.8,
+   "vb_valido": 49.2,
    "n": 15,
-   "margem": 0.81,
-   "ultima": "2026-09-30"
+   "margem": 0.82,
+   "ultima": "2026-10-01"
   }
  ],
  "historico_2t": [
+  {
+   "cenario": "Lula e Flávio Bolsonaro",
+   "instituto": "Datafolha",
+   "nota": "A+",
+   "data": "2026-10-01",
+   "amostra": 2506,
+   "valores": {
+    "Lula": 48.0,
+    "Flávio": 45.0,
+    "Indefinidos": 7.0
+   }
+  },
+  {
+   "cenario": "Lula e Augusto Cury",
+   "instituto": "Datafolha",
+   "nota": "A+",
+   "data": "2026-10-01",
+   "amostra": 2506,
+   "valores": {
+    "Lula": 47.0,
+    "Indefinidos": 11.0,
+    "Cury": 42.0
+   }
+  },
+  {
+   "cenario": "Lula e Renan Santos",
+   "instituto": "Datafolha",
+   "nota": "A+",
+   "data": "2026-10-01",
+   "amostra": 2506,
+   "valores": {
+    "Lula": 48.0,
+    "Indefinidos": 13.0,
+    "Renan": 39.0
+   }
+  },
+  {
+   "cenario": "Lula e Caiado",
+   "instituto": "Datafolha",
+   "nota": "A+",
+   "data": "2026-10-01",
+   "amostra": 2506,
+   "valores": {
+    "Lula": 48.0,
+    "Indefinidos": 10.0,
+    "Caiado": 42.0
+   }
+  },
+  {
+   "cenario": "Lula e Zema",
+   "instituto": "Datafolha",
+   "nota": "A+",
+   "data": "2026-10-01",
+   "amostra": 2506,
+   "valores": {
+    "Lula": 49.0,
+    "Indefinidos": 11.0,
+    "Zema": 40.0
+   }
+  },
   {
    "cenario": "Lula e Flávio Bolsonaro",
    "instituto": "Real Time Big Data",
@@ -5981,66 +6041,6 @@
    "valores": {
     "Lula": 45.0,
     "Indefinidos": 15.0,
-    "Zema": 40.0
-   }
-  },
-  {
-   "cenario": "Lula e Flávio Bolsonaro",
-   "instituto": "Datafolha",
-   "nota": "A+",
-   "data": "2026-09-28",
-   "amostra": 2506,
-   "valores": {
-    "Lula": 48.0,
-    "Flávio": 45.0,
-    "Indefinidos": 7.0
-   }
-  },
-  {
-   "cenario": "Lula e Augusto Cury",
-   "instituto": "Datafolha",
-   "nota": "A+",
-   "data": "2026-09-28",
-   "amostra": 2506,
-   "valores": {
-    "Lula": 47.0,
-    "Indefinidos": 11.0,
-    "Cury": 42.0
-   }
-  },
-  {
-   "cenario": "Lula e Renan Santos",
-   "instituto": "Datafolha",
-   "nota": "A+",
-   "data": "2026-09-28",
-   "amostra": 2506,
-   "valores": {
-    "Lula": 48.0,
-    "Indefinidos": 13.0,
-    "Renan": 39.0
-   }
-  },
-  {
-   "cenario": "Lula e Caiado",
-   "instituto": "Datafolha",
-   "nota": "A+",
-   "data": "2026-09-28",
-   "amostra": 2506,
-   "valores": {
-    "Lula": 48.0,
-    "Indefinidos": 10.0,
-    "Caiado": 42.0
-   }
-  },
-  {
-   "cenario": "Lula e Zema",
-   "instituto": "Datafolha",
-   "nota": "A+",
-   "data": "2026-09-28",
-   "amostra": 2506,
-   "valores": {
-    "Lula": 49.0,
-    "Indefinidos": 11.0,
     "Zema": 40.0
    }
   },
