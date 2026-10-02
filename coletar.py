@@ -328,9 +328,30 @@ def parse_tabela(tabela, ano=2026):
         if eh_so_numero(sem_atributos(celulas[0])):
             continue
 
-        linha = {}
-        for idx, col in enumerate(colunas):
-            linha[col] = sem_atributos(celulas[idx]) if idx < len(celulas) else ""
+        # A Wikipedia as vezes publica a linha SEM as celulas de amostra e
+        # margem. Como o parser e posicional, isso deslocaria tudo: o
+        # percentual do primeiro candidato viraria o tamanho da amostra
+        # (ja aconteceu - Datafolha de 1/10/2026 entrou com "amostra 42").
+        #
+        # Celula de amostra ou margem nunca traz '%'; a de candidato sempre
+        # traz. Entao consumimos no maximo duas celulas de metadado depois do
+        # instituto e da data, parando assim que aparecer um percentual.
+        meta_lidas = []
+        idx = 2
+        while idx < len(celulas) and len(meta_lidas) < 2:
+            if "%" in texto_limpo(sem_atributos(celulas[idx])):
+                break
+            meta_lidas.append(sem_atributos(celulas[idx]))
+            idx += 1
+
+        linha = {
+            "_instituto": sem_atributos(celulas[0]),
+            "_data": sem_atributos(celulas[1]) if len(celulas) > 1 else "",
+            "_amostra": meta_lidas[0] if len(meta_lidas) > 0 else "",
+            "_margem": meta_lidas[1] if len(meta_lidas) > 1 else "",
+        }
+        for k, col in enumerate(colunas[len(META):]):
+            linha[col] = sem_atributos(celulas[idx + k]) if idx + k < len(celulas) else ""
 
         inst = normalizar_instituto(texto_limpo(linha["_instituto"]))
         if not inst or eh_so_numero(linha["_instituto"]):

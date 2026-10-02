@@ -14,6 +14,8 @@ import json
 import sys
 from datetime import date, timedelta
 
+AMOSTRA_MIN_PLAUSIVEL = 300      # pesquisa nacional registrada no TSE nao e menor
+AMOSTRA_MAX_PLAUSIVEL = 200_000  # nem absurdamente maior
 MIN_PESQUISAS_1T = 20        # a base historica ja tem 41; menos que isso e suspeito
 MIN_INSTITUTOS = 3
 MAX_DIAS_SEM_PESQUISA = 60   # se a mais recente for antiga demais, algo quebrou
@@ -75,6 +77,23 @@ if p1:
             aviso(f"nenhuma pesquisa nova ha {atraso} dias "
                   f"(a mais recente e de {recente.isoformat()}) - "
                   f"confira se a coleta ainda enxerga a fonte")
+
+    # Amostra implausivel denuncia linha deslocada: quando a Wikipedia publica
+    # a linha sem a celula de amostra, o percentual do primeiro candidato cai
+    # nessa coluna e a pesquisa inteira entra errada. Ja aconteceu em 1/10/2026,
+    # com o Datafolha registrando "amostra 42".
+    for r in p1:
+        a = r.get("amostra")
+        if a in (None, ""):
+            continue          # ausente e aceitavel: nem toda linha publica o n
+        try:
+            n = int(a)
+        except ValueError:
+            erro(f"amostra nao numerica {a!r} ({r['instituto']} {r['data_fim']})")
+            continue
+        if not AMOSTRA_MIN_PLAUSIVEL <= n <= AMOSTRA_MAX_PLAUSIVEL:
+            erro(f"amostra implausivel de {n} ({r['instituto']} {r['data_fim']}) - "
+                 f"provavel linha deslocada na origem")
 
     # percentuais dentro de 0-100 e soma plausivel
     for r in p1:
