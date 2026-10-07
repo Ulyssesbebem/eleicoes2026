@@ -46,6 +46,9 @@ jobs:
       - name: Coletar pesquisas de 2026
         run: python coletar.py
 
+      - name: Medir o erro de cada instituto no 1º turno
+        run: python aferir_1t.py
+
       - name: Agregar
         run: python agregar.py
 
@@ -68,7 +71,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A pesquisas_*.csv agregado.json
+          git add -A pesquisas_*.csv agregado.json acuracia_2026.json
 
           if git diff --staged --quiet; then
             echo "Nenhuma pesquisa nova."

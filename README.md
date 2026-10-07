@@ -1,97 +1,92 @@
-# Agregador Nota A
+# Segundo Turno 2026
 
-Média ponderada das pesquisas para a eleição presidencial de 2026, usando
-**apenas os institutos com nota A+ ou A** no ranking de acurácia:
-Datafolha (A+), AtlasIntel (A+), MDA (A+), Paraná Pesquisas (A) e
-Real Time Big Data (A).
+Média ponderada das pesquisas do 2º turno — **Lula × Flávio Bolsonaro** — com o
+peso de cada instituto definido pelo erro que ele cometeu no 1º turno.
 
-O critério fica em `NOTAS_ACEITAS`, em `institutos.py`. A Futura (A-) segue
-cadastrada, mas fora da conta — para voltar a aceitar A-, acrescente `"A-"` ao
-conjunto.
+## A mudança de critério
 
-Uma página: onde a corrida está, com o peso de cada pesquisa à mostra.
+Até 4 de outubro este repositório agregava o 1º turno usando um ranking de
+acurácia montado **antes** da eleição: só cinco institutos com nota A+ ou A
+entravam, e a nota definia o peso.
 
-## Como a média é calculada
+**Esse critério falhou.** A urna deu Flávio 47,03% × Lula 45,16%; os 19
+institutos medidos erraram a margem por 0,3 a 9,2 pontos, **todos na mesma
+direção**, e só 5 acertaram quem estava na frente. Entre os cinco do recorte
+antigo, nenhum ficou no pódio: o A+ MDA foi 17º de 19, e a Futura, excluída por
+ser A-, empatou em 1º.
 
-Cada pesquisa entra com um peso:
+Agora **todos os institutos entram** e o peso vem do erro medido:
 
 ```
-peso = nota × recência × amostra × repetição
+peso_instituto = 1 / (1 + erro_margem / 4)
 ```
+
+Limitado a um piso de 0,25, o que faz o melhor pesar cerca de 3× o pior — e não
+30×, porque é **uma** observação por instituto e uma eleição só não distingue
+pontaria de sorte. Institutos sem pesquisa na reta final do 1º turno recebem o
+peso mediano.
 
 | Fator | O que faz |
 |---|---|
-| `nota` | A+ vale 1,00; A vale 0,70; A- vale 0,55 |
-| `recência` | `0,5 ^ (dias / meia-vida)` — meia-vida padrão de 14 dias |
-| `amostra` | `√(n / 2000)`, limitado entre 0,75 e 1,40 — **AtlasIntel fixada em 1,10** |
+| `instituto` | `1/(1 + erro/4)`, do erro medido em 4/10 |
+| `recência` | `0,5 ^ (dias / 10)` — meia-vida de 10 dias |
+| `amostra` | `√(n / 2000)`, entre 0,75 e 1,30 |
 | `repetição` | `1/√k` na k-ésima pesquisa mais recente do mesmo instituto |
 
-O fator de repetição existe para que um instituto que publica toda semana não
-domine a média pela frequência em vez da qualidade.
+Janela e meia-vida são mais curtas que as do 1º turno (30 e 10 dias, contra 45 e
+14): a campanha de 2º turno é curta e tudo se move mais rápido.
 
-A AtlasIntel tem o fator de amostra fixado em 1,10 em vez do 1,40 que a regra
-geral lhe daria: ela entrevista ~5.000 contra ~2.000 das demais A+, e coleta por
-painel online, que recruta quem já está na internet e se dispõe a responder.
-É um critério metodológico, não empírico — a aferição em `aferir.py` mostra que
-em 2022 a AtlasIntel foi a **mais precisa** entre os nota A (erro de 2,0 pontos
-no 1º turno contra 7,4 do Datafolha). Quem discordar muda uma linha em
-`institutos.py`.
+## Hipotético x real
 
-A meia-vida de 14 dias foi calibrada por validação cruzada fora da amostra
-(`calibrar.py`): para cada pesquisa, prevê-se o resultado dela usando só as
-anteriores. A superfície de erro é bem plana — entre 1,51 e 1,94 pontos —, e
-meia-vida curta demais ganha no papel mas reduz o número efetivo de pesquisas
-a ponto de o ruído amostral superar o ganho.
+Pesquisa de 2º turno feita **antes** de 4/10 era cenário hipotético, perguntado
+a um eleitor que ainda não tinha visto o resultado. Assim que existirem duas
+pesquisas feitas **depois** do 1º turno, o agregado passa a usar só elas, e o
+aviso no topo da página some. Até lá a página mostra o cenário hipotético
+dizendo, em destaque, que é hipotético.
 
 ## Os arquivos
 
 | Script | O que faz |
 |---|---|
-| `institutos.py` | Os seis institutos, notas e pesos. É aqui que se muda o critério |
-| `coletar.py` | Baixa e parseia as tabelas da Wikipédia → `pesquisas_1t.csv`, `pesquisas_2t.csv` |
-| `agregar.py` | Calcula a média ponderada → `agregado.json`, `painel.html` |
-| `calibrar.py` | Testa combinações de janela e meia-vida por validação cruzada |
+| `resultado_1t.py` | Resultado oficial do 1º turno (TSE) |
+| `aferir_1t.py` | Mede o erro de cada instituto → `acuracia_2026.json` |
+| `institutos.py` | Converte erro em peso; normaliza grafias |
+| `coletar.py` | Baixa e parseia as tabelas da Wikipédia |
+| `agregar.py` | Média ponderada do duelo → `agregado.json`, `painel.html` |
 | `verificar.py` | Confere se os dados fazem sentido antes de publicar |
 | `montar_site.py` | Monta `site/` para o GitHub Pages |
 
-Só biblioteca padrão do Python — nada a instalar.
+Só biblioteca padrão do Python.
 
 ## Rodando localmente
 
 ```bash
-python coletar.py       # pesquisas de 2026
-python agregar.py       # recalcula e gera o painel
+python coletar.py       # pesquisas
+python aferir_1t.py     # erro de cada instituto no 1º turno
+python agregar.py       # média do 2º turno + painel
 python verificar.py     # confere
 python montar_site.py   # monta site/
 ```
 
 ## Atualização automática
 
-O workflow `.github/workflows/atualizar.yml` roda às 8h e às 20h de Brasília:
-baixa as pesquisas novas, recalcula, confere, publica no Pages e commita os CSVs
-atualizados. Dá para disparar à mão em **Actions → Atualizar agregador → Run
-workflow**.
-
-O site sobe **antes** do commit dos dados, e o commit não pode derrubar a
-publicação: arquivar é secundário, publicar é o objetivo.
-
-Se a Wikipédia sair do ar ou mudar o formato das tabelas, `verificar.py`
-interrompe o workflow antes da publicação — o site continua no ar com os
-últimos dados bons em vez de publicar número errado.
+`.github/workflows/atualizar.yml` roda de 4 em 4 horas, publica no Pages e
+commita os dados. O site sobe **antes** do commit: arquivar é secundário,
+publicar é o objetivo.
 
 ## Limites
 
-**A fonte é a Wikipédia**, que cita o registro de cada pesquisa no TSE. Os
-números foram conferidos contra as manchetes referenciadas, mas é uma fonte
-editável. Para robustez de produção, o caminho é ler direto do PesqEle/TSE — a
-troca fica isolada em `coletar.py`.
+**A fonte é a Wikipédia**, que cita o registro de cada pesquisa no TSE. É
+editável, e já produziu dois erros que entraram aqui: uma linha sem as células
+de amostra e margem (que deslocava tudo) e um mês digitado como "Oubt". Ambos
+têm tratamento no `coletar.py`, e `verificar.py` recusa amostra fora de 300 a
+200.000.
 
-**Paraná Pesquisas não publica 1º turno presidencial desde março de 2026** e, na
-prática, sai da média pela recência, embora continue na lista.
+**O peso vem de uma observação.** Acerto no 1º turno pode não transferir para o
+2º — a aferição de 2018 e 2022, no histórico deste repositório, mostrou viés
+grande no 1º turno e praticamente zero no 2º. Com dois nomes só, os institutos
+convergem.
 
-**Uma média ponderada não é previsão.** Uma aferição contra 2018 e 2022, que
-esteve neste repositório e segue no histórico do git, mostrou que o agregado
-subestimou o candidato da direita no 1º turno em 6,0 e 3,8 pontos — e que
-restringir aos institutos nota A **não** reduziu esse erro, porque ele é do
-conjunto do mercado, não de um instituto. No 2º turno, com só dois nomes, o
-viés praticamente desaparece.
+**Margem não é distância até a urna.** O ±X mede a precisão da média; viés
+compartilhado por todos passa inteiro. Foi exatamente o que aconteceu no 1º
+turno, quando 19 institutos erraram na mesma direção.

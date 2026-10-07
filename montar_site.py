@@ -1,7 +1,7 @@
 """
 Monta o diretorio site/ que vai para o GitHub Pages.
 
-  site/index.html   - Agregador Nota A (pesquisas de 2026)
+  site/index.html   - Segundo Turno 2026 (Lula x Flavio)
   site/dados/       - CSVs e JSON, para quem quiser conferir a conta
 
 A barra de navegacao e injetada aqui, e nao no modelo, porque os links
@@ -18,11 +18,11 @@ SAIDA = "site"
 
 PAGINAS = [
     # (arquivo gerado, nome no site, rotulo da aba, titulo curto)
-    ("painel_publico.html", "index.html", "Agregador 2026", "index.html"),
+    ("painel_publico.html", "index.html", "Segundo Turno", "index.html"),
 ]
 
 DADOS = [
-    "pesquisas_1t.csv", "pesquisas_2t.csv", "agregado.json",
+    "pesquisas_1t.csv", "pesquisas_2t.csv", "agregado.json", "acuracia_2026.json",
 ]
 
 NAV_CSS = """

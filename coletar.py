@@ -2,13 +2,13 @@
 Coleta as pesquisas presidenciais de 2026 a partir do wikitexto da Wikipedia
 e grava em pesquisas_1t.csv / pesquisas_2t.csv.
 
-Por padrao so institutos com nota A-, A ou A+ entram na base (institutos.py).
-Use --todos para gravar todos os institutos.
+Todos os institutos entram na base. Quem pesa mais ou menos no agregado e
+decidido depois, em institutos.py, pelo erro medido no 1o turno de 2026.
 
 Quando uma pesquisa traz mais de um cenario (linhas agrupadas por rowspan na
 Wikipedia), usamos o PRIMEIRO cenario, que e o principal/estimulado completo.
 
-Uso:  python coletar.py [--todos]
+Uso:  python coletar.py
 """
 
 import csv
@@ -18,7 +18,7 @@ import urllib.parse
 import urllib.request
 from datetime import date
 
-from institutos import NOTAS, normalizar_instituto
+from institutos import normalizar_instituto, peso_instituto, tem_medida
 
 BASE = "https://pt.wikipedia.org/w/index.php?title={}&action=raw"
 
@@ -541,7 +541,6 @@ def gravar(caminho, registros, colunas, chaves_base):
 
 
 def main():
-    somente_boas = "--todos" not in sys.argv
 
     print("Baixando pagina principal...")
     principal = baixar(PAGINA_PRINCIPAL)
@@ -564,10 +563,6 @@ def main():
     print(f"  1o turno: {len(p1)} pesquisas lidas")
     print(f"  2o turno: {len(p2)} pesquisas lidas")
 
-    if somente_boas:
-        p1 = [p for p in p1 if p["instituto"] in NOTAS]
-        p2 = [p for p in p2 if p["instituto"] in NOTAS]
-
     base1 = ["instituto", "data_inicio", "data_fim", "amostra", "margem"]
     gravar("pesquisas_1t.csv", p1, cols1, base1)
     gravar("pesquisas_2t.csv", p2, cols2, ["cenario"] + base1)
@@ -580,8 +575,8 @@ def main():
     for p in p1:
         cont.setdefault(p["instituto"], []).append(p["data_fim"])
     for inst, datas in sorted(cont.items(), key=lambda x: -len(x[1])):
-        nota = NOTAS.get(inst, {}).get("nota", "?")
-        print(f"  {inst:22s} nota {nota:2s}  {len(datas):3d} pesquisas  "
+        marca = "medido" if tem_medida(inst) else "  -   "
+        print(f"  {inst:22s} {marca}  peso {peso_instituto(inst):.2f}  {len(datas):3d} pesq.  "
               f"ultima {max(datas)}")
 
 

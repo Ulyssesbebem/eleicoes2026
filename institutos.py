@@ -1,69 +1,92 @@
 """
-Institutos aceitos no agregador: somente nota A-, A ou A+.
+Peso de cada instituto no agregador de 2o turno.
 
-A nota e o numero de pesquisas vem do ranking de acuracia de institutos
-(mesma tabela que originou este projeto). O peso base e derivado da nota:
-quanto melhor a nota, maior o peso da pesquisa na media.
+MUDANCA DE CRITERIO APOS O 1o TURNO DE 2026
+-------------------------------------------
+Ate o 1o turno o peso vinha de um ranking de acuracia montado ANTES da
+eleicao - A+, A, A-. Esse ranking falhou como previsor: o A+ MDA ficou em 17o
+entre 19, e a A- Futura empatou em 1o. Dos cinco institutos daquele recorte,
+nenhum ficou entre os tres melhores.
+
+Agora o peso vem do erro MEDIDO em 4/10/2026, calculado por aferir_1t.py a
+partir do resultado do TSE. Quem errou menos pesa mais.
+
+    peso_instituto = 1 / (1 + erro_abs / ERRO_REFERENCIA)
+
+A formula e deliberadamente suave. Com ERRO_REFERENCIA = 4 (perto do erro
+mediano), o melhor instituto pesa ~3x o pior, nao 30x: e UMA observacao por
+instituto, e uma eleicao so nao distingue pontaria de sorte. Um instituto que
+errou 9 pontos ainda entra, com um terco do peso de quem acertou.
+
+RESSALVAS, para quem for defender o criterio:
+
+1. Acerto no 1o turno pode nao transferir para o 2o. A afericao de 2018 e 2022
+   mostrou vies grande no 1o turno e praticamente zero no 2o - com dois nomes
+   so, os institutos convergem. Entao o erro aqui medido pode estar punindo
+   quem erraria pouco agora.
+
+2. Institutos sem pesquisa na reta final do 1o turno nao tem medida. Recebem o
+   peso mediano, nem premio nem castigo.
 """
 
+import io
+import json
 import re
 
-# peso base por nota
-PESO_NOTA = {
-    "A+": 1.00,
-    "A":  0.70,
-    "A-": 0.55,
-}
+ERRO_REFERENCIA = 4.0    # erro, em pontos de margem, que corta o peso pela metade
+PESO_MINIMO = 0.25       # ninguem e zerado: erro grande vira peso pequeno
+PESO_SEM_MEDIDA = None   # preenchido com a mediana ao carregar
 
-# Fator de amostra fixado por instituto, quando a regra geral nao serve.
-#
-# A regra geral e sqrt(n/2000), limitada a 1,40. Pela amostra de ~5.000 a
-# AtlasIntel bateria no teto e pesaria 40% mais que as demais A+, que
-# entrevistam ~2.000. Como ela coleta por painel online - que recruta quem ja
-# esta na internet e se dispoe a responder, um recorte diferente do eleitorado
-# -, a vantagem por tamanho de amostra fica limitada a 1,10.
-#
-# RESSALVA, para quem for defender o criterio: a aferição em aferir.py nao
-# sustenta a penalizacao. Em 2022 a AtlasIntel foi a MAIS precisa entre os nota
-# A - errou 2,0 pontos no 1o turno, contra 7,4 do Datafolha. A restricao e
-# metodologica (desconfianca do painel online), nao empirica.
-FATOR_AMOSTRA_FIXO = {
-    "AtlasIntel": 1.10,
-}
-
-# Quais notas entram no agregador. Para voltar a aceitar A-, basta acrescentar
-# "A-" aqui - o instituto continua cadastrado abaixo, so deixa de ser lido.
-NOTAS_ACEITAS = {"A+", "A"}
-
-# Todos os institutos do ranking com nota na faixa A, aceitos ou nao.
-_RANKING = {
-    "Datafolha":          {"nota": "A+", "rank": 1,  "n_pesquisas": 29, "erro_medio": 3.2},
-    "AtlasIntel":         {"nota": "A+", "rank": 2,  "n_pesquisas": 8,  "erro_medio": 3.4},
-    "MDA":                {"nota": "A+", "rank": 6,  "n_pesquisas": 6,  "erro_medio": 3.6},
-    "Paraná Pesquisas":   {"nota": "A",  "rank": 11, "n_pesquisas": 71, "erro_medio": 3.9},
-    "Real Time Big Data": {"nota": "A",  "rank": 12, "n_pesquisas": 67, "erro_medio": 4.6},
-    "Futura":             {"nota": "A-", "rank": 14, "n_pesquisas": 29, "erro_medio": 3.9},
-}
-
-# O resto do projeto le NOTAS, que ja vem filtrado pelo criterio acima.
-NOTAS = {i: d for i, d in _RANKING.items() if d["nota"] in NOTAS_ACEITAS}
-
-# Candidatos que sairam da disputa. Ficam de fora do agregado, das barras e da
-# conta de votos validos, mesmo nas pesquisas antigas em que apareciam: quem nao
-# esta na urna nao e mais uma opcao, e manter o nome so inflaria um percentual
-# que nao existe mais.
-#
-# As pesquisas seguem intactas em pesquisas_1t.csv, que e o arquivo historico -
-# aqui se muda o que entra na conta, nao o que foi medido.
-FORA_DA_DISPUTA = {
-    "Marçal": {
-        "desde": "2026-09-11",
-        "motivo": "registro indeferido pelo TSE",
-    },
-}
+ARQUIVO_ACURACIA = "acuracia_2026.json"
 
 
-# como os nomes aparecem na Wikipedia -> nome canonico
+def _carregar():
+    try:
+        with io.open(ARQUIVO_ACURACIA, encoding="utf-8") as f:
+            return json.load(f)
+    except (FileNotFoundError, ValueError):
+        return {"institutos": {}}
+
+
+ACURACIA = _carregar()
+
+
+def _peso_do_erro(erro_abs):
+    return max(PESO_MINIMO, 1.0 / (1.0 + erro_abs / ERRO_REFERENCIA))
+
+
+PESOS = {inst: round(_peso_do_erro(d["erro_abs"]), 3)
+         for inst, d in ACURACIA.get("institutos", {}).items()}
+
+if PESOS:
+    _ordenados = sorted(PESOS.values())
+    _meio = len(_ordenados) // 2
+    PESO_SEM_MEDIDA = round(
+        _ordenados[_meio] if len(_ordenados) % 2
+        else (_ordenados[_meio - 1] + _ordenados[_meio]) / 2, 3)
+else:
+    PESO_SEM_MEDIDA = 0.5
+
+
+def peso_instituto(nome):
+    """Peso do instituto; a mediana para quem nao foi medido no 1o turno."""
+    return PESOS.get(nome, PESO_SEM_MEDIDA)
+
+
+def tem_medida(nome):
+    return nome in PESOS
+
+
+def erro_de(nome):
+    d = ACURACIA.get("institutos", {}).get(nome)
+    return d["erro_margem"] if d else None
+
+
+# ----------------------------------------------------------------- nomes
+
+# Grafias que a Wikipedia usa para o mesmo instituto. So entram aqui os casos
+# em que a mesma casa aparece com nomes diferentes - nao e mais uma lista de
+# quem e aceito, porque agora todos entram.
 APELIDOS = {
     "datafolha": "Datafolha",
     "folha": "Datafolha",
@@ -73,27 +96,35 @@ APELIDOS = {
     "mda": "MDA",
     "cnt/mda": "MDA",
     "cnt / mda": "MDA",
-    "cnt mda": "MDA",
     "parana pesquisas": "Paraná Pesquisas",
     "paraná pesquisas": "Paraná Pesquisas",
     "real time big data": "Real Time Big Data",
     "realtime big data": "Real Time Big Data",
     "rtbd": "Real Time Big Data",
-    "record/real time big data": "Real Time Big Data",
     "futura": "Futura",
     "apex/futura": "Futura",
-    "apex / futura": "Futura",
     "instituto futura": "Futura",
-    "futura inteligencia": "Futura",
-    "futura inteligência": "Futura",
+    "genial/quaest": "Quaest",
+    "quaest": "Quaest",
+    "poderdata": "PoderData/Aya",
+    "poderdata/aya": "PoderData/Aya",
+    "nexus/btg pactual": "Nexus/BTG",
+    "nexus/btg": "Nexus/BTG",
+    "instituto verità": "Veritá",
+    "verità": "Veritá",
+    "verita": "Veritá",
+    "alfa inteligência": "Alfa Inteligência",
+    "vox brasil": "Vox Brasil",
+    "meio/ideia": "Meio/Ideia",
+    "exame/ideia": "Meio/Ideia",
 }
+
+# candidatos que sairam da disputa (ver uso em agregar.py)
+FORA_DA_DISPUTA = {}
 
 
 def normalizar_instituto(texto):
-    """
-    Converte o texto da celula 'Contratante / Pesquisa' no nome canonico do
-    instituto, ou devolve o texto limpo se nao reconhecer.
-    """
+    """Converte o texto da celula de contratante no nome canonico."""
     if not texto:
         return ""
     t = texto.strip().strip("'\" ")
@@ -101,17 +132,14 @@ def normalizar_instituto(texto):
         return ""
     baixo = t.lower()
 
-    # match direto
     if baixo in APELIDOS:
         return APELIDOS[baixo]
 
-    # o instituto costuma vir depois de 'contratante/', ex. 'CNN/Real Time Big Data'
     for parte in reversed(re.split(r"[/\\]", baixo)):
         p = parte.strip()
         if p in APELIDOS:
             return APELIDOS[p]
 
-    # match por conteudo (mais longo primeiro, para 'mda' nao pegar antes)
     for apelido in sorted(APELIDOS, key=len, reverse=True):
         if len(apelido) <= 3:
             if re.search(r"\b" + re.escape(apelido) + r"\b", baixo):

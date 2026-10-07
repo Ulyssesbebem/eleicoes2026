@@ -1,4 +1,4 @@
-<title>Agregador Nota A</title>
+<title>Segundo Turno 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
@@ -9,8 +9,9 @@
   --plano:#f9f9f7;  --superficie:#fcfcfb;  --superficie-2:#f2f1ec;
   --tinta:#0b0b0b;  --tinta-2:#52514e;  --tinta-3:#898781;
   --grade:#e1e0d9;  --eixo:#c3c2b7;  --borda:rgba(11,11,11,.10);
-  --s1:#e34948;  --s2:#2a78d6;  --s3:#008300;
-  --neutro-barra:#b9b7ad;
+  --a:#e34948;      /* Lula   */
+  --b:#2a78d6;      /* Flávio */
+  --alerta:#d03b3b;
   --realce:#f0efec;
   --sombra:0 1px 2px rgba(11,11,11,.05);
   --serif:"Newsreader",Georgia,"Times New Roman",serif;
@@ -23,10 +24,8 @@
     --plano:#0d0d0d;  --superficie:#1a1a19;  --superficie-2:#242422;
     --tinta:#ffffff;  --tinta-2:#c3c2b7;  --tinta-3:#898781;
     --grade:#2c2c2a;  --eixo:#383835;  --borda:rgba(255,255,255,.10);
-    --s1:#e66767;  --s2:#3987e5;  --s3:#008300;
-    --neutro-barra:#55544f;
-    --realce:#232321;
-    --sombra:none;
+    --a:#e66767;  --b:#3987e5;  --alerta:#e66767;
+    --realce:#232321;  --sombra:none;
   }
 }
 :root[data-theme="dark"]{
@@ -34,407 +33,185 @@
   --plano:#0d0d0d;  --superficie:#1a1a19;  --superficie-2:#242422;
   --tinta:#ffffff;  --tinta-2:#c3c2b7;  --tinta-3:#898781;
   --grade:#2c2c2a;  --eixo:#383835;  --borda:rgba(255,255,255,.10);
-  --s1:#e66767;  --s2:#3987e5;  --s3:#008300;
-  --neutro-barra:#55544f;
-  --realce:#232321;
-  --sombra:none;
+  --a:#e66767;  --b:#3987e5;  --alerta:#e66767;
+  --realce:#232321;  --sombra:none;
 }
 
 *{box-sizing:border-box}
-body{
-  margin:0; background:var(--plano); color:var(--tinta);
-  font-family:var(--sans); font-size:15px; line-height:1.55;
-  -webkit-font-smoothing:antialiased;
-}
-.envoltorio{max-width:1080px; margin:0 auto; padding-inline:20px; padding-block:0 72px}
+body{margin:0; background:var(--plano); color:var(--tinta);
+  font-family:var(--sans); font-size:15px; line-height:1.55; -webkit-font-smoothing:antialiased}
+.envoltorio{max-width:1020px; margin:0 auto; padding-inline:20px; padding-block:0 72px}
 h1,h2,h3{text-wrap:balance; margin:0}
-a{color:inherit}
-:focus-visible{outline:2px solid var(--s2); outline-offset:2px; border-radius:3px}
+:focus-visible{outline:2px solid var(--b); outline-offset:2px; border-radius:3px}
 @media (prefers-reduced-motion: reduce){*{animation:none!important; transition:none!important}}
 
-/* ---------------------------------------------------------- cabeçalho */
-.masthead{padding-block:48px 28px; border-bottom:1px solid var(--eixo)}
-.selo{
-  font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase;
-  color:var(--tinta-3); margin-bottom:14px;
-}
-.masthead h1{
-  font-family:var(--serif); font-weight:600; font-size:clamp(34px,6vw,52px);
-  line-height:1.04; letter-spacing:-.015em;
-}
-.subtitulo{
-  font-family:var(--serif); font-size:clamp(16px,2.2vw,19px); font-style:italic;
-  color:var(--tinta-2); margin-top:12px; max-width:60ch;
-}
-.metalinha{
-  display:flex; flex-wrap:wrap; gap:10px 28px; margin-top:22px;
-  font-family:var(--mono); font-size:12px; color:var(--tinta-2);
-}
+.masthead{padding-block:44px 24px}
+.selo{font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--tinta-3); margin-bottom:14px}
+.masthead h1{font-family:var(--serif); font-weight:600; font-size:clamp(34px,6vw,52px);
+  line-height:1.04; letter-spacing:-.015em}
+.subtitulo{font-family:var(--serif); font-size:clamp(16px,2.2vw,19px); font-style:italic;
+  color:var(--tinta-2); margin-top:12px; max-width:62ch}
+.metalinha{display:flex; flex-wrap:wrap; gap:10px 26px; margin-top:20px;
+  font-family:var(--mono); font-size:12px; color:var(--tinta-2)}
 .metalinha b{color:var(--tinta); font-weight:500}
 
-/* ---------------------------------------------------------- seções */
-.secao{padding-block:44px 0}
-.secao-cab{display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:6px}
-.secao h2{font-family:var(--serif); font-size:26px; font-weight:600; letter-spacing:-.01em}
-.secao .nota{color:var(--tinta-2); font-size:13.5px; max-width:68ch; margin:4px 0 22px}
-.secao .nota code{font-family:var(--mono); font-size:12.5px; background:var(--realce); padding:1px 5px; border-radius:3px}
+/* --------------------------------------------------- aviso de hipotético */
+.alarme{
+  margin-top:22px; padding:16px 18px; border-radius:10px;
+  background:var(--superficie); border:1px solid var(--borda);
+  border-left:3px solid var(--alerta); font-size:13.5px; line-height:1.6;
+  color:var(--tinta-2);
+}
+.alarme b{color:var(--tinta)}
+.alarme .titulo{
+  font-family:var(--mono); font-size:11px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--alerta); margin-bottom:7px;
+}
 
-/* ---------------------------------------------------------- controles */
-.controles{
-  display:flex; flex-wrap:wrap; gap:10px; align-items:center;
-}
-.grupo-radio{display:inline-flex; border:1px solid var(--borda); border-radius:7px; overflow:hidden; background:var(--superficie)}
-.grupo-radio button{
-  appearance:none; border:0; background:transparent; cursor:pointer;
-  font-family:var(--sans); font-size:12.5px; color:var(--tinta-2);
-  padding:6px 13px; transition:background .12s,color .12s;
-}
-.grupo-radio button+button{border-left:1px solid var(--borda)}
-.grupo-radio button[aria-pressed="true"]{background:var(--tinta); color:var(--plano); font-weight:500}
-.grupo-radio button:hover:not([aria-pressed="true"]){background:var(--realce)}
+/* --------------------------------------------------- placar */
+.placar{margin-top:26px; background:var(--superficie); border:1px solid var(--borda);
+  border-radius:12px; padding:26px; box-shadow:var(--sombra)}
+.duelo{display:grid; grid-template-columns:1fr auto 1fr; gap:18px; align-items:end}
+@media (max-width:620px){.duelo{grid-template-columns:1fr; gap:10px}}
+.lado .nome{font-size:15px; font-weight:500; margin-bottom:4px}
+.lado .pct{font-family:var(--serif); font-size:clamp(40px,8vw,60px); font-weight:600;
+  line-height:1; letter-spacing:-.02em}
+.lado .mg{font-family:var(--mono); font-size:12px; color:var(--tinta-3); margin-top:6px}
+.lado.dir{text-align:right}
+@media (max-width:620px){.lado.dir{text-align:left}}
+.versus{font-family:var(--serif); font-style:italic; font-size:19px; color:var(--tinta-3);
+  padding-bottom:10px}
+.barra-duelo{display:flex; height:30px; border-radius:5px; overflow:hidden; gap:2px;
+  margin-top:20px}
+.barra-duelo span{display:flex; align-items:center; font-family:var(--mono); font-size:12.5px;
+  font-weight:600; color:#fff; padding-inline:11px; transition:width .35s}
+.barra-duelo .dir{justify-content:flex-end}
+.linha50{position:relative; height:14px; margin-top:-2px}
+.linha50 i{position:absolute; left:50%; top:0; width:1px; height:9px; background:var(--tinta-3)}
+.linha50 span{position:absolute; left:50%; top:9px; transform:translateX(-50%);
+  font-family:var(--mono); font-size:10px; color:var(--tinta-3)}
+.veredito{margin-top:22px; padding-top:16px; border-top:1px solid var(--grade);
+  font-size:14px; color:var(--tinta-2)}
+.veredito b{color:var(--tinta)}
 
-/* ---------------------------------------------------------- cartões */
-.cartao{
-  background:var(--superficie); border:1px solid var(--borda); border-radius:10px;
-  padding:22px; box-shadow:var(--sombra);
-}
-.duas{display:grid; grid-template-columns:1.35fr 1fr; gap:22px; align-items:start}
-@media (max-width:820px){.duas{grid-template-columns:1fr}}
+/* --------------------------------------------------- seções */
+.secao{padding-block:40px 0}
+.secao h2{font-family:var(--serif); font-size:25px; font-weight:600; letter-spacing:-.01em}
+.secao .nota{color:var(--tinta-2); font-size:13.5px; max-width:70ch; margin:6px 0 20px}
+.secao .nota b{color:var(--tinta)}
+.secao .nota code{font-family:var(--mono); font-size:12.5px; background:var(--realce);
+  padding:1px 5px; border-radius:3px}
+.cartao{background:var(--superficie); border:1px solid var(--borda); border-radius:10px;
+  padding:22px; box-shadow:var(--sombra)}
 
-/* ---------------------------------------------------------- barras do agregado */
-.barras{display:flex; flex-direction:column; gap:2px}
-.linha-barra{
-  display:grid; grid-template-columns:96px 1fr 118px; align-items:center; gap:12px;
-  padding:5px 0;
-}
-.linha-barra .nome{font-size:14px; font-weight:500; text-align:right; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
-.trilho{position:relative; height:22px}
-.preenchimento{
-  position:absolute; inset-block:0; left:0; border-radius:0 4px 4px 0;
-  transition:width .35s cubic-bezier(.4,0,.2,1);
-}
-.faixa{
-  position:absolute; inset-block:5px; border-radius:2px; opacity:.28;
-  background:var(--tinta-3);
-}
-.linha-barra .valor{
-  font-family:var(--mono); font-size:13px; font-variant-numeric:tabular-nums;
-  color:var(--tinta-2); white-space:nowrap;
-}
-.linha-barra .valor b{color:var(--tinta); font-size:15px; font-weight:600}
-@media (max-width:520px){
-  .linha-barra{grid-template-columns:72px 1fr; row-gap:2px}
-  .linha-barra .valor{grid-column:2; text-align:right}
-  .vies-linha,.vies-escala{grid-template-columns:110px 1fr}
-  .cartao{padding:16px}
-}
-.banda{
-  position:absolute; inset-block:1px; border:1px solid var(--tinta);
-  border-radius:2px; opacity:.32; pointer-events:none;
-}
-.linha-barra .valor .mg{color:var(--tinta-3); font-size:12px}
-.confronto-margem{
-  margin-top:7px; font-size:11.5px; color:var(--tinta-3);
-  font-variant-numeric:tabular-nums;
-}
-.confronto-margem b{color:var(--tinta-2); font-weight:500}
-.cruza50{
-  display:inline-block; margin-left:6px; padding:1px 6px; border-radius:4px;
-  background:var(--superficie-2); border:1px solid var(--borda); color:var(--tinta-2);
-}
-.legenda-faixa{
-  display:flex; align-items:center; gap:8px; margin-top:16px; padding-top:14px;
-  border-top:1px solid var(--grade); font-size:12px; color:var(--tinta-3);
-}
-.amostra-faixa{width:34px; height:7px; border-radius:2px; background:var(--tinta-3); opacity:.28; flex:none}
-
-/* ---------------------------------------------------------- segundo turno */
-.confrontos{display:flex; flex-direction:column; gap:0}
-.confronto{padding:13px 0; border-bottom:1px solid var(--grade)}
-.confronto:last-child{border-bottom:0}
-.confronto-topo{display:flex; justify-content:space-between; align-items:baseline; gap:10px; margin-bottom:7px}
-.confronto-nome{font-size:13.5px; font-weight:500}
-.confronto-dif{font-family:var(--mono); font-size:12px; color:var(--tinta-2); font-variant-numeric:tabular-nums}
-.gangorra{display:flex; height:20px; gap:2px; border-radius:3px; overflow:hidden}
-.gangorra span{display:flex; align-items:center; font-family:var(--mono); font-size:11.5px; font-weight:600; color:#fff; padding-inline:7px}
-.gangorra .dir{justify-content:flex-end}
-
-/* ---------------------------------------------------------- gráfico de linha */
-.moldura-grafico{position:relative; width:100%}
-.moldura-grafico svg{display:block; width:100%; height:auto; overflow:visible}
-/* as cores do gráfico vêm por classe, e não por atributo de apresentação:
-   var() dentro de fill="" / stroke="" não é suportado de forma confiável */
-#grafico .s1{--cor:var(--s1)}
-#grafico .s2{--cor:var(--s2)}
-#grafico .s3{--cor:var(--s3)}
-#grafico .grade{stroke:var(--grade); stroke-width:1}
-#grafico .base{stroke:var(--eixo); stroke-width:1}
-#grafico text{font-family:var(--mono); font-size:11px; fill:var(--tinta-3)}
-#grafico .rot{font-family:var(--sans); font-size:12px; font-weight:600; fill:var(--cor)}
-#grafico .ln{fill:none; stroke:var(--cor); stroke-width:2; stroke-linejoin:round; stroke-linecap:round}
-#grafico .pt{fill:var(--cor); opacity:.34; stroke:var(--superficie); stroke-width:1.5}
-#grafico .fim{fill:var(--cor); stroke:var(--superficie); stroke-width:2}
-#grafico .cruz{stroke:var(--eixo); stroke-width:1}
-/* o segundo gráfico usa as mesmas regras */
-#grafico2t .s1{--cor:var(--s1)}
-#grafico2t .s2{--cor:var(--s2)}
-#grafico2t .grade{stroke:var(--grade); stroke-width:1}
-#grafico2t .base{stroke:var(--eixo); stroke-width:1}
-#grafico2t text{font-family:var(--mono); font-size:11px; fill:var(--tinta-3)}
-#grafico2t .rot{font-family:var(--sans); font-size:12px; font-weight:600; fill:var(--cor)}
-#grafico2t .ln{fill:none; stroke:var(--cor); stroke-width:2; stroke-linejoin:round; stroke-linecap:round}
-#grafico2t .pt{fill:var(--cor); opacity:.34; stroke:var(--superficie); stroke-width:1.5}
-#grafico2t .fim{fill:var(--cor); stroke:var(--superficie); stroke-width:2}
-#grafico2t .cruz{stroke:var(--eixo); stroke-width:1}
-/* a linha dos 50% é o que decide a eleição: ganha destaque sobre a grade */
-#grafico2t .meio{stroke:var(--tinta-3); stroke-width:1; stroke-dasharray:4 3}
-#grafico2t .rotmeio{fill:var(--tinta-2); font-weight:600}
-.dica-vantagem{
-  margin-top:6px; padding-top:6px; border-top:1px solid var(--grade);
-  font-size:11.5px; color:var(--tinta-2); justify-content:flex-end;
-}
-.legenda{display:flex; flex-wrap:wrap; gap:18px; margin-bottom:14px}
-.legenda span{display:inline-flex; align-items:center; gap:7px; font-size:13px; color:var(--tinta-2)}
+/* --------------------------------------------------- gráfico */
+.moldura{position:relative; width:100%}
+.moldura svg{display:block; width:100%; height:auto; overflow:visible}
+#g .grade{stroke:var(--grade); stroke-width:1}
+#g .meio{stroke:var(--tinta-3); stroke-width:1; stroke-dasharray:4 3}
+#g text{font-family:var(--mono); font-size:11px; fill:var(--tinta-3)}
+#g .rotmeio{fill:var(--tinta-2); font-weight:600}
+#g .la{stroke:var(--a)} #g .lb{stroke:var(--b)}
+#g .ln{fill:none; stroke-width:2; stroke-linejoin:round; stroke-linecap:round}
+#g .pa{fill:var(--a)} #g .pb{fill:var(--b)}
+#g .pt{opacity:.34; stroke:var(--superficie); stroke-width:1.5}
+#g .fim{stroke:var(--superficie); stroke-width:2}
+#g .ra{fill:var(--a)} #g .rb{fill:var(--b)}
+#g .rot{font-family:var(--sans); font-size:12px; font-weight:600}
+#g .cruz{stroke:var(--eixo); stroke-width:1}
+#g .corte{stroke:var(--tinta-3); stroke-width:1; stroke-dasharray:2 3}
+.legenda{display:flex; flex-wrap:wrap; gap:18px; margin-bottom:14px; font-size:12.5px;
+  color:var(--tinta-2)}
+.legenda span{display:inline-flex; align-items:center; gap:7px}
 .marca{width:13px; height:3px; border-radius:2px; flex:none}
-.dica{
-  position:absolute; pointer-events:none; z-index:5; opacity:0;
+.dica{position:absolute; pointer-events:none; z-index:5; opacity:0;
   background:var(--superficie); border:1px solid var(--borda); border-radius:7px;
-  padding:9px 11px; box-shadow:0 3px 14px rgba(0,0,0,.13); min-width:132px;
-  transition:opacity .1s;
-}
+  padding:9px 11px; box-shadow:0 3px 14px rgba(0,0,0,.13); min-width:140px; transition:opacity .1s}
 .dica.vis{opacity:1}
 .dica-data{font-family:var(--mono); font-size:11px; color:var(--tinta-3); margin-bottom:6px}
 .dica-linha{display:flex; align-items:center; gap:7px; font-size:12.5px; white-space:nowrap}
-.dica-linha .v{margin-left:auto; font-family:var(--mono); font-weight:600; font-variant-numeric:tabular-nums}
+.dica-linha .v{margin-left:auto; font-family:var(--mono); font-weight:600}
 
-/* ---------------------------------------------------------- sliders */
-.painel-pesos{display:grid; grid-template-columns:270px 1fr; gap:26px; align-items:start}
-@media (max-width:820px){.painel-pesos{grid-template-columns:1fr}}
-.campo{margin-bottom:20px}
-.campo label{display:flex; justify-content:space-between; align-items:baseline; font-size:13px; margin-bottom:7px; gap:10px}
-.campo label b{font-family:var(--mono); font-size:12.5px; font-weight:600; color:var(--tinta)}
-.campo .dica-campo{font-size:11.5px; color:var(--tinta-3); line-height:1.4; margin-top:5px}
-input[type=range]{width:100%; accent-color:var(--s2); cursor:pointer}
-.botao-reset{
-  appearance:none; background:var(--superficie); border:1px solid var(--borda); border-radius:7px;
-  font-family:var(--sans); font-size:12.5px; color:var(--tinta-2); padding:6px 13px; cursor:pointer;
-}
-.botao-reset:hover{background:var(--realce)}
-
-/* ---------------------------------------------------------- tabelas */
-.rolagem{overflow-x:auto; border:1px solid var(--borda); border-radius:10px; background:var(--superficie)}
+/* --------------------------------------------------- tabelas */
+.rolagem{overflow-x:auto; border:1px solid var(--borda); border-radius:10px;
+  background:var(--superficie)}
 table{border-collapse:collapse; width:100%; font-size:13px}
 th,td{padding:9px 12px; text-align:right; white-space:nowrap}
 th:first-child,td:first-child{text-align:left}
-th{
-  font-family:var(--mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase;
-  color:var(--tinta-3); font-weight:500; border-bottom:1px solid var(--eixo); background:var(--superficie);
-  position:sticky; top:0;
-}
+th{font-family:var(--mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--tinta-3); font-weight:500; border-bottom:1px solid var(--eixo);
+  background:var(--superficie)}
 td{border-bottom:1px solid var(--grade); font-variant-numeric:tabular-nums}
 tbody tr:last-child td{border-bottom:0}
 tbody tr:hover td{background:var(--realce)}
 td.num{font-family:var(--mono)}
-.chip{
-  display:inline-block; font-family:var(--mono); font-size:10.5px; font-weight:600;
-  padding:1.5px 6px; border-radius:4px; background:var(--superficie-2); color:var(--tinta-2);
-  border:1px solid var(--borda);
-}
-.chip.mais{color:var(--tinta); border-color:var(--tinta-3)}
-.barra-peso{position:relative; min-width:120px}
-.barra-peso i{
-  position:absolute; left:0; top:50%; transform:translateY(-50%); height:13px;
-  background:var(--s2); opacity:.25; border-radius:0 3px 3px 0;
-}
-.barra-peso span{position:relative; font-family:var(--mono); font-variant-numeric:tabular-nums}
+.barra-peso{position:relative; min-width:110px}
+.barra-peso i{position:absolute; left:0; top:50%; transform:translateY(-50%); height:13px;
+  background:var(--b); opacity:.25; border-radius:0 3px 3px 0}
+.barra-peso span{position:relative; font-family:var(--mono)}
+.erro{font-family:var(--mono); font-size:11.5px}
+.erro.bom{color:var(--tinta)} .erro.ruim{color:var(--tinta-3)}
+.pastilha{display:inline-block; font-family:var(--mono); font-size:10px; padding:1px 6px;
+  border-radius:4px; background:var(--superficie-2); border:1px solid var(--borda);
+  color:var(--tinta-3); margin-left:6px}
 
-/* ---------------------------------------------------------- house effects */
-.vies{display:flex; flex-direction:column; gap:1px}
-.vies-linha{display:grid; grid-template-columns:150px 1fr; align-items:center; gap:14px; padding:7px 0}
-.vies-nome{font-size:13px; display:flex; align-items:center; gap:7px}
-.vies-trilho{position:relative; height:26px}
-.vies-eixo{position:absolute; left:50%; top:0; bottom:0; width:1px; background:var(--eixo)}
-.vies-ponto{
-  position:absolute; top:50%; transform:translate(-50%,-50%); width:11px; height:11px;
-  border-radius:50%; border:2px solid var(--superficie);
-}
-.vies-escala{display:grid; grid-template-columns:150px 1fr; gap:14px; margin-top:8px; font-family:var(--mono); font-size:10.5px; color:var(--tinta-3)}
-.vies-escala div:last-child{display:flex; justify-content:space-between}
-
-.rodape{
-  margin-top:56px; padding-top:24px; border-top:1px solid var(--eixo);
-  font-size:12.5px; color:var(--tinta-3); line-height:1.65;
-}
+.rodape{margin-top:52px; padding-top:24px; border-top:1px solid var(--eixo);
+  font-size:12.5px; color:var(--tinta-3); line-height:1.65}
 .rodape b{color:var(--tinta-2); font-weight:500}
+.rodape p{margin:0 0 11px}
 </style>
 
 <div class="envoltorio">
 
   <header class="masthead">
-    <div class="selo">Eleição presidencial · Brasil 2026</div>
-    <h1>Agregador Nota A</h1>
-    <p class="subtitulo">
-      <span id="subtitulo-notas"></span>
-    </p>
+    <div class="selo" id="selo"></div>
+    <h1 id="titulo"></h1>
+    <p class="subtitulo" id="subtitulo"></p>
     <div class="metalinha" id="metalinha"></div>
+    <div class="alarme" id="alarme" hidden></div>
   </header>
 
-  <!-- ====================================================== 1º turno -->
+  <div class="placar">
+    <div class="duelo" id="duelo"></div>
+    <div class="barra-duelo" id="barra"></div>
+    <div class="linha50"><i></i><span>50%</span></div>
+    <div class="veredito" id="veredito"></div>
+  </div>
+
   <section class="secao">
-    <div class="secao-cab">
-      <h2>Onde a corrida está</h2>
-      <div class="controles">
-        <div class="grupo-radio" role="group" aria-label="Base de cálculo">
-          <button id="btn-bruto" type="button" aria-pressed="true">Total de eleitores</button>
-          <button id="btn-validos" type="button" aria-pressed="false">Votos válidos</button>
-        </div>
-      </div>
-    </div>
-    <p class="nota" id="nota-base"></p>
-
-    <div class="duas">
-      <div class="cartao">
-        <div class="barras" id="barras"></div>
-        <div class="legenda-faixa">
-          <i class="amostra-faixa"></i>
-          intervalo entre a menor e a maior pesquisa
-          <i class="banda" style="position:static;display:inline-block;width:26px;height:11px;margin-left:14px"></i>
-          margem do agregado (95%)
-        </div>
-      </div>
-
-      <div class="cartao">
-        <h3 style="font-family:var(--serif);font-size:19px;font-weight:600;margin-bottom:4px">Se fosse hoje o 2º turno</h3>
-        <p style="font-size:12.5px;color:var(--tinta-3);margin:0 0 14px">Votos válidos, mesma ponderação.</p>
-        <div class="confrontos" id="confrontos"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====================================================== tendência -->
-  <section class="secao">
-    <div class="secao-cab">
-      <h2>Tendência</h2>
-      <div class="controles">
-        <div class="grupo-radio" role="group" aria-label="Período">
-          <button type="button" data-dias="90" aria-pressed="false">90 dias</button>
-          <button type="button" data-dias="180" aria-pressed="true">180 dias</button>
-          <button type="button" data-dias="365" aria-pressed="false">1 ano</button>
-        </div>
-      </div>
-    </div>
-    <p class="nota">
-      A média ponderada recalculada dia a dia. Os pontos são as pesquisas individuais;
-      a linha é o agregado naquela data. Só os três primeiros colocados — os demais
-      estão na tabela ao final.
-    </p>
+    <h2>Como a corrida se moveu</h2>
+    <p class="nota" id="nota-grafico"></p>
     <div class="cartao">
       <div class="legenda" id="legenda"></div>
-      <div class="moldura-grafico" id="moldura">
-        <svg id="grafico" viewBox="0 0 900 330" role="img"
-             aria-label="Evolução da média ponderada das pesquisas"></svg>
+      <div class="moldura" id="moldura">
+        <svg id="g" viewBox="0 0 900 320" role="img"
+             aria-label="Evolução do 2º turno em votos válidos"></svg>
         <div class="dica" id="dica"></div>
       </div>
     </div>
   </section>
 
-  <!-- ====================================================== tendência 2º turno -->
   <section class="secao">
-    <div class="secao-cab">
-      <h2 id="titulo-2t">Tendência do 2º turno</h2>
-    </div>
-    <p class="nota" id="nota-2t"></p>
-    <div class="cartao">
-      <div class="legenda" id="legenda2t"></div>
-      <div class="moldura-grafico" id="moldura2t">
-        <svg id="grafico2t" viewBox="0 0 900 330" role="img"
-             aria-label="Evolução do confronto de 2º turno em votos válidos"></svg>
-        <div class="dica" id="dica2t"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====================================================== pesos -->
-  <section class="secao">
-    <div class="secao-cab">
-      <h2>Como a média é calculada</h2>
-      <button class="botao-reset" id="reset" type="button">Voltar ao padrão</button>
-    </div>
-    <p class="nota">
-      Cada pesquisa entra com um peso =
-      <code>nota × recência × amostra × repetição</code>.
-      Mexa nos controles e tudo na página recalcula.
-    </p>
-
-    <div class="cartao painel-pesos">
-      <div>
-        <div class="campo">
-          <label for="janela">Janela <b id="v-janela"></b></label>
-          <input type="range" id="janela" min="14" max="120" step="1">
-          <div class="dica-campo">Pesquisas mais antigas que isso ficam de fora.</div>
-        </div>
-        <div class="campo">
-          <label for="meiavida">Meia-vida <b id="v-meiavida"></b></label>
-          <input type="range" id="meiavida" min="3" max="45" step="1">
-          <div class="dica-campo">A cada meia-vida, o peso de uma pesquisa cai pela metade.</div>
-        </div>
-        <div class="campo" style="margin-bottom:0">
-          <div style="font-size:12.5px;color:var(--tinta-2);line-height:1.6">
-            <b style="font-family:var(--mono);font-size:11.5px">repetição</b> = 1/√k divide o peso
-            da k-ésima pesquisa mais recente de um mesmo instituto, para que quem publica
-            toda semana não domine a média sozinho.
-          </div>
-          <div style="font-size:12.5px;color:var(--tinta-2);line-height:1.6;margin-top:12px;
-                      padding-top:12px;border-top:1px solid var(--grade)">
-            <b style="font-family:var(--mono);font-size:11.5px">amostra</b> = √(n/2000),
-            entre 0,75 e 1,40 — <b>exceto a AtlasIntel, fixada em 1,10</b>. Pela amostra de
-            ~5.000 ela bateria no teto e pesaria 40% mais que as demais A+, que entrevistam
-            ~2.000; como coleta por painel online, a vantagem por tamanho fica limitada.
-          </div>
-        </div>
-      </div>
-
-      <div class="rolagem" style="border:0;border-radius:0">
-        <table>
-          <thead>
-            <tr>
-              <th>Instituto</th><th>Nota</th><th>Campo</th><th>Amostra</th>
-              <th>Lula</th><th>Flávio</th><th>Peso</th>
-            </tr>
-          </thead>
-          <tbody id="corpo-pesos"></tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====================================================== viés -->
-  <section class="secao">
-    <div class="secao-cab"><h2>Viés de cada instituto</h2></div>
-    <p class="nota">
-      Quanto cada instituto fica acima ou abaixo dos <em>outros</em> institutos, em votos
-      válidos, na mesma data. Comparar em votos válidos é proposital: quem registra poucos
-      indecisos (AtlasIntel, ~1%) empurraria todos os candidatos para cima ao mesmo tempo no
-      número bruto, e isso é metodologia, não viés.
-    </p>
-    <div class="cartao">
-      <div class="legenda" id="legenda-vies"></div>
-      <div class="vies" id="vies"></div>
-      <div class="vies-escala">
-        <div></div>
-        <div><span>−6 pontos</span><span>0</span><span>+6 pontos</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====================================================== tabela -->
-  <section class="secao">
-    <div class="secao-cab"><h2>Todas as pesquisas</h2></div>
-    <p class="nota" id="nota-tabela"></p>
+    <h2>Quem errou quanto no 1º turno</h2>
+    <p class="nota" id="nota-acuracia"></p>
     <div class="rolagem">
       <table>
-        <thead><tr id="cab-tabela"></tr></thead>
-        <tbody id="corpo-tabela"></tbody>
+        <thead><tr>
+          <th>Instituto</th><th>Campo</th><th>Previu</th><th>Erro na margem</th><th>Peso daqui</th>
+        </tr></thead>
+        <tbody id="corpo-acuracia"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="secao">
+    <h2>As pesquisas que entram na média</h2>
+    <p class="nota" id="nota-pesquisas"></p>
+    <div class="rolagem">
+      <table>
+        <thead><tr id="cab-pesquisas"></tr></thead>
+        <tbody id="corpo-pesquisas"></tbody>
       </table>
     </div>
   </section>
@@ -446,631 +223,261 @@ td.num{font-family:var(--mono)}
 <script>
 (function(){
 "use strict";
-
 const D = JSON.parse(document.getElementById("dados").textContent);
+const A = D.duelo.a, B = D.duelo.b, AG = D.agregado;
 
-/* ------------------------------------------------------------ constantes */
-const PESO_NOTA = D.parametros.peso_nota;
-const AMOSTRA_REF = D.parametros.amostra_ref;
-const AMOSTRA_MIN = 0.75, AMOSTRA_MAX = 1.40;
-const PADRAO = {janela: D.parametros.janela_dias, meiavida: D.parametros.meia_vida_dias};
-
-/* três primeiros colocados: cores validadas (vermelho/azul/verde) */
-const CORES = {};
-const SERIES = D.candidatos.slice(0, 3);
-SERIES.forEach((c, i) => CORES[c] = `var(--s${i + 1})`);
-
-const DIA = 86400000;
-const dt = s => new Date(s + "T00:00:00Z").getTime();
-const HOJE = dt(D.data_ultima_pesquisa);
-
-const nf1 = new Intl.NumberFormat("pt-BR", {minimumFractionDigits: 1, maximumFractionDigits: 1});
+const nf1 = new Intl.NumberFormat("pt-BR",{minimumFractionDigits:1,maximumFractionDigits:1});
 const nf0 = new Intl.NumberFormat("pt-BR");
-const pct = v => nf1.format(v) + "%";
-const dataCurta = t => new Date(t).toLocaleDateString("pt-BR", {day: "2-digit", month: "short", timeZone: "UTC"});
-const dataLonga = t => new Date(t).toLocaleDateString("pt-BR", {day: "2-digit", month: "long", year: "numeric", timeZone: "UTC"});
+const sinal = v => (v>0?"+":v<0?"−":"") + nf1.format(Math.abs(v));
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
+const DIA = 86400000;
+const dt = s => new Date(s+"T00:00:00Z").getTime();
+const dCurta = t => new Date(t).toLocaleDateString("pt-BR",{day:"2-digit",month:"short",timeZone:"UTC"});
+const dLonga = t => new Date(t).toLocaleDateString("pt-BR",{day:"2-digit",month:"long",year:"numeric",timeZone:"UTC"});
 
-let estado = {janela: PADRAO.janela, meiavida: PADRAO.meiavida, base: "bruto", dias: 180};
-
-/* ------------------------------------------------------------ ponderação
-   Mesmo cálculo de agregar.py: peso = nota × recência × amostra × repetição.  */
-/* Institutos com fator fixado em institutos.py ignoram a regra de amostra.
-   Vem do JSON, e não repetido aqui, para o número não divergir do Python:
-   esta página recalcula os pesos no navegador para os controles funcionarem
-   ao vivo, então as duas implementações têm de casar. */
-const FATOR_FIXO = D.parametros.fator_amostra_fixo || {};
-
-function fatorAmostra(n, instituto){
-  if (FATOR_FIXO[instituto] != null) return FATOR_FIXO[instituto];
-  if (!n) return 1;
-  return Math.min(AMOSTRA_MAX, Math.max(AMOSTRA_MIN, Math.sqrt(n / AMOSTRA_REF)));
-}
-
-function elegiveis(pesquisas, ref, janela){
-  const out = pesquisas.filter(p => {
-    const d = (ref - dt(p.data)) / DIA;
-    return d >= 0 && d <= janela;
-  }).sort((a, b) => dt(b.data) - dt(a.data));
-  const vistos = {};
-  out.forEach(p => {
-    vistos[p.instituto] = (vistos[p.instituto] || 0) + 1;
-    p._k = vistos[p.instituto];
-  });
-  return out;
-}
-
-function peso(p, ref, meiavida){
-  const wNota = PESO_NOTA[p.nota] != null ? PESO_NOTA[p.nota] : 0.5;
-  const dias = (ref - dt(p.data)) / DIA;
-  return wNota * Math.pow(0.5, dias / meiavida) * fatorAmostra(p.amostra, p.instituto)
-         / Math.sqrt(p._k);
-}
-
-function agregar(pesquisas, cands, ref, janela, meiavida){
-  const els = elegiveis(pesquisas, ref, janela);
-  const res = {};
-  cands.forEach(c => {
-    let num = 0, den = 0, min = Infinity, max = -Infinity, n = 0;
-    els.forEach(p => {
-      const v = p.valores[c];
-      if (v == null) return;
-      const w = peso(p, ref, meiavida);
-      num += w * v; den += w; n++;
-      if (v < min) min = v;
-      if (v > max) max = v;
-    });
-    if (den > 0) res[c] = {media: num / den, min, max, n};
-  });
-  return res;
-}
-
-function paraValidos(medias){
-  let total = 0;
-  for (const c in medias) if (c !== "Indefinidos" && c !== "Outros") total += medias[c].media;
-  const out = {};
-  if (total <= 0) return out;
-  for (const c in medias){
-    if (c === "Indefinidos" || c === "Outros") continue;
-    const f = 100 / total;
-    out[c] = {media: medias[c].media * f, min: medias[c].min * f, max: medias[c].max * f, n: medias[c].n};
-  }
-  return out;
-}
-
-function baseAtual(pesquisas, cands, ref){
-  const m = agregar(pesquisas, cands, ref, estado.janela, estado.meiavida);
-  return estado.base === "validos" ? paraValidos(m) : m;
-}
-
-/* As notas aceitas vêm do JSON: o texto acompanha institutos.py em vez de
-   envelhecer quando o critério muda. */
-function textoNotas(){
-  const n = (D.notas_aceitas || []).slice().sort((a, b) => b.length - a.length);
-  if (!n.length) return "A";
-  const bonito = n.map(x => x.replace("-", "‑"));
-  return bonito.length === 1 ? bonito[0]
-       : bonito.slice(0, -1).join(", ") + " ou " + bonito[bonito.length - 1];
-}
-
-/* vírgula, e não travessão: "nota A+ ou A —" se lê como se a nota fosse "A-" */
-document.getElementById("subtitulo-notas").innerHTML =
-  `A média das pesquisas usando só os institutos com nota ${textoNotas()},
-   mostrando o peso que cada pesquisa recebeu para chegar nela.`;
+const DIA1T = dt(D.dia_1t), DIA2T = dt(D.dia_2t), HOJE = dt(D.data_ultima_pesquisa);
+const faltam = Math.round((DIA2T - Date.now()) / DIA);
 
 /* ------------------------------------------------------------ cabeçalho */
-function pintarMeta(){
-  const els = elegiveis(D.historico, HOJE, estado.janela);
-  const institutos = new Set(els.map(p => p.instituto));
-  document.getElementById("metalinha").innerHTML = `
-    <span>Pesquisa mais recente <b>${dataLonga(HOJE)}</b></span>
-    <span><b>${els.length}</b> pesquisas na janela</span>
-    <span><b>${institutos.size}</b> institutos</span>
-    <span>Janela de <b>${estado.janela} dias</b></span>`;
+document.getElementById("selo").textContent =
+  `2º turno · ${dLonga(DIA2T)} · votos válidos`;
+document.getElementById("titulo").textContent = `${A} × ${B}`;
+document.getElementById("subtitulo").innerHTML =
+  `A média das pesquisas do 2º turno, com o peso de cada instituto definido pelo
+   que ele errou no 1º turno — e não por nota dada antes da eleição.`;
+
+document.getElementById("metalinha").innerHTML =
+  `<span>Pesquisa mais recente <b>${dLonga(HOJE)}</b></span>` +
+  `<span><b>${AG.n}</b> pesquisas na janela</span>` +
+  `<span><b>${nf1.format(AG.n_efetivo)}</b> efetivas</span>` +
+  (faltam > 0 ? `<span><b>${faltam}</b> dias para o pleito</span>` : "");
+
+if (AG.hipotetico){
+  const al = document.getElementById("alarme");
+  al.hidden = false;
+  al.innerHTML =
+    `<div class="titulo">Leia antes do número</div>
+     <b>Ainda não há pesquisa de 2º turno feita depois do 1º turno.</b> Tudo o que
+     esta página mostra vem de cenários hipotéticos, perguntados antes de
+     ${dLonga(DIA1T)} a eleitores que ainda não tinham visto o resultado nem a
+     campanha recomeçar. E foram essas mesmas pesquisas que erraram a margem do
+     1º turno — a mediana ficou <b>5,8 pontos</b> longe do que a urna devolveu,
+     e só ${contaAcertos()} de ${Object.keys(D.acuracia_1t).length} acertaram quem estava na frente.
+     Trate como ponto de partida, não como medida do 2º turno.`;
 }
 
-/* A margem vem do JSON, calculada sobre os números brutos. Na visão de votos
-   válidos ela é reescalada pelo mesmo fator que o percentual, porque dividir
-   tudo pela soma dos válidos multiplica média e margem juntas. */
-function margemDe(c){
-  const d = D.agregado[c];
-  if (!d || d.margem == null) return null;
-  if (estado.base !== "validos") return d.margem;
-  const f = d.media > 0 ? d.valido / d.media : 1;
-  return d.margem * f;
+function contaAcertos(){
+  const real = D.resultado_1t[B] - D.resultado_1t[A];
+  return Object.values(D.acuracia_1t).filter(d => d.erro_margem > -real).length;
 }
 
-/* ------------------------------------------------------------ barras */
-function pintarBarras(){
-  const cands = D.candidatos;
-  const m = baseAtual(D.historico, cands, HOJE);
-  const lista = cands.filter(c => m[c] && c !== "Indefinidos" && c !== "Outros")
-                     .sort((a, b) => m[b].media - m[a].media);
-  const teto = Math.max(...lista.map(c => m[c].max)) * 1.04;
-
-  document.getElementById("barras").innerHTML = lista.map(c => {
-    const d = m[c];
-    const cor = CORES[c] || "var(--neutro-barra)";
-    const faixaL = 100 * d.min / teto, faixaW = Math.max(0.6, 100 * (d.max - d.min) / teto);
-    /* banda de margem: o intervalo em que o agregado pode estar */
-    const mg = margemDe(c);
-    const bandaL = mg != null ? 100 * Math.max(0, d.media - mg) / teto : 0;
-    const bandaW = mg != null ? 100 * (Math.min(teto, d.media + mg) - Math.max(0, d.media - mg)) / teto : 0;
-    return `<div class="linha-barra">
-      <div class="nome">${c}</div>
-      <div class="trilho">
-        <div class="faixa" style="left:${faixaL}%;width:${faixaW}%"></div>
-        <div class="preenchimento" style="width:${100 * d.media / teto}%;background:${cor}"></div>
-        ${mg != null ? `<div class="banda" style="left:${bandaL}%;width:${bandaW}%"></div>` : ""}
-      </div>
-      <div class="valor"><b>${pct(d.media)}</b> ${mg != null
-        ? `<span class="mg">±${nf1.format(mg)}</span>`
-        : `<span style="color:var(--tinta-3)">${nf1.format(d.min)}–${nf1.format(d.max)}</span>`}</div>
+/* ------------------------------------------------------------ placar */
+(function placar(){
+  const m = AG.margem;
+  document.getElementById("duelo").innerHTML = `
+    <div class="lado">
+      <div class="nome">${esc(A)}</div>
+      <div class="pct" style="color:var(--a)">${nf1.format(AG.a)}%</div>
+      ${m ? `<div class="mg">±${nf1.format(m)}</div>` : ""}
+    </div>
+    <div class="versus">contra</div>
+    <div class="lado dir">
+      <div class="nome">${esc(B)}</div>
+      <div class="pct" style="color:var(--b)">${nf1.format(AG.b)}%</div>
+      ${m ? `<div class="mg">±${nf1.format(m)}</div>` : ""}
     </div>`;
-  }).join("");
 
-  const ind = agregar(D.historico, ["Indefinidos"], HOJE, estado.janela, estado.meiavida)["Indefinidos"];
-  document.getElementById("nota-base").innerHTML = estado.base === "bruto"
-    ? `Percentual sobre todos os entrevistados. Os indecisos e quem votaria branco ou nulo somam <b>${ind ? pct(ind.media) : "—"}</b> e ficam fora das barras.`
-    : `Percentual sobre os votos válidos: indecisos, brancos e nulos foram retirados e o restante foi reescalonado para 100%. É esta a base que decide se há 2º turno.`;
-}
+  document.getElementById("barra").innerHTML =
+    `<span style="width:${AG.a}%;background:var(--a)">${nf1.format(AG.a)}</span>` +
+    `<span class="dir" style="width:${AG.b}%;background:var(--b)">${nf1.format(AG.b)}</span>`;
 
-/* Margem do confronto, espelhando margem_duelo() em agregar.py: cada pesquisa
-   vai para votos válidos ANTES de entrar na média, porque num duelo a soma tem
-   de fechar em 100 e taxas de indecisos diferentes deslocariam a base. */
-function margemDuelo(lista, dois){
-  const a = dois[0], b = dois[1];
-  const els = elegiveis(lista, HOJE, estado.janela)
-    .filter(p => p.valores[a] != null && p.valores[b] != null);
-  if (els.length < 2) return null;
+  const dif = Math.abs(AG.a - AG.b);
+  const lider = AG.a > AG.b ? A : B;
+  const empate = m != null && dif <= 2 * m;
+  const lo = Math.min(AG.a, AG.b) - (m || 0), hi = Math.max(AG.a, AG.b) + (m || 0);
+  document.getElementById("veredito").innerHTML = empate
+    ? `<b>Empate estatístico.</b> A diferença de ${nf1.format(dif)} ponto cabe dentro da
+       margem de ±${nf1.format(m)} — o intervalo de cada candidato cruza os 50%.`
+    : `<b>${esc(lider)} à frente por ${nf1.format(dif)} pontos.</b> A diferença é maior que a
+       margem de ±${nf1.format(m)}, então não é empate estatístico — mas a margem mede a
+       precisão da média, não a distância até a urna.`;
+})();
 
-  const vals = [], pesos = [];
-  els.forEach(p => {
-    const t = p.valores[a] + p.valores[b];
-    if (t <= 0) return;
-    vals.push(100 * p.valores[a] / t);
-    pesos.push(peso(p, HOJE, estado.meiavida));
-  });
-  const den = pesos.reduce((x, y) => x + y, 0);
-  if (den <= 0 || vals.length < 2) return null;
-  const m = vals.reduce((acc, v, i) => acc + v * pesos[i], 0) / den;
-  const varia = vals.reduce((acc, v, i) => acc + pesos[i] * Math.pow(v - m, 2), 0) / den;
-  const s2 = pesos.reduce((acc, w) => acc + w * w, 0);
-  const nEf = s2 ? den * den / s2 : 0;
-  if (nEf <= 1) return null;
-  return 1.96 * Math.sqrt(varia) / Math.sqrt(nEf);
-}
+/* ------------------------------------------------------------ gráfico */
+const L = {e:46, d:48, t:16, b:30}, W = 900, H = 320;
 
-/* ------------------------------------------------------------ 2º turno */
-function pintarConfrontos(){
-  const porCenario = {};
-  D.historico_2t.forEach(p => {
-    if (!p.cenario || /hipótese/i.test(p.cenario)) return;
-    (porCenario[p.cenario] = porCenario[p.cenario] || []).push(p);
-  });
+function grafico(){
+  const svg = document.getElementById("g");
+  const s = D.serie;
+  if (!s.length){ svg.innerHTML = ""; return; }
 
-  const linhas = [];
-  for (const nome in porCenario){
-    const lista = porCenario[nome];
-    const recente = Math.max(...lista.map(p => dt(p.data)));
-    if ((HOJE - recente) / DIA > estado.janela) continue;
-    const cont = {};
-    elegiveis(lista, HOJE, estado.janela).forEach(p => {
-      for (const c in p.valores) if (c !== "Indefinidos" && c !== "Outros") cont[c] = (cont[c] || 0) + 1;
-    });
-    const dois = Object.keys(cont).sort((a, b) => cont[b] - cont[a]).slice(0, 2);
-    if (dois.length < 2) continue;
-    const m = paraValidos(agregar(lista, dois, HOJE, estado.janela, estado.meiavida));
-    if (!m[dois[0]] || !m[dois[1]]) continue;
-    const ordenado = m[dois[0]].media >= m[dois[1]].media ? dois : [dois[1], dois[0]];
-    linhas.push({a: ordenado[0], b: ordenado[1], va: m[ordenado[0]].media,
-                 vb: m[ordenado[1]].media, n: m[ordenado[0]].n,
-                 margem: margemDuelo(lista, ordenado)});
-  }
-  linhas.sort((x, y) => (x.va - x.vb) - (y.va - y.vb));
+  const ini = dt(s[0].data), fim = dt(s[s.length-1].data);
+  const vals = [];
+  s.forEach(p => { vals.push(p.a, p.b); });
+  D.historico.forEach(p => { if (dt(p.data) >= ini) vals.push(p.a, p.b); });
+  const piso = Math.max(0, Math.floor((Math.min(...vals) - 2) / 5) * 5);
+  const teto = Math.min(100, Math.ceil((Math.max(...vals) + 2) / 5) * 5);
 
-  document.getElementById("confrontos").innerHTML = linhas.map(l => {
-    const dif = l.va - l.vb;
-    const corA = CORES[l.a] || "var(--neutro-barra)";
-    const corB = CORES[l.b] || "var(--neutro-barra)";
-    return `<div class="confronto">
-      <div class="confronto-topo">
-        <span class="confronto-nome">${l.a} <span style="color:var(--tinta-3)">vs</span> ${l.b}</span>
-        <span class="confronto-dif">${l.margem != null && dif <= 2 * l.margem
-          ? "empate estatístico" : (dif < 1 ? "empate técnico" : "+" + nf1.format(dif))}</span>
-      </div>
-      <div class="gangorra">
-        <span style="width:${l.va}%;background:${corA}">${nf1.format(l.va)}</span>
-        <span class="dir" style="width:${l.vb}%;background:${corB}">${nf1.format(l.vb)}</span>
-      </div>
-      ${l.margem != null ? `<div class="confronto-margem">
-        margem ±${nf1.format(l.margem)} · ${l.a} entre
-        <b>${nf1.format(l.va - l.margem)}%</b> e <b>${nf1.format(l.va + l.margem)}%</b>
-        ${l.va - l.margem <= 50 && l.va + l.margem >= 50
-          ? '<span class="cruza50">o intervalo cruza os 50%</span>' : ''}
-      </div>` : ""}
-    </div>`;
-  }).join("") || `<p style="font-size:13px;color:var(--tinta-3)">Nenhum cenário de 2º turno dentro da janela.</p>`;
-}
-
-/* ------------------------------------------------------------ linha do tempo
-   Uma função só desenha os dois gráficos (1º e 2º turno). O que muda entre
-   eles vem em `cfg`: a base de pesquisas, como agregar, e se o eixo começa
-   no zero ou se aperta em volta dos 50%.                                    */
-const L = {e: 44, d: 46, t: 16, b: 30}, W = 900, H = 330;
-
-function desenharGrafico(cfg){
-  const svg = document.getElementById(cfg.svg);
-  if (!svg) return;
-  const fim = HOJE, ini = fim - estado.dias * DIA;
-
-  const pontos = [];
-  for (let t = ini; t <= fim; t += DIA){
-    const m = cfg.calcular(t);
-    if (Object.keys(m).length) pontos.push({t, m});
-  }
-  const vistos = cfg.pesquisas.filter(p => dt(p.data) >= ini && dt(p.data) <= fim);
-
-  if (!pontos.length){
-    svg.innerHTML = "";
-    document.getElementById(cfg.legenda).innerHTML =
-      `<span style="color:var(--tinta-3)">Sem pesquisas suficientes nesse período.</span>`;
-    return;
-  }
-
-  /* ---- escala vertical */
-  let vmax = 0, vmin = 100;
-  const considera = v => { if (v == null) return; vmax = Math.max(vmax, v); vmin = Math.min(vmin, v); };
-  pontos.forEach(p => cfg.series.forEach(c => p.m[c] && considera(p.m[c].media)));
-  vistos.forEach(p => cfg.series.forEach(c => considera(cfg.valorPesquisa(p, c))));
-
-  const teto = Math.ceil((vmax + 3) / 5) * 5;
-  const piso = cfg.zero ? 0 : Math.max(0, Math.floor((vmin - 3) / 5) * 5);
-  const passoY = cfg.zero ? 10 : 5;
-
-  const x = t => L.e + (t - ini) / (fim - ini) * (W - L.e - L.d);
+  const x = t => L.e + (t - ini) / (fim - ini || 1) * (W - L.e - L.d);
   const y = v => H - L.b - (v - piso) / (teto - piso) * (H - L.t - L.b);
 
   let g = "";
-  for (let v = piso; v <= teto; v += passoY){
-    const ehBase = v === piso;
-    const ehMeio = cfg.marcar50 && v === 50;
-    g += `<line class="${ehMeio ? "meio" : ehBase ? "base" : "grade"}" `
-       + `x1="${L.e}" y1="${y(v)}" x2="${W - L.d}" y2="${y(v)}"/>`;
-    g += `<text class="${ehMeio ? "rotmeio" : ""}" x="${L.e - 9}" y="${y(v) + 4}" `
-       + `text-anchor="end">${v}%</text>`;
+  for (let v = piso; v <= teto; v += 5){
+    const meio = v === 50;
+    g += `<line class="${meio?"meio":"grade"}" x1="${L.e}" y1="${y(v)}" x2="${W-L.d}" y2="${y(v)}"/>`;
+    g += `<text class="${meio?"rotmeio":""}" x="${L.e-9}" y="${y(v)+4}" text-anchor="end">${v}%</text>`;
   }
-
-  const passo = Math.max(1, Math.round(estado.dias / 6));
-  for (let k = 0; k <= estado.dias; k += passo){
+  const dias = Math.round((fim - ini) / DIA);
+  const passo = Math.max(1, Math.round(dias / 6));
+  for (let k = 0; k <= dias; k += passo){
     const t = ini + k * DIA;
     if (x(t) > W - L.d - 6) continue;
-    g += `<text x="${x(t)}" y="${H - L.b + 17}" text-anchor="middle">${dataCurta(t)}</text>`;
+    g += `<text x="${x(t)}" y="${H-L.b+17}" text-anchor="middle">${dCurta(t)}</text>`;
+  }
+  /* marca o dia do 1º turno: antes dele as pesquisas eram hipotéticas */
+  if (DIA1T >= ini && DIA1T <= fim){
+    g += `<line class="corte" x1="${x(DIA1T)}" y1="${L.t}" x2="${x(DIA1T)}" y2="${H-L.b}"/>`;
+    g += `<text x="${x(DIA1T)}" y="${L.t-4}" text-anchor="middle">1º turno</text>`;
   }
 
-  /* ---- pesquisas individuais */
-  cfg.series.forEach((c, i) => {
-    vistos.forEach(p => {
-      const v = cfg.valorPesquisa(p, c);
-      if (v == null || v < piso) return;
-      g += `<circle class="pt s${i + 1}" cx="${x(dt(p.data)).toFixed(1)}" `
-         + `cy="${y(v).toFixed(1)}" r="3.1"/>`;
-    });
+  D.historico.forEach(p => {
+    const t = dt(p.data);
+    if (t < ini || t > fim) return;
+    g += `<circle class="pt pa" cx="${x(t).toFixed(1)}" cy="${y(p.a).toFixed(1)}" r="3"/>`;
+    g += `<circle class="pt pb" cx="${x(t).toFixed(1)}" cy="${y(p.b).toFixed(1)}" r="3"/>`;
   });
 
-  /* ---- linhas do agregado */
-  const ult = pontos[pontos.length - 1];
-  cfg.series.forEach((c, i) => {
-    const d = pontos.filter(p => p.m[c])
-                    .map((p, j) => `${j ? "L" : "M"}${x(p.t).toFixed(1)},${y(p.m[c].media).toFixed(1)}`)
-                    .join(" ");
-    if (!d) return;
-    g += `<path class="ln s${i + 1}" d="${d}"/>`;
-    if (ult.m[c]){
-      g += `<circle class="fim s${i + 1}" cx="${x(ult.t).toFixed(1)}" cy="${y(ult.m[c].media).toFixed(1)}" r="4"/>`;
-      g += `<text class="rot s${i + 1}" x="${(x(ult.t) + 9).toFixed(1)}" `
-         + `y="${(y(ult.m[c].media) + 4).toFixed(1)}">${nf1.format(ult.m[c].media)}</text>`;
-    }
+  [["a","la","ra"],["b","lb","rb"]].forEach(([k, cl, rc]) => {
+    const d = s.map((p,i) => `${i?"L":"M"}${x(dt(p.data)).toFixed(1)},${y(p[k]).toFixed(1)}`).join(" ");
+    g += `<path class="ln ${cl}" d="${d}"/>`;
+    const u = s[s.length-1];
+    g += `<circle class="fim ${rc==="ra"?"pa":"pb"}" cx="${x(dt(u.data)).toFixed(1)}" cy="${y(u[k]).toFixed(1)}" r="4"/>`;
+    g += `<text class="rot ${rc}" x="${(x(dt(u.data))+9).toFixed(1)}" y="${(y(u[k])+4).toFixed(1)}">${nf1.format(u[k])}</text>`;
   });
 
-  g += `<line class="cruz" x1="0" y1="${L.t}" x2="0" y2="${H - L.b}" opacity="0"/>`;
+  g += `<line class="cruz" x1="0" y1="${L.t}" x2="0" y2="${H-L.b}" opacity="0"/>`;
   svg.innerHTML = g;
 
-  document.getElementById(cfg.legenda).innerHTML =
-    cfg.series.map((c, i) => `<span><i class="marca" style="background:var(--s${i + 1})"></i>${c}</span>`).join("")
-    + `<span style="color:var(--tinta-3)"><i class="marca" style="background:var(--tinta-3);opacity:.4;`
-    + `border-radius:50%;width:8px;height:8px"></i>pesquisa individual</span>`;
+  document.getElementById("legenda").innerHTML =
+    `<span><i class="marca" style="background:var(--a)"></i>${esc(A)}</span>` +
+    `<span><i class="marca" style="background:var(--b)"></i>${esc(B)}</span>` +
+    `<span style="color:var(--tinta-3)"><i class="marca" style="background:var(--tinta-3);opacity:.4;border-radius:50%;width:8px;height:8px"></i>pesquisa individual</span>`;
 
-  ligarDica(cfg, pontos, x, ini, fim);
-}
-
-function ligarDica(cfg, pontos, x, ini, fim){
-  const moldura = document.getElementById(cfg.moldura);
-  const dica = document.getElementById(cfg.dica);
-  const svg = document.getElementById(cfg.svg);
+  /* tooltip */
+  const mold = document.getElementById("moldura"), dica = document.getElementById("dica");
   const cruz = svg.querySelector(".cruz");
-
-  function mover(ev){
+  mold.onmousemove = ev => {
     const r = svg.getBoundingClientRect();
     const px = (ev.clientX ?? ev.touches?.[0]?.clientX) - r.left;
     const t = ini + (px / r.width) * (fim - ini);
-    let melhor = pontos[0];
-    pontos.forEach(p => { if (Math.abs(p.t - t) < Math.abs(melhor.t - t)) melhor = p; });
-
-    const xs = x(melhor.t);
-    cruz.setAttribute("x1", xs); cruz.setAttribute("x2", xs);
-    cruz.setAttribute("opacity", "1");
-
-    const presentes = cfg.series.filter(c => melhor.m[c]);
-    let html = `<div class="dica-data">${dataLonga(melhor.t)}</div>` +
-      presentes.map(c =>
-        `<div class="dica-linha"><i class="marca" style="background:var(--s${cfg.series.indexOf(c) + 1})"></i>${c}
-          <span class="v">${pct(melhor.m[c].media)}</span></div>`).join("");
-    if (cfg.mostrarVantagem && presentes.length === 2){
-      const [a, b] = presentes.map(c => melhor.m[c].media);
-      const dif = Math.abs(a - b);
-      const lider = a >= b ? presentes[0] : presentes[1];
-      html += `<div class="dica-linha dica-vantagem">${
-        dif < 1 ? "empate técnico" : lider + " +" + nf1.format(dif)}</div>`;
-    }
-    dica.innerHTML = html;
+    let melhor = s[0];
+    s.forEach(p => { if (Math.abs(dt(p.data)-t) < Math.abs(dt(melhor.data)-t)) melhor = p; });
+    const xs = x(dt(melhor.data));
+    cruz.setAttribute("x1", xs); cruz.setAttribute("x2", xs); cruz.setAttribute("opacity","1");
+    const dif = Math.abs(melhor.a - melhor.b);
+    dica.innerHTML = `<div class="dica-data">${dLonga(dt(melhor.data))}</div>` +
+      `<div class="dica-linha"><i class="marca" style="background:var(--a)"></i>${esc(A)}<span class="v">${nf1.format(melhor.a)}%</span></div>` +
+      `<div class="dica-linha"><i class="marca" style="background:var(--b)"></i>${esc(B)}<span class="v">${nf1.format(melhor.b)}%</span></div>` +
+      `<div class="dica-linha" style="margin-top:6px;padding-top:6px;border-top:1px solid var(--grade);color:var(--tinta-3);font-size:11.5px">${
+        dif < 1 ? "empate" : (melhor.a>melhor.b?esc(A):esc(B)) + " +" + nf1.format(dif)}</div>`;
     dica.classList.add("vis");
-    const largura = dica.offsetWidth;
-    dica.style.left = Math.min(Math.max(xs / W * r.width - largura / 2, 0), r.width - largura) + "px";
+    const lg = dica.offsetWidth;
+    dica.style.left = Math.min(Math.max(xs/W*r.width - lg/2, 0), r.width - lg) + "px";
     dica.style.top = "6px";
-  }
-  function sair(){ dica.classList.remove("vis"); cruz.setAttribute("opacity", "0"); }
-
-  moldura.onmousemove = mover;
-  moldura.onmouseleave = sair;
-  moldura.ontouchmove = e => { mover(e); e.preventDefault(); };
-  moldura.ontouchend = sair;
+  };
+  mold.onmouseleave = () => { dica.classList.remove("vis"); cruz.setAttribute("opacity","0"); };
 }
+grafico();
 
-/* ---- 1º turno: valores como publicados, eixo desde o zero */
-function pintarGrafico(){
-  desenharGrafico({
-    svg: "grafico", moldura: "moldura", dica: "dica", legenda: "legenda",
-    pesquisas: D.historico, series: SERIES, zero: true,
-    valorPesquisa: (p, c) => p.valores[c],
-    calcular: t => baseAtual(D.historico, SERIES, t),
-  });
-}
+document.getElementById("nota-grafico").innerHTML =
+  `A média ponderada recalculada dia a dia, em votos válidos. Os pontos são as pesquisas
+   individuais. A linha tracejada vertical marca o 1º turno: <b>tudo à esquerda dela é
+   cenário hipotético</b>, perguntado antes de o eleitor ver o resultado.`;
 
-/* ---- 2º turno: só dois nomes, então votos válidos e eixo em volta dos 50% */
-const DUELO = [D.candidatos[0], D.candidatos[1]];
-const POLLS_2T = (D.historico_2t || []).filter(p =>
-  !/hipótese/i.test(p.cenario || "") &&
-  p.valores[DUELO[0]] != null && p.valores[DUELO[1]] != null);
+/* ------------------------------------------------------------ acurácia */
+(function acuracia(){
+  const linhas = Object.entries(D.acuracia_1t)
+    .map(([inst, d]) => ({inst, ...d}))
+    .sort((x, y) => x.erro_abs - y.erro_abs);
+  const maxPeso = Math.max(...linhas.map(l => pesoDe(l.erro_abs)));
 
-function validosDupla(vals){
-  const soma = DUELO.reduce((s, c) => s + (vals[c] ?? 0), 0);
-  if (!soma) return {};
-  const out = {};
-  DUELO.forEach(c => { if (vals[c] != null) out[c] = vals[c] * 100 / soma; });
-  return out;
-}
-
-function pintarGrafico2T(){
-  desenharGrafico({
-    svg: "grafico2t", moldura: "moldura2t", dica: "dica2t", legenda: "legenda2t",
-    pesquisas: POLLS_2T, series: DUELO, zero: false,
-    marcar50: true, mostrarVantagem: true,
-    valorPesquisa: (p, c) => validosDupla(p.valores)[c],
-    calcular: t => paraValidos(agregar(POLLS_2T, DUELO, t, estado.janela, estado.meiavida)),
-  });
-}
-
-function pintarNota2T(){
-  const titulo = document.getElementById("titulo-2t");
-  const nota = document.getElementById("nota-2t");
-  if (!titulo || !nota) return;
-  titulo.textContent = `Tendência do 2º turno: ${DUELO[0]} × ${DUELO[1]}`;
-
-  if (!POLLS_2T.length){
-    nota.innerHTML = `Ainda não há pesquisas de 2º turno para este confronto.`;
-    return;
-  }
-  const datas = POLLS_2T.map(p => dt(p.data));
-  const m = paraValidos(agregar(POLLS_2T, DUELO, HOJE, estado.janela, estado.meiavida));
-  const dif = m[DUELO[0]] && m[DUELO[1]]
-    ? Math.abs(m[DUELO[0]].media - m[DUELO[1]].media) : null;
-
-  nota.innerHTML =
-    `Em <b>votos válidos</b>: os indecisos foram retirados e os dois candidatos
-     reescalonados para somar 100%, que é como se decide um 2º turno. Por isso o eixo
-     aperta em volta dos 50% — a linha tracejada é o que separa ganhar de perder.
-     <b>${POLLS_2T.length}</b> pesquisas desde
-     ${new Date(Math.min(...datas)).toLocaleDateString("pt-BR", {month: "long", year: "numeric", timeZone: "UTC"})}` +
-    (dif != null
-      ? `, e hoje a diferença é de <b>${dif < 0.1 ? "menos de 0,1" : nf1.format(dif)} ponto${dif >= 2 ? "s" : ""}</b>.`
-      : `.`);
-}
-
-/* ------------------------------------------------------------ tabela de pesos */
-function pintarPesos(){
-  const els = elegiveis(D.historico, HOJE, estado.janela);
-  const pesos = els.map(p => peso(p, HOJE, estado.meiavida));
-  const total = pesos.reduce((a, b) => a + b, 0) || 1;
-  const maxPct = Math.max(...pesos) / total * 100;
-
-  document.getElementById("corpo-pesos").innerHTML = els.map((p, i) => {
-    const pc = pesos[i] / total * 100;
+  document.getElementById("corpo-acuracia").innerHTML = linhas.map(l => {
+    const p = pesoDe(l.erro_abs);
+    const bom = l.erro_abs <= 2;
     return `<tr>
-      <td>${p.instituto}</td>
-      <td><span class="chip${p.nota === "A+" ? " mais" : ""}">${p.nota}</span></td>
-      <td class="num">${dataCurta(dt(p.data))}</td>
+      <td>${esc(l.inst)}</td>
+      <td class="num">${l.data.slice(8,10)}/${l.data.slice(5,7)}</td>
+      <td class="num">${nf1.format(l.previsto_a)} x ${nf1.format(l.previsto_b)}</td>
+      <td class="erro ${bom?"bom":"ruim"}">${sinal(l.erro_margem)}</td>
+      <td class="barra-peso"><i style="width:${p/maxPeso*100}%"></i><span>${nf1.format(p*100)}%</span></td>
+    </tr>`;
+  }).join("");
+
+  const oficial = `${esc(B)} ${nf1.format(D.resultado_1t[B])}% × ${esc(A)} ${nf1.format(D.resultado_1t[A])}%`;
+  document.getElementById("nota-acuracia").innerHTML =
+    `No 1º turno a urna deu <b>${oficial}</b>. Comparando com a última pesquisa de cada
+     instituto, o erro na margem vai de ${sinal(linhas[0].erro_margem)} a
+     ${sinal(linhas[linhas.length-1].erro_margem)} pontos. É esse número que define o
+     peso de cada um aqui: <code>1 / (1 + erro / ${nf1.format(D.parametros.erro_referencia)})</code>,
+     limitado para que o melhor pese cerca de três vezes o pior — e não trinta, porque
+     é uma eleição só.`;
+})();
+
+function pesoDe(erroAbs){
+  return Math.max(0.25, 1 / (1 + erroAbs / D.parametros.erro_referencia));
+}
+
+/* ------------------------------------------------------------ pesquisas */
+(function pesquisas(){
+  document.getElementById("cab-pesquisas").innerHTML =
+    `<th>Instituto</th><th>Campo</th><th>Amostra</th><th>${esc(A)}</th><th>${esc(B)}</th>` +
+    `<th>Erro 1º t.</th><th>Peso</th>`;
+  const maxP = Math.max(...D.pesquisas_janela.map(p => p.peso_pct));
+  document.getElementById("corpo-pesquisas").innerHTML = D.pesquisas_janela.map(p => `
+    <tr>
+      <td>${esc(p.instituto)}${p.medido ? "" : '<span class="pastilha">sem medida</span>'}</td>
+      <td class="num">${p.data.slice(8,10)}/${p.data.slice(5,7)}</td>
       <td class="num">${p.amostra ? nf0.format(p.amostra) : "—"}</td>
-      <td class="num">${p.valores["Lula"] != null ? nf1.format(p.valores["Lula"]) : "—"}</td>
-      <td class="num">${p.valores["Flávio"] != null ? nf1.format(p.valores["Flávio"]) : "—"}</td>
-      <td class="barra-peso"><i style="width:${pc / maxPct * 100}%"></i><span>${nf1.format(pc)}%</span></td>
-    </tr>`;
-  }).join("");
-}
+      <td class="num">${nf1.format(p.a)}</td>
+      <td class="num">${nf1.format(p.b)}</td>
+      <td class="erro ${p.erro_1t!=null && Math.abs(p.erro_1t)<=2 ? "bom":"ruim"}">${
+        p.erro_1t != null ? sinal(p.erro_1t) : "—"}</td>
+      <td class="barra-peso"><i style="width:${p.peso_pct/maxP*100}%"></i><span>${nf1.format(p.peso_pct)}%</span></td>
+    </tr>`).join("");
 
-/* ------------------------------------------------------------ viés */
-function pintarVies(){
-  const cands = SERIES;
-  const acum = {};
-  D.historico.forEach(p => {
-    if ((HOJE - dt(p.data)) / DIA > estado.janela * 3) return;
-    const outros = D.historico.filter(q => q.instituto !== p.instituto);
-    /* os dois lados são normalizados sobre a INTERSEÇÃO de candidatos: só assim
-       as duas porcentagens têm o mesmo denominador. Normalizar sobre listas
-       diferentes infla quem publica menos nomes na pesquisa. */
-    const bruto = agregar(outros, D.candidatos, dt(p.data), estado.janela, estado.meiavida);
-    const comuns = Object.keys(bruto).filter(c => p.valores[c] != null);
-    if (comuns.length < 2) return;
-    const baseComum = {}, propBruto = {};
-    comuns.forEach(c => {
-      baseComum[c] = bruto[c];
-      propBruto[c] = {media: p.valores[c], min: 0, max: 0, n: 1};
-    });
-    const base = paraValidos(baseComum);
-    const prop = paraValidos(propBruto);
-    cands.forEach(c => {
-      if (prop[c] == null || base[c] == null) return;
-      ((acum[p.instituto] = acum[p.instituto] || {})[c] = acum[p.instituto][c] || []).push(prop[c].media - base[c].media);
-    });
-  });
-
-  const ESCALA = 6;
-  const institutos = Object.keys(acum).sort();
-  document.getElementById("vies").innerHTML = institutos.map(inst => {
-    const nota = (D.institutos[inst] || {}).nota || "?";
-    const pontos = cands.map((c, i) => {
-      const l = acum[inst][c];
-      if (!l || !l.length) return "";
-      const v = l.reduce((a, b) => a + b, 0) / l.length;
-      const pos = 50 + Math.max(-50, Math.min(50, v / ESCALA * 50));
-      return `<div class="vies-ponto" style="left:${pos}%;background:var(--s${i + 1})"
-               title="${c}: ${v > 0 ? "+" : ""}${nf1.format(v)} pontos"></div>`;
-    }).join("");
-    return `<div class="vies-linha">
-      <div class="vies-nome"><span class="chip${nota === "A+" ? " mais" : ""}">${nota}</span>${inst}</div>
-      <div class="vies-trilho"><div class="vies-eixo"></div>${pontos}</div>
-    </div>`;
-  }).join("");
-
-  document.getElementById("legenda-vies").innerHTML = cands.map((c, i) =>
-    `<span><i class="marca" style="background:var(--s${i + 1});width:10px;height:10px;border-radius:50%"></i>${c}</span>`).join("");
-}
-
-/* ------------------------------------------------------------ tabela geral */
-function pintarTabela(){
-  const cands = D.candidatos.filter(c => c !== "Indefinidos" && c !== "Outros").slice(0, 7);
-  document.getElementById("cab-tabela").innerHTML =
-    `<th>Instituto</th><th>Nota</th><th>Campo</th><th>Amostra</th>` +
-    cands.map(c => `<th>${c}</th>`).join("") + `<th>Indec.</th>`;
-
-  document.getElementById("corpo-tabela").innerHTML = D.historico.map(p => {
-    const dentro = (HOJE - dt(p.data)) / DIA <= estado.janela;
-    return `<tr style="${dentro ? "" : "opacity:.5"}">
-      <td>${p.instituto}</td>
-      <td><span class="chip${p.nota === "A+" ? " mais" : ""}">${p.nota}</span></td>
-      <td class="num">${new Date(dt(p.data)).toLocaleDateString("pt-BR", {timeZone: "UTC"})}</td>
-      <td class="num">${p.amostra ? nf0.format(p.amostra) : "—"}</td>` +
-      cands.map(c => `<td class="num">${p.valores[c] != null ? nf1.format(p.valores[c]) : "—"}</td>`).join("") +
-      `<td class="num" style="color:var(--tinta-3)">${p.valores["Indefinidos"] != null ? nf1.format(p.valores["Indefinidos"]) : "—"}</td>
-    </tr>`;
-  }).join("");
-
-  document.getElementById("nota-tabela").innerHTML =
-    `As ${D.historico.length} pesquisas de 1º turno publicadas pelos seis institutos desde o começo da série.
-     As esmaecidas estão fora da janela de ${estado.janela} dias e não entram na média.`;
-}
+  document.getElementById("nota-pesquisas").innerHTML =
+    `Janela de <b>${D.parametros.janela_dias} dias</b>, com meia-vida de
+     ${D.parametros.meia_vida_dias} — mais curtas que as do 1º turno, porque a campanha de
+     2º turno é curta e tudo se move mais rápido. Institutos sem pesquisa na reta final do
+     1º turno não têm erro medido e recebem o peso mediano
+     (${nf1.format(D.parametros.peso_sem_medida*100)}%), nem prêmio nem castigo.`;
+})();
 
 /* ------------------------------------------------------------ rodapé */
-function pintarRodape(){
-  const insts = Object.keys(D.institutos).map(i =>
-    `${i} <span style="font-family:var(--mono)">${D.institutos[i].nota}</span>`).join(" · ");
-  const fora = D.fora_da_disputa || {};
-  const nomesFora = Object.keys(fora);
-  const blocoFora = nomesFora.length ? `
-    <p><b>Fora da conta.</b> ${nomesFora.map(n =>
-      `${n} (${fora[n].motivo}${fora[n].desde
-        ? ", " + new Date(fora[n].desde + "T00:00:00Z").toLocaleDateString("pt-BR", {timeZone: "UTC"})
-        : ""})`).join("; ")}.
-    Quem saiu da disputa fica de fora da média e dos votos válidos <em>também nas
-    pesquisas antigas em que aparecia</em> — não está mais na urna, então manter o nome
-    inflaria um percentual que não existe. As pesquisas seguem intactas no CSV: o que
-    muda é o que entra na conta, não o que foi medido. Na prática os votos dele são
-    redistribuídos proporcionalmente entre os demais, o que é uma suposição, não uma
-    medida.</p>` : "";
+document.getElementById("rodape").innerHTML = `
+  <p><b>O que mudou depois do 1º turno.</b> Até 4 de outubro o peso de cada instituto vinha
+  de um ranking de acurácia montado <em>antes</em> da eleição, e só cinco institutos
+  entravam. Aquele ranking falhou: o melhor colocado dele ficou em 17º entre 19, e um
+  instituto que estava fora do recorte empatou em 1º. Agora todos entram, e o peso vem do
+  erro medido em 4/10.</p>
 
-  document.getElementById("rodape").innerHTML = `
-    <p><b>Institutos incluídos.</b> ${insts}. Todos com nota ${textoNotas()} no ranking de
-    acurácia; nenhum outro instituto entra na média, por melhor que seja a pesquisa.</p>
-    ${blocoFora}
-    <p><b>Fonte dos números.</b> Tabelas de pesquisas da Wikipédia para a eleição presidencial
-    de 2026, que por sua vez citam o registro de cada pesquisa. Coleta e cálculo em
-    <span style="font-family:var(--mono)">coletar.py</span> e
-    <span style="font-family:var(--mono)">agregar.py</span>.</p>
-    <p><b>A margem, e o que ela não cobre.</b> A margem de ±X é o erro padrão da média
-    ponderada a 95%, calculado a partir da <em>discordância entre os institutos</em>
-    dividida pela raiz do número efetivo de pesquisas. Usamos a dispersão observada em
-    vez da fórmula de amostra porque somar entrevistados suporia pesquisas como amostras
-    aleatórias independentes da mesma população — e cada instituto carrega viés próprio de
-    método, que não desaparece somando gente. Pela fórmula teórica a margem daria ±0,6
-    ponto, o que seria falso: as pesquisas individuais variam de 38% a 46% para Lula.
-    <b>Ela mede a precisão da média, não a distância até a urna</b> — viés que todos os
-    institutos compartilhem passa inteiro, e em 2018 e 2022 esse viés compartilhado foi de
-    6,0 e 3,8 pontos no 1º turno.</p>
-    <p><b>O que isto não é.</b> Uma média ponderada não é uma previsão: ela descreve o que as
-    pesquisas dizem hoje, com a incerteza de cada uma embutida. Paraná Pesquisas não publica
-    1º turno presidencial desde março e, na prática, sai da média pela recência.</p>
-    <p style="margin-top:14px;color:var(--tinta-3)">Gerado em ${dataLonga(dt(D.atualizado))}.</p>`;
-}
+  <p><b>A margem, e o que ela não cobre.</b> ±${AG.margem != null ? nf1.format(AG.margem) : "—"}
+  é o erro padrão da média ponderada a 95%, calculado da discordância entre os institutos
+  dividida pela raiz do número efetivo de pesquisas. Ela mede a precisão da média,
+  <b>não a distância até a urna</b> — viés que todos compartilhem passa inteiro, e foi
+  exatamente isso que aconteceu no 1º turno, quando 19 institutos erraram na mesma direção.</p>
 
-/* ------------------------------------------------------------ orquestração */
-function tudo(){
-  pintarMeta(); pintarBarras(); pintarConfrontos();
-  pintarGrafico(); pintarGrafico2T(); pintarNota2T();
-  pintarPesos(); pintarVies(); pintarTabela();
-}
+  <p><b>Por que o 2º turno costuma errar menos.</b> Uma aferição contra 2018 e 2022, no
+  histórico deste repositório, mostrou viés de 6,0 e 3,8 pontos no 1º turno e praticamente
+  zero no 2º. Com dois nomes só, sem terceira via para inflar, os institutos convergem.
+  É motivo para esperar menos erro agora — não garantia.</p>
 
-function ligarControles(){
-  const janela = document.getElementById("janela");
-  const meiavida = document.getElementById("meiavida");
-  janela.value = estado.janela; meiavida.value = estado.meiavida;
+  <p><b>Fonte.</b> Tabelas de pesquisas da Wikipédia para a eleição presidencial de 2026,
+  que citam o registro de cada pesquisa no TSE. Resultado do 1º turno: TSE. Coleta e
+  cálculo em <span style="font-family:var(--mono)">coletar.py</span>,
+  <span style="font-family:var(--mono)">aferir_1t.py</span> e
+  <span style="font-family:var(--mono)">agregar.py</span>.</p>
 
-  function rotulos(){
-    document.getElementById("v-janela").textContent = estado.janela + " dias";
-    document.getElementById("v-meiavida").textContent = estado.meiavida + " dias";
-  }
-  rotulos();
-
-  janela.addEventListener("input", () => { estado.janela = +janela.value; rotulos(); tudo(); });
-  meiavida.addEventListener("input", () => { estado.meiavida = +meiavida.value; rotulos(); tudo(); });
-
-  document.getElementById("reset").addEventListener("click", () => {
-    estado.janela = PADRAO.janela; estado.meiavida = PADRAO.meiavida;
-    janela.value = estado.janela; meiavida.value = estado.meiavida;
-    rotulos(); tudo();
-  });
-
-  const bBruto = document.getElementById("btn-bruto"), bVal = document.getElementById("btn-validos");
-  function base(qual){
-    estado.base = qual;
-    bBruto.setAttribute("aria-pressed", qual === "bruto");
-    bVal.setAttribute("aria-pressed", qual === "validos");
-    pintarBarras(); pintarGrafico();
-    /* o gráfico de 2º turno é sempre em votos válidos: não muda com o alternador */
-  }
-  bBruto.addEventListener("click", () => base("bruto"));
-  bVal.addEventListener("click", () => base("validos"));
-
-  document.querySelectorAll("[data-dias]").forEach(b => {
-    b.addEventListener("click", () => {
-      estado.dias = +b.dataset.dias;
-      document.querySelectorAll("[data-dias]").forEach(o =>
-        o.setAttribute("aria-pressed", o === b));
-      pintarGrafico(); pintarGrafico2T();
-    });
-  });
-}
-
-tudo();
-pintarRodape();
-ligarControles();
+  <p style="margin-top:14px;color:var(--tinta-3)">Gerado em ${dLonga(dt(D.atualizado))}.</p>`;
 })();
 </script>

@@ -2,7 +2,7 @@
 Confere se a coleta e a agregacao produziram dados plausiveis.
 
 Roda sem ninguem olhando, dentro do GitHub Actions: se a Wikipedia sair do ar,
-mudar o formato das tabelas ou alguem vandalizar uma pagina, e este script que
+mudar o formato das tabelas ou alguem errar uma digitacao, e este script que
 impede o site de publicar numero errado. Sai com codigo 1 se algo nao bate.
 
 Uso:  python verificar.py
@@ -14,24 +14,17 @@ import json
 import sys
 from datetime import date, timedelta
 
-AMOSTRA_MIN_PLAUSIVEL = 300      # pesquisa nacional registrada no TSE nao e menor
-AMOSTRA_MAX_PLAUSIVEL = 200_000  # nem absurdamente maior
-MIN_PESQUISAS_1T = 20        # a base historica ja tem 41; menos que isso e suspeito
-MIN_INSTITUTOS = 3
-MAX_DIAS_SEM_PESQUISA = 60   # se a mais recente for antiga demais, algo quebrou
-DIAS_PARA_ESTRANHAR = 5      # na reta final sai pesquisa quase todo dia
-FAIXA_LIDER = (20.0, 70.0)   # o primeiro colocado tem de cair numa faixa sensata
+MIN_PESQUISAS_2T = 8
+MIN_INSTITUTOS = 4
+MAX_DIAS_SEM_PESQUISA = 30
+DIAS_PARA_ESTRANHAR = 5
+AMOSTRA_MIN_PLAUSIVEL = 300
+AMOSTRA_MAX_PLAUSIVEL = 200_000
+FAIXA_DUELO = (30.0, 70.0)   # num duelo, ninguem fica fora disso
 
-problemas = []
-avisos = []
-
-
-def erro(msg):
-    problemas.append(msg)
-
-
-def aviso(msg):
-    avisos.append(msg)
+problemas, avisos = [], []
+erro = problemas.append
+aviso = avisos.append
 
 
 def ler_csv(caminho):
@@ -39,80 +32,62 @@ def ler_csv(caminho):
         return list(csv.DictReader(f))
 
 
-# ------------------------------------------------------------------ 1o turno
+# ------------------------------------------------------------------ CSV
 
 try:
-    p1 = ler_csv("pesquisas_1t.csv")
+    p2 = ler_csv("pesquisas_2t.csv")
 except FileNotFoundError:
-    erro("pesquisas_1t.csv nao existe - coletar.py nao rodou")
-    p1 = []
+    erro("pesquisas_2t.csv nao existe - coletar.py nao rodou")
+    p2 = []
 
-if p1:
-    if len(p1) < MIN_PESQUISAS_1T:
-        erro(f"so {len(p1)} pesquisas de 1o turno (minimo {MIN_PESQUISAS_1T})")
+duelo = [r for r in p2 if r.get("cenario", "").startswith("Lula e Fl")]
+if p2 and len(duelo) < MIN_PESQUISAS_2T:
+    erro(f"so {len(duelo)} pesquisas do duelo (minimo {MIN_PESQUISAS_2T})")
 
-    institutos = {r["instituto"] for r in p1}
-    if len(institutos) < MIN_INSTITUTOS:
-        erro(f"so {len(institutos)} institutos: {sorted(institutos)}")
+institutos = {r["instituto"] for r in duelo}
+if duelo and len(institutos) < MIN_INSTITUTOS:
+    erro(f"so {len(institutos)} institutos: {sorted(institutos)}")
 
-    datas = []
-    for r in p1:
-        try:
-            datas.append(date.fromisoformat(r["data_fim"]))
-        except (ValueError, KeyError):
-            erro(f"data invalida: {r.get('data_fim')!r} ({r.get('instituto')})")
-    if datas:
-        hoje = date.today()
-        recente = max(datas)
-        if recente > hoje + timedelta(days=1):
-            erro(f"pesquisa com data no futuro: {recente.isoformat()}")
-        atraso = (hoje - recente).days
-        if atraso > MAX_DIAS_SEM_PESQUISA:
-            erro(f"pesquisa mais recente e de {recente.isoformat()}, "
-                 f"ha {atraso} dias")
-        elif atraso > DIAS_PARA_ESTRANHAR:
-            # nao e erro: pode nao ter saido pesquisa mesmo. Mas perto da
-            # eleicao costuma significar que a coleta parou de enxergar a
-            # fonte, e vale aparecer no log antes de virar uma semana parada.
-            aviso(f"nenhuma pesquisa nova ha {atraso} dias "
-                  f"(a mais recente e de {recente.isoformat()}) - "
-                  f"confira se a coleta ainda enxerga a fonte")
+hoje = date.today()
+datas = []
+for r in duelo:
+    try:
+        datas.append(date.fromisoformat(r["data_fim"]))
+    except (ValueError, KeyError):
+        erro(f"data invalida: {r.get('data_fim')!r} ({r.get('instituto')})")
 
-    # Amostra implausivel denuncia linha deslocada: quando a Wikipedia publica
-    # a linha sem a celula de amostra, o percentual do primeiro candidato cai
-    # nessa coluna e a pesquisa inteira entra errada. Ja aconteceu em 1/10/2026,
-    # com o Datafolha registrando "amostra 42".
-    for r in p1:
-        a = r.get("amostra")
-        if a in (None, ""):
-            continue          # ausente e aceitavel: nem toda linha publica o n
+    a = r.get("amostra")
+    if a not in (None, ""):
         try:
             n = int(a)
+            if not AMOSTRA_MIN_PLAUSIVEL <= n <= AMOSTRA_MAX_PLAUSIVEL:
+                erro(f"amostra implausivel de {n} ({r['instituto']} {r['data_fim']}) - "
+                     f"provavel linha deslocada na origem")
         except ValueError:
             erro(f"amostra nao numerica {a!r} ({r['instituto']} {r['data_fim']})")
-            continue
-        if not AMOSTRA_MIN_PLAUSIVEL <= n <= AMOSTRA_MAX_PLAUSIVEL:
-            erro(f"amostra implausivel de {n} ({r['instituto']} {r['data_fim']}) - "
-                 f"provavel linha deslocada na origem")
 
-    # percentuais dentro de 0-100 e soma plausivel
-    for r in p1:
-        soma = 0.0
-        for k, v in r.items():
-            if k in ("instituto", "data_inicio", "data_fim", "amostra", "margem"):
-                continue
-            if v in (None, ""):
-                continue
-            try:
-                x = float(v)
-            except ValueError:
-                erro(f"valor nao numerico {v!r} em {k} ({r['instituto']} {r['data_fim']})")
-                continue
-            if not 0 <= x <= 100:
-                erro(f"{k}={x} fora de 0-100 ({r['instituto']} {r['data_fim']})")
-            soma += x
-        if soma and not 85 <= soma <= 115:
-            aviso(f"soma {soma:.1f}% em {r['instituto']} {r['data_fim']}")
+    for k in ("Lula", "Flávio"):
+        v = r.get(k)
+        if v in (None, ""):
+            continue
+        try:
+            x = float(v)
+        except ValueError:
+            erro(f"valor nao numerico {v!r} em {k} ({r['instituto']})")
+            continue
+        if not 0 <= x <= 100:
+            erro(f"{k}={x} fora de 0-100 ({r['instituto']} {r['data_fim']})")
+
+if datas:
+    recente = max(datas)
+    if recente > hoje + timedelta(days=1):
+        erro(f"pesquisa com data no futuro: {recente.isoformat()}")
+    atraso = (hoje - recente).days
+    if atraso > MAX_DIAS_SEM_PESQUISA:
+        erro(f"pesquisa mais recente e de {recente.isoformat()}, ha {atraso} dias")
+    elif atraso > DIAS_PARA_ESTRANHAR:
+        aviso(f"nenhuma pesquisa nova ha {atraso} dias - confira se a coleta "
+              f"ainda enxerga a fonte")
 
 # ------------------------------------------------------------------ agregado
 
@@ -124,24 +99,27 @@ except FileNotFoundError:
     ag = None
 
 if ag:
-    if not ag.get("agregado"):
-        erro("agregado.json sem candidatos")
+    a = ag.get("agregado", {})
+    if not a:
+        erro("agregado.json sem numeros")
     else:
-        lider = max(ag["agregado"].items(), key=lambda x: x[1]["media"])
-        media = lider[1]["media"]
-        if not FAIXA_LIDER[0] <= media <= FAIXA_LIDER[1]:
-            erro(f"lider {lider[0]} com {media}% - fora da faixa {FAIXA_LIDER}")
-        if lider[1]["n"] < 2:
-            erro(f"lider {lider[0]} apoiado em {lider[1]['n']} pesquisa(s)")
-
-    if not ag.get("pesquisas_janela"):
-        erro("nenhuma pesquisa dentro da janela")
+        for lado in ("a", "b"):
+            v = a.get(lado)
+            if v is None or not FAIXA_DUELO[0] <= v <= FAIXA_DUELO[1]:
+                erro(f"agregado {lado}={v} fora da faixa {FAIXA_DUELO}")
+        soma = (a.get("a") or 0) + (a.get("b") or 0)
+        if abs(soma - 100) > 0.2:
+            erro(f"o duelo soma {soma:.2f}, nao 100 - a conversao para validos quebrou")
+        if (a.get("n") or 0) < 2:
+            erro("agregado apoiado em menos de 2 pesquisas")
     if not ag.get("serie"):
         erro("serie temporal vazia")
+    if not ag.get("acuracia_1t"):
+        aviso("sem acuracia do 1o turno - os pesos cairam para a mediana")
 
-# ------------------------------------------------------------------ paginas
+# ------------------------------------------------------------------ pagina
 
-for arquivo, minimo in (("painel_publico.html", 100_000),):
+for arquivo, minimo in (("painel_publico.html", 30_000),):
     try:
         with io.open(arquivo, encoding="utf-8") as f:
             html = f.read()
@@ -153,28 +131,17 @@ for arquivo, minimo in (("painel_publico.html", 100_000),):
     if "/*__DADOS__*/" in html:
         erro(f"{arquivo} ficou com o marcador de dados sem preencher")
 
-    # A pagina recalcula os pesos no navegador, para os controles de janela e
-    # meia-vida funcionarem ao vivo. Isso significa DUAS implementacoes da
-    # mesma formula, e ja aconteceu de uma mudar sem a outra: o Python passou
-    # a usar fator fixo para a AtlasIntel e o JS seguiu com a regra antiga,
-    # publicando numero diferente do calculado. Aqui se confere que cada
-    # parametro de ponderacao e de fato lido pelo script da pagina.
-    from institutos import FATOR_AMOSTRA_FIXO
-    if FATOR_AMOSTRA_FIXO and "D.parametros.fator_amostra_fixo" not in html:
-        erro(f"{arquivo} nao usa fator_amostra_fixo no JS - "
-             f"o peso da pagina vai divergir do calculado em agregar.py")
-
 # ------------------------------------------------------------------ saida
 
-for a in avisos:
-    print(f"  aviso: {a}")
+for a_ in avisos:
+    print(f"  aviso: {a_}")
 
 if problemas:
     print(f"\nFALHOU - {len(problemas)} problema(s):")
-    for p in problemas:
-        print(f"  - {p}")
+    for p_ in problemas:
+        print(f"  - {p_}")
     sys.exit(1)
 
-print(f"OK - {len(p1)} pesquisas, {len({r['instituto'] for r in p1})} institutos, "
-      f"mais recente {max(r['data_fim'] for r in p1)}"
+print(f"OK - {len(duelo)} pesquisas do duelo, {len(institutos)} institutos"
+      + (f", mais recente {max(datas).isoformat()}" if datas else "")
       + (f", {len(avisos)} aviso(s)" if avisos else ""))
