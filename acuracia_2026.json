@@ -16,6 +16,15 @@
    "erro_abs": 4.17,
    "erro_nivel": 2.08
   },
+  "Gerp": {
+   "data": "2026-10-03",
+   "amostra": 2400,
+   "previsto_a": 43.3,
+   "previsto_b": 45.36,
+   "erro_margem": -3.93,
+   "erro_abs": 3.93,
+   "erro_nivel": 1.97
+  },
   "Futura": {
    "data": "2026-10-03",
    "amostra": 2000,
@@ -69,15 +78,6 @@
    "erro_margem": -5.26,
    "erro_abs": 5.26,
    "erro_nivel": 3.82
-  },
-  "Gerp": {
-   "data": "2026-10-02",
-   "amostra": 2400,
-   "previsto_a": 46.24,
-   "previsto_b": 44.09,
-   "erro_margem": 0.28,
-   "erro_abs": 0.28,
-   "erro_nivel": 0.93
   },
   "AtlasIntel": {
    "data": "2026-10-02",
