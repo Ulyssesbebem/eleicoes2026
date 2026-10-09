@@ -194,16 +194,16 @@
   }
  },
  "agregado": {
-  "a": 47.4,
-  "b": 52.6,
+  "a": 48.38,
+  "b": 51.62,
   "hipotetico": false,
-  "n_reais": 2,
-  "margem": 1.32,
-  "desvio": 0.43,
-  "n": 2,
-  "n_efetivo": 1.99,
+  "n_reais": 4,
+  "margem": 1.62,
+  "desvio": 1.64,
+  "n": 4,
+  "n_efetivo": 3.94,
   "min": 47.0,
-  "max": 47.9
+  "max": 50.9
  },
  "serie": [
   {
@@ -922,15 +922,15 @@
   },
   {
    "data": "2026-10-07",
-   "a": 48.97,
-   "b": 51.03,
-   "margem": 0.56
+   "a": 49.08,
+   "b": 50.92,
+   "margem": 2.68
   },
   {
    "data": "2026-10-08",
-   "a": 47.4,
-   "b": 52.6,
-   "margem": 1.32
+   "a": 48.38,
+   "b": 51.62,
+   "margem": 1.62
   }
  ],
  "pesquisas_janela": [
@@ -944,8 +944,36 @@
    "a": 47.9,
    "b": 52.1,
    "peso": 0.559,
-   "peso_pct": 45.9,
+   "peso_pct": 21.6,
    "erro_1t": -4.04,
+   "medido": true
+  },
+  {
+   "instituto": "AtlasIntel",
+   "data": "2026-10-08",
+   "amostra": 5026,
+   "bruto_a": 45.7,
+   "bruto_b": 51.1,
+   "indefinidos": 3.2,
+   "a": 47.2,
+   "b": 52.8,
+   "peso": 0.6032,
+   "peso_pct": 23.3,
+   "erro_1t": -4.62,
+   "medido": true
+  },
+  {
+   "instituto": "Vox",
+   "data": "2026-10-07",
+   "amostra": 2100,
+   "bruto_a": 44.2,
+   "bruto_b": 42.7,
+   "indefinidos": 13.1,
+   "a": 50.9,
+   "b": 49.1,
+   "peso": 0.7677,
+   "peso_pct": 29.7,
+   "erro_1t": -0.98,
    "medido": true
   },
   {
@@ -958,7 +986,7 @@
    "a": 47.0,
    "b": 53.0,
    "peso": 0.6582,
-   "peso_pct": 54.1,
+   "peso_pct": 25.4,
    "erro_1t": -2.95,
    "medido": true
   }
@@ -971,6 +999,22 @@
    "a": 47.9,
    "b": 52.1,
    "erro_1t": -4.04
+  },
+  {
+   "instituto": "AtlasIntel",
+   "data": "2026-10-08",
+   "amostra": 5026,
+   "a": 47.2,
+   "b": 52.8,
+   "erro_1t": -4.62
+  },
+  {
+   "instituto": "Vox",
+   "data": "2026-10-07",
+   "amostra": 2100,
+   "a": 50.9,
+   "b": 49.1,
+   "erro_1t": -0.98
   },
   {
    "instituto": "PoderData/Aya",
