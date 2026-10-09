@@ -46,11 +46,11 @@
   "Veritá": {
    "data": "2026-10-02",
    "amostra": 40500,
-   "previsto_a": 51.09,
-   "previsto_b": 48.91,
-   "erro_margem": 0.3,
-   "erro_abs": 0.3,
-   "erro_nivel": 3.91
+   "previsto_a": 47.0,
+   "previsto_b": 45.0,
+   "erro_margem": 0.13,
+   "erro_abs": 0.13,
+   "erro_nivel": 0.09
   },
   "PoderData/Aya": {
    "data": "2026-10-02",

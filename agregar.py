@@ -156,7 +156,18 @@ def agregar(pesquisas, referencia, janela, meia_vida):
     dp = math.sqrt(var)
     s2 = sum(w * w for w in pesos)
     n_ef = den * den / s2 if s2 else 0.0
-    margem = 1.96 * dp / math.sqrt(n_ef) if n_ef > 1 else None
+    margem_disp = 1.96 * dp / math.sqrt(n_ef) if n_ef > 1 else None
+
+    # Piso amostral: a variancia da media ponderada de pesquisas independentes,
+    # cada uma com seu proprio erro de amostra. Com poucas pesquisas a
+    # dispersao e medida em dois ou tres pontos e pode sair menor que o erro de
+    # QUALQUER pesquisa isolada - com Datafolha e PoderData concordando por
+    # acaso, deu +/-0,6, quando cada uma sozinha ja tem +/-2. A margem da media
+    # nao pode ser mais estreita que isso.
+    var_amo = sum((w / den) ** 2 * (p["a"] * (100 - p["a"])) / (p["amostra"] or AMOSTRA_REF)
+                  for p, w in zip(els, pesos))
+    margem_amo = 1.96 * math.sqrt(var_amo)
+    margem = max(margem_disp or 0.0, margem_amo)
 
     return {
         "a": va, "b": vb,

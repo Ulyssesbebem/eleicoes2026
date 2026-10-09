@@ -29,12 +29,24 @@ MARGEM_REAL = RESULTADO_1T[A] - RESULTADO_1T[B]
 
 
 def validos(valores):
-    """Converte para votos validos, tirando indecisos/brancos/nulos."""
+    """
+    Converte para votos validos, tirando indecisos/brancos/nulos.
+
+    Excecao: pesquisa que publica SO os dois lideres, sem indecisos nem os
+    demais candidatos, ja esta em votos validos - o resto da soma e dos
+    candidatos que ela nao divulgou. Renormalizar sobre os dois inflaria os
+    dois juntos. Foi o caso do Verita de 2/10/2026 ("percentual valido",
+    Flavio 47 x Lula 45 = 92%), que a renormalizacao transformava em
+    51,1 x 48,9 e tirava do 1o lugar isolado que ele merecia.
+    """
     c = {k: v for k, v in valores.items()
          if k not in ("Indefinidos", "Outros") and v is not None}
     total = sum(c.values())
     if total <= 0:
         return {}
+    so_lideres = set(c) <= {A, B} and "Indefinidos" not in valores
+    if so_lideres and total < 100:
+        return dict(c)
     return {k: 100 * v / total for k, v in c.items()}
 
 
