@@ -18,6 +18,7 @@ import urllib.parse
 import urllib.request
 from datetime import date
 
+import correcoes
 from institutos import normalizar_instituto, peso_instituto, tem_medida
 
 BASE = "https://pt.wikipedia.org/w/index.php?title={}&action=raw"
@@ -559,6 +560,13 @@ def main():
     p2, cols2 = pesquisas_do_wikitexto(bloco_2t, marcar_cenario=True)
 
     p1, p2 = dedup(p1), dedup(p2)
+
+    # correcoes manuais: linhas da Wikipedia que nao correspondem a pesquisa real
+    p1, fora1 = correcoes.aplicar(p1, turno=1)
+    p2, fora2 = correcoes.aplicar(p2, turno=2)
+    for p in fora1 + fora2:
+        print(f"  (descartada por correcoes.py: {p['instituto']} "
+              f"{p.get('data_inicio')} a {p['data_fim']})")
 
     print(f"  1o turno: {len(p1)} pesquisas lidas")
     print(f"  2o turno: {len(p2)} pesquisas lidas")
