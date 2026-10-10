@@ -194,14 +194,14 @@
   }
  },
  "agregado": {
-  "a": 48.38,
-  "b": 51.62,
+  "a": 48.23,
+  "b": 51.77,
   "hipotetico": false,
-  "n_reais": 4,
-  "margem": 1.62,
-  "desvio": 1.64,
-  "n": 4,
-  "n_efetivo": 3.94,
+  "n_reais": 5,
+  "margem": 1.4,
+  "desvio": 1.57,
+  "n": 5,
+  "n_efetivo": 4.83,
   "min": 47.0,
   "max": 50.9
  },
@@ -928,12 +928,26 @@
   },
   {
    "data": "2026-10-08",
-   "a": 48.38,
-   "b": 51.62,
-   "margem": 1.62
+   "a": 48.23,
+   "b": 51.77,
+   "margem": 1.4
   }
  ],
  "pesquisas_janela": [
+  {
+   "instituto": "Ipespe",
+   "data": "2026-10-08",
+   "amostra": 1500,
+   "bruto_a": 47.3,
+   "bruto_b": 52.7,
+   "indefinidos": null,
+   "a": 47.3,
+   "b": 52.7,
+   "peso": 0.4244,
+   "peso_pct": 14.1,
+   "erro_1t": null,
+   "medido": false
+  },
   {
    "instituto": "Datafolha",
    "data": "2026-10-08",
@@ -944,7 +958,7 @@
    "a": 47.9,
    "b": 52.1,
    "peso": 0.559,
-   "peso_pct": 21.6,
+   "peso_pct": 18.6,
    "erro_1t": -4.04,
    "medido": true
   },
@@ -958,7 +972,7 @@
    "a": 47.2,
    "b": 52.8,
    "peso": 0.6032,
-   "peso_pct": 23.3,
+   "peso_pct": 20.0,
    "erro_1t": -4.62,
    "medido": true
   },
@@ -972,7 +986,7 @@
    "a": 50.9,
    "b": 49.1,
    "peso": 0.7677,
-   "peso_pct": 29.7,
+   "peso_pct": 25.5,
    "erro_1t": -0.98,
    "medido": true
   },
@@ -986,12 +1000,20 @@
    "a": 47.0,
    "b": 53.0,
    "peso": 0.6582,
-   "peso_pct": 25.4,
+   "peso_pct": 21.8,
    "erro_1t": -2.95,
    "medido": true
   }
  ],
  "historico": [
+  {
+   "instituto": "Ipespe",
+   "data": "2026-10-08",
+   "amostra": 1500,
+   "a": 47.3,
+   "b": 52.7,
+   "erro_1t": null
+  },
   {
    "instituto": "Datafolha",
    "data": "2026-10-08",
