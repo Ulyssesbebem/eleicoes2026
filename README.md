@@ -31,7 +31,10 @@ peso mediano.
 | `instituto` | `1/(1 + erro/4)`, do erro medido em 4/10 |
 | `recência` | `0,5 ^ (dias / 10)` — meia-vida de 10 dias |
 | `amostra` | `√(n / 2000)`, entre 0,75 e 1,30 |
-| `repetição` | `1/√k` na k-ésima pesquisa mais recente do mesmo instituto |
+
+Só a pesquisa **mais recente** de cada instituto entra na conta: a rodada nova
+substitui a anterior, para quem publica toda semana não pesar mais que quem
+publica uma vez.
 
 Janela e meia-vida são mais curtas que as do 1º turno (30 e 10 dias, contra 45 e
 14): a campanha de 2º turno é curta e tudo se move mais rápido.

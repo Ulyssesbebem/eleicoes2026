@@ -248,7 +248,7 @@ document.getElementById("subtitulo").innerHTML =
 
 document.getElementById("metalinha").innerHTML =
   `<span>Pesquisa mais recente <b>${dLonga(HOJE)}</b></span>` +
-  `<span><b>${AG.n}</b> pesquisas na janela</span>` +
+  `<span><b>${AG.n}</b> institutos na média</span>` +
   `<span><b>${nf1.format(AG.n_efetivo)}</b> efetivas</span>` +
   (faltam > 0 ? `<span><b>${faltam}</b> dias para o pleito</span>` : "");
 
@@ -448,7 +448,8 @@ function pesoDe(erroAbs){
   document.getElementById("nota-pesquisas").innerHTML =
     `Janela de <b>${D.parametros.janela_dias} dias</b>, com meia-vida de
      ${D.parametros.meia_vida_dias} — mais curtas que as do 1º turno, porque a campanha de
-     2º turno é curta e tudo se move mais rápido. Institutos sem pesquisa na reta final do
+     2º turno é curta e tudo se move mais rápido. Só a pesquisa <b>mais recente</b> de cada
+     instituto entra na conta: quando sai uma rodada nova, ela substitui a anterior. Institutos sem pesquisa na reta final do
      1º turno não têm erro medido e recebem o peso mediano
      (${nf1.format(D.parametros.peso_sem_medida*100)}%), nem prêmio nem castigo.`;
 })();

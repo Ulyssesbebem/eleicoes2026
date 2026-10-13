@@ -1,7 +1,11 @@
 """
 Agrega as pesquisas do 2o turno de 2026 (Lula x Flavio) em uma media ponderada.
 
-  peso = instituto x recencia x amostra x repeticao
+  peso = instituto x recencia x amostra
+
+So a pesquisa MAIS RECENTE de cada instituto entra na conta: a rodada nova
+substitui a anterior, para quem publica toda semana nao pesar mais que quem
+publica uma vez.
 
 onde 'instituto' vem do erro MEDIDO no 1o turno de 4/10/2026 (institutos.py),
 e nao de um ranking montado antes da eleicao.
@@ -22,7 +26,6 @@ import io
 import json
 import math
 import sys
-from collections import defaultdict
 from datetime import date, timedelta
 
 from institutos import (ACURACIA, ERRO_REFERENCIA, PESO_SEM_MEDIDA,
@@ -97,29 +100,25 @@ def fator_amostra(n):
     return max(AMOSTRA_MIN, min(AMOSTRA_MAX, math.sqrt(n / AMOSTRA_REF)))
 
 
-def peso(p, referencia, ordem, meia_vida):
-    """peso = instituto x recencia x amostra x repeticao"""
+def peso(p, referencia, meia_vida):
+    """peso = instituto x recencia x amostra"""
     w_inst = peso_instituto(p["instituto"])
     dias = (referencia - p["data_fim"]).days
     w_rec = 0.5 ** (dias / meia_vida)
     w_amo = fator_amostra(p["amostra"])
-    w_rep = 1 / math.sqrt(ordem)
-    return w_inst * w_rec * w_amo * w_rep
+    return w_inst * w_rec * w_amo
 
 
 def elegiveis(pesquisas, referencia, janela):
-    """Pesquisas da janela, com a ordem de cada uma dentro do seu instituto."""
-    els = [p for p in pesquisas
-           if p["data_fim"] <= referencia
-           and (referencia - p["data_fim"]).days <= janela]
-    por_inst = defaultdict(list)
-    for p in sorted(els, key=lambda x: x["data_fim"], reverse=True):
-        por_inst[p["instituto"]].append(p)
-    ordem = {}
-    for lista in por_inst.values():
-        for i, p in enumerate(lista, start=1):
-            ordem[id(p)] = i
-    return els, ordem
+    """So a pesquisa mais recente de cada instituto dentro da janela."""
+    ultima = {}
+    for p in pesquisas:
+        if p["data_fim"] > referencia or (referencia - p["data_fim"]).days > janela:
+            continue
+        atual = ultima.get(p["instituto"])
+        if atual is None or p["data_fim"] > atual["data_fim"]:
+            ultima[p["instituto"]] = p
+    return list(ultima.values())
 
 
 def conjunto_valido(pesquisas, referencia):
@@ -139,11 +138,11 @@ def conjunto_valido(pesquisas, referencia):
 def agregar(pesquisas, referencia, janela, meia_vida):
     """Media ponderada do duelo, em votos validos. Devolve None se nao der."""
     base, hipotetico = conjunto_valido(pesquisas, referencia)
-    els, ordem = elegiveis(base, referencia, janela)
+    els = elegiveis(base, referencia, janela)
     if len(els) < 2:
         return None
 
-    pesos = [peso(p, referencia, ordem[id(p)], meia_vida) for p in els]
+    pesos = [peso(p, referencia, meia_vida) for p in els]
     den = sum(pesos)
     if den <= 0:
         return None
@@ -216,8 +215,8 @@ def main():
         sys.exit(1)
 
     base, _hip = conjunto_valido(pesquisas, hoje)
-    els, ordem = elegiveis(base, hoje, janela)
-    pesos = {id(p): peso(p, hoje, ordem[id(p)], meia_vida) for p in els}
+    els = elegiveis(base, hoje, janela)
+    pesos = {id(p): peso(p, hoje, meia_vida) for p in els}
     total_peso = sum(pesos.values()) or 1
 
     lista = []
