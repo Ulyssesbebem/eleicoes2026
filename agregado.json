@@ -1,6 +1,6 @@
 {
- "atualizado": "2026-10-14",
- "data_ultima_pesquisa": "2026-10-12",
+ "atualizado": "2026-10-15",
+ "data_ultima_pesquisa": "2026-10-13",
  "dia_1t": "2026-10-04",
  "dia_2t": "2026-10-25",
  "duelo": {
@@ -194,24 +194,18 @@
   }
  },
  "agregado": {
-  "a": 47.8,
-  "b": 52.2,
+  "a": 47.9,
+  "b": 52.1,
   "hipotetico": false,
-  "n_reais": 10,
-  "margem": 1.12,
-  "desvio": 1.61,
-  "n": 9,
-  "n_efetivo": 7.94,
+  "n_reais": 11,
+  "margem": 1.03,
+  "desvio": 1.56,
+  "n": 10,
+  "n_efetivo": 8.91,
   "min": 45.4,
   "max": 50.9
  },
  "serie": [
-  {
-   "data": "2026-06-14",
-   "a": 52.12,
-   "b": 47.88,
-   "margem": 1.96
-  },
   {
    "data": "2026-06-15",
    "a": 52.2,
@@ -931,9 +925,29 @@
    "a": 47.8,
    "b": 52.2,
    "margem": 1.12
+  },
+  {
+   "data": "2026-10-13",
+   "a": 47.9,
+   "b": 52.1,
+   "margem": 1.03
   }
  ],
  "pesquisas_janela": [
+  {
+   "instituto": "Quaest",
+   "data": "2026-10-13",
+   "amostra": 2154,
+   "bruto_a": 44.0,
+   "bruto_b": 46.0,
+   "indefinidos": 10.0,
+   "a": 48.9,
+   "b": 51.1,
+   "peso": 0.5085,
+   "peso_pct": 9.5,
+   "erro_1t": -4.17,
+   "medido": true
+  },
   {
    "instituto": "PoderData/Aya",
    "data": "2026-10-12",
@@ -943,8 +957,8 @@
    "indefinidos": null,
    "a": 49.0,
    "b": 51.0,
-   "peso": 0.7055,
-   "peso_pct": 13.5,
+   "peso": 0.6582,
+   "peso_pct": 12.2,
    "erro_1t": -2.95,
    "medido": true
   },
@@ -957,8 +971,8 @@
    "indefinidos": 4.0,
    "a": 45.4,
    "b": 54.6,
-   "peso": 1.0242,
-   "peso_pct": 19.6,
+   "peso": 0.9557,
+   "peso_pct": 17.8,
    "erro_1t": 0.28,
    "medido": true
   },
@@ -971,8 +985,8 @@
    "indefinidos": 7.0,
    "a": 48.4,
    "b": 51.6,
-   "peso": 0.49,
-   "peso_pct": 9.4,
+   "peso": 0.4572,
+   "peso_pct": 8.5,
    "erro_1t": null,
    "medido": false
   },
@@ -985,8 +999,8 @@
    "indefinidos": 3.4,
    "a": 48.2,
    "b": 51.8,
-   "peso": 0.8044,
-   "peso_pct": 15.4,
+   "peso": 0.7505,
+   "peso_pct": 14.0,
    "erro_1t": 0.33,
    "medido": true
   },
@@ -999,8 +1013,8 @@
    "indefinidos": null,
    "a": 46.9,
    "b": 53.1,
-   "peso": 0.4118,
-   "peso_pct": 7.9,
+   "peso": 0.3842,
+   "peso_pct": 7.1,
    "erro_1t": -3.89,
    "medido": true
   },
@@ -1013,8 +1027,8 @@
    "indefinidos": null,
    "a": 47.3,
    "b": 52.7,
-   "peso": 0.3216,
-   "peso_pct": 6.2,
+   "peso": 0.3001,
+   "peso_pct": 5.6,
    "erro_1t": null,
    "medido": false
   },
@@ -1027,8 +1041,8 @@
    "indefinidos": 6.0,
    "a": 47.9,
    "b": 52.1,
-   "peso": 0.4236,
-   "peso_pct": 8.1,
+   "peso": 0.3953,
+   "peso_pct": 7.3,
    "erro_1t": -4.04,
    "medido": true
   },
@@ -1041,8 +1055,8 @@
    "indefinidos": 3.2,
    "a": 47.2,
    "b": 52.8,
-   "peso": 0.4571,
-   "peso_pct": 8.8,
+   "peso": 0.4265,
+   "peso_pct": 7.9,
    "erro_1t": -4.62,
    "medido": true
   },
@@ -1055,13 +1069,21 @@
    "indefinidos": 13.1,
    "a": 50.9,
    "b": 49.1,
-   "peso": 0.5818,
-   "peso_pct": 11.1,
+   "peso": 0.5429,
+   "peso_pct": 10.1,
    "erro_1t": -0.98,
    "medido": true
   }
  ],
  "historico": [
+  {
+   "instituto": "Quaest",
+   "data": "2026-10-13",
+   "amostra": 2154,
+   "a": 48.9,
+   "b": 51.1,
+   "erro_1t": -4.17
+  },
   {
    "instituto": "PoderData/Aya",
    "data": "2026-10-12",
