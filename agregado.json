@@ -1,6 +1,6 @@
 {
- "atualizado": "2026-10-16",
- "data_ultima_pesquisa": "2026-10-15",
+ "atualizado": "2026-10-17",
+ "data_ultima_pesquisa": "2026-10-16",
  "dia_1t": "2026-10-04",
  "dia_2t": "2026-10-25",
  "duelo": {
@@ -194,24 +194,18 @@
   }
  },
  "agregado": {
-  "a": 48.57,
-  "b": 51.43,
+  "a": 48.76,
+  "b": 51.24,
   "hipotetico": false,
-  "n_reais": 17,
-  "margem": 0.91,
-  "desvio": 1.55,
+  "n_reais": 18,
+  "margem": 0.67,
+  "desvio": 1.12,
   "n": 13,
-  "n_efetivo": 11.19,
-  "min": 45.4,
+  "n_efetivo": 10.72,
+  "min": 46.9,
   "max": 50.9
  },
  "serie": [
-  {
-   "data": "2026-06-17",
-   "a": 52.2,
-   "b": 47.8,
-   "margem": 1.78
-  },
   {
    "data": "2026-06-18",
    "a": 52.06,
@@ -931,9 +925,29 @@
    "a": 48.57,
    "b": 51.43,
    "margem": 0.91
+  },
+  {
+   "data": "2026-10-16",
+   "a": 48.76,
+   "b": 51.24,
+   "margem": 0.67
   }
  ],
  "pesquisas_janela": [
+  {
+   "instituto": "Gerp",
+   "data": "2026-10-16",
+   "amostra": 2400,
+   "bruto_a": 45.0,
+   "bruto_b": 50.0,
+   "indefinidos": 5.0,
+   "a": 47.4,
+   "b": 52.6,
+   "peso": 1.0242,
+   "peso_pct": 15.8,
+   "erro_1t": 0.28,
+   "medido": true
+  },
   {
    "instituto": "PoderData/Aya",
    "data": "2026-10-15",
@@ -943,8 +957,8 @@
    "indefinidos": null,
    "a": 50.0,
    "b": 50.0,
-   "peso": 0.7055,
-   "peso_pct": 10.5,
+   "peso": 0.6582,
+   "peso_pct": 10.1,
    "erro_1t": -2.95,
    "medido": true
   },
@@ -957,8 +971,8 @@
    "indefinidos": 7.3,
    "a": 49.5,
    "b": 50.5,
-   "peso": 0.3472,
-   "peso_pct": 5.2,
+   "peso": 0.324,
+   "peso_pct": 5.0,
    "erro_1t": -7.57,
    "medido": true
   },
@@ -971,8 +985,8 @@
    "indefinidos": 3.6,
    "a": 49.2,
    "b": 50.8,
-   "peso": 0.924,
-   "peso_pct": 13.8,
+   "peso": 0.8621,
+   "peso_pct": 13.3,
    "erro_1t": 0.33,
    "medido": true
   },
@@ -985,8 +999,8 @@
    "indefinidos": 8.0,
    "a": 48.9,
    "b": 51.1,
-   "peso": 0.559,
-   "peso_pct": 8.3,
+   "peso": 0.5216,
+   "peso_pct": 8.0,
    "erro_1t": -4.04,
    "medido": true
   },
@@ -999,8 +1013,8 @@
    "indefinidos": 14.0,
    "a": 48.8,
    "b": 51.2,
-   "peso": 0.3172,
-   "peso_pct": 4.7,
+   "peso": 0.296,
+   "peso_pct": 4.6,
    "erro_1t": -7.75,
    "medido": true
   },
@@ -1013,8 +1027,8 @@
    "indefinidos": 10.0,
    "a": 48.9,
    "b": 51.1,
-   "peso": 0.4427,
-   "peso_pct": 6.6,
+   "peso": 0.413,
+   "peso_pct": 6.4,
    "erro_1t": -4.17,
    "medido": true
   },
@@ -1027,23 +1041,9 @@
    "indefinidos": 1.0,
    "a": 49.5,
    "b": 50.5,
-   "peso": 0.7334,
-   "peso_pct": 10.9,
+   "peso": 0.6842,
+   "peso_pct": 10.5,
    "erro_1t": 2.17,
-   "medido": true
-  },
-  {
-   "instituto": "Gerp",
-   "data": "2026-10-12",
-   "amostra": 2400,
-   "bruto_a": 44.0,
-   "bruto_b": 53.0,
-   "indefinidos": 4.0,
-   "a": 45.4,
-   "b": 54.6,
-   "peso": 0.8319,
-   "peso_pct": 12.4,
-   "erro_1t": 0.28,
    "medido": true
   },
   {
@@ -1055,8 +1055,8 @@
    "indefinidos": 7.0,
    "a": 48.4,
    "b": 51.6,
-   "peso": 0.398,
-   "peso_pct": 5.9,
+   "peso": 0.3714,
+   "peso_pct": 5.7,
    "erro_1t": null,
    "medido": false
   },
@@ -1069,8 +1069,8 @@
    "indefinidos": null,
    "a": 46.9,
    "b": 53.1,
-   "peso": 0.3345,
-   "peso_pct": 5.0,
+   "peso": 0.3121,
+   "peso_pct": 4.8,
    "erro_1t": -3.89,
    "medido": true
   },
@@ -1083,8 +1083,8 @@
    "indefinidos": null,
    "a": 47.3,
    "b": 52.7,
-   "peso": 0.2612,
-   "peso_pct": 3.9,
+   "peso": 0.2437,
+   "peso_pct": 3.8,
    "erro_1t": null,
    "medido": false
   },
@@ -1097,8 +1097,8 @@
    "indefinidos": 3.2,
    "a": 47.2,
    "b": 52.8,
-   "peso": 0.3713,
-   "peso_pct": 5.5,
+   "peso": 0.3464,
+   "peso_pct": 5.3,
    "erro_1t": -4.62,
    "medido": true
   },
@@ -1111,13 +1111,21 @@
    "indefinidos": 13.1,
    "a": 50.9,
    "b": 49.1,
-   "peso": 0.4726,
-   "peso_pct": 7.1,
+   "peso": 0.4409,
+   "peso_pct": 6.8,
    "erro_1t": -0.98,
    "medido": true
   }
  ],
  "historico": [
+  {
+   "instituto": "Gerp",
+   "data": "2026-10-16",
+   "amostra": 2400,
+   "a": 47.4,
+   "b": 52.6,
+   "erro_1t": 0.28
+  },
   {
    "instituto": "PoderData/Aya",
    "data": "2026-10-15",
