@@ -1,6 +1,6 @@
 {
  "atualizado": "2026-10-18",
- "data_ultima_pesquisa": "2026-10-16",
+ "data_ultima_pesquisa": "2026-10-17",
  "dia_1t": "2026-10-04",
  "dia_2t": "2026-10-25",
  "duelo": {
@@ -194,24 +194,18 @@
   }
  },
  "agregado": {
-  "a": 48.84,
-  "b": 51.16,
+  "a": 48.96,
+  "b": 51.04,
   "hipotetico": false,
-  "n_reais": 20,
-  "margem": 0.58,
-  "desvio": 0.98,
+  "n_reais": 21,
+  "margem": 0.63,
+  "desvio": 1.08,
   "n": 14,
-  "n_efetivo": 11.13,
+  "n_efetivo": 11.24,
   "min": 46.9,
-  "max": 50.9
+  "max": 51.0
  },
  "serie": [
-  {
-   "data": "2026-06-18",
-   "a": 52.06,
-   "b": 47.94,
-   "margem": 1.82
-  },
   {
    "data": "2026-06-19",
    "a": 52.08,
@@ -931,9 +925,29 @@
    "a": 48.84,
    "b": 51.16,
    "margem": 0.58
+  },
+  {
+   "data": "2026-10-17",
+   "a": 48.96,
+   "b": 51.04,
+   "margem": 0.63
   }
  ],
  "pesquisas_janela": [
+  {
+   "instituto": "Vox",
+   "data": "2026-10-17",
+   "amostra": 2100,
+   "bruto_a": 46.4,
+   "bruto_b": 44.6,
+   "indefinidos": 8.9,
+   "a": 51.0,
+   "b": 49.0,
+   "peso": 0.8228,
+   "peso_pct": 10.6,
+   "erro_1t": -0.98,
+   "medido": true
+  },
   {
    "instituto": "Veritá",
    "data": "2026-10-16",
@@ -943,8 +957,8 @@
    "indefinidos": null,
    "a": 48.9,
    "b": 51.1,
-   "peso": 1.2597,
-   "peso_pct": 15.9,
+   "peso": 1.1753,
+   "peso_pct": 15.1,
    "erro_1t": 0.13,
    "medido": true
   },
@@ -957,8 +971,8 @@
    "indefinidos": 5.0,
    "a": 47.4,
    "b": 52.6,
-   "peso": 1.0242,
-   "peso_pct": 12.9,
+   "peso": 0.9557,
+   "peso_pct": 12.3,
    "erro_1t": 0.28,
    "medido": true
   },
@@ -971,8 +985,8 @@
    "indefinidos": null,
    "a": 50.0,
    "b": 50.0,
-   "peso": 0.6582,
-   "peso_pct": 8.3,
+   "peso": 0.6141,
+   "peso_pct": 7.9,
    "erro_1t": -2.95,
    "medido": true
   },
@@ -985,8 +999,8 @@
    "indefinidos": 7.3,
    "a": 49.5,
    "b": 50.5,
-   "peso": 0.324,
-   "peso_pct": 4.1,
+   "peso": 0.3023,
+   "peso_pct": 3.9,
    "erro_1t": -7.57,
    "medido": true
   },
@@ -999,8 +1013,8 @@
    "indefinidos": 6.0,
    "a": 48.9,
    "b": 51.1,
-   "peso": 0.3959,
-   "peso_pct": 5.0,
+   "peso": 0.3694,
+   "peso_pct": 4.7,
    "erro_1t": null,
    "medido": false
   },
@@ -1013,8 +1027,8 @@
    "indefinidos": 3.6,
    "a": 49.2,
    "b": 50.8,
-   "peso": 0.8621,
-   "peso_pct": 10.9,
+   "peso": 0.8044,
+   "peso_pct": 10.3,
    "erro_1t": 0.33,
    "medido": true
   },
@@ -1027,8 +1041,8 @@
    "indefinidos": 8.0,
    "a": 48.9,
    "b": 51.1,
-   "peso": 0.5216,
-   "peso_pct": 6.6,
+   "peso": 0.4866,
+   "peso_pct": 6.2,
    "erro_1t": -4.04,
    "medido": true
   },
@@ -1041,8 +1055,8 @@
    "indefinidos": 14.0,
    "a": 48.8,
    "b": 51.2,
-   "peso": 0.296,
-   "peso_pct": 3.7,
+   "peso": 0.2762,
+   "peso_pct": 3.5,
    "erro_1t": -7.75,
    "medido": true
   },
@@ -1055,8 +1069,8 @@
    "indefinidos": 10.0,
    "a": 48.9,
    "b": 51.1,
-   "peso": 0.413,
-   "peso_pct": 5.2,
+   "peso": 0.3854,
+   "peso_pct": 4.9,
    "erro_1t": -4.17,
    "medido": true
   },
@@ -1069,8 +1083,8 @@
    "indefinidos": 1.0,
    "a": 49.5,
    "b": 50.5,
-   "peso": 0.6842,
-   "peso_pct": 8.7,
+   "peso": 0.6384,
+   "peso_pct": 8.2,
    "erro_1t": 2.17,
    "medido": true
   },
@@ -1083,8 +1097,8 @@
    "indefinidos": 7.0,
    "a": 48.4,
    "b": 51.6,
-   "peso": 0.3714,
-   "peso_pct": 4.7,
+   "peso": 0.3465,
+   "peso_pct": 4.4,
    "erro_1t": null,
    "medido": false
   },
@@ -1097,8 +1111,8 @@
    "indefinidos": null,
    "a": 46.9,
    "b": 53.1,
-   "peso": 0.3121,
-   "peso_pct": 3.9,
+   "peso": 0.2912,
+   "peso_pct": 3.7,
    "erro_1t": -3.89,
    "medido": true
   },
@@ -1111,27 +1125,21 @@
    "indefinidos": 3.2,
    "a": 47.2,
    "b": 52.8,
-   "peso": 0.3464,
-   "peso_pct": 4.4,
+   "peso": 0.3232,
+   "peso_pct": 4.1,
    "erro_1t": -4.62,
-   "medido": true
-  },
-  {
-   "instituto": "Vox",
-   "data": "2026-10-07",
-   "amostra": 2100,
-   "bruto_a": 44.2,
-   "bruto_b": 42.7,
-   "indefinidos": 13.1,
-   "a": 50.9,
-   "b": 49.1,
-   "peso": 0.4409,
-   "peso_pct": 5.6,
-   "erro_1t": -0.98,
    "medido": true
   }
  ],
  "historico": [
+  {
+   "instituto": "Vox",
+   "data": "2026-10-17",
+   "amostra": 2100,
+   "a": 51.0,
+   "b": 49.0,
+   "erro_1t": -0.98
+  },
   {
    "instituto": "Veritá",
    "data": "2026-10-16",
