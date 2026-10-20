@@ -18,7 +18,9 @@
   "amostra_min": 0.75,
   "amostra_max": 1.3,
   "erro_referencia": 4.0,
-  "peso_sem_medida": 0.49
+  "peso_sem_medida": 0.49,
+  "dp_sistematico": 1.5,
+  "fracao_vies": 0.5
  },
  "acuracia_1t": {
   "Quaest": {
@@ -194,16 +196,28 @@
   }
  },
  "agregado": {
-  "a": 48.98,
-  "b": 51.02,
+  "a": 48.99,
+  "b": 51.01,
   "hipotetico": false,
-  "n_reais": 33,
-  "margem": 0.46,
-  "desvio": 0.91,
-  "n": 19,
-  "n_efetivo": 15.1,
+  "n_reais": 31,
+  "margem": 0.47,
+  "margem_total": 2.98,
+  "prob_a": 0.253,
+  "prob_b": 0.747,
+  "desvio": 0.93,
+  "n": 18,
+  "n_efetivo": 15.04,
   "min": 47.4,
   "max": 51.0
+ },
+ "corrigido": {
+  "a": 48.3,
+  "b": 51.7,
+  "margem_total": 3.0,
+  "prob_a": 0.133,
+  "prob_b": 0.867,
+  "fracao": 0.5,
+  "erro_tipico_1t": -4.17
  },
  "serie": [
   {
@@ -880,57 +894,57 @@
   },
   {
    "data": "2026-10-12",
-   "a": 47.8,
-   "b": 52.2,
-   "margem": 1.12
+   "a": 47.79,
+   "b": 52.21,
+   "margem": 1.14
   },
   {
    "data": "2026-10-13",
-   "a": 48.12,
-   "b": 51.88,
-   "margem": 0.97
+   "a": 48.11,
+   "b": 51.89,
+   "margem": 0.99
   },
   {
    "data": "2026-10-14",
-   "a": 48.16,
-   "b": 51.84,
-   "margem": 0.91
+   "a": 48.15,
+   "b": 51.85,
+   "margem": 0.93
   },
   {
    "data": "2026-10-15",
    "a": 48.64,
    "b": 51.36,
-   "margem": 0.87
+   "margem": 0.89
   },
   {
    "data": "2026-10-16",
-   "a": 48.93,
-   "b": 51.07,
+   "a": 48.94,
+   "b": 51.06,
    "margem": 0.58
   },
   {
    "data": "2026-10-17",
-   "a": 49.12,
-   "b": 50.88,
-   "margem": 0.57
+   "a": 49.13,
+   "b": 50.87,
+   "margem": 0.58
   },
   {
    "data": "2026-10-18",
-   "a": 49.05,
-   "b": 50.95,
-   "margem": 0.51
+   "a": 49.07,
+   "b": 50.93,
+   "margem": 0.53
   },
   {
    "data": "2026-10-19",
-   "a": 48.97,
-   "b": 51.03,
-   "margem": 0.49
+   "a": 48.98,
+   "b": 51.02,
+   "margem": 0.5
   },
   {
    "data": "2026-10-20",
-   "a": 48.98,
-   "b": 51.02,
-   "margem": 0.46
+   "a": 48.99,
+   "b": 51.01,
+   "margem": 0.47
   }
  ],
  "pesquisas_janela": [
@@ -944,35 +958,21 @@
    "a": 49.2,
    "b": 50.8,
    "peso": 0.5291,
-   "peso_pct": 5.7,
+   "peso_pct": 6.0,
    "erro_1t": -5.26,
-   "medido": true
-  },
-  {
-   "instituto": "Veritá",
-   "data": "2026-10-19",
-   "amostra": 15554,
-   "bruto_a": 45.16,
-   "bruto_b": 47.03,
-   "indefinidos": 2.6,
-   "a": 49.0,
-   "b": 51.0,
-   "peso": 1.1753,
-   "peso_pct": 12.7,
-   "erro_1t": 0.13,
    "medido": true
   },
   {
    "instituto": "Real Time Big Data",
    "data": "2026-10-19",
    "amostra": 2000,
-   "bruto_a": 44.0,
-   "bruto_b": 47.0,
-   "indefinidos": 9.0,
+   "bruto_a": 45.0,
+   "bruto_b": 48.0,
+   "indefinidos": 7.0,
    "a": 48.4,
    "b": 51.6,
    "peso": 0.3779,
-   "peso_pct": 4.1,
+   "peso_pct": 4.3,
    "erro_1t": -5.87,
    "medido": true
   },
@@ -986,7 +986,7 @@
    "a": 47.4,
    "b": 52.6,
    "peso": 0.9557,
-   "peso_pct": 10.3,
+   "peso_pct": 10.9,
    "erro_1t": 0.28,
    "medido": true
   },
@@ -1000,7 +1000,7 @@
    "a": 48.5,
    "b": 51.5,
    "peso": 0.3274,
-   "peso_pct": 3.5,
+   "peso_pct": 3.7,
    "erro_1t": -9.24,
    "medido": true
   },
@@ -1014,7 +1014,7 @@
    "a": 48.0,
    "b": 52.0,
    "peso": 0.6141,
-   "peso_pct": 6.6,
+   "peso_pct": 7.0,
    "erro_1t": -2.95,
    "medido": true
   },
@@ -1028,22 +1028,8 @@
    "a": 49.7,
    "b": 50.3,
    "peso": 0.3125,
-   "peso_pct": 3.4,
+   "peso_pct": 3.5,
    "erro_1t": -7.13,
-   "medido": true
-  },
-  {
-   "instituto": "DataTrends",
-   "data": "2026-10-18",
-   "amostra": 1200,
-   "bruto_a": 46.0,
-   "bruto_b": 49.0,
-   "indefinidos": 5.0,
-   "a": 48.4,
-   "b": 51.6,
-   "peso": 0.3419,
-   "peso_pct": 3.7,
-   "erro_1t": -3.89,
    "medido": true
   },
   {
@@ -1056,7 +1042,7 @@
    "a": 48.9,
    "b": 51.1,
    "peso": 0.5251,
-   "peso_pct": 5.7,
+   "peso_pct": 6.0,
    "erro_1t": -4.62,
    "medido": true
   },
@@ -1070,7 +1056,7 @@
    "a": 51.0,
    "b": 49.0,
    "peso": 0.6683,
-   "peso_pct": 7.2,
+   "peso_pct": 7.6,
    "erro_1t": -0.98,
    "medido": true
   },
@@ -1084,8 +1070,36 @@
    "a": 49.6,
    "b": 50.4,
    "peso": 0.7505,
-   "peso_pct": 8.1,
+   "peso_pct": 8.5,
    "erro_1t": 0.33,
+   "medido": true
+  },
+  {
+   "instituto": "DataTrends",
+   "data": "2026-10-17",
+   "amostra": 2000,
+   "bruto_a": 46.0,
+   "bruto_b": 49.0,
+   "indefinidos": 5.0,
+   "a": 48.4,
+   "b": 51.6,
+   "peso": 0.4118,
+   "peso_pct": 4.7,
+   "erro_1t": -3.89,
+   "medido": true
+  },
+  {
+   "instituto": "Veritá",
+   "data": "2026-10-16",
+   "amostra": 15554,
+   "bruto_a": 48.9,
+   "bruto_b": 51.1,
+   "indefinidos": null,
+   "a": 48.9,
+   "b": 51.1,
+   "peso": 0.9547,
+   "peso_pct": 10.8,
+   "erro_1t": 0.13,
    "medido": true
   },
   {
@@ -1098,7 +1112,7 @@
    "a": 50.4,
    "b": 49.6,
    "peso": 0.3805,
-   "peso_pct": 4.1,
+   "peso_pct": 4.3,
    "erro_1t": null,
    "medido": false
   },
@@ -1112,7 +1126,7 @@
    "a": 49.5,
    "b": 50.5,
    "peso": 0.2455,
-   "peso_pct": 2.7,
+   "peso_pct": 2.8,
    "erro_1t": -7.57,
    "medido": true
   },
@@ -1126,7 +1140,7 @@
    "a": 48.9,
    "b": 51.1,
    "peso": 0.3001,
-   "peso_pct": 3.2,
+   "peso_pct": 3.4,
    "erro_1t": null,
    "medido": false
   },
@@ -1140,7 +1154,7 @@
    "a": 48.9,
    "b": 51.1,
    "peso": 0.3953,
-   "peso_pct": 4.3,
+   "peso_pct": 4.5,
    "erro_1t": -4.04,
    "medido": true
   },
@@ -1154,7 +1168,7 @@
    "a": 48.8,
    "b": 51.2,
    "peso": 0.2243,
-   "peso_pct": 2.4,
+   "peso_pct": 2.5,
    "erro_1t": -7.75,
    "medido": true
   },
@@ -1168,7 +1182,7 @@
    "a": 48.9,
    "b": 51.1,
    "peso": 0.313,
-   "peso_pct": 3.4,
+   "peso_pct": 3.6,
    "erro_1t": -4.17,
    "medido": true
   },
@@ -1182,23 +1196,9 @@
    "a": 49.5,
    "b": 50.5,
    "peso": 0.5186,
-   "peso_pct": 5.6,
+   "peso_pct": 5.9,
    "erro_1t": 2.17,
    "medido": true
-  },
-  {
-   "instituto": "BTG/Nexus",
-   "data": "2026-10-12",
-   "amostra": 2000,
-   "bruto_a": 45.0,
-   "bruto_b": 48.0,
-   "indefinidos": 7.0,
-   "a": 48.4,
-   "b": 51.6,
-   "peso": 0.2814,
-   "peso_pct": 3.0,
-   "erro_1t": null,
-   "medido": false
   }
  ],
  "historico": [
@@ -1209,14 +1209,6 @@
    "a": 49.2,
    "b": 50.8,
    "erro_1t": -5.26
-  },
-  {
-   "instituto": "Veritá",
-   "data": "2026-10-19",
-   "amostra": 15554,
-   "a": 49.0,
-   "b": 51.0,
-   "erro_1t": 0.13
   },
   {
    "instituto": "Real Time Big Data",
@@ -1259,14 +1251,6 @@
    "erro_1t": -7.13
   },
   {
-   "instituto": "DataTrends",
-   "data": "2026-10-18",
-   "amostra": 1200,
-   "a": 48.4,
-   "b": 51.6,
-   "erro_1t": -3.89
-  },
-  {
    "instituto": "AtlasIntel",
    "data": "2026-10-18",
    "amostra": 4998,
@@ -1294,8 +1278,8 @@
    "instituto": "DataTrends",
    "data": "2026-10-17",
    "amostra": 2000,
-   "a": 48.5,
-   "b": 51.5,
+   "a": 48.4,
+   "b": 51.6,
    "erro_1t": -3.89
   },
   {
@@ -1395,20 +1379,20 @@
    "erro_1t": -2.95
   },
   {
+   "instituto": "Nexus/BTG",
+   "data": "2026-10-12",
+   "amostra": 2000,
+   "a": 48.4,
+   "b": 51.6,
+   "erro_1t": -7.13
+  },
+  {
    "instituto": "Gerp",
    "data": "2026-10-12",
    "amostra": 2400,
    "a": 45.4,
    "b": 54.6,
    "erro_1t": 0.28
-  },
-  {
-   "instituto": "BTG/Nexus",
-   "data": "2026-10-12",
-   "amostra": 2000,
-   "a": 48.4,
-   "b": 51.6,
-   "erro_1t": null
   },
   {
    "instituto": "Futura",
