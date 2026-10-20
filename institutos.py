@@ -110,6 +110,11 @@ APELIDOS = {
     "poderdata/aya": "PoderData/Aya",
     "nexus/btg pactual": "Nexus/BTG",
     "nexus/btg": "Nexus/BTG",
+    # a Wikipedia alterna a ordem: 'BTG/Nexus' em 12/10 virava outro instituto,
+    # sem o peso do 1o turno e fora da regra de "so a mais recente"
+    "btg/nexus": "Nexus/BTG",
+    "btg pactual/nexus": "Nexus/BTG",
+    "nexus": "Nexus/BTG",
     "instituto verità": "Veritá",
     "verità": "Veritá",
     "verita": "Veritá",

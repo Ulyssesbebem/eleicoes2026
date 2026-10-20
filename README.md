@@ -39,6 +39,29 @@ publica uma vez.
 Janela e meia-vida são mais curtas que as do 1º turno (30 e 10 dias, contra 45 e
 14): a campanha de 2º turno é curta e tudo se move mais rápido.
 
+## A margem e a chance de vitória
+
+A discordância entre os institutos dá uma margem de ±0,5 — mas ela só mede a
+precisão da média. No 1º turno quase todos erraram na mesma direção, e esse
+viés passa inteiro por ela. Por isso a margem do placar soma um **erro comum a
+todos os institutos** (`DP_SISTEMATICO = 1,5` ponto em cada candidato), e é
+dela que sai a chance de vitória:
+
+```
+dp_total = √((margem_da_média / 1,96)² + 1,5²)
+chance   = Φ((média − 50) / dp_total)
+```
+
+1,5 fica entre o erro do 1º turno de 2026 (~2 pontos em cada candidato) e o
+erro menor que o 2º turno teve em 2018 e 2022.
+
+## E se o erro do 1º turno se repetir?
+
+A página mostra, ao lado do número principal, um cenário que desconta de cada
+pesquisa **metade** do erro de margem que o próprio instituto cometeu em 4/10
+(`FRACAO_VIES = 0,5`; quem não foi medido recebe o erro mediano). Não é a
+previsão principal — é o tamanho do risco se o viés não sumir desta vez.
+
 ## Hipotético x real
 
 Pesquisa de 2º turno feita **antes** de 4/10 era cenário hipotético, perguntado
@@ -56,6 +79,7 @@ dizendo, em destaque, que é hipotético.
 | `institutos.py` | Converte erro em peso; normaliza grafias |
 | `coletar.py` | Baixa e parseia as tabelas da Wikipédia |
 | `agregar.py` | Média ponderada do duelo → `agregado.json`, `painel.html` |
+| `calibrar.py` | Testa janela e meia-vida fora da amostra |
 | `verificar.py` | Confere se os dados fazem sentido antes de publicar |
 | `montar_site.py` | Monta `site/` para o GitHub Pages |
 
@@ -80,10 +104,12 @@ publicar é o objetivo.
 ## Limites
 
 **A fonte é a Wikipédia**, que cita o registro de cada pesquisa no TSE. É
-editável, e já produziu dois erros que entraram aqui: uma linha sem as células
-de amostra e margem (que deslocava tudo) e um mês digitado como "Oubt". Ambos
-têm tratamento no `coletar.py`, e `verificar.py` recusa amostra fora de 300 a
-200.000.
+editável, e já produziu erros que entraram aqui: uma linha sem as células
+de amostra e margem (que deslocava tudo), um mês digitado como "Oubt" e uma
+rodada da Veritá (15–19/10) com os números exatos do resultado oficial do 1º
+turno. Todos têm tratamento: `coletar.py` e `agregar.py` descartam linha de 2º
+turno idêntica ao resultado do TSE, e `verificar.py` recusa amostra fora de 300
+a 200.000 e avisa quando o mesmo instituto repete amostra com campo sobreposto.
 
 **O peso vem de uma observação.** Acerto no 1º turno pode não transferir para o
 2º — a aferição de 2018 e 2022, no histórico deste repositório, mostrou viés

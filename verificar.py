@@ -78,6 +78,29 @@ for r in duelo:
         if not 0 <= x <= 100:
             erro(f"{k}={x} fora de 0-100 ({r['instituto']} {r['data_fim']})")
 
+# linhas que copiam o resultado oficial do 1o turno (coletar.py e agregar.py
+# ja descartam; se aparecer aqui, a coleta rodou com codigo antigo)
+import correcoes
+for r in duelo:
+    if correcoes.copia_do_resultado_1t(r):
+        aviso(f"{r['instituto']} {r['data_fim']} repete o resultado oficial do 1o turno "
+              f"({r['Lula']} x {r['Flávio']}) - ignorada pelo agregador")
+
+# mesma casa, mesma amostra e campo sobreposto: provavel rodada duplicada na
+# origem (foi assim que a linha falsa da Verita de 19/10 apareceu)
+por_inst = {}
+for r in duelo:
+    por_inst.setdefault(r["instituto"], []).append(r)
+for inst, rs in por_inst.items():
+    rs = sorted(rs, key=lambda r: r["data_fim"])
+    for ant, nov in zip(rs, rs[1:]):
+        if (ant.get("amostra") and ant.get("amostra") == nov.get("amostra")
+                and nov.get("data_inicio") and nov["data_inicio"] < ant["data_fim"]
+                and (ant.get("Lula"), ant.get("Flávio")) != (nov.get("Lula"), nov.get("Flávio"))):
+            aviso(f"{inst}: rodadas {ant['data_inicio']}~{ant['data_fim']} e "
+                  f"{nov['data_inicio']}~{nov['data_fim']} tem a mesma amostra "
+                  f"({nov['amostra']}) e campo sobreposto - confira no TSE")
+
 if datas:
     recente = max(datas)
     if recente > hoje + timedelta(days=1):
@@ -112,6 +135,15 @@ if ag:
             erro(f"o duelo soma {soma:.2f}, nao 100 - a conversao para validos quebrou")
         if (a.get("n") or 0) < 2:
             erro("agregado apoiado em menos de 2 pesquisas")
+        for k in ("prob_a", "prob_b"):
+            v = a.get(k)
+            if v is None or not 0 <= v <= 1:
+                erro(f"probabilidade {k}={v} fora de 0-1")
+        if (a.get("margem_total") or 0) < (a.get("margem") or 0):
+            erro("margem total menor que a margem da media - erro sistematico sumiu")
+    c = ag.get("corrigido")
+    if c and abs((c.get("a") or 0) + (c.get("b") or 0) - 100) > 0.2:
+        erro("cenario corrigido nao soma 100")
     if not ag.get("serie"):
         erro("serie temporal vazia")
     if not ag.get("acuracia_1t"):

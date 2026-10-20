@@ -32,14 +32,46 @@ DESCARTAR = [
 ]
 
 
+def _num(v):
+    try:
+        return float(v)
+    except (TypeError, ValueError):
+        return None
+
+
+def copia_do_resultado_1t(p):
+    """
+    Linha de 2o turno cujo duelo e IDENTICO ao resultado oficial do 1o turno.
+
+    Nenhuma pesquisa publica Lula 45,16 x Flavio 47,03 por acaso: e o numero do
+    TSE colado na linha errada. Aconteceu com a Verita de 15-19/10/2026, que
+    ainda repetia a amostra (15.554) da rodada de 12-16/10 - e era o instituto
+    de maior peso no agregado. A regra e geral para pegar a proxima vez sem
+    depender de alguem notar.
+    """
+    from resultado_1t import RESULTADO_1T
+    if not str(p.get("cenario", "")).startswith("Lula e Fl"):
+        return False
+    a, b = _num(p.get("Lula")), _num(p.get("Flávio"))
+    if a is None or b is None:
+        return False
+    return (abs(a - RESULTADO_1T["Lula"]) < 0.005
+            and abs(b - RESULTADO_1T["Flávio"]) < 0.005)
+
+
 def aplicar(pesquisas, turno):
-    """Remove as linhas listadas em DESCARTAR. Devolve (mantidas, descartadas)."""
+    """
+    Remove as linhas listadas em DESCARTAR e, no 2o turno, as que copiam o
+    resultado oficial do 1o. Devolve (mantidas, descartadas).
+    """
     regras = [c for c in DESCARTAR if c["turno"] == turno]
     mantidas, descartadas = [], []
     for p in pesquisas:
         if any(p["instituto"] == c["instituto"]
                and p.get("data_inicio") == c["data_inicio"]
                and p["data_fim"] == c["data_fim"] for c in regras):
+            descartadas.append(p)
+        elif turno == 2 and copia_do_resultado_1t(p):
             descartadas.append(p)
         else:
             mantidas.append(p)

@@ -28,8 +28,9 @@ import math
 import sys
 from datetime import date, timedelta
 
+import correcoes
 from institutos import (ACURACIA, ERRO_REFERENCIA, PESO_SEM_MEDIDA,
-                        erro_de, peso_instituto, tem_medida)
+                        erro_de, normalizar_instituto, peso_instituto, tem_medida)
 from resultado_1t import DIA_1T, DIA_2T, DUELO_2T, RESULTADO_1T
 
 # ------------------------------------------------------------------ parametros
@@ -45,6 +46,19 @@ A, B = DUELO_2T       # "Lula", "Flávio"
 # so elas. Enquanto nao houver, o painel mostra o cenario hipotetico - e diz
 # que e hipotetico.
 MIN_PESQUISAS_REAIS = 2
+
+# Erro que TODOS os institutos podem cometer juntos (desvio padrao, em pontos
+# de votos validos de um candidato). A margem antiga media so a discordancia
+# entre institutos e dava +/-0,5 - mas no 1o turno de 2026 a mediana errou a
+# margem em ~4 pontos (~2 em cada candidato), todos na mesma direcao. Em 2018
+# e 2022 o 2o turno errou menos que o 1o. 1,5 fica entre os dois: assume que o
+# 2o turno erra menos, sem assumir que nao erra.
+DP_SISTEMATICO = 1.5
+
+# Cenario "se o erro do 1o turno se repetir": tira de cada pesquisa esta
+# fracao do erro de margem que o instituto cometeu em 4/10. Metade, e nao
+# tudo, porque erro de uma eleicao so e meio pontaria, meio sorte.
+FRACAO_VIES = 0.5
 
 
 def arg(nome, padrao):
@@ -65,6 +79,8 @@ def ler_2t(caminho="pesquisas_2t.csv"):
         cen = r.get("cenario", "")
         if not cen or "hipótese" in cen.lower():
             continue
+        if correcoes.copia_do_resultado_1t(r):
+            continue
         try:
             va, vb = float(r[A]), float(r[B])
         except (KeyError, ValueError, TypeError):
@@ -75,7 +91,9 @@ def ler_2t(caminho="pesquisas_2t.csv"):
         ind = r.get("Indefinidos")
         d = date.fromisoformat(r["data_fim"])
         saida.append({
-            "instituto": r["instituto"],
+            # renormaliza aqui tambem: o CSV pode ter sido gravado antes de um
+            # apelido novo entrar em institutos.py
+            "instituto": normalizar_instituto(r["instituto"]),
             "data_fim": d,
             # pesquisa feita DEPOIS do 1o turno mede o 2o turno de verdade;
             # antes dele era cenario hipotetico, perguntado a um eleitor que
@@ -168,9 +186,17 @@ def agregar(pesquisas, referencia, janela, meia_vida):
     margem_amo = 1.96 * math.sqrt(var_amo)
     margem = max(margem_disp or 0.0, margem_amo)
 
+    # Margem que cabe dizer ao leitor: a da media mais o erro que todos os
+    # institutos podem cometer juntos. Dela sai a chance de cada lado.
+    dp_total = math.sqrt((margem / 1.96) ** 2 + DP_SISTEMATICO ** 2)
+    prob_b = 1 - normal_acumulada((va - 50) / dp_total)
+
     return {
         "a": va, "b": vb,
         "hipotetico": hipotetico,
+        "margem_total": 1.96 * dp_total,
+        "prob_a": 1 - prob_b,
+        "prob_b": prob_b,
         "desvio": dp,
         "n": len(els),
         "n_efetivo": n_ef,
@@ -178,6 +204,39 @@ def agregar(pesquisas, referencia, janela, meia_vida):
         "min": min(p["a"] for p in els),
         "max": max(p["a"] for p in els),
     }
+
+
+def normal_acumulada(z):
+    return 0.5 * (1 + math.erf(z / math.sqrt(2)))
+
+
+def mediana(xs):
+    xs = sorted(xs)
+    if not xs:
+        return 0.0
+    m = len(xs) // 2
+    return xs[m] if len(xs) % 2 else (xs[m - 1] + xs[m]) / 2
+
+
+def corrigir_vies(pesquisas, fracao=FRACAO_VIES):
+    """
+    Desconta de cada pesquisa uma fracao do erro de margem que o instituto
+    cometeu no 1o turno. erro_margem = (Flavio - Lula previsto) - real, entao
+    quem subestimou o Flavio (erro negativo) tem a margem dele aumentada.
+    Instituto sem medida recebe o erro MEDIANO - o mesmo criterio do peso.
+    """
+    erros = [d["erro_margem"] for d in ACURACIA.get("institutos", {}).values()]
+    erro_tipico = mediana(erros)
+    saida = []
+    for p in pesquisas:
+        e = erro_de(p["instituto"])
+        if e is None:
+            e = erro_tipico
+        # a e Lula; a margem Flavio-Lula sobe -fracao*e, Lula cai metade disso
+        a = p["a"] + fracao * e / 2
+        a = max(0.0, min(100.0, a))
+        saida.append(dict(p, a=a, b=100 - a))
+    return saida, erro_tipico
 
 
 def serie(pesquisas, fim, dias, janela, meia_vida):
@@ -213,6 +272,9 @@ def main():
     if not ag:
         print("Pesquisas insuficientes na janela.")
         sys.exit(1)
+
+    pesq_cor, erro_tipico = corrigir_vies(pesquisas)
+    cor = agregar(pesq_cor, hoje, janela, meia_vida)
 
     base, _hip = conjunto_valido(pesquisas, hoje)
     els = elegiveis(base, hoje, janela)
@@ -257,6 +319,8 @@ def main():
             "amostra_max": AMOSTRA_MAX,
             "erro_referencia": ERRO_REFERENCIA,
             "peso_sem_medida": PESO_SEM_MEDIDA,
+            "dp_sistematico": DP_SISTEMATICO,
+            "fracao_vies": FRACAO_VIES,
         },
         "acuracia_1t": ACURACIA.get("institutos", {}),
         "agregado": {
@@ -264,11 +328,22 @@ def main():
             "hipotetico": ag["hipotetico"],
             "n_reais": sum(1 for p in pesquisas if p["real"]),
             "margem": round(ag["margem"], 2) if ag["margem"] else None,
+            "margem_total": round(ag["margem_total"], 2),
+            "prob_a": round(ag["prob_a"], 3),
+            "prob_b": round(ag["prob_b"], 3),
             "desvio": round(ag["desvio"], 2),
             "n": ag["n"],
             "n_efetivo": round(ag["n_efetivo"], 2),
             "min": round(ag["min"], 1), "max": round(ag["max"], 1),
         },
+        "corrigido": {
+            "a": round(cor["a"], 2), "b": round(cor["b"], 2),
+            "margem_total": round(cor["margem_total"], 2),
+            "prob_a": round(cor["prob_a"], 3),
+            "prob_b": round(cor["prob_b"], 3),
+            "fracao": FRACAO_VIES,
+            "erro_tipico_1t": round(erro_tipico, 2),
+        } if cor else None,
         "serie": serie(pesquisas, hoje, 120, janela, meia_vida),
         "pesquisas_janela": lista,
         "historico": historico,
@@ -292,6 +367,11 @@ def main():
         lider = A if ag["a"] > ag["b"] else B
         print(f"\n  {lider} à frente por {dif:.1f} pp")
     print(f"  {ag['n']} pesquisas na janela ({ag['n_efetivo']:.1f} efetivas)")
+    print(f"  com erro sistematico: ±{ag['margem_total']:.1f} · chance "
+          f"{A} {100*ag['prob_a']:.0f}% x {B} {100*ag['prob_b']:.0f}%")
+    if cor:
+        print(f"\n  se {100*FRACAO_VIES:.0f}% do erro do 1o turno se repetir: "
+              f"{A} {cor['a']:.1f} x {B} {cor['b']:.1f} · chance {B} {100*cor['prob_b']:.0f}%")
     if ag["hipotetico"]:
         print("\n  ATENCAO: nenhuma pesquisa de 2o turno feita DEPOIS do 1o turno.")
         print("  O numero acima vem de cenarios hipoteticos, perguntados antes de")
