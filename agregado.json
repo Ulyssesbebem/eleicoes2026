@@ -196,26 +196,26 @@
   }
  },
  "agregado": {
-  "a": 48.99,
-  "b": 51.01,
+  "a": 49.11,
+  "b": 50.89,
   "hipotetico": false,
-  "n_reais": 31,
-  "margem": 0.47,
+  "n_reais": 32,
+  "margem": 0.51,
   "margem_total": 2.98,
-  "prob_a": 0.253,
-  "prob_b": 0.747,
-  "desvio": 0.93,
-  "n": 18,
-  "n_efetivo": 15.04,
+  "prob_a": 0.279,
+  "prob_b": 0.721,
+  "desvio": 1.04,
+  "n": 19,
+  "n_efetivo": 16.01,
   "min": 47.4,
-  "max": 51.0
+  "max": 51.3
  },
  "corrigido": {
-  "a": 48.3,
-  "b": 51.7,
+  "a": 48.4,
+  "b": 51.6,
   "margem_total": 3.0,
-  "prob_a": 0.133,
-  "prob_b": 0.867,
+  "prob_a": 0.148,
+  "prob_b": 0.852,
   "fracao": 0.5,
   "erro_tipico_1t": -4.17
  },
@@ -918,33 +918,33 @@
   },
   {
    "data": "2026-10-16",
-   "a": 48.94,
-   "b": 51.06,
-   "margem": 0.58
+   "a": 49.1,
+   "b": 50.9,
+   "margem": 0.63
   },
   {
    "data": "2026-10-17",
-   "a": 49.13,
-   "b": 50.87,
-   "margem": 0.58
+   "a": 49.27,
+   "b": 50.73,
+   "margem": 0.61
   },
   {
    "data": "2026-10-18",
-   "a": 49.07,
-   "b": 50.93,
-   "margem": 0.53
+   "a": 49.2,
+   "b": 50.8,
+   "margem": 0.57
   },
   {
    "data": "2026-10-19",
-   "a": 48.98,
-   "b": 51.02,
-   "margem": 0.5
+   "a": 49.1,
+   "b": 50.9,
+   "margem": 0.54
   },
   {
    "data": "2026-10-20",
-   "a": 48.99,
-   "b": 51.01,
-   "margem": 0.47
+   "a": 49.11,
+   "b": 50.89,
+   "margem": 0.51
   }
  ],
  "pesquisas_janela": [
@@ -958,7 +958,7 @@
    "a": 49.2,
    "b": 50.8,
    "peso": 0.5291,
-   "peso_pct": 6.0,
+   "peso_pct": 5.7,
    "erro_1t": -5.26,
    "medido": true
   },
@@ -972,7 +972,7 @@
    "a": 48.4,
    "b": 51.6,
    "peso": 0.3779,
-   "peso_pct": 4.3,
+   "peso_pct": 4.1,
    "erro_1t": -5.87,
    "medido": true
   },
@@ -986,7 +986,7 @@
    "a": 47.4,
    "b": 52.6,
    "peso": 0.9557,
-   "peso_pct": 10.9,
+   "peso_pct": 10.3,
    "erro_1t": 0.28,
    "medido": true
   },
@@ -1000,7 +1000,7 @@
    "a": 48.5,
    "b": 51.5,
    "peso": 0.3274,
-   "peso_pct": 3.7,
+   "peso_pct": 3.5,
    "erro_1t": -9.24,
    "medido": true
   },
@@ -1014,7 +1014,7 @@
    "a": 48.0,
    "b": 52.0,
    "peso": 0.6141,
-   "peso_pct": 7.0,
+   "peso_pct": 6.6,
    "erro_1t": -2.95,
    "medido": true
   },
@@ -1028,7 +1028,7 @@
    "a": 49.7,
    "b": 50.3,
    "peso": 0.3125,
-   "peso_pct": 3.5,
+   "peso_pct": 3.4,
    "erro_1t": -7.13,
    "medido": true
   },
@@ -1042,7 +1042,7 @@
    "a": 48.9,
    "b": 51.1,
    "peso": 0.5251,
-   "peso_pct": 6.0,
+   "peso_pct": 5.7,
    "erro_1t": -4.62,
    "medido": true
   },
@@ -1056,7 +1056,7 @@
    "a": 51.0,
    "b": 49.0,
    "peso": 0.6683,
-   "peso_pct": 7.6,
+   "peso_pct": 7.2,
    "erro_1t": -0.98,
    "medido": true
   },
@@ -1070,7 +1070,7 @@
    "a": 49.6,
    "b": 50.4,
    "peso": 0.7505,
-   "peso_pct": 8.5,
+   "peso_pct": 8.1,
    "erro_1t": 0.33,
    "medido": true
   },
@@ -1084,7 +1084,7 @@
    "a": 48.4,
    "b": 51.6,
    "peso": 0.4118,
-   "peso_pct": 4.7,
+   "peso_pct": 4.4,
    "erro_1t": -3.89,
    "medido": true
   },
@@ -1098,7 +1098,7 @@
    "a": 48.9,
    "b": 51.1,
    "peso": 0.9547,
-   "peso_pct": 10.8,
+   "peso_pct": 10.3,
    "erro_1t": 0.13,
    "medido": true
   },
@@ -1112,7 +1112,21 @@
    "a": 50.4,
    "b": 49.6,
    "peso": 0.3805,
-   "peso_pct": 4.3,
+   "peso_pct": 4.1,
+   "erro_1t": null,
+   "medido": false
+  },
+  {
+   "instituto": "Phoenix",
+   "data": "2026-10-16",
+   "amostra": 3999,
+   "bruto_a": 47.59,
+   "bruto_b": 45.21,
+   "indefinidos": 7.2,
+   "a": 51.3,
+   "b": 48.7,
+   "peso": 0.4828,
+   "peso_pct": 5.2,
    "erro_1t": null,
    "medido": false
   },
@@ -1126,7 +1140,7 @@
    "a": 49.5,
    "b": 50.5,
    "peso": 0.2455,
-   "peso_pct": 2.8,
+   "peso_pct": 2.6,
    "erro_1t": -7.57,
    "medido": true
   },
@@ -1140,7 +1154,7 @@
    "a": 48.9,
    "b": 51.1,
    "peso": 0.3001,
-   "peso_pct": 3.4,
+   "peso_pct": 3.2,
    "erro_1t": null,
    "medido": false
   },
@@ -1154,7 +1168,7 @@
    "a": 48.9,
    "b": 51.1,
    "peso": 0.3953,
-   "peso_pct": 4.5,
+   "peso_pct": 4.3,
    "erro_1t": -4.04,
    "medido": true
   },
@@ -1168,7 +1182,7 @@
    "a": 48.8,
    "b": 51.2,
    "peso": 0.2243,
-   "peso_pct": 2.5,
+   "peso_pct": 2.4,
    "erro_1t": -7.75,
    "medido": true
   },
@@ -1182,7 +1196,7 @@
    "a": 48.9,
    "b": 51.1,
    "peso": 0.313,
-   "peso_pct": 3.6,
+   "peso_pct": 3.4,
    "erro_1t": -4.17,
    "medido": true
   },
@@ -1196,7 +1210,7 @@
    "a": 49.5,
    "b": 50.5,
    "peso": 0.5186,
-   "peso_pct": 5.9,
+   "peso_pct": 5.6,
    "erro_1t": 2.17,
    "medido": true
   }
@@ -1296,6 +1310,14 @@
    "amostra": 2100,
    "a": 50.4,
    "b": 49.6,
+   "erro_1t": null
+  },
+  {
+   "instituto": "Phoenix",
+   "data": "2026-10-16",
+   "amostra": 3999,
+   "a": 51.3,
+   "b": 48.7,
    "erro_1t": null
   },
   {
