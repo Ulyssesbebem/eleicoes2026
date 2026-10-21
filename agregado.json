@@ -196,26 +196,26 @@
   }
  },
  "agregado": {
-  "a": 49.11,
-  "b": 50.89,
+  "a": 49.04,
+  "b": 50.96,
   "hipotetico": false,
-  "n_reais": 32,
-  "margem": 0.51,
+  "n_reais": 38,
+  "margem": 0.5,
   "margem_total": 2.98,
-  "prob_a": 0.279,
-  "prob_b": 0.721,
-  "desvio": 1.04,
-  "n": 19,
-  "n_efetivo": 16.01,
-  "min": 47.4,
+  "prob_a": 0.263,
+  "prob_b": 0.737,
+  "desvio": 1.03,
+  "n": 20,
+  "n_efetivo": 16.23,
+  "min": 47.0,
   "max": 51.3
  },
  "corrigido": {
-  "a": 48.4,
-  "b": 51.6,
+  "a": 48.39,
+  "b": 51.61,
   "margem_total": 3.0,
-  "prob_a": 0.148,
-  "prob_b": 0.852,
+  "prob_a": 0.146,
+  "prob_b": 0.854,
   "fracao": 0.5,
   "erro_tipico_1t": -4.17
  },
@@ -918,8 +918,8 @@
   },
   {
    "data": "2026-10-16",
-   "a": 49.1,
-   "b": 50.9,
+   "a": 49.11,
+   "b": 50.89,
    "margem": 0.63
   },
   {
@@ -930,24 +930,52 @@
   },
   {
    "data": "2026-10-18",
-   "a": 49.2,
-   "b": 50.8,
+   "a": 49.21,
+   "b": 50.79,
    "margem": 0.57
   },
   {
    "data": "2026-10-19",
-   "a": 49.1,
-   "b": 50.9,
-   "margem": 0.54
+   "a": 49.14,
+   "b": 50.86,
+   "margem": 0.51
   },
   {
    "data": "2026-10-20",
-   "a": 49.11,
-   "b": 50.89,
-   "margem": 0.51
+   "a": 49.04,
+   "b": 50.96,
+   "margem": 0.5
   }
  ],
  "pesquisas_janela": [
+  {
+   "instituto": "Quaest",
+   "data": "2026-10-20",
+   "amostra": 2154,
+   "bruto_a": 44.0,
+   "bruto_b": 45.0,
+   "indefinidos": 9.0,
+   "a": 49.4,
+   "b": 50.6,
+   "peso": 0.5085,
+   "peso_pct": 4.7,
+   "erro_1t": -4.17,
+   "medido": true
+  },
+  {
+   "instituto": "Palver",
+   "data": "2026-10-20",
+   "amostra": 5000,
+   "bruto_a": 48.0,
+   "bruto_b": 50.0,
+   "indefinidos": 2.0,
+   "a": 49.0,
+   "b": 51.0,
+   "peso": 0.8424,
+   "peso_pct": 7.8,
+   "erro_1t": 2.17,
+   "medido": true
+  },
   {
    "instituto": "IFP",
    "data": "2026-10-20",
@@ -958,8 +986,50 @@
    "a": 49.2,
    "b": 50.8,
    "peso": 0.5291,
-   "peso_pct": 5.7,
+   "peso_pct": 4.9,
    "erro_1t": -5.26,
+   "medido": true
+  },
+  {
+   "instituto": "Gerp",
+   "data": "2026-10-20",
+   "amostra": 2400,
+   "bruto_a": 47.0,
+   "bruto_b": 53.0,
+   "indefinidos": null,
+   "a": 47.0,
+   "b": 53.0,
+   "peso": 1.0242,
+   "peso_pct": 9.5,
+   "erro_1t": 0.28,
+   "medido": true
+  },
+  {
+   "instituto": "Futura",
+   "data": "2026-10-20",
+   "amostra": 2000,
+   "bruto_a": 46.8,
+   "bruto_b": 48.9,
+   "indefinidos": 4.3,
+   "a": 48.9,
+   "b": 51.1,
+   "peso": 0.924,
+   "peso_pct": 8.6,
+   "erro_1t": 0.33,
+   "medido": true
+  },
+  {
+   "instituto": "Veritá",
+   "data": "2026-10-19",
+   "amostra": 15554,
+   "bruto_a": 49.3,
+   "bruto_b": 50.7,
+   "indefinidos": null,
+   "a": 49.3,
+   "b": 50.7,
+   "peso": 1.1753,
+   "peso_pct": 10.9,
+   "erro_1t": 0.13,
    "medido": true
   },
   {
@@ -972,22 +1042,22 @@
    "a": 48.4,
    "b": 51.6,
    "peso": 0.3779,
-   "peso_pct": 4.1,
+   "peso_pct": 3.5,
    "erro_1t": -5.87,
    "medido": true
   },
   {
-   "instituto": "Gerp",
+   "instituto": "Meio/Ideia",
    "data": "2026-10-19",
-   "amostra": 2400,
-   "bruto_a": 45.0,
-   "bruto_b": 50.0,
-   "indefinidos": 5.0,
-   "a": 47.4,
-   "b": 52.6,
-   "peso": 0.9557,
-   "peso_pct": 10.3,
-   "erro_1t": 0.28,
+   "amostra": 1500,
+   "bruto_a": 46.0,
+   "bruto_b": 48.0,
+   "indefinidos": 6.0,
+   "a": 48.9,
+   "b": 51.1,
+   "peso": 0.4695,
+   "peso_pct": 4.4,
+   "erro_1t": -2.89,
    "medido": true
   },
   {
@@ -1000,7 +1070,7 @@
    "a": 48.5,
    "b": 51.5,
    "peso": 0.3274,
-   "peso_pct": 3.5,
+   "peso_pct": 3.0,
    "erro_1t": -9.24,
    "medido": true
   },
@@ -1014,7 +1084,7 @@
    "a": 48.0,
    "b": 52.0,
    "peso": 0.6141,
-   "peso_pct": 6.6,
+   "peso_pct": 5.7,
    "erro_1t": -2.95,
    "medido": true
   },
@@ -1028,7 +1098,7 @@
    "a": 49.7,
    "b": 50.3,
    "peso": 0.3125,
-   "peso_pct": 3.4,
+   "peso_pct": 2.9,
    "erro_1t": -7.13,
    "medido": true
   },
@@ -1042,7 +1112,7 @@
    "a": 48.9,
    "b": 51.1,
    "peso": 0.5251,
-   "peso_pct": 5.7,
+   "peso_pct": 4.9,
    "erro_1t": -4.62,
    "medido": true
   },
@@ -1056,22 +1126,8 @@
    "a": 51.0,
    "b": 49.0,
    "peso": 0.6683,
-   "peso_pct": 7.2,
+   "peso_pct": 6.2,
    "erro_1t": -0.98,
-   "medido": true
-  },
-  {
-   "instituto": "Futura",
-   "data": "2026-10-17",
-   "amostra": 2000,
-   "bruto_a": 49.6,
-   "bruto_b": 50.4,
-   "indefinidos": null,
-   "a": 49.6,
-   "b": 50.4,
-   "peso": 0.7505,
-   "peso_pct": 8.1,
-   "erro_1t": 0.33,
    "medido": true
   },
   {
@@ -1084,22 +1140,8 @@
    "a": 48.4,
    "b": 51.6,
    "peso": 0.4118,
-   "peso_pct": 4.4,
+   "peso_pct": 3.8,
    "erro_1t": -3.89,
-   "medido": true
-  },
-  {
-   "instituto": "Veritá",
-   "data": "2026-10-16",
-   "amostra": 15554,
-   "bruto_a": 48.9,
-   "bruto_b": 51.1,
-   "indefinidos": null,
-   "a": 48.9,
-   "b": 51.1,
-   "peso": 0.9547,
-   "peso_pct": 10.3,
-   "erro_1t": 0.13,
    "medido": true
   },
   {
@@ -1112,7 +1154,7 @@
    "a": 50.4,
    "b": 49.6,
    "peso": 0.3805,
-   "peso_pct": 4.1,
+   "peso_pct": 3.5,
    "erro_1t": null,
    "medido": false
   },
@@ -1126,7 +1168,7 @@
    "a": 51.3,
    "b": 48.7,
    "peso": 0.4828,
-   "peso_pct": 5.2,
+   "peso_pct": 4.5,
    "erro_1t": null,
    "medido": false
   },
@@ -1140,7 +1182,7 @@
    "a": 49.5,
    "b": 50.5,
    "peso": 0.2455,
-   "peso_pct": 2.6,
+   "peso_pct": 2.3,
    "erro_1t": -7.57,
    "medido": true
   },
@@ -1154,7 +1196,7 @@
    "a": 48.9,
    "b": 51.1,
    "peso": 0.3001,
-   "peso_pct": 3.2,
+   "peso_pct": 2.8,
    "erro_1t": null,
    "medido": false
   },
@@ -1168,7 +1210,7 @@
    "a": 48.9,
    "b": 51.1,
    "peso": 0.3953,
-   "peso_pct": 4.3,
+   "peso_pct": 3.7,
    "erro_1t": -4.04,
    "medido": true
   },
@@ -1182,40 +1224,28 @@
    "a": 48.8,
    "b": 51.2,
    "peso": 0.2243,
-   "peso_pct": 2.4,
+   "peso_pct": 2.1,
    "erro_1t": -7.75,
-   "medido": true
-  },
-  {
-   "instituto": "Quaest",
-   "data": "2026-10-13",
-   "amostra": 2154,
-   "bruto_a": 44.0,
-   "bruto_b": 46.0,
-   "indefinidos": 10.0,
-   "a": 48.9,
-   "b": 51.1,
-   "peso": 0.313,
-   "peso_pct": 3.4,
-   "erro_1t": -4.17,
-   "medido": true
-  },
-  {
-   "instituto": "Palver",
-   "data": "2026-10-13",
-   "amostra": 5000,
-   "bruto_a": 49.0,
-   "bruto_b": 50.0,
-   "indefinidos": 1.0,
-   "a": 49.5,
-   "b": 50.5,
-   "peso": 0.5186,
-   "peso_pct": 5.6,
-   "erro_1t": 2.17,
    "medido": true
   }
  ],
  "historico": [
+  {
+   "instituto": "Quaest",
+   "data": "2026-10-20",
+   "amostra": 2154,
+   "a": 49.4,
+   "b": 50.6,
+   "erro_1t": -4.17
+  },
+  {
+   "instituto": "Palver",
+   "data": "2026-10-20",
+   "amostra": 5000,
+   "a": 49.0,
+   "b": 51.0,
+   "erro_1t": 2.17
+  },
   {
    "instituto": "IFP",
    "data": "2026-10-20",
@@ -1225,12 +1255,44 @@
    "erro_1t": -5.26
   },
   {
+   "instituto": "Gerp",
+   "data": "2026-10-20",
+   "amostra": 2400,
+   "a": 47.0,
+   "b": 53.0,
+   "erro_1t": 0.28
+  },
+  {
+   "instituto": "Futura",
+   "data": "2026-10-20",
+   "amostra": 2000,
+   "a": 48.9,
+   "b": 51.1,
+   "erro_1t": 0.33
+  },
+  {
+   "instituto": "Veritá",
+   "data": "2026-10-19",
+   "amostra": 15554,
+   "a": 49.3,
+   "b": 50.7,
+   "erro_1t": 0.13
+  },
+  {
    "instituto": "Real Time Big Data",
    "data": "2026-10-19",
    "amostra": 2000,
    "a": 48.4,
    "b": 51.6,
    "erro_1t": -5.87
+  },
+  {
+   "instituto": "Meio/Ideia",
+   "data": "2026-10-19",
+   "amostra": 1500,
+   "a": 48.9,
+   "b": 51.1,
+   "erro_1t": -2.89
   },
   {
    "instituto": "Gerp",
@@ -1300,8 +1362,8 @@
    "instituto": "Veritá",
    "data": "2026-10-16",
    "amostra": 15554,
-   "a": 48.9,
-   "b": 51.1,
+   "a": 49.0,
+   "b": 51.0,
    "erro_1t": 0.13
   },
   {
