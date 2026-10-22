@@ -210,6 +210,18 @@
   "min": 47.4,
   "max": 51.3
  },
+ "projecao": {
+  "a": 49.39,
+  "b": 50.61,
+  "margem_total": 3.0,
+  "prob_a": 0.345,
+  "prob_b": 0.655,
+  "inclinacao_dia": 0.062,
+  "inclinacao_ep": 0.05,
+  "institutos": 8,
+  "dias": 4,
+  "janela_dias": 10
+ },
  "corrigido": {
   "a": 48.48,
   "b": 51.52,
