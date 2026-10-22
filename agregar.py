@@ -18,7 +18,7 @@ Gera:
   agregado.json  - numeros do agregador
   painel.html    - painel visual com esses dados embutidos
 
-Uso:  python agregar.py [--janela 30] [--meia-vida 10]
+Uso:  python agregar.py [--janela 30] [--meia-vida 5] [--pesos erro_1t|pg]
 """
 
 import csv
@@ -36,7 +36,9 @@ from resultado_1t import DIA_1T, DIA_2T, DUELO_2T, RESULTADO_1T
 # ------------------------------------------------------------------ parametros
 
 JANELA_DIAS = 30      # a campanha de 2o turno e curta: janela menor que a do 1o
-MEIA_VIDA = 10        # e decaimento mais rapido, porque tudo se move mais
+MEIA_VIDA = 5         # e decaimento rapido: na reta final tudo se move mais.
+                      # Era 10 ate 23/10/2026; com 5, campo de uma semana
+                      # atras pesa 38% de um de hoje (antes, 62%)
 AMOSTRA_REF = 2000
 AMOSTRA_MIN, AMOSTRA_MAX = 0.75, 1.30
 
