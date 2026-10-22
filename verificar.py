@@ -141,6 +141,12 @@ if ag:
                 erro(f"probabilidade {k}={v} fora de 0-1")
         if (a.get("margem_total") or 0) < (a.get("margem") or 0):
             erro("margem total menor que a margem da media - erro sistematico sumiu")
+    pj = ag.get("projecao")
+    if pj:
+        if abs((pj.get("a") or 0) + (pj.get("b") or 0) - 100) > 0.2:
+            erro("projecao nao soma 100")
+        if abs(pj.get("inclinacao_dia") or 0) > 1.0:
+            erro(f"tendencia de {pj['inclinacao_dia']} pp/dia - implausivel, confira os dados")
     c = ag.get("corrigido")
     if c and abs((c.get("a") or 0) + (c.get("b") or 0) - 100) > 0.2:
         erro("cenario corrigido nao soma 100")

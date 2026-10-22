@@ -60,6 +60,14 @@ DP_SISTEMATICO = 1.5
 # tudo, porque erro de uma eleicao so e meio pontaria, meio sorte.
 FRACAO_VIES = 0.5
 
+# Projecao para o dia da eleicao: tendencia medida DENTRO de cada instituto
+# (cada casa comparada so com ela mesma, o que tira o efeito-casa) nos ultimos
+# TENDENCIA_DIAS dias, estendida ate o pleito. Janela curta porque o que
+# interessa e o movimento de agora: de 8 a 16/10 Lula subia 0,12/dia, e de
+# 14/10 em diante parou - uma janela longa projetaria uma alta que acabou.
+TENDENCIA_DIAS = 10
+TENDENCIA_MIN_INSTITUTOS = 3   # casas com 2+ rodadas na janela
+
 
 def arg(nome, padrao):
     if nome in sys.argv:
@@ -218,6 +226,61 @@ def mediana(xs):
     return xs[m] if len(xs) % 2 else (xs[m - 1] + xs[m]) / 2
 
 
+def tendencia(pesquisas, referencia, dias=TENDENCIA_DIAS):
+    """
+    Inclinacao comum (pontos de votos validos de A por dia) com efeito fixo
+    por instituto: so entram casas com 2+ rodadas na janela, e cada uma e
+    centrada na propria media. Devolve (inclinacao, erro_padrao, n_casas) ou
+    None se nao houver dado suficiente.
+    """
+    ini = referencia - timedelta(days=dias)
+    por = {}
+    for p in pesquisas:
+        if p["real"] and ini <= p["data_fim"] <= referencia:
+            por.setdefault(p["instituto"], []).append(p)
+    xs, ys, casas = [], [], 0
+    for ps in por.values():
+        if len(ps) < 2 or len({p["data_fim"] for p in ps}) < 2:
+            continue
+        casas += 1
+        mx = sum(p["data_fim"].toordinal() for p in ps) / len(ps)
+        my = sum(p["a"] for p in ps) / len(ps)
+        for p in ps:
+            xs.append(p["data_fim"].toordinal() - mx)
+            ys.append(p["a"] - my)
+    # graus de liberdade: pontos - casas (medias) - 1 (inclinacao)
+    gl = len(xs) - casas - 1
+    if casas < TENDENCIA_MIN_INSTITUTOS or gl < 1:
+        return None
+    sxx = sum(x * x for x in xs)
+    b = sum(x * y for x, y in zip(xs, ys)) / sxx
+    res = sum((y - b * x) ** 2 for x, y in zip(xs, ys))
+    se = math.sqrt(res / gl / sxx)
+    return b, se, casas
+
+
+def projetar(ag_, pesquisas, referencia, dia_eleicao):
+    """Agregado de hoje + tendencia x dias ate o pleito, com a incerteza dela."""
+    t = tendencia(pesquisas, referencia)
+    dias = (dia_eleicao - referencia).days
+    if t is None or dias <= 0:
+        return None
+    b, se, casas = t
+    a = max(0.0, min(100.0, ag_["a"] + b * dias))
+    dp = math.sqrt((ag_["margem_total"] / 1.96) ** 2 + (se * dias) ** 2)
+    prob_b = 1 - normal_acumulada((a - 50) / dp)
+    return {
+        "a": round(a, 2), "b": round(100 - a, 2),
+        "margem_total": round(1.96 * dp, 2),
+        "prob_a": round(1 - prob_b, 3), "prob_b": round(prob_b, 3),
+        "inclinacao_dia": round(b, 3),
+        "inclinacao_ep": round(se, 3),
+        "institutos": casas,
+        "dias": dias,
+        "janela_dias": TENDENCIA_DIAS,
+    }
+
+
 def corrigir_vies(pesquisas, fracao=FRACAO_VIES):
     """
     Desconta de cada pesquisa uma fracao do erro de margem que o instituto
@@ -272,6 +335,8 @@ def main():
     if not ag:
         print("Pesquisas insuficientes na janela.")
         sys.exit(1)
+
+    proj = projetar(ag, pesquisas, hoje, date.fromisoformat(DIA_2T))
 
     pesq_cor, erro_tipico = corrigir_vies(pesquisas)
     cor = agregar(pesq_cor, hoje, janela, meia_vida)
@@ -336,6 +401,7 @@ def main():
             "n_efetivo": round(ag["n_efetivo"], 2),
             "min": round(ag["min"], 1), "max": round(ag["max"], 1),
         },
+        "projecao": proj,
         "corrigido": {
             "a": round(cor["a"], 2), "b": round(cor["b"], 2),
             "margem_total": round(cor["margem_total"], 2),
@@ -369,6 +435,11 @@ def main():
     print(f"  {ag['n']} pesquisas na janela ({ag['n_efetivo']:.1f} efetivas)")
     print(f"  com erro sistematico: ±{ag['margem_total']:.1f} · chance "
           f"{A} {100*ag['prob_a']:.0f}% x {B} {100*ag['prob_b']:.0f}%")
+    if proj:
+        print(f"\n  tendencia ({proj['institutos']} institutos, {TENDENCIA_DIAS}d): "
+              f"{A} {proj['inclinacao_dia']:+.2f} ±{1.96*proj['inclinacao_ep']:.2f} pp/dia")
+        print(f"  projecao para {DIA_2T}: {A} {proj['a']:.1f} x {B} {proj['b']:.1f} "
+              f"±{proj['margem_total']:.1f} · chance {A} {100*proj['prob_a']:.0f}%")
     if cor:
         print(f"\n  se {100*FRACAO_VIES:.0f}% do erro do 1o turno se repetir: "
               f"{A} {cor['a']:.1f} x {B} {cor['b']:.1f} · chance {B} {100*cor['prob_b']:.0f}%")

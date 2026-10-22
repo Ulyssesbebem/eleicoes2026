@@ -191,6 +191,7 @@ td.num{font-family:var(--mono)}
     <div class="linha50"><i></i><span>50%</span></div>
     <div class="veredito" id="veredito"></div>
   </div>
+  <div class="cenario" id="projecao" hidden></div>
   <div class="cenario" id="cenario" hidden></div>
 
   <section class="secao">
@@ -324,6 +325,36 @@ function contaAcertos(){
          <span class="num" style="color:var(--b)">${esc(B)} ${Math.round(AG.prob_b*100)}%</span></div>`
     : "";
   document.getElementById("veredito").innerHTML = texto + chance;
+})();
+
+/* ------------------------------------------------------------ projeção */
+(function projecao(){
+  const P = D.projecao;
+  if (!P) return;
+  const el = document.getElementById("projecao");
+  el.hidden = false;
+  const ep = 1.96 * P.inclinacao_ep;
+  const nf2 = new Intl.NumberFormat("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2});
+  const s2 = v => (v>0?"+":v<0?"−":"") + nf2.format(Math.abs(v));
+  const parado = Math.abs(P.inclinacao_dia) < ep;
+  const rumo = parado
+    ? `Nos últimos ${P.janela_dias} dias a corrida está praticamente parada: ${esc(A)}
+       ${s2(P.inclinacao_dia)} ponto por dia (±${nf2.format(ep)}), dentro do ruído.`
+    : `Nos últimos ${P.janela_dias} dias ${esc(P.inclinacao_dia > 0 ? A : B)} vem ganhando
+       ${nf2.format(Math.abs(P.inclinacao_dia))} ponto por dia (±${nf2.format(ep)}).`;
+  const lider = P.a > P.b ? A : B;
+  el.innerHTML = `
+    <div class="titulo">Projeção para ${dLonga(DIA2T)}, se a tendência continuar</div>
+    <div class="linha">
+      <span class="v" style="color:var(--a)">${nf1.format(P.a)}%</span>
+      <span class="v" style="color:var(--b)">${nf1.format(P.b)}%</span>
+      <span>chance de vitória: <b>${esc(lider)} ${Math.round(Math.max(P.prob_a, P.prob_b)*100)}%</b></span>
+    </div>
+    ${rumo} A conta compara cada instituto só com ele mesmo — ${P.institutos} fizeram mais
+    de uma rodada no período —, o que tira a diferença de método entre as casas, e estende
+    o ritmo pelos ${P.dias} dias que faltam. A incerteza da própria tendência entra na
+    margem (±${nf1.format(P.margem_total)}). Tendência de fim de campanha pode acelerar,
+    parar ou virar; isto é o que acontece se ela simplesmente seguir.`;
 })();
 
 /* ------------------------------------------------------------ cenário corrigido */

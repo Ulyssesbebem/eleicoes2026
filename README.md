@@ -55,6 +55,14 @@ chance   = Φ((média − 50) / dp_total)
 1,5 fica entre o erro do 1º turno de 2026 (~2 pontos em cada candidato) e o
 erro menor que o 2º turno teve em 2018 e 2022.
 
+## Projeção para o dia da eleição
+
+Compara cada instituto **só com ele mesmo** nos últimos 10 dias
+(`TENDENCIA_DIAS`) — o que tira a diferença de método entre as casas — e mede a
+inclinação comum, em pontos por dia. A projeção é o agregado de hoje mais essa
+inclinação vezes os dias que faltam; a incerteza da inclinação entra na margem.
+Só aparece com pelo menos 3 institutos com duas rodadas na janela.
+
 ## E se o erro do 1º turno se repetir?
 
 A página mostra, ao lado do número principal, um cenário que desconta de cada
