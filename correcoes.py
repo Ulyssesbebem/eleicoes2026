@@ -32,6 +32,38 @@ DESCARTAR = [
 ]
 
 
+# Votos validos que o instituto PUBLICOU, quando diferem da conta feita sobre o
+# total arredondado da Wikipedia. A linha continua vindo da Wikipedia; so o par
+# de validos e trocado pelo oficial.
+VALIDOS_OFICIAIS = [
+    {
+        "instituto": "Datafolha",
+        "data_inicio": "2026-10-20",
+        "data_fim": "2026-10-22",
+        "Lula": 50.0,
+        "Flávio": 50.0,
+        "motivo": (
+            "Total 46 x 47 da 49,5 x 50,5 quando renormalizado, mas o Datafolha "
+            "calcula os validos sobre os numeros sem arredondar e publicou 50 x 50."
+        ),
+        "fonte": (
+            "https://www.poder360.com.br/poder-eleicoes-2026/"
+            "flavio-tem-50-dos-votos-validos-contra-50-de-lula-diz-datafolha/"
+        ),
+    },
+]
+
+
+def validos_oficiais(p):
+    """Devolve {"Lula": x, "Flávio": y} se a linha tem validos oficiais aqui."""
+    for c in VALIDOS_OFICIAIS:
+        if (p.get("instituto") == c["instituto"]
+                and p.get("data_inicio") == c["data_inicio"]
+                and p.get("data_fim") == c["data_fim"]):
+            return {"Lula": c["Lula"], "Flávio": c["Flávio"]}
+    return None
+
+
 def _num(v):
     try:
         return float(v)

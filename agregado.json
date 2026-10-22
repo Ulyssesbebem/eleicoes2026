@@ -196,38 +196,38 @@
   }
  },
  "agregado": {
-  "a": 49.17,
-  "b": 50.83,
+  "a": 49.2,
+  "b": 50.8,
   "hipotetico": false,
   "n_reais": 41,
-  "margem": 0.44,
+  "margem": 0.45,
   "margem_total": 2.97,
-  "prob_a": 0.291,
-  "prob_b": 0.709,
-  "desvio": 0.91,
+  "prob_a": 0.298,
+  "prob_b": 0.702,
+  "desvio": 0.93,
   "n": 20,
   "n_efetivo": 16.6,
   "min": 47.4,
   "max": 51.3
  },
  "projecao": {
-  "a": 49.36,
-  "b": 50.64,
-  "margem_total": 2.98,
-  "prob_a": 0.337,
-  "prob_b": 0.663,
-  "inclinacao_dia": 0.064,
-  "inclinacao_ep": 0.045,
+  "a": 49.41,
+  "b": 50.59,
+  "margem_total": 2.99,
+  "prob_a": 0.35,
+  "prob_b": 0.65,
+  "inclinacao_dia": 0.073,
+  "inclinacao_ep": 0.046,
   "institutos": 9,
   "dias": 3,
   "janela_dias": 10
  },
  "corrigido": {
-  "a": 48.5,
-  "b": 51.5,
+  "a": 48.53,
+  "b": 51.47,
   "margem_total": 2.98,
-  "prob_a": 0.162,
-  "prob_b": 0.838,
+  "prob_a": 0.167,
+  "prob_b": 0.833,
   "fracao": 0.5,
   "erro_tipico_1t": -4.17
  },
@@ -954,9 +954,9 @@
   },
   {
    "data": "2026-10-22",
-   "a": 49.17,
-   "b": 50.83,
-   "margem": 0.44
+   "a": 49.2,
+   "b": 50.8,
+   "margem": 0.45
   }
  ],
  "pesquisas_janela": [
@@ -967,8 +967,8 @@
    "bruto_a": 46.0,
    "bruto_b": 47.0,
    "indefinidos": 7.0,
-   "a": 49.5,
-   "b": 50.5,
+   "a": 50.0,
+   "b": 50.0,
    "peso": 0.559,
    "peso_pct": 5.7,
    "erro_1t": -4.04,
@@ -1246,8 +1246,8 @@
    "instituto": "Datafolha",
    "data": "2026-10-22",
    "amostra": 2520,
-   "a": 49.5,
-   "b": 50.5,
+   "a": 50.0,
+   "b": 50.0,
    "erro_1t": -4.04
   },
   {

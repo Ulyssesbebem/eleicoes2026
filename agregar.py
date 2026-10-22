@@ -98,6 +98,14 @@ def ler_2t(caminho="pesquisas_2t.csv"):
             continue
         ind = r.get("Indefinidos")
         d = date.fromisoformat(r["data_fim"])
+        # validos calculados a partir do total arredondado (46 x 47) podem
+        # sair meio ponto longe do que o instituto publicou (50 x 50); quando
+        # o numero oficial esta em correcoes.py, ele prevalece
+        oficial = correcoes.validos_oficiais(r)
+        if oficial:
+            va_val, vb_val = oficial[A], oficial[B]
+        else:
+            va_val, vb_val = 100 * va / total, 100 * vb / total
         saida.append({
             # renormaliza aqui tambem: o CSV pode ter sido gravado antes de um
             # apelido novo entrar em institutos.py
@@ -112,8 +120,9 @@ def ler_2t(caminho="pesquisas_2t.csv"):
             "bruto_b": vb,
             "indefinidos": float(ind) if ind not in (None, "") else None,
             # a conversao para validos acontece AQUI, pesquisa por pesquisa
-            "a": 100 * va / total,
-            "b": 100 * vb / total,
+            "a": va_val,
+            "b": vb_val,
+            "validos_oficiais": bool(oficial),
         })
     return saida
 
