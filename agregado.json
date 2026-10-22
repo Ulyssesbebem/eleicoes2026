@@ -1,5 +1,5 @@
 {
- "atualizado": "2026-10-21",
+ "atualizado": "2026-10-22",
  "data_ultima_pesquisa": "2026-10-20",
  "dia_1t": "2026-10-04",
  "dia_2t": "2026-10-25",
@@ -196,26 +196,26 @@
   }
  },
  "agregado": {
-  "a": 49.04,
-  "b": 50.96,
+  "a": 49.07,
+  "b": 50.93,
   "hipotetico": false,
   "n_reais": 38,
-  "margem": 0.5,
+  "margem": 0.47,
   "margem_total": 2.98,
-  "prob_a": 0.263,
-  "prob_b": 0.737,
-  "desvio": 1.03,
+  "prob_a": 0.27,
+  "prob_b": 0.73,
+  "desvio": 0.97,
   "n": 20,
   "n_efetivo": 16.23,
-  "min": 47.0,
+  "min": 47.4,
   "max": 51.3
  },
  "corrigido": {
-  "a": 48.39,
-  "b": 51.61,
-  "margem_total": 3.0,
-  "prob_a": 0.146,
-  "prob_b": 0.854,
+  "a": 48.43,
+  "b": 51.57,
+  "margem_total": 2.99,
+  "prob_a": 0.151,
+  "prob_b": 0.849,
   "fracao": 0.5,
   "erro_tipico_1t": -4.17
  },
@@ -942,9 +942,9 @@
   },
   {
    "data": "2026-10-20",
-   "a": 49.04,
-   "b": 50.96,
-   "margem": 0.5
+   "a": 49.07,
+   "b": 50.93,
+   "margem": 0.47
   }
  ],
  "pesquisas_janela": [
@@ -994,11 +994,11 @@
    "instituto": "Gerp",
    "data": "2026-10-20",
    "amostra": 2400,
-   "bruto_a": 47.0,
-   "bruto_b": 53.0,
-   "indefinidos": null,
-   "a": 47.0,
-   "b": 53.0,
+   "bruto_a": 45.0,
+   "bruto_b": 50.0,
+   "indefinidos": 4.0,
+   "a": 47.4,
+   "b": 52.6,
    "peso": 1.0242,
    "peso_pct": 9.5,
    "erro_1t": 0.28,
@@ -1258,8 +1258,8 @@
    "instituto": "Gerp",
    "data": "2026-10-20",
    "amostra": 2400,
-   "a": 47.0,
-   "b": 53.0,
+   "a": 47.4,
+   "b": 52.6,
    "erro_1t": 0.28
   },
   {
