@@ -208,11 +208,11 @@ td.num{font-family:var(--mono)}
   </section>
 
   <section class="secao">
-    <h2>Quem errou quanto no 1º turno</h2>
+    <h2 id="tit-acuracia">Quem errou quanto no 1º turno</h2>
     <p class="nota" id="nota-acuracia"></p>
     <div class="rolagem">
       <table>
-        <thead><tr>
+        <thead><tr id="cab-acuracia">
           <th>Instituto</th><th>Campo</th><th>Previu</th><th>Erro na margem</th><th>Peso daqui</th>
         </tr></thead>
         <tbody id="corpo-acuracia"></tbody>
@@ -240,6 +240,8 @@ td.num{font-family:var(--mono)}
 "use strict";
 const D = JSON.parse(document.getElementById("dados").textContent);
 const A = D.duelo.a, B = D.duelo.b, AG = D.agregado;
+/* aba "Ranking PollsterGraph": mesmo agregador, peso do instituto pelo ranking */
+const PG = D.modo === "pg" ? D.ranking_pg : null;
 
 const nf1 = new Intl.NumberFormat("pt-BR",{minimumFractionDigits:1,maximumFractionDigits:1});
 const nf0 = new Intl.NumberFormat("pt-BR");
@@ -257,8 +259,11 @@ const faltam = Math.round((DIA2T - Date.now()) / DIA);
 document.getElementById("selo").textContent =
   `2º turno · ${dLonga(DIA2T)} · votos válidos`;
 document.getElementById("titulo").textContent = `${A} × ${B}`;
-document.getElementById("subtitulo").innerHTML =
-  `A média das pesquisas do 2º turno, com o peso de cada instituto definido pelo
+document.getElementById("subtitulo").innerHTML = PG
+  ? `A mesma média das pesquisas do 2º turno, mas com o peso de cada instituto definido
+     pelo <a href="${esc(PG.fonte)}">ranking do PollsterGraph</a>, que avalia o desempenho
+     em eleições anteriores.`
+  : `A média das pesquisas do 2º turno, com o peso de cada instituto definido pelo
    que ele errou no 1º turno — e não por nota dada antes da eleição.`;
 
 document.getElementById("metalinha").innerHTML =
@@ -469,8 +474,42 @@ document.getElementById("nota-grafico").innerHTML =
    individuais. A linha tracejada vertical marca o 1º turno: <b>tudo à esquerda dela é
    cenário hipotético</b>, perguntado antes de o eleitor ver o resultado.`;
 
+/* ------------------------------------------------------------ ranking PG */
+(function rankingPG(){
+  if (!PG) return;
+  document.getElementById("tit-acuracia").textContent = "O ranking do PollsterGraph";
+  document.getElementById("cab-acuracia").innerHTML =
+    `<th>Instituto</th><th>Posição</th><th>Classe</th><th>Índice</th><th>Erro médio</th><th>Peso daqui</th>`;
+  const linhas = Object.entries(PG.institutos).map(([inst, r]) => ({inst, ...r}));
+  /* quem está na média mas não aparece no ranking também entra, sem nota */
+  D.pesquisas_janela.forEach(p => {
+    if (!PG.institutos[p.instituto]) linhas.push({inst: p.instituto, classe: null, indice: null});
+  });
+  linhas.sort((x, y) => (y.indice ?? -1) - (x.indice ?? -1) || x.inst.localeCompare(y.inst));
+  document.getElementById("corpo-acuracia").innerHTML = linhas.map(l => {
+    const p = l.peso != null ? l.peso : PG.peso_sem_nota;
+    const nota = l.indice != null;
+    return `<tr>
+      <td>${esc(l.inst)}${nota ? "" : '<span class="pastilha">sem nota</span>'}</td>
+      <td class="num">${l.posicao != null ? l.posicao + "º" : "—"}</td>
+      <td class="erro ${nota && /^A/.test(l.classe) ? "bom" : ""}">${nota ? esc(l.classe) : "N"}</td>
+      <td class="num">${nota ? nf1.format(l.indice) : "—"}</td>
+      <td class="num">${l.erro_medio != null ? nf1.format(l.erro_medio) : "—"}</td>
+      <td class="barra-peso"><i style="width:${p*100}%"></i><span>${nf1.format(p*100)}%</span></td>
+    </tr>`;
+  }).join("");
+  document.getElementById("nota-acuracia").innerHTML =
+    `O PollsterGraph ordena os institutos por um <b>índice de desempenho</b> em eleições
+     anteriores: a média entre o desempenho objetivo (quanto erraram) e o comparativo (quanto
+     erraram perto dos outros). Aqui o peso é esse índice dividido pelo do primeiro colocado
+     (${nf1.format(PG.melhor_indice)}). Quem não tem nota no ranking recebe o peso do pior
+     classificado entre os institutos principais, ${nf1.format(PG.peso_sem_nota*100)}%:
+     sem histórico, sem prêmio. O ranking é baixado de novo a cada atualização.`;
+})();
+
 /* ------------------------------------------------------------ acurácia */
 (function acuracia(){
+  if (PG) return;
   const linhas = Object.entries(D.acuracia_1t)
     .map(([inst, d]) => ({inst, ...d}))
     .sort((x, y) => x.erro_abs - y.erro_abs);
@@ -506,17 +545,21 @@ function pesoDe(erroAbs){
 (function pesquisas(){
   document.getElementById("cab-pesquisas").innerHTML =
     `<th>Instituto</th><th>Campo</th><th>Amostra</th><th>${esc(A)}</th><th>${esc(B)}</th>` +
-    `<th>Erro 1º t.</th><th>Peso</th>`;
+    `<th>${PG ? "Nota PG" : "Erro 1º t."}</th><th>Peso</th>`;
   const maxP = Math.max(...D.pesquisas_janela.map(p => p.peso_pct));
   document.getElementById("corpo-pesquisas").innerHTML = D.pesquisas_janela.map(p => `
     <tr>
-      <td>${esc(p.instituto)}${p.medido ? "" : '<span class="pastilha">sem medida</span>'}</td>
+      <td>${esc(p.instituto)}${(PG ? p.pg && p.pg.indice != null : p.medido) ? "" :
+        `<span class="pastilha">${PG ? "sem nota" : "sem medida"}</span>`}</td>
       <td class="num">${p.data.slice(8,10)}/${p.data.slice(5,7)}</td>
       <td class="num">${p.amostra ? nf0.format(p.amostra) : "—"}</td>
       <td class="num">${nf1.format(p.a)}</td>
       <td class="num">${nf1.format(p.b)}</td>
-      <td class="erro ${p.erro_1t!=null && Math.abs(p.erro_1t)<=2 ? "bom":"ruim"}">${
-        p.erro_1t != null ? sinal(p.erro_1t) : "—"}</td>
+      ${PG
+        ? `<td class="erro ${p.pg && /^A/.test(p.pg.classe||"") ? "bom" : ""}">${
+            p.pg && p.pg.indice != null ? esc(p.pg.classe) + " · " + nf1.format(p.pg.indice) : "—"}</td>`
+        : `<td class="erro ${p.erro_1t!=null && Math.abs(p.erro_1t)<=2 ? "bom":"ruim"}">${
+            p.erro_1t != null ? sinal(p.erro_1t) : "—"}</td>`}
       <td class="barra-peso"><i style="width:${p.peso_pct/maxP*100}%"></i><span>${nf1.format(p.peso_pct)}%</span></td>
     </tr>`).join("");
 
@@ -524,18 +567,26 @@ function pesoDe(erroAbs){
     `Janela de <b>${D.parametros.janela_dias} dias</b>, com meia-vida de
      ${D.parametros.meia_vida_dias} — mais curtas que as do 1º turno, porque a campanha de
      2º turno é curta e tudo se move mais rápido. Só a pesquisa <b>mais recente</b> de cada
-     instituto entra na conta: quando sai uma rodada nova, ela substitui a anterior. Institutos sem pesquisa na reta final do
+     instituto entra na conta: quando sai uma rodada nova, ela substitui a anterior. ` + (PG
+     ? `Institutos sem nota no PollsterGraph recebem o peso do pior classificado
+        (${nf1.format(PG.peso_sem_nota*100)}%).`
+     : `Institutos sem pesquisa na reta final do
      1º turno não têm erro medido e recebem o peso mediano
-     (${nf1.format(D.parametros.peso_sem_medida*100)}%), nem prêmio nem castigo.`;
+     (${nf1.format(D.parametros.peso_sem_medida*100)}%), nem prêmio nem castigo.`);
 })();
 
 /* ------------------------------------------------------------ rodapé */
-document.getElementById("rodape").innerHTML = `
-  <p><b>O que mudou depois do 1º turno.</b> Até 4 de outubro o peso de cada instituto vinha
+document.getElementById("rodape").innerHTML = (PG
+  ? `<p><b>Esta aba e a principal.</b> As duas usam as mesmas pesquisas, a mesma janela, a
+  mesma recência e a mesma margem. Só muda o peso do instituto: na aba principal ele vem
+  do erro de cada um no 1º turno de 2026; aqui, do histórico de várias eleições avaliado
+  pelo PollsterGraph. No 1º turno de 2026 os dois critérios discordaram bastante: Datafolha
+  e AtlasIntel, primeiro e segundo no ranking, ficaram no meio da tabela de acerto.</p>`
+  : `<p><b>O que mudou depois do 1º turno.</b> Até 4 de outubro o peso de cada instituto vinha
   de um ranking de acurácia montado <em>antes</em> da eleição, e só cinco institutos
   entravam. Aquele ranking falhou: o melhor colocado dele ficou em 17º entre 19, e um
   instituto que estava fora do recorte empatou em 1º. Agora todos entram, e o peso vem do
-  erro medido em 4/10.</p>
+  erro medido em 4/10.</p>`) + `
 
   <p><b>A margem, e o que ela cobre.</b> A discordância entre os institutos, dividida pela
   raiz do número efetivo de pesquisas, dá só ±${AG.margem != null ? nf1.format(AG.margem) : "—"}:
@@ -551,7 +602,8 @@ document.getElementById("rodape").innerHTML = `
   É motivo para esperar menos erro agora — não garantia.</p>
 
   <p><b>Fonte.</b> Tabelas de pesquisas da Wikipédia para a eleição presidencial de 2026,
-  que citam o registro de cada pesquisa no TSE. Resultado do 1º turno: TSE. Coleta e
+  que citam o registro de cada pesquisa no TSE. Resultado do 1º turno: TSE.${PG
+  ? ` Ranking de institutos: <a href="${esc(PG.fonte)}">PollsterGraph</a>.` : ""} Coleta e
   cálculo em <span style="font-family:var(--mono)">coletar.py</span>,
   <span style="font-family:var(--mono)">aferir_1t.py</span> e
   <span style="font-family:var(--mono)">agregar.py</span>.</p>

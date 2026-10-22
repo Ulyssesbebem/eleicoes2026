@@ -1,7 +1,8 @@
 """
 Monta o diretorio site/ que vai para o GitHub Pages.
 
-  site/index.html   - Segundo Turno 2026 (Lula x Flavio)
+  site/index.html          - Segundo Turno 2026 (Lula x Flavio), peso pelo 1o turno
+  site/pollstergraph.html  - o mesmo, peso pelo ranking do PollsterGraph
   site/dados/       - CSVs e JSON, para quem quiser conferir a conta
 
 A barra de navegacao e injetada aqui, e nao no modelo, porque os links
@@ -19,10 +20,13 @@ SAIDA = "site"
 PAGINAS = [
     # (arquivo gerado, nome no site, rotulo da aba, titulo curto)
     ("painel_publico.html", "index.html", "Segundo Turno", "index.html"),
+    ("painel_pg_publico.html", "pollstergraph.html", "Ranking PollsterGraph",
+     "pollstergraph.html"),
 ]
 
 DADOS = [
     "pesquisas_1t.csv", "pesquisas_2t.csv", "agregado.json", "acuracia_2026.json",
+    "agregado_pg.json", "ranking_pollstergraph.json",
 ]
 
 NAV_CSS = """

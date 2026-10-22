@@ -114,60 +114,66 @@ if datas:
 
 # ------------------------------------------------------------------ agregado
 
-try:
-    with io.open("agregado.json", encoding="utf-8") as f:
-        ag = json.load(f)
-except FileNotFoundError:
-    erro("agregado.json nao existe - agregar.py nao rodou")
-    ag = None
-
-if ag:
+def conferir_agregado(arquivo, falha):
+    """Checa um agregado. A aba PollsterGraph usa 'aviso' como falha: ela
+    nunca pode impedir a publicacao da aba principal."""
+    try:
+        with io.open(arquivo, encoding="utf-8") as f:
+            ag = json.load(f)
+    except FileNotFoundError:
+        falha(f"{arquivo} nao existe - agregar.py nao rodou")
+        return
     a = ag.get("agregado", {})
     if not a:
-        erro("agregado.json sem numeros")
+        falha(f"{arquivo} sem numeros")
     else:
         for lado in ("a", "b"):
             v = a.get(lado)
             if v is None or not FAIXA_DUELO[0] <= v <= FAIXA_DUELO[1]:
-                erro(f"agregado {lado}={v} fora da faixa {FAIXA_DUELO}")
+                falha(f"agregado {lado}={v} fora da faixa {FAIXA_DUELO}")
         soma = (a.get("a") or 0) + (a.get("b") or 0)
         if abs(soma - 100) > 0.2:
-            erro(f"o duelo soma {soma:.2f}, nao 100 - a conversao para validos quebrou")
+            falha(f"o duelo soma {soma:.2f}, nao 100 - a conversao para validos quebrou")
         if (a.get("n") or 0) < 2:
-            erro("agregado apoiado em menos de 2 pesquisas")
+            falha("agregado apoiado em menos de 2 pesquisas")
         for k in ("prob_a", "prob_b"):
             v = a.get(k)
             if v is None or not 0 <= v <= 1:
-                erro(f"probabilidade {k}={v} fora de 0-1")
+                falha(f"probabilidade {k}={v} fora de 0-1")
         if (a.get("margem_total") or 0) < (a.get("margem") or 0):
-            erro("margem total menor que a margem da media - erro sistematico sumiu")
+            falha("margem total menor que a margem da media - erro sistematico sumiu")
     pj = ag.get("projecao")
     if pj:
         if abs((pj.get("a") or 0) + (pj.get("b") or 0) - 100) > 0.2:
-            erro("projecao nao soma 100")
+            falha("projecao nao soma 100")
         if abs(pj.get("inclinacao_dia") or 0) > 1.0:
-            erro(f"tendencia de {pj['inclinacao_dia']} pp/dia - implausivel, confira os dados")
+            falha(f"tendencia de {pj['inclinacao_dia']} pp/dia - implausivel, confira os dados")
     c = ag.get("corrigido")
     if c and abs((c.get("a") or 0) + (c.get("b") or 0) - 100) > 0.2:
-        erro("cenario corrigido nao soma 100")
+        falha("cenario corrigido nao soma 100")
     if not ag.get("serie"):
-        erro("serie temporal vazia")
+        falha("serie temporal vazia")
     if not ag.get("acuracia_1t"):
-        aviso("sem acuracia do 1o turno - os pesos cairam para a mediana")
+        aviso(f"{arquivo}: sem acuracia do 1o turno - os pesos cairam para a mediana")
+
+
+conferir_agregado("agregado.json", erro)
+conferir_agregado("agregado_pg.json", aviso)
 
 # ------------------------------------------------------------------ pagina
 
-for arquivo, minimo in (("painel_publico.html", 30_000),):
+for arquivo, minimo, falha in (("painel_publico.html", 30_000, erro),
+                               ("painel_pg_publico.html", 30_000, aviso)):
     try:
         with io.open(arquivo, encoding="utf-8") as f:
             html = f.read()
     except FileNotFoundError:
-        erro(f"{arquivo} nao foi gerado")
+        falha(f"{arquivo} nao foi gerado")
         continue
     if len(html) < minimo:
-        erro(f"{arquivo} tem so {len(html)} bytes - parece truncado")
+        falha(f"{arquivo} tem so {len(html)} bytes - parece truncado")
     if "/*__DADOS__*/" in html:
-        erro(f"{arquivo} ficou com o marcador de dados sem preencher")
+        falha(f"{arquivo} ficou com o marcador de dados sem preencher")
 
 # ------------------------------------------------------------------ saida
 

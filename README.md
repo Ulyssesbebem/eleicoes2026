@@ -70,6 +70,16 @@ pesquisa **metade** do erro de margem que o próprio instituto cometeu em 4/10
 (`FRACAO_VIES = 0,5`; quem não foi medido recebe o erro mediano). Não é a
 previsão principal — é o tamanho do risco se o viés não sumir desta vez.
 
+## Aba "Ranking PollsterGraph"
+
+`site/pollstergraph.html` roda o mesmo agregador (`python agregar.py --pesos pg`)
+trocando só o peso do instituto: em vez do erro no 1º turno de 2026, vale o
+índice de desempenho do [ranking do PollsterGraph](https://pollstergraph.com/ranking/institutes),
+dividido pelo do 1º colocado. Instituto sem nota no ranking (classe N ou ausente)
+recebe o peso do pior classificado da lista principal. O ranking é baixado a cada
+execução (`pollstergraph.py`) e guardado em `ranking_pollstergraph.json`, que vale
+se a API cair. Saída: `agregado_pg.json` e `painel_pg_publico.html`.
+
 ## Hipotético x real
 
 Pesquisa de 2º turno feita **antes** de 4/10 era cenário hipotético, perguntado

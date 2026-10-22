@@ -68,6 +68,17 @@ FRACAO_VIES = 0.5
 TENDENCIA_DIAS = 10
 TENDENCIA_MIN_INSTITUTOS = 3   # casas com 2+ rodadas na janela
 
+# Origem do peso de cada instituto. "erro_1t" (padrao) usa o erro medido em
+# 4/10 (institutos.py); "pg" usa o ranking do PollsterGraph (pollstergraph.py)
+# e grava em arquivos proprios, para a aba "Ranking PollsterGraph".
+MODOS = {
+    "erro_1t": {"json": "agregado.json", "painel": "painel.html",
+                "publico": "painel_publico.html"},
+    "pg": {"json": "agregado_pg.json", "painel": "painel_pg.html",
+           "publico": "painel_pg_publico.html"},
+}
+PESO_INST = peso_instituto
+
 
 def arg(nome, padrao):
     if nome in sys.argv:
@@ -137,7 +148,7 @@ def fator_amostra(n):
 
 def peso(p, referencia, meia_vida):
     """peso = instituto x recencia x amostra"""
-    w_inst = peso_instituto(p["instituto"])
+    w_inst = PESO_INST(p["instituto"])
     dias = (referencia - p["data_fim"]).days
     w_rec = 0.5 ** (dias / meia_vida)
     w_amo = fator_amostra(p["amostra"])
@@ -331,8 +342,17 @@ def serie(pesquisas, fim, dias, janela, meia_vida):
 # ------------------------------------------------------------------ principal
 
 def main():
+    global PESO_INST
     janela = arg("--janela", JANELA_DIAS)
     meia_vida = arg("--meia-vida", MEIA_VIDA)
+    modo = arg("--pesos", "erro_1t")
+    if modo not in MODOS:
+        print(f"--pesos deve ser um de: {', '.join(MODOS)}")
+        sys.exit(1)
+    pg = None
+    if modo == "pg":
+        import pollstergraph as pg
+        PESO_INST = pg.peso_instituto
 
     pesquisas = ler_2t()
     if not pesquisas:
@@ -368,6 +388,7 @@ def main():
             "peso_pct": round(100 * pesos[id(p)] / total_peso, 1),
             "erro_1t": erro_de(p["instituto"]),
             "medido": tem_medida(p["instituto"]),
+            "pg": pg.carregar()[0].get(p["instituto"]) if pg else None,
         })
 
     historico = [{
@@ -379,6 +400,7 @@ def main():
     } for p in sorted(pesquisas, key=lambda x: x["data_fim"], reverse=True)]
 
     dados = {
+        "modo": modo,
         "atualizado": date.today().isoformat(),
         "data_ultima_pesquisa": hoje.isoformat(),
         "dia_1t": DIA_1T,
@@ -396,6 +418,12 @@ def main():
             "dp_sistematico": DP_SISTEMATICO,
             "fracao_vies": FRACAO_VIES,
         },
+        "ranking_pg": ({
+            "fonte": pg.PAGINA,
+            "melhor_indice": pg.carregar()[2],
+            "peso_sem_nota": pg.carregar()[1],
+            "institutos": pg.carregar()[0],
+        } if pg else None),
         "acuracia_1t": ACURACIA.get("institutos", {}),
         "agregado": {
             "a": round(ag["a"], 2), "b": round(ag["b"], 2),
@@ -424,7 +452,7 @@ def main():
         "historico": historico,
     }
 
-    with io.open("agregado.json", "w", encoding="utf-8") as f:
+    with io.open(MODOS[modo]["json"], "w", encoding="utf-8") as f:
         json.dump(dados, f, ensure_ascii=False, indent=1)
 
     # ---------------- relatorio
@@ -465,8 +493,8 @@ def main():
         print(f"  {p['data']:<12}{p['instituto'][:20]:<22}{e:>10}"
               f"{p['a']:>9.1f} x{p['b']:5.1f}{p['peso_pct']:>7.1f}%")
 
-    print("\nagregado.json gravado.")
-    gerar_painel(dados)
+    print(f"\n{MODOS[modo]['json']} gravado.")
+    gerar_painel(dados, saida=MODOS[modo]["painel"], saida_publica=MODOS[modo]["publico"])
 
 
 def gerar_painel(dados, modelo="painel_modelo.html", saida="painel.html",

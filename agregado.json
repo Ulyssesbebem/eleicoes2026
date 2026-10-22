@@ -1,4 +1,5 @@
 {
+ "modo": "erro_1t",
  "atualizado": "2026-10-22",
  "data_ultima_pesquisa": "2026-10-22",
  "dia_1t": "2026-10-04",
@@ -22,6 +23,7 @@
   "dp_sistematico": 1.5,
   "fracao_vies": 0.5
  },
+ "ranking_pg": null,
  "acuracia_1t": {
   "Quaest": {
    "data": "2026-10-03",
@@ -972,7 +974,8 @@
    "peso": 0.559,
    "peso_pct": 5.7,
    "erro_1t": -4.04,
-   "medido": true
+   "medido": true,
+   "pg": null
   },
   {
    "instituto": "PoderData/Aya",
@@ -986,7 +989,8 @@
    "peso": 0.6987,
    "peso_pct": 7.1,
    "erro_1t": -2.95,
-   "medido": true
+   "medido": true,
+   "pg": null
   },
   {
    "instituto": "Indexa",
@@ -1000,7 +1004,8 @@
    "peso": 0.3172,
    "peso_pct": 3.2,
    "erro_1t": -7.75,
-   "medido": true
+   "medido": true,
+   "pg": null
   },
   {
    "instituto": "Quaest",
@@ -1014,7 +1019,8 @@
    "peso": 0.4427,
    "peso_pct": 4.5,
    "erro_1t": -4.17,
-   "medido": true
+   "medido": true,
+   "pg": null
   },
   {
    "instituto": "Palver",
@@ -1028,7 +1034,8 @@
    "peso": 0.7334,
    "peso_pct": 7.4,
    "erro_1t": 2.17,
-   "medido": true
+   "medido": true,
+   "pg": null
   },
   {
    "instituto": "IFP",
@@ -1042,7 +1049,8 @@
    "peso": 0.4606,
    "peso_pct": 4.7,
    "erro_1t": -5.26,
-   "medido": true
+   "medido": true,
+   "pg": null
   },
   {
    "instituto": "Gerp",
@@ -1056,7 +1064,8 @@
    "peso": 0.8917,
    "peso_pct": 9.1,
    "erro_1t": 0.28,
-   "medido": true
+   "medido": true,
+   "pg": null
   },
   {
    "instituto": "Futura",
@@ -1070,7 +1079,8 @@
    "peso": 0.8044,
    "peso_pct": 8.2,
    "erro_1t": 0.33,
-   "medido": true
+   "medido": true,
+   "pg": null
   },
   {
    "instituto": "Veritá",
@@ -1084,7 +1094,8 @@
    "peso": 1.0232,
    "peso_pct": 10.4,
    "erro_1t": 0.13,
-   "medido": true
+   "medido": true,
+   "pg": null
   },
   {
    "instituto": "Real Time Big Data",
@@ -1098,7 +1109,8 @@
    "peso": 0.329,
    "peso_pct": 3.3,
    "erro_1t": -5.87,
-   "medido": true
+   "medido": true,
+   "pg": null
   },
   {
    "instituto": "Meio/Ideia",
@@ -1112,7 +1124,8 @@
    "peso": 0.4087,
    "peso_pct": 4.1,
    "erro_1t": -2.89,
-   "medido": true
+   "medido": true,
+   "pg": null
   },
   {
    "instituto": "Alfa Inteligência",
@@ -1126,7 +1139,8 @@
    "peso": 0.285,
    "peso_pct": 2.9,
    "erro_1t": -9.24,
-   "medido": true
+   "medido": true,
+   "pg": null
   },
   {
    "instituto": "Nexus/BTG",
@@ -1140,7 +1154,8 @@
    "peso": 0.2721,
    "peso_pct": 2.8,
    "erro_1t": -7.13,
-   "medido": true
+   "medido": true,
+   "pg": null
   },
   {
    "instituto": "AtlasIntel",
@@ -1154,7 +1169,8 @@
    "peso": 0.4571,
    "peso_pct": 4.6,
    "erro_1t": -4.62,
-   "medido": true
+   "medido": true,
+   "pg": null
   },
   {
    "instituto": "Vox",
@@ -1168,7 +1184,8 @@
    "peso": 0.5818,
    "peso_pct": 5.9,
    "erro_1t": -0.98,
-   "medido": true
+   "medido": true,
+   "pg": null
   },
   {
    "instituto": "DataTrends",
@@ -1182,7 +1199,8 @@
    "peso": 0.3585,
    "peso_pct": 3.6,
    "erro_1t": -3.89,
-   "medido": true
+   "medido": true,
+   "pg": null
   },
   {
    "instituto": "Ranking",
@@ -1196,7 +1214,8 @@
    "peso": 0.3313,
    "peso_pct": 3.4,
    "erro_1t": null,
-   "medido": false
+   "medido": false,
+   "pg": null
   },
   {
    "instituto": "Phoenix",
@@ -1210,7 +1229,8 @@
    "peso": 0.4203,
    "peso_pct": 4.3,
    "erro_1t": null,
-   "medido": false
+   "medido": false,
+   "pg": null
   },
   {
    "instituto": "MDA",
@@ -1224,7 +1244,8 @@
    "peso": 0.2137,
    "peso_pct": 2.2,
    "erro_1t": -7.57,
-   "medido": true
+   "medido": true,
+   "pg": null
   },
   {
    "instituto": "Ipespe",
@@ -1238,7 +1259,8 @@
    "peso": 0.2612,
    "peso_pct": 2.7,
    "erro_1t": null,
-   "medido": false
+   "medido": false,
+   "pg": null
   }
  ],
  "historico": [

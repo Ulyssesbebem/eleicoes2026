@@ -2,6 +2,8 @@
 site/
 painel.html
 painel_publico.html
+painel_pg.html
+painel_pg_publico.html
 
 __pycache__/
 *.pyc
