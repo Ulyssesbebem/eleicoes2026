@@ -1,6 +1,6 @@
 {
  "atualizado": "2026-10-22",
- "data_ultima_pesquisa": "2026-10-20",
+ "data_ultima_pesquisa": "2026-10-21",
  "dia_1t": "2026-10-04",
  "dia_2t": "2026-10-25",
  "duelo": {
@@ -196,36 +196,30 @@
   }
  },
  "agregado": {
-  "a": 49.07,
-  "b": 50.93,
+  "a": 49.14,
+  "b": 50.86,
   "hipotetico": false,
-  "n_reais": 38,
-  "margem": 0.47,
-  "margem_total": 2.98,
-  "prob_a": 0.27,
-  "prob_b": 0.73,
-  "desvio": 0.97,
+  "n_reais": 40,
+  "margem": 0.44,
+  "margem_total": 2.97,
+  "prob_a": 0.285,
+  "prob_b": 0.715,
+  "desvio": 0.92,
   "n": 20,
-  "n_efetivo": 16.23,
+  "n_efetivo": 16.43,
   "min": 47.4,
   "max": 51.3
  },
  "corrigido": {
-  "a": 48.43,
-  "b": 51.57,
+  "a": 48.48,
+  "b": 51.52,
   "margem_total": 2.99,
-  "prob_a": 0.151,
-  "prob_b": 0.849,
+  "prob_a": 0.159,
+  "prob_b": 0.841,
   "fracao": 0.5,
   "erro_tipico_1t": -4.17
  },
  "serie": [
-  {
-   "data": "2026-06-22",
-   "a": 51.91,
-   "b": 48.09,
-   "margem": 1.65
-  },
   {
    "data": "2026-06-23",
    "a": 51.91,
@@ -945,9 +939,43 @@
    "a": 49.07,
    "b": 50.93,
    "margem": 0.47
+  },
+  {
+   "data": "2026-10-21",
+   "a": 49.14,
+   "b": 50.86,
+   "margem": 0.44
   }
  ],
  "pesquisas_janela": [
+  {
+   "instituto": "PoderData/Aya",
+   "data": "2026-10-21",
+   "amostra": 4000,
+   "bruto_a": 49.0,
+   "bruto_b": 51.0,
+   "indefinidos": null,
+   "a": 49.0,
+   "b": 51.0,
+   "peso": 0.7488,
+   "peso_pct": 7.3,
+   "erro_1t": -2.95,
+   "medido": true
+  },
+  {
+   "instituto": "Indexa",
+   "data": "2026-10-21",
+   "amostra": 2000,
+   "bruto_a": 44.1,
+   "bruto_b": 45.2,
+   "indefinidos": 10.7,
+   "a": 49.4,
+   "b": 50.6,
+   "peso": 0.34,
+   "peso_pct": 3.3,
+   "erro_1t": -7.75,
+   "medido": true
+  },
   {
    "instituto": "Quaest",
    "data": "2026-10-20",
@@ -957,8 +985,8 @@
    "indefinidos": 9.0,
    "a": 49.4,
    "b": 50.6,
-   "peso": 0.5085,
-   "peso_pct": 4.7,
+   "peso": 0.4745,
+   "peso_pct": 4.6,
    "erro_1t": -4.17,
    "medido": true
   },
@@ -971,8 +999,8 @@
    "indefinidos": 2.0,
    "a": 49.0,
    "b": 51.0,
-   "peso": 0.8424,
-   "peso_pct": 7.8,
+   "peso": 0.786,
+   "peso_pct": 7.6,
    "erro_1t": 2.17,
    "medido": true
   },
@@ -985,8 +1013,8 @@
    "indefinidos": 19.4,
    "a": 49.2,
    "b": 50.8,
-   "peso": 0.5291,
-   "peso_pct": 4.9,
+   "peso": 0.4937,
+   "peso_pct": 4.8,
    "erro_1t": -5.26,
    "medido": true
   },
@@ -999,8 +1027,8 @@
    "indefinidos": 4.0,
    "a": 47.4,
    "b": 52.6,
-   "peso": 1.0242,
-   "peso_pct": 9.5,
+   "peso": 0.9557,
+   "peso_pct": 9.3,
    "erro_1t": 0.28,
    "medido": true
   },
@@ -1013,8 +1041,8 @@
    "indefinidos": 4.3,
    "a": 48.9,
    "b": 51.1,
-   "peso": 0.924,
-   "peso_pct": 8.6,
+   "peso": 0.8621,
+   "peso_pct": 8.3,
    "erro_1t": 0.33,
    "medido": true
   },
@@ -1027,8 +1055,8 @@
    "indefinidos": null,
    "a": 49.3,
    "b": 50.7,
-   "peso": 1.1753,
-   "peso_pct": 10.9,
+   "peso": 1.0966,
+   "peso_pct": 10.6,
    "erro_1t": 0.13,
    "medido": true
   },
@@ -1041,8 +1069,8 @@
    "indefinidos": 7.0,
    "a": 48.4,
    "b": 51.6,
-   "peso": 0.3779,
-   "peso_pct": 3.5,
+   "peso": 0.3526,
+   "peso_pct": 3.4,
    "erro_1t": -5.87,
    "medido": true
   },
@@ -1055,8 +1083,8 @@
    "indefinidos": 6.0,
    "a": 48.9,
    "b": 51.1,
-   "peso": 0.4695,
-   "peso_pct": 4.4,
+   "peso": 0.438,
+   "peso_pct": 4.2,
    "erro_1t": -2.89,
    "medido": true
   },
@@ -1069,23 +1097,9 @@
    "indefinidos": 5.3,
    "a": 48.5,
    "b": 51.5,
-   "peso": 0.3274,
+   "peso": 0.3055,
    "peso_pct": 3.0,
    "erro_1t": -9.24,
-   "medido": true
-  },
-  {
-   "instituto": "PoderData/Aya",
-   "data": "2026-10-18",
-   "amostra": 3000,
-   "bruto_a": 48.0,
-   "bruto_b": 52.0,
-   "indefinidos": null,
-   "a": 48.0,
-   "b": 52.0,
-   "peso": 0.6141,
-   "peso_pct": 5.7,
-   "erro_1t": -2.95,
    "medido": true
   },
   {
@@ -1097,8 +1111,8 @@
    "indefinidos": 7.6,
    "a": 49.7,
    "b": 50.3,
-   "peso": 0.3125,
-   "peso_pct": 2.9,
+   "peso": 0.2916,
+   "peso_pct": 2.8,
    "erro_1t": -7.13,
    "medido": true
   },
@@ -1111,8 +1125,8 @@
    "indefinidos": 2.6,
    "a": 48.9,
    "b": 51.1,
-   "peso": 0.5251,
-   "peso_pct": 4.9,
+   "peso": 0.49,
+   "peso_pct": 4.7,
    "erro_1t": -4.62,
    "medido": true
   },
@@ -1125,8 +1139,8 @@
    "indefinidos": 8.9,
    "a": 51.0,
    "b": 49.0,
-   "peso": 0.6683,
-   "peso_pct": 6.2,
+   "peso": 0.6236,
+   "peso_pct": 6.0,
    "erro_1t": -0.98,
    "medido": true
   },
@@ -1139,8 +1153,8 @@
    "indefinidos": 5.0,
    "a": 48.4,
    "b": 51.6,
-   "peso": 0.4118,
-   "peso_pct": 3.8,
+   "peso": 0.3842,
+   "peso_pct": 3.7,
    "erro_1t": -3.89,
    "medido": true
   },
@@ -1153,8 +1167,8 @@
    "indefinidos": null,
    "a": 50.4,
    "b": 49.6,
-   "peso": 0.3805,
-   "peso_pct": 3.5,
+   "peso": 0.355,
+   "peso_pct": 3.4,
    "erro_1t": null,
    "medido": false
   },
@@ -1167,8 +1181,8 @@
    "indefinidos": 7.2,
    "a": 51.3,
    "b": 48.7,
-   "peso": 0.4828,
-   "peso_pct": 4.5,
+   "peso": 0.4504,
+   "peso_pct": 4.4,
    "erro_1t": null,
    "medido": false
   },
@@ -1181,8 +1195,8 @@
    "indefinidos": 7.3,
    "a": 49.5,
    "b": 50.5,
-   "peso": 0.2455,
-   "peso_pct": 2.3,
+   "peso": 0.2291,
+   "peso_pct": 2.2,
    "erro_1t": -7.57,
    "medido": true
   },
@@ -1195,8 +1209,8 @@
    "indefinidos": 6.0,
    "a": 48.9,
    "b": 51.1,
-   "peso": 0.3001,
-   "peso_pct": 2.8,
+   "peso": 0.28,
+   "peso_pct": 2.7,
    "erro_1t": null,
    "medido": false
   },
@@ -1209,27 +1223,29 @@
    "indefinidos": 8.0,
    "a": 48.9,
    "b": 51.1,
-   "peso": 0.3953,
-   "peso_pct": 3.7,
+   "peso": 0.3688,
+   "peso_pct": 3.6,
    "erro_1t": -4.04,
-   "medido": true
-  },
-  {
-   "instituto": "Indexa",
-   "data": "2026-10-14",
-   "amostra": 2000,
-   "bruto_a": 42.0,
-   "bruto_b": 44.0,
-   "indefinidos": 14.0,
-   "a": 48.8,
-   "b": 51.2,
-   "peso": 0.2243,
-   "peso_pct": 2.1,
-   "erro_1t": -7.75,
    "medido": true
   }
  ],
  "historico": [
+  {
+   "instituto": "PoderData/Aya",
+   "data": "2026-10-21",
+   "amostra": 4000,
+   "a": 49.0,
+   "b": 51.0,
+   "erro_1t": -2.95
+  },
+  {
+   "instituto": "Indexa",
+   "data": "2026-10-21",
+   "amostra": 2000,
+   "a": 49.4,
+   "b": 50.6,
+   "erro_1t": -7.75
+  },
   {
    "instituto": "Quaest",
    "data": "2026-10-20",
