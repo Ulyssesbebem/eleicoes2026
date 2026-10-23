@@ -19,7 +19,7 @@
   "amostra_min": 0.75,
   "amostra_max": 1.3,
   "erro_referencia": 4.0,
-  "peso_sem_medida": 0.49,
+  "peso_sem_medida": 0.302,
   "dp_sistematico": 1.5,
   "fracao_vies": 0.5
  },
