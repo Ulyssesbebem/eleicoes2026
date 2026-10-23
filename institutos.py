@@ -26,7 +26,10 @@ RESSALVAS, para quem for defender o criterio:
    quem erraria pouco agora.
 
 2. Institutos sem pesquisa na reta final do 1o turno nao tem medida. Recebem o
-   peso mediano, nem premio nem castigo.
+   MENOR peso entre os medidos. Dar a mediana premiava quem nao se expos: um
+   instituto que ficou de fora do 1o turno pesava mais que o MDA, que se expos,
+   errou e - historicamente - e dos que mais acertam no 2o turno. Sem
+   historico, ninguem pode pesar mais que o pior que tem historico.
 """
 
 import io
@@ -35,7 +38,7 @@ import re
 
 ERRO_REFERENCIA = 4.0    # erro, em pontos de margem, que corta o peso pela metade
 PESO_MINIMO = 0.25       # ninguem e zerado: erro grande vira peso pequeno
-PESO_SEM_MEDIDA = None   # preenchido com a mediana ao carregar
+PESO_SEM_MEDIDA = None   # preenchido com o MENOR peso medido ao carregar
 
 ARQUIVO_ACURACIA = "acuracia_2026.json"
 
@@ -58,18 +61,11 @@ def _peso_do_erro(erro_abs):
 PESOS = {inst: round(_peso_do_erro(d["erro_abs"]), 3)
          for inst, d in ACURACIA.get("institutos", {}).items()}
 
-if PESOS:
-    _ordenados = sorted(PESOS.values())
-    _meio = len(_ordenados) // 2
-    PESO_SEM_MEDIDA = round(
-        _ordenados[_meio] if len(_ordenados) % 2
-        else (_ordenados[_meio - 1] + _ordenados[_meio]) / 2, 3)
-else:
-    PESO_SEM_MEDIDA = 0.5
+PESO_SEM_MEDIDA = min(PESOS.values()) if PESOS else PESO_MINIMO
 
 
 def peso_instituto(nome):
-    """Peso do instituto; a mediana para quem nao foi medido no 1o turno."""
+    """Peso do instituto; o menor peso medido para quem nao foi medido no 1o turno."""
     return PESOS.get(nome, PESO_SEM_MEDIDA)
 
 

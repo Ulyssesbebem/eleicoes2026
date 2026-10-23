@@ -23,8 +23,9 @@ peso_instituto = 1 / (1 + erro_margem / 4)
 
 Limitado a um piso de 0,25, o que faz o melhor pesar cerca de 3× o pior — e não
 30×, porque é **uma** observação por instituto e uma eleição só não distingue
-pontaria de sorte. Institutos sem pesquisa na reta final do 1º turno recebem o
-peso mediano.
+pontaria de sorte. Institutos sem pesquisa na reta final do 1º turno recebem
+o **menor** peso entre os medidos: quem não se expôs no 1º turno não pode pesar
+mais que quem se expôs e errou.
 
 | Fator | O que faz |
 |---|---|

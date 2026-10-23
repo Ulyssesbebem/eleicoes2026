@@ -154,7 +154,7 @@ def conferir_agregado(arquivo, falha):
     if not ag.get("serie"):
         falha("serie temporal vazia")
     if not ag.get("acuracia_1t"):
-        aviso(f"{arquivo}: sem acuracia do 1o turno - os pesos cairam para a mediana")
+        aviso(f"{arquivo}: sem acuracia do 1o turno - os pesos cairam para o piso")
 
 
 conferir_agregado("agregado.json", erro)

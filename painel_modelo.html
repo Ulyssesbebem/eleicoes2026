@@ -571,8 +571,9 @@ function pesoDe(erroAbs){
      ? `Institutos sem nota no PollsterGraph recebem o peso do pior classificado
         (${nf1.format(PG.peso_sem_nota*100)}%).`
      : `Institutos sem pesquisa na reta final do
-     1º turno não têm erro medido e recebem o peso mediano
-     (${nf1.format(D.parametros.peso_sem_medida*100)}%), nem prêmio nem castigo.`);
+     1º turno não têm erro medido e recebem o <b>menor</b> peso entre os medidos
+     (${nf1.format(D.parametros.peso_sem_medida*100)}%): não se expor não pode valer mais
+     que se expor e errar.`);
 })();
 
 /* ------------------------------------------------------------ rodapé */
