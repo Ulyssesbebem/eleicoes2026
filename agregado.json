@@ -198,26 +198,26 @@
   }
  },
  "agregado": {
-  "a": 48.92,
-  "b": 51.08,
+  "a": 48.91,
+  "b": 51.09,
   "hipotetico": false,
-  "n_reais": 48,
-  "margem": 0.48,
+  "n_reais": 49,
+  "margem": 0.46,
   "margem_total": 2.98,
-  "prob_a": 0.238,
-  "prob_b": 0.762,
-  "desvio": 0.96,
-  "n": 21,
-  "n_efetivo": 15.78,
+  "prob_a": 0.236,
+  "prob_b": 0.764,
+  "desvio": 0.95,
+  "n": 22,
+  "n_efetivo": 16.53,
   "min": 47.3,
   "max": 51.3
  },
  "projecao": {
-  "a": 48.91,
-  "b": 51.09,
+  "a": 48.9,
+  "b": 51.1,
   "margem_total": 2.98,
-  "prob_a": 0.237,
-  "prob_b": 0.763,
+  "prob_a": 0.235,
+  "prob_b": 0.765,
   "inclinacao_dia": -0.004,
   "inclinacao_ep": 0.035,
   "institutos": 13,
@@ -225,11 +225,11 @@
   "janela_dias": 10
  },
  "corrigido": {
-  "a": 48.26,
-  "b": 51.74,
-  "margem_total": 3.0,
-  "prob_a": 0.128,
-  "prob_b": 0.872,
+  "a": 48.24,
+  "b": 51.76,
+  "margem_total": 2.99,
+  "prob_a": 0.124,
+  "prob_b": 0.876,
   "fracao": 0.5,
   "erro_tipico_1t": -4.17
  },
@@ -956,9 +956,9 @@
   },
   {
    "data": "2026-10-23",
-   "a": 48.92,
-   "b": 51.08,
-   "margem": 0.48
+   "a": 48.91,
+   "b": 51.09,
+   "margem": 0.46
   }
  ],
  "pesquisas_janela": [
@@ -972,7 +972,22 @@
    "a": 47.3,
    "b": 52.7,
    "peso": 0.3926,
-   "peso_pct": 4.6,
+   "peso_pct": 4.5,
+   "erro_1t": null,
+   "medido": false,
+   "pg": null
+  },
+  {
+   "instituto": "Instituto França",
+   "data": "2026-10-23",
+   "amostra": 1537,
+   "bruto_a": 43.1,
+   "bruto_b": 45.6,
+   "indefinidos": 11.3,
+   "a": 48.6,
+   "b": 51.4,
+   "peso": 0.2647,
+   "peso_pct": 3.0,
    "erro_1t": null,
    "medido": false,
    "pg": null
@@ -987,7 +1002,7 @@
    "a": 50.6,
    "b": 49.4,
    "peso": 0.7163,
-   "peso_pct": 8.5,
+   "peso_pct": 8.2,
    "erro_1t": -0.98,
    "medido": true,
    "pg": null
@@ -1002,7 +1017,7 @@
    "a": 48.6,
    "b": 51.4,
    "peso": 1.0966,
-   "peso_pct": 13.0,
+   "peso_pct": 12.6,
    "erro_1t": 0.13,
    "medido": true,
    "pg": null
@@ -1017,7 +1032,7 @@
    "a": 47.9,
    "b": 52.1,
    "peso": 0.3526,
-   "peso_pct": 4.2,
+   "peso_pct": 4.0,
    "erro_1t": -5.87,
    "medido": true,
    "pg": null
@@ -1032,7 +1047,7 @@
    "a": 49.5,
    "b": 50.5,
    "peso": 0.2277,
-   "peso_pct": 2.7,
+   "peso_pct": 2.6,
    "erro_1t": null,
    "medido": false,
    "pg": null
@@ -1047,7 +1062,7 @@
    "a": 50.0,
    "b": 50.0,
    "peso": 0.4866,
-   "peso_pct": 5.7,
+   "peso_pct": 5.6,
    "erro_1t": -4.04,
    "medido": true,
    "pg": null
@@ -1062,7 +1077,7 @@
    "a": 48.0,
    "b": 52.0,
    "peso": 0.3055,
-   "peso_pct": 3.6,
+   "peso_pct": 3.5,
    "erro_1t": -9.24,
    "medido": true,
    "pg": null
@@ -1077,7 +1092,7 @@
    "a": 49.0,
    "b": 51.0,
    "peso": 0.5675,
-   "peso_pct": 6.7,
+   "peso_pct": 6.5,
    "erro_1t": -2.95,
    "medido": true,
    "pg": null
@@ -1107,7 +1122,7 @@
    "a": 47.9,
    "b": 52.1,
    "peso": 0.3842,
-   "peso_pct": 4.5,
+   "peso_pct": 4.4,
    "erro_1t": -3.89,
    "medido": true,
    "pg": null
@@ -1122,7 +1137,7 @@
    "a": 49.4,
    "b": 50.6,
    "peso": 0.3355,
-   "peso_pct": 4.0,
+   "peso_pct": 3.8,
    "erro_1t": -4.17,
    "medido": true,
    "pg": null
@@ -1137,7 +1152,7 @@
    "a": 49.0,
    "b": 51.0,
    "peso": 0.5558,
-   "peso_pct": 6.6,
+   "peso_pct": 6.4,
    "erro_1t": 2.17,
    "medido": true,
    "pg": null
@@ -1152,7 +1167,7 @@
    "a": 49.2,
    "b": 50.8,
    "peso": 0.3491,
-   "peso_pct": 4.1,
+   "peso_pct": 4.0,
    "erro_1t": -5.26,
    "medido": true,
    "pg": null
@@ -1167,7 +1182,7 @@
    "a": 47.4,
    "b": 52.6,
    "peso": 0.6757,
-   "peso_pct": 8.0,
+   "peso_pct": 7.7,
    "erro_1t": 0.28,
    "medido": true,
    "pg": null
@@ -1182,7 +1197,7 @@
    "a": 48.9,
    "b": 51.1,
    "peso": 0.6096,
-   "peso_pct": 7.2,
+   "peso_pct": 7.0,
    "erro_1t": 0.33,
    "medido": true,
    "pg": null
@@ -1197,7 +1212,7 @@
    "a": 48.9,
    "b": 51.1,
    "peso": 0.289,
-   "peso_pct": 3.4,
+   "peso_pct": 3.3,
    "erro_1t": -2.89,
    "medido": true,
    "pg": null
@@ -1227,7 +1242,7 @@
    "a": 48.9,
    "b": 51.1,
    "peso": 0.3016,
-   "peso_pct": 3.6,
+   "peso_pct": 3.5,
    "erro_1t": -4.62,
    "medido": true,
    "pg": null
@@ -1242,7 +1257,7 @@
    "a": 50.4,
    "b": 49.6,
    "peso": 0.1173,
-   "peso_pct": 1.4,
+   "peso_pct": 1.3,
    "erro_1t": null,
    "medido": false,
    "pg": null
@@ -1257,7 +1272,7 @@
    "a": 51.3,
    "b": 48.7,
    "peso": 0.1488,
-   "peso_pct": 1.8,
+   "peso_pct": 1.7,
    "erro_1t": null,
    "medido": false,
    "pg": null
@@ -1272,7 +1287,7 @@
    "a": 49.5,
    "b": 50.5,
    "peso": 0.1145,
-   "peso_pct": 1.4,
+   "peso_pct": 1.3,
    "erro_1t": -7.57,
    "medido": true,
    "pg": null
@@ -1285,6 +1300,14 @@
    "amostra": 6867,
    "a": 47.3,
    "b": 52.7,
+   "erro_1t": null
+  },
+  {
+   "instituto": "Instituto França",
+   "data": "2026-10-23",
+   "amostra": 1537,
+   "a": 48.6,
+   "b": 51.4,
    "erro_1t": null
   },
   {
