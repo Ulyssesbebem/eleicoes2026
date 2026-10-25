@@ -1,7 +1,7 @@
 {
  "modo": "pg",
- "atualizado": "2026-10-24",
- "data_ultima_pesquisa": "2026-10-23",
+ "atualizado": "2026-10-25",
+ "data_ultima_pesquisa": "2026-10-24",
  "dia_1t": "2026-10-04",
  "dia_2t": "2026-10-25",
  "duelo": {
@@ -348,48 +348,42 @@
   }
  },
  "agregado": {
-  "a": 49.06,
-  "b": 50.94,
+  "a": 49.17,
+  "b": 50.83,
   "hipotetico": false,
-  "n_reais": 51,
-  "margem": 0.48,
-  "margem_total": 2.98,
-  "prob_a": 0.267,
-  "prob_b": 0.733,
-  "desvio": 0.92,
+  "n_reais": 59,
+  "margem": 0.45,
+  "margem_total": 2.97,
+  "prob_a": 0.293,
+  "prob_b": 0.707,
+  "desvio": 0.77,
   "n": 22,
-  "n_efetivo": 16.41,
+  "n_efetivo": 14.56,
   "min": 47.3,
   "max": 51.3
  },
  "projecao": {
-  "a": 49.04,
-  "b": 50.96,
-  "margem_total": 2.98,
-  "prob_a": 0.263,
-  "prob_b": 0.737,
-  "inclinacao_dia": -0.01,
-  "inclinacao_ep": 0.031,
-  "institutos": 15,
-  "dias": 2,
+  "a": 49.19,
+  "b": 50.81,
+  "margem_total": 2.97,
+  "prob_a": 0.297,
+  "prob_b": 0.703,
+  "inclinacao_dia": 0.016,
+  "inclinacao_ep": 0.026,
+  "institutos": 17,
+  "dias": 1,
   "janela_dias": 10
  },
  "corrigido": {
-  "a": 48.06,
-  "b": 51.94,
-  "margem_total": 2.99,
-  "prob_a": 0.102,
-  "prob_b": 0.898,
+  "a": 48.24,
+  "b": 51.76,
+  "margem_total": 3.0,
+  "prob_a": 0.125,
+  "prob_b": 0.875,
   "fracao": 0.5,
   "erro_tipico_1t": -4.17
  },
  "serie": [
-  {
-   "data": "2026-06-25",
-   "a": 52.46,
-   "b": 47.54,
-   "margem": 1.43
-  },
   {
    "data": "2026-06-26",
    "a": 52.48,
@@ -1106,12 +1100,148 @@
   },
   {
    "data": "2026-10-23",
-   "a": 49.06,
-   "b": 50.94,
-   "margem": 0.48
+   "a": 49.09,
+   "b": 50.91,
+   "margem": 0.47
+  },
+  {
+   "data": "2026-10-24",
+   "a": 49.17,
+   "b": 50.83,
+   "margem": 0.45
   }
  ],
  "pesquisas_janela": [
+  {
+   "instituto": "Quaest",
+   "data": "2026-10-24",
+   "amostra": 3702,
+   "bruto_a": 45.0,
+   "bruto_b": 46.0,
+   "indefinidos": 9.0,
+   "a": 49.5,
+   "b": 50.5,
+   "peso": 0.5833,
+   "peso_pct": 6.3,
+   "erro_1t": -4.17,
+   "medido": true,
+   "pg": {
+    "nome_pg": "Quaest",
+    "posicao": 67,
+    "classe": "B-",
+    "indice": 22.3,
+    "erro_medio": 8.8,
+    "pesquisas": 6,
+    "peso": 0.4487
+   }
+  },
+  {
+   "instituto": "Palver",
+   "data": "2026-10-24",
+   "amostra": 5000,
+   "bruto_a": 49.0,
+   "bruto_b": 50.0,
+   "indefinidos": 1.0,
+   "a": 49.5,
+   "b": 50.5,
+   "peso": 0.3949,
+   "peso_pct": 4.3,
+   "erro_1t": 2.17,
+   "medido": true,
+   "pg": null
+  },
+  {
+   "instituto": "Nexus/BTG",
+   "data": "2026-10-24",
+   "amostra": 2000,
+   "bruto_a": 46.0,
+   "bruto_b": 47.0,
+   "indefinidos": 7.0,
+   "a": 49.5,
+   "b": 50.5,
+   "peso": 0.3038,
+   "peso_pct": 3.3,
+   "erro_1t": -7.13,
+   "medido": true,
+   "pg": {
+    "nome_pg": "Nexus",
+    "posicao": null,
+    "classe": "N",
+    "indice": null,
+    "erro_medio": null,
+    "pesquisas": null,
+    "peso": null
+   }
+  },
+  {
+   "instituto": "Gerp",
+   "data": "2026-10-24",
+   "amostra": 2400,
+   "bruto_a": 46.0,
+   "bruto_b": 49.0,
+   "indefinidos": 4.0,
+   "a": 48.4,
+   "b": 51.6,
+   "peso": 0.3328,
+   "peso_pct": 3.6,
+   "erro_1t": 0.28,
+   "medido": true,
+   "pg": {
+    "nome_pg": "Gerp",
+    "posicao": null,
+    "classe": "N",
+    "indice": null,
+    "erro_medio": null,
+    "pesquisas": null,
+    "peso": null
+   }
+  },
+  {
+   "instituto": "Futura",
+   "data": "2026-10-24",
+   "amostra": 2000,
+   "bruto_a": 47.9,
+   "bruto_b": 48.2,
+   "indefinidos": 3.9,
+   "a": 49.8,
+   "b": 50.2,
+   "peso": 0.6901,
+   "peso_pct": 7.5,
+   "erro_1t": 0.33,
+   "medido": true,
+   "pg": {
+    "nome_pg": "Futura",
+    "posicao": 14,
+    "classe": "A-",
+    "indice": 34.3,
+    "erro_medio": 3.9,
+    "pesquisas": 29,
+    "peso": 0.6901
+   }
+  },
+  {
+   "instituto": "Datafolha",
+   "data": "2026-10-24",
+   "amostra": 4050,
+   "bruto_a": 47.0,
+   "bruto_b": 48.0,
+   "indefinidos": 5.0,
+   "a": 49.5,
+   "b": 50.5,
+   "peso": 1.3,
+   "peso_pct": 14.1,
+   "erro_1t": -4.04,
+   "medido": true,
+   "pg": {
+    "nome_pg": "Datafolha",
+    "posicao": 1,
+    "classe": "A+",
+    "indice": 49.7,
+    "erro_medio": 3.2,
+    "pesquisas": 29,
+    "peso": 1.0
+   }
+  },
   {
    "instituto": "Vetor Arrow",
    "data": "2026-10-23",
@@ -1121,11 +1251,34 @@
    "indefinidos": 5.1,
    "a": 47.3,
    "b": 52.7,
-   "peso": 0.3949,
-   "peso_pct": 4.9,
+   "peso": 0.3438,
+   "peso_pct": 3.7,
    "erro_1t": null,
    "medido": false,
    "pg": null
+  },
+  {
+   "instituto": "Veritá",
+   "data": "2026-10-23",
+   "amostra": 15554,
+   "bruto_a": 47.5,
+   "bruto_b": 50.2,
+   "indefinidos": 2.3,
+   "a": 48.6,
+   "b": 51.4,
+   "peso": 0.4964,
+   "peso_pct": 5.4,
+   "erro_1t": 0.13,
+   "medido": true,
+   "pg": {
+    "nome_pg": "Veritá",
+    "posicao": 72,
+    "classe": "C+",
+    "indice": 21.8,
+    "erro_medio": 6.1,
+    "pesquisas": 78,
+    "peso": 0.4386
+   }
   },
   {
    "instituto": "MDA",
@@ -1136,8 +1289,8 @@
    "indefinidos": 8.7,
    "a": 49.3,
    "b": 50.7,
-   "peso": 0.8093,
-   "peso_pct": 10.0,
+   "peso": 0.7045,
+   "peso_pct": 7.7,
    "erro_1t": -7.57,
    "medido": true,
    "pg": {
@@ -1159,8 +1312,8 @@
    "indefinidos": 11.3,
    "a": 48.6,
    "b": 51.4,
-   "peso": 0.2663,
-   "peso_pct": 3.3,
+   "peso": 0.2318,
+   "peso_pct": 2.5,
    "erro_1t": null,
    "medido": false,
    "pg": null
@@ -1174,11 +1327,34 @@
    "indefinidos": 7.5,
    "a": 50.3,
    "b": 49.7,
-   "peso": 0.3721,
-   "peso_pct": 4.6,
+   "peso": 0.3239,
+   "peso_pct": 3.5,
    "erro_1t": null,
    "medido": false,
    "pg": null
+  },
+  {
+   "instituto": "AtlasIntel",
+   "data": "2026-10-23",
+   "amostra": 4990,
+   "bruto_a": 48.4,
+   "bruto_b": 49.9,
+   "indefinidos": 1.7,
+   "a": 49.2,
+   "b": 50.8,
+   "peso": 1.1135,
+   "peso_pct": 12.1,
+   "erro_1t": -4.62,
+   "medido": true,
+   "pg": {
+    "nome_pg": "AtlasIntel",
+    "posicao": 2,
+    "classe": "A+",
+    "indice": 48.9,
+    "erro_medio": 3.4,
+    "pesquisas": 8,
+    "peso": 0.9839
+   }
   },
   {
    "instituto": "Vox",
@@ -1189,34 +1365,11 @@
    "indefinidos": 10.3,
    "a": 50.6,
    "b": 49.4,
-   "peso": 0.271,
-   "peso_pct": 3.3,
+   "peso": 0.2359,
+   "peso_pct": 2.6,
    "erro_1t": -0.98,
    "medido": true,
    "pg": null
-  },
-  {
-   "instituto": "Veritá",
-   "data": "2026-10-22",
-   "amostra": 15554,
-   "bruto_a": 47.5,
-   "bruto_b": 50.2,
-   "indefinidos": 2.3,
-   "a": 48.6,
-   "b": 51.4,
-   "peso": 0.4964,
-   "peso_pct": 6.1,
-   "erro_1t": 0.13,
-   "medido": true,
-   "pg": {
-    "nome_pg": "Veritá",
-    "posicao": 72,
-    "classe": "C+",
-    "indice": 21.8,
-    "erro_medio": 6.1,
-    "pesquisas": 78,
-    "peso": 0.4386
-   }
   },
   {
    "instituto": "Real Time Big Data",
@@ -1227,8 +1380,8 @@
    "indefinidos": 6.0,
    "a": 47.9,
    "b": 52.1,
-   "peso": 0.6096,
-   "peso_pct": 7.5,
+   "peso": 0.5307,
+   "peso_pct": 5.8,
    "erro_1t": -5.87,
    "medido": true,
    "pg": {
@@ -1250,8 +1403,8 @@
    "indefinidos": 5.0,
    "a": 49.5,
    "b": 50.5,
-   "peso": 0.3398,
-   "peso_pct": 4.2,
+   "peso": 0.2958,
+   "peso_pct": 3.2,
    "erro_1t": null,
    "medido": false,
    "pg": {
@@ -1265,29 +1418,6 @@
    }
   },
   {
-   "instituto": "Datafolha",
-   "data": "2026-10-22",
-   "amostra": 2520,
-   "bruto_a": 46.0,
-   "bruto_b": 47.0,
-   "indefinidos": 7.0,
-   "a": 50.0,
-   "b": 50.0,
-   "peso": 0.9772,
-   "peso_pct": 12.1,
-   "erro_1t": -4.04,
-   "medido": true,
-   "pg": {
-    "nome_pg": "Datafolha",
-    "posicao": 1,
-    "classe": "A+",
-    "indice": 49.7,
-    "erro_medio": 3.2,
-    "pesquisas": 29,
-    "peso": 1.0
-   }
-  },
-  {
    "instituto": "Alfa Inteligência",
    "data": "2026-10-22",
    "amostra": 2700,
@@ -1296,8 +1426,8 @@
    "indefinidos": null,
    "a": 48.0,
    "b": 52.0,
-   "peso": 0.3073,
-   "peso_pct": 3.8,
+   "peso": 0.2675,
+   "peso_pct": 2.9,
    "erro_1t": -9.24,
    "medido": true,
    "pg": null
@@ -1311,8 +1441,8 @@
    "indefinidos": null,
    "a": 49.0,
    "b": 51.0,
-   "peso": 0.2993,
-   "peso_pct": 3.7,
+   "peso": 0.2606,
+   "peso_pct": 2.8,
    "erro_1t": -2.95,
    "medido": true,
    "pg": {
@@ -1334,8 +1464,8 @@
    "indefinidos": 10.7,
    "a": 49.4,
    "b": 50.6,
-   "peso": 0.2302,
-   "peso_pct": 2.8,
+   "peso": 0.2004,
+   "peso_pct": 2.2,
    "erro_1t": -7.75,
    "medido": true,
    "pg": null
@@ -1349,95 +1479,11 @@
    "indefinidos": 5.0,
    "a": 47.9,
    "b": 52.1,
-   "peso": 0.2302,
-   "peso_pct": 2.8,
+   "peso": 0.2004,
+   "peso_pct": 2.2,
    "erro_1t": -3.89,
    "medido": true,
    "pg": null
-  },
-  {
-   "instituto": "Quaest",
-   "data": "2026-10-20",
-   "amostra": 2154,
-   "bruto_a": 44.0,
-   "bruto_b": 45.0,
-   "indefinidos": 9.0,
-   "a": 49.4,
-   "b": 50.6,
-   "peso": 0.3072,
-   "peso_pct": 3.8,
-   "erro_1t": -4.17,
-   "medido": true,
-   "pg": {
-    "nome_pg": "Quaest",
-    "posicao": 67,
-    "classe": "B-",
-    "indice": 22.3,
-    "erro_medio": 8.8,
-    "pesquisas": 6,
-    "peso": 0.4487
-   }
-  },
-  {
-   "instituto": "Palver",
-   "data": "2026-10-20",
-   "amostra": 5000,
-   "bruto_a": 48.0,
-   "bruto_b": 50.0,
-   "indefinidos": 2.0,
-   "a": 49.0,
-   "b": 51.0,
-   "peso": 0.2606,
-   "peso_pct": 3.2,
-   "erro_1t": 2.17,
-   "medido": true,
-   "pg": null
-  },
-  {
-   "instituto": "Gerp",
-   "data": "2026-10-20",
-   "amostra": 2400,
-   "bruto_a": 45.0,
-   "bruto_b": 50.0,
-   "indefinidos": 4.0,
-   "a": 47.4,
-   "b": 52.6,
-   "peso": 0.2196,
-   "peso_pct": 2.7,
-   "erro_1t": 0.28,
-   "medido": true,
-   "pg": {
-    "nome_pg": "Gerp",
-    "posicao": null,
-    "classe": "N",
-    "indice": null,
-    "erro_medio": null,
-    "pesquisas": null,
-    "peso": null
-   }
-  },
-  {
-   "instituto": "Futura",
-   "data": "2026-10-20",
-   "amostra": 2000,
-   "bruto_a": 46.8,
-   "bruto_b": 48.9,
-   "indefinidos": 4.3,
-   "a": 48.9,
-   "b": 51.1,
-   "peso": 0.4553,
-   "peso_pct": 5.6,
-   "erro_1t": 0.33,
-   "medido": true,
-   "pg": {
-    "nome_pg": "Futura",
-    "posicao": 14,
-    "classe": "A-",
-    "indice": 34.3,
-    "erro_medio": 3.9,
-    "pesquisas": 29,
-    "peso": 0.6901
-   }
   },
   {
    "instituto": "Meio/Ideia",
@@ -1448,8 +1494,8 @@
    "indefinidos": 6.0,
    "a": 48.9,
    "b": 51.1,
-   "peso": 0.1511,
-   "peso_pct": 1.9,
+   "peso": 0.1315,
+   "peso_pct": 1.4,
    "erro_1t": -2.89,
    "medido": true,
    "pg": {
@@ -1463,52 +1509,6 @@
    }
   },
   {
-   "instituto": "Nexus/BTG",
-   "data": "2026-10-18",
-   "amostra": 2000,
-   "bruto_a": 45.9,
-   "bruto_b": 46.5,
-   "indefinidos": 7.6,
-   "a": 49.7,
-   "b": 50.3,
-   "peso": 0.1519,
-   "peso_pct": 1.9,
-   "erro_1t": -7.13,
-   "medido": true,
-   "pg": {
-    "nome_pg": "Nexus",
-    "posicao": null,
-    "classe": "N",
-    "indice": null,
-    "erro_medio": null,
-    "pesquisas": null,
-    "peso": null
-   }
-  },
-  {
-   "instituto": "AtlasIntel",
-   "data": "2026-10-18",
-   "amostra": 4998,
-   "bruto_a": 47.6,
-   "bruto_b": 49.8,
-   "indefinidos": 2.6,
-   "a": 48.9,
-   "b": 51.1,
-   "peso": 0.6395,
-   "peso_pct": 7.9,
-   "erro_1t": -4.62,
-   "medido": true,
-   "pg": {
-    "nome_pg": "AtlasIntel",
-    "posicao": 2,
-    "classe": "A+",
-    "indice": 48.9,
-    "erro_medio": 3.4,
-    "pesquisas": 8,
-    "peso": 0.9839
-   }
-  },
-  {
    "instituto": "Ranking",
    "data": "2026-10-16",
    "amostra": 2100,
@@ -1517,8 +1517,8 @@
    "indefinidos": null,
    "a": 50.4,
    "b": 49.6,
-   "peso": 0.1539,
-   "peso_pct": 1.9,
+   "peso": 0.134,
+   "peso_pct": 1.5,
    "erro_1t": null,
    "medido": false,
    "pg": {
@@ -1540,8 +1540,8 @@
    "indefinidos": 7.2,
    "a": 51.3,
    "b": 48.7,
-   "peso": 0.1497,
-   "peso_pct": 1.8,
+   "peso": 0.1303,
+   "peso_pct": 1.4,
    "erro_1t": null,
    "medido": false,
    "pg": null
@@ -1549,12 +1549,68 @@
  ],
  "historico": [
   {
+   "instituto": "Quaest",
+   "data": "2026-10-24",
+   "amostra": 3702,
+   "a": 49.5,
+   "b": 50.5,
+   "erro_1t": -4.17
+  },
+  {
+   "instituto": "Palver",
+   "data": "2026-10-24",
+   "amostra": 5000,
+   "a": 49.5,
+   "b": 50.5,
+   "erro_1t": 2.17
+  },
+  {
+   "instituto": "Nexus/BTG",
+   "data": "2026-10-24",
+   "amostra": 2000,
+   "a": 49.5,
+   "b": 50.5,
+   "erro_1t": -7.13
+  },
+  {
+   "instituto": "Gerp",
+   "data": "2026-10-24",
+   "amostra": 2400,
+   "a": 48.4,
+   "b": 51.6,
+   "erro_1t": 0.28
+  },
+  {
+   "instituto": "Futura",
+   "data": "2026-10-24",
+   "amostra": 2000,
+   "a": 49.8,
+   "b": 50.2,
+   "erro_1t": 0.33
+  },
+  {
+   "instituto": "Datafolha",
+   "data": "2026-10-24",
+   "amostra": 4050,
+   "a": 49.5,
+   "b": 50.5,
+   "erro_1t": -4.04
+  },
+  {
    "instituto": "Vetor Arrow",
    "data": "2026-10-23",
    "amostra": 6867,
    "a": 47.3,
    "b": 52.7,
    "erro_1t": null
+  },
+  {
+   "instituto": "Veritá",
+   "data": "2026-10-23",
+   "amostra": 15554,
+   "a": 48.6,
+   "b": 51.4,
+   "erro_1t": 0.13
   },
   {
    "instituto": "MDA",
@@ -1579,6 +1635,14 @@
    "a": 50.3,
    "b": 49.7,
    "erro_1t": null
+  },
+  {
+   "instituto": "AtlasIntel",
+   "data": "2026-10-23",
+   "amostra": 4990,
+   "a": 49.2,
+   "b": 50.8,
+   "erro_1t": -4.62
   },
   {
    "instituto": "Vox",
