@@ -351,14 +351,14 @@
   "a": 49.17,
   "b": 50.83,
   "hipotetico": false,
-  "n_reais": 59,
+  "n_reais": 60,
   "margem": 0.45,
   "margem_total": 2.97,
   "prob_a": 0.293,
   "prob_b": 0.707,
-  "desvio": 0.77,
+  "desvio": 0.76,
   "n": 22,
-  "n_efetivo": 14.56,
+  "n_efetivo": 14.76,
   "min": 47.3,
   "max": 51.3
  },
@@ -366,10 +366,10 @@
   "a": 49.19,
   "b": 50.81,
   "margem_total": 2.97,
-  "prob_a": 0.297,
-  "prob_b": 0.703,
-  "inclinacao_dia": 0.016,
-  "inclinacao_ep": 0.026,
+  "prob_a": 0.296,
+  "prob_b": 0.704,
+  "inclinacao_dia": 0.014,
+  "inclinacao_ep": 0.024,
   "institutos": 17,
   "dias": 1,
   "janela_dias": 10
@@ -377,7 +377,7 @@
  "corrigido": {
   "a": 48.24,
   "b": 51.76,
-  "margem_total": 3.0,
+  "margem_total": 2.99,
   "prob_a": 0.125,
   "prob_b": 0.875,
   "fracao": 0.5,
@@ -1122,7 +1122,7 @@
    "a": 49.5,
    "b": 50.5,
    "peso": 0.5833,
-   "peso_pct": 6.3,
+   "peso_pct": 6.2,
    "erro_1t": -4.17,
    "medido": true,
    "pg": {
@@ -1136,6 +1136,29 @@
    }
   },
   {
+   "instituto": "PoderData/Aya",
+   "data": "2026-10-24",
+   "amostra": 4000,
+   "bruto_a": 49.0,
+   "bruto_b": 51.0,
+   "indefinidos": null,
+   "a": 49.0,
+   "b": 51.0,
+   "peso": 0.3949,
+   "peso_pct": 4.2,
+   "erro_1t": -2.95,
+   "medido": true,
+   "pg": {
+    "nome_pg": "DataPoder360",
+    "posicao": null,
+    "classe": "N",
+    "indice": null,
+    "erro_medio": null,
+    "pesquisas": null,
+    "peso": null
+   }
+  },
+  {
    "instituto": "Palver",
    "data": "2026-10-24",
    "amostra": 5000,
@@ -1145,7 +1168,7 @@
    "a": 49.5,
    "b": 50.5,
    "peso": 0.3949,
-   "peso_pct": 4.3,
+   "peso_pct": 4.2,
    "erro_1t": 2.17,
    "medido": true,
    "pg": null
@@ -1206,7 +1229,7 @@
    "a": 49.8,
    "b": 50.2,
    "peso": 0.6901,
-   "peso_pct": 7.5,
+   "peso_pct": 7.4,
    "erro_1t": 0.33,
    "medido": true,
    "pg": {
@@ -1229,7 +1252,7 @@
    "a": 49.5,
    "b": 50.5,
    "peso": 1.3,
-   "peso_pct": 14.1,
+   "peso_pct": 13.9,
    "erro_1t": -4.04,
    "medido": true,
    "pg": {
@@ -1267,7 +1290,7 @@
    "a": 48.6,
    "b": 51.4,
    "peso": 0.4964,
-   "peso_pct": 5.4,
+   "peso_pct": 5.3,
    "erro_1t": 0.13,
    "medido": true,
    "pg": {
@@ -1290,7 +1313,7 @@
    "a": 49.3,
    "b": 50.7,
    "peso": 0.7045,
-   "peso_pct": 7.7,
+   "peso_pct": 7.5,
    "erro_1t": -7.57,
    "medido": true,
    "pg": {
@@ -1343,7 +1366,7 @@
    "a": 49.2,
    "b": 50.8,
    "peso": 1.1135,
-   "peso_pct": 12.1,
+   "peso_pct": 11.9,
    "erro_1t": -4.62,
    "medido": true,
    "pg": {
@@ -1366,7 +1389,7 @@
    "a": 50.6,
    "b": 49.4,
    "peso": 0.2359,
-   "peso_pct": 2.6,
+   "peso_pct": 2.5,
    "erro_1t": -0.98,
    "medido": true,
    "pg": null
@@ -1381,7 +1404,7 @@
    "a": 47.9,
    "b": 52.1,
    "peso": 0.5307,
-   "peso_pct": 5.8,
+   "peso_pct": 5.7,
    "erro_1t": -5.87,
    "medido": true,
    "pg": {
@@ -1433,29 +1456,6 @@
    "pg": null
   },
   {
-   "instituto": "PoderData/Aya",
-   "data": "2026-10-21",
-   "amostra": 4000,
-   "bruto_a": 49.0,
-   "bruto_b": 51.0,
-   "indefinidos": null,
-   "a": 49.0,
-   "b": 51.0,
-   "peso": 0.2606,
-   "peso_pct": 2.8,
-   "erro_1t": -2.95,
-   "medido": true,
-   "pg": {
-    "nome_pg": "DataPoder360",
-    "posicao": null,
-    "classe": "N",
-    "indice": null,
-    "erro_medio": null,
-    "pesquisas": null,
-    "peso": null
-   }
-  },
-  {
    "instituto": "Indexa",
    "data": "2026-10-21",
    "amostra": 2000,
@@ -1465,7 +1465,7 @@
    "a": 49.4,
    "b": 50.6,
    "peso": 0.2004,
-   "peso_pct": 2.2,
+   "peso_pct": 2.1,
    "erro_1t": -7.75,
    "medido": true,
    "pg": null
@@ -1480,7 +1480,7 @@
    "a": 47.9,
    "b": 52.1,
    "peso": 0.2004,
-   "peso_pct": 2.2,
+   "peso_pct": 2.1,
    "erro_1t": -3.89,
    "medido": true,
    "pg": null
@@ -1518,7 +1518,7 @@
    "a": 50.4,
    "b": 49.6,
    "peso": 0.134,
-   "peso_pct": 1.5,
+   "peso_pct": 1.4,
    "erro_1t": null,
    "medido": false,
    "pg": {
@@ -1555,6 +1555,14 @@
    "a": 49.5,
    "b": 50.5,
    "erro_1t": -4.17
+  },
+  {
+   "instituto": "PoderData/Aya",
+   "data": "2026-10-24",
+   "amostra": 4000,
+   "a": 49.0,
+   "b": 51.0,
+   "erro_1t": -2.95
   },
   {
    "instituto": "Palver",
