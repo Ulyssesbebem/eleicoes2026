@@ -28,3 +28,11 @@ VOTOS_2T = {
     "Flávio": 59826041,
 }
 COMPARECIMENTO_2T = 80.78
+
+# retrato do eleito no quadro do resultado (licenca exige o credito)
+FOTO_2T = {
+    "arquivo": "lula_2026.jpg",
+    "descricao": "Retrato oficial de Lula sorrindo, de terno azul e faixa presidencial",
+    "credito": "Ricardo Stuckert/PR (CC BY 2.0)",
+    "fonte": "https://commons.wikimedia.org/wiki/File:Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_(ombros)_denoise.jpg",
+}

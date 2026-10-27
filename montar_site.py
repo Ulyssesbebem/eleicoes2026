@@ -128,6 +128,11 @@ def main():
             encoding="utf-8").write(indice_dados(copiados))
     print(f"  {len(copiados)} arquivos de dados copiados")
 
+    # imagens que as paginas usam, ao lado delas
+    for img in ("lula_2026.jpg",):
+        if os.path.exists(img):
+            shutil.copy2(img, os.path.join(SAIDA, img))
+
     # impede o Jekyll do GitHub Pages de mexer no que ja esta pronto
     io.open(os.path.join(SAIDA, ".nojekyll"), "w").write("")
     print(f"\nsite/ pronto.")

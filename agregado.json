@@ -21,7 +21,13 @@
    "Lula": 64256232,
    "Flávio": 59826041
   },
-  "comparecimento": 80.78
+  "comparecimento": 80.78,
+  "foto": {
+   "arquivo": "lula_2026.jpg",
+   "descricao": "Retrato oficial de Lula sorrindo, de terno azul e faixa presidencial",
+   "credito": "Ricardo Stuckert/PR (CC BY 2.0)",
+   "fonte": "https://commons.wikimedia.org/wiki/File:Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_(ombros)_denoise.jpg"
+  }
  },
  "parametros": {
   "janela_dias": 30,

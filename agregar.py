@@ -36,6 +36,10 @@ try:
     from resultado_1t import COMPARECIMENTO_2T, RESULTADO_2T, VOTOS_2T
 except ImportError:          # antes da apuracao do 2o turno
     RESULTADO_2T = VOTOS_2T = COMPARECIMENTO_2T = None
+try:
+    from resultado_1t import FOTO_2T
+except ImportError:
+    FOTO_2T = None
 
 # ------------------------------------------------------------------ parametros
 
@@ -417,6 +421,7 @@ def main():
             "validos": RESULTADO_2T,
             "votos": VOTOS_2T,
             "comparecimento": COMPARECIMENTO_2T,
+            "foto": FOTO_2T,
         } if RESULTADO_2T else None),
         "parametros": {
             "janela_dias": janela,
