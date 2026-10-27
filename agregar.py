@@ -32,6 +32,10 @@ import correcoes
 from institutos import (ACURACIA, ERRO_REFERENCIA, PESO_SEM_MEDIDA,
                         erro_de, normalizar_instituto, peso_instituto, tem_medida)
 from resultado_1t import DIA_1T, DIA_2T, DUELO_2T, RESULTADO_1T
+try:
+    from resultado_1t import COMPARECIMENTO_2T, RESULTADO_2T, VOTOS_2T
+except ImportError:          # antes da apuracao do 2o turno
+    RESULTADO_2T = VOTOS_2T = COMPARECIMENTO_2T = None
 
 # ------------------------------------------------------------------ parametros
 
@@ -409,6 +413,11 @@ def main():
         "dia_2t": DIA_2T,
         "duelo": {"a": A, "b": B},
         "resultado_1t": RESULTADO_1T,
+        "resultado_2t": ({
+            "validos": RESULTADO_2T,
+            "votos": VOTOS_2T,
+            "comparecimento": COMPARECIMENTO_2T,
+        } if RESULTADO_2T else None),
         "parametros": {
             "janela_dias": janela,
             "meia_vida_dias": meia_vida,

@@ -16,3 +16,15 @@ RESULTADO_1T = {
 
 # quem passou para o 2o turno, na ordem em que aparece no site
 DUELO_2T = ["Lula", "Flávio"]
+
+# Resultado oficial do 2o turno (25/10/2026), 100% das urnas. Fonte: TSE.
+# Com ele preenchido, o painel abre com o resultado e compara com a media.
+RESULTADO_2T = {
+    "Lula": 51.79,
+    "Flávio": 48.21,
+}
+VOTOS_2T = {
+    "Lula": 64256232,
+    "Flávio": 59826041,
+}
+COMPARECIMENTO_2T = 80.78

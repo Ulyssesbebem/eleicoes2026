@@ -1,7 +1,7 @@
 <title>Segundo Turno 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Big+Shoulders+Display:wght@700;900&display=swap">
 
 <style>
 :root{
@@ -173,9 +173,42 @@ td.num{font-family:var(--mono)}
   font-size:12.5px; color:var(--tinta-3); line-height:1.65}
 .rodape b{color:var(--tinta-2); font-weight:500}
 .rodape p{margin:0 0 11px}
+
+/* resultado oficial: um visual só, igual nos dois temas */
+.vitoria{background:#A3101A;color:#FFF6EC;border-radius:10px;padding:clamp(24px,5vw,48px);
+  display:grid;gap:22px;margin-bottom:34px;overflow:hidden}
+.vitoria .topo{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  font:600 13px/1.2 var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.vitoria .topo span+span{color:#FFD23F}
+.vitoria .chamada{margin:0;font:500 clamp(20px,3.2vw,30px)/1.15 var(--sans);color:#FFD23F}
+.vitoria h2{margin:0;font-family:"Big Shoulders Display",Impact,sans-serif;font-weight:900;
+  font-size:clamp(64px,13vw,150px);line-height:.85;text-transform:uppercase;letter-spacing:-.01em}
+.vitoria h2 small{display:block;font-weight:700;font-size:.45em;line-height:1}
+.vitoria .placar-final{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.vitoria .lado-v{display:grid;gap:4px}
+.vitoria .lado-v.dir{text-align:right;color:#F2C9C4}
+.vitoria .rotulo{font:600 13px var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.vitoria .pctv{font-family:"Big Shoulders Display",Impact,sans-serif;font-weight:900;
+  font-size:clamp(54px,9vw,96px);line-height:.9;color:#FFD23F}
+.vitoria .dir .pctv{font-weight:700;font-size:clamp(38px,6vw,60px);color:#F2C9C4}
+.vitoria .votos{font:500 15px var(--sans)}
+.vitoria .barra-v{position:relative;display:flex;height:18px;border-radius:3px;background:#6E0A11}
+.vitoria .barra-v i{background:#FFD23F;border-radius:3px 0 0 3px}
+.vitoria .barra-v b{position:absolute;left:50%;top:-6px;bottom:-6px;width:2px;background:#FFF6EC}
+.vitoria .numeros{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;
+  padding-top:18px;border-top:1px solid rgba(255,246,236,.35)}
+.vitoria .numeros div{display:grid;gap:2px;min-width:0}
+.vitoria .numeros strong{font-family:"Big Shoulders Display",Impact,sans-serif;font-weight:700;font-size:clamp(28px,4.5vw,42px);line-height:1}
+.vitoria .numeros span{font:400 14px/1.35 var(--sans);color:#F2C9C4}
+.vitoria .balanco{margin:0;font:400 15px/1.55 var(--sans);color:#FBE3DF;max-width:70ch}
+.vitoria .balanco b{color:#FFF6EC}
+.vitoria .fonte{margin:0;font:400 12px var(--mono);color:#E8A9A2}
+@media (max-width:620px){.vitoria .numeros{grid-template-columns:1fr}.vitoria .lado-v.dir{text-align:left}}
 </style>
 
 <div class="envoltorio">
+
+  <section class="vitoria" id="vitoria" hidden aria-label="Resultado oficial do 2º turno"></section>
 
   <header class="masthead">
     <div class="selo" id="selo"></div>
@@ -290,6 +323,51 @@ function contaAcertos(){
   const real = D.resultado_1t[B] - D.resultado_1t[A];
   return Object.values(D.acuracia_1t).filter(d => d.erro_margem > -real).length;
 }
+
+/* ------------------------------------------------------------ resultado oficial */
+(function vitoria(){
+  const R = D.resultado_2t;
+  if (!R) return;
+  const va = R.validos[A], vb = R.validos[B];
+  const venc = va > vb ? A : B, perd = venc === A ? B : A;
+  const vv = R.validos[venc], vp = R.validos[perd];
+  const nf2 = new Intl.NumberFormat("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2});
+  const vantagem = Math.abs(R.votos[A] - R.votos[B]);
+  /* a média publicada na véspera contra a urna, na margem Lula − Flávio */
+  const errou = (AG.a - AG.b) - (va - vb);
+  const lider = AG.a > AG.b ? A : B;
+  const el = document.getElementById("vitoria");
+  el.hidden = false;
+  el.innerHTML = `
+    <div class="topo"><span>Resultado oficial · 2º turno</span><span>${dLonga(DIA2T)}</span></div>
+    <p class="chamada">O maior estadista do mundo</p>
+    <h2>${esc(venc)}<small>foi reeleito</small></h2>
+    <div class="placar-final">
+      <div class="lado-v">
+        <span class="rotulo">${esc(venc)}</span>
+        <span class="pctv">${nf2.format(vv)}%</span>
+        <span class="votos">${nf0.format(R.votos[venc])} votos</span>
+      </div>
+      <div class="lado-v dir">
+        <span class="rotulo">${esc(perd === "Flávio" ? "Flávio Bolsonaro" : perd)}</span>
+        <span class="pctv">${nf2.format(vp)}%</span>
+        <span class="votos">${nf0.format(R.votos[perd])} votos</span>
+      </div>
+    </div>
+    <div class="barra-v" role="img" aria-label="${esc(venc)} ${nf2.format(vv)}%, ${esc(perd)} ${nf2.format(vp)}% dos votos válidos"><i style="width:${vv}%"></i><b></b></div>
+    <div class="numeros">
+      <div><strong>${nf2.format(vantagem/1e6)} mi</strong><span>votos de vantagem</span></div>
+      <div><strong>${nf2.format(R.comparecimento)}%</strong><span>de comparecimento</span></div>
+      <div><strong>1ª virada</strong><span>2º colocado no 1º turno, eleito no 2º</span></div>
+    </div>
+    <p class="balanco"><b>E o agregador?</b> A última média, com pesquisas até
+      ${dLonga(HOJE)}, dava <b>${esc(lider)} ${nf1.format(Math.max(AG.a, AG.b))}%</b> e chance de
+      ${Math.round(AG.prob_a*100)}% para ${esc(A)}. A urna deu ${esc(venc)} por
+      ${nf1.format(Math.abs(va - vb))} pontos: a média errou a diferença em
+      <b>${nf1.format(Math.abs(errou))} pontos</b>. Os números abaixo são os da véspera, como
+      foram publicados.</p>
+    <p class="fonte">Votos válidos · 100% das urnas apuradas · Fonte: TSE</p>`;
+})();
 
 /* ------------------------------------------------------------ placar */
 (function placar(){

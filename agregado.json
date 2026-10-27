@@ -12,6 +12,17 @@
   "Flávio": 47.03,
   "Lula": 45.16
  },
+ "resultado_2t": {
+  "validos": {
+   "Lula": 51.79,
+   "Flávio": 48.21
+  },
+  "votos": {
+   "Lula": 64256232,
+   "Flávio": 59826041
+  },
+  "comparecimento": 80.78
+ },
  "parametros": {
   "janela_dias": 30,
   "meia_vida_dias": 5,
