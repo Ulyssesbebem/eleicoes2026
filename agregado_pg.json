@@ -365,38 +365,38 @@
   }
  },
  "agregado": {
-  "a": 49.27,
-  "b": 50.73,
+  "a": 49.16,
+  "b": 50.84,
   "hipotetico": false,
-  "n_reais": 61,
+  "n_reais": 60,
   "margem": 0.45,
   "margem_total": 2.97,
-  "prob_a": 0.316,
-  "prob_b": 0.684,
-  "desvio": 0.72,
+  "prob_a": 0.291,
+  "prob_b": 0.709,
+  "desvio": 0.77,
   "n": 22,
-  "n_efetivo": 14.7,
-  "min": 47.9,
+  "n_efetivo": 14.76,
+  "min": 47.3,
   "max": 51.3
  },
  "projecao": {
-  "a": 49.29,
-  "b": 50.71,
-  "margem_total": 2.98,
-  "prob_a": 0.321,
-  "prob_b": 0.679,
-  "inclinacao_dia": 0.017,
-  "inclinacao_ep": 0.033,
-  "institutos": 18,
+  "a": 49.18,
+  "b": 50.82,
+  "margem_total": 2.97,
+  "prob_a": 0.294,
+  "prob_b": 0.706,
+  "inclinacao_dia": 0.013,
+  "inclinacao_ep": 0.025,
+  "institutos": 17,
   "dias": 1,
   "janela_dias": 10
  },
  "corrigido": {
-  "a": 48.34,
-  "b": 51.66,
+  "a": 48.23,
+  "b": 51.77,
   "margem_total": 2.99,
-  "prob_a": 0.139,
-  "prob_b": 0.861,
+  "prob_a": 0.123,
+  "prob_b": 0.877,
   "fracao": 0.5,
   "erro_tipico_1t": -4.17
  },
@@ -1123,27 +1123,12 @@
   },
   {
    "data": "2026-10-24",
-   "a": 49.27,
-   "b": 50.73,
+   "a": 49.16,
+   "b": 50.84,
    "margem": 0.45
   }
  ],
  "pesquisas_janela": [
-  {
-   "instituto": "Vetor Arrow",
-   "data": "2026-10-24",
-   "amostra": 2000,
-   "bruto_a": 50.5,
-   "bruto_b": 49.5,
-   "indefinidos": null,
-   "a": 50.5,
-   "b": 49.5,
-   "peso": 0.3038,
-   "peso_pct": 3.3,
-   "erro_1t": null,
-   "medido": false,
-   "pg": null
-  },
   {
    "instituto": "Quaest",
    "data": "2026-10-24",
@@ -1154,7 +1139,7 @@
    "a": 49.5,
    "b": 50.5,
    "peso": 0.5833,
-   "peso_pct": 6.3,
+   "peso_pct": 6.2,
    "erro_1t": -4.17,
    "medido": true,
    "pg": {
@@ -1284,7 +1269,7 @@
    "a": 49.5,
    "b": 50.5,
    "peso": 1.3,
-   "peso_pct": 14.0,
+   "peso_pct": 13.9,
    "erro_1t": -4.04,
    "medido": true,
    "pg": {
@@ -1296,6 +1281,21 @@
     "pesquisas": 29,
     "peso": 1.0
    }
+  },
+  {
+   "instituto": "Vetor Arrow",
+   "data": "2026-10-23",
+   "amostra": 6867,
+   "bruto_a": 44.9,
+   "bruto_b": 50.0,
+   "indefinidos": 5.1,
+   "a": 47.3,
+   "b": 52.7,
+   "peso": 0.3438,
+   "peso_pct": 3.7,
+   "erro_1t": null,
+   "medido": false,
+   "pg": null
   },
   {
    "instituto": "Veritá",
@@ -1330,7 +1330,7 @@
    "a": 49.3,
    "b": 50.7,
    "peso": 0.7045,
-   "peso_pct": 7.6,
+   "peso_pct": 7.5,
    "erro_1t": -7.57,
    "medido": true,
    "pg": {
@@ -1383,7 +1383,7 @@
    "a": 49.2,
    "b": 50.8,
    "peso": 1.1135,
-   "peso_pct": 12.0,
+   "peso_pct": 11.9,
    "erro_1t": -4.62,
    "medido": true,
    "pg": {
@@ -1482,7 +1482,7 @@
    "a": 49.4,
    "b": 50.6,
    "peso": 0.2004,
-   "peso_pct": 2.2,
+   "peso_pct": 2.1,
    "erro_1t": -7.75,
    "medido": true,
    "pg": null
@@ -1497,7 +1497,7 @@
    "a": 47.9,
    "b": 52.1,
    "peso": 0.2004,
-   "peso_pct": 2.2,
+   "peso_pct": 2.1,
    "erro_1t": -3.89,
    "medido": true,
    "pg": null
@@ -1565,14 +1565,6 @@
   }
  ],
  "historico": [
-  {
-   "instituto": "Vetor Arrow",
-   "data": "2026-10-24",
-   "amostra": 2000,
-   "a": 50.5,
-   "b": 49.5,
-   "erro_1t": null
-  },
   {
    "instituto": "Quaest",
    "data": "2026-10-24",
